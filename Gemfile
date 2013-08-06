@@ -8,6 +8,9 @@ gem 'pg'
 
 gem 'bootstrap-sass'
 
+# navbar generator
+gem 'rails_bootstrap_navbar'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -38,8 +41,6 @@ end
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem "simple_form", "3.0.0.rc"
-gem "countries"
-gem "country_select"
 gem "simple_enum"
 gem "devise", "~> 3.0.0.rc"
 gem "stringex"

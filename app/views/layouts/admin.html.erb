@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Admin</title>
   <%= stylesheet_link_tag    "admin", media: "all", "data-turbolinks-track" => true %>
@@ -7,6 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<%= nav_bar fixed: :top, responsive: true, inverse: true, dark: true do %>
+    <%= brand_link 'CMS' %>
+
+    <%= menu_group do %>
+        <%= drop_down "Языковые настройки" do %>
+          <%= menu_item "Страны", admin_countries_path %>
+          <%= menu_item "Языки", '#' %>
+        <% end %>
+    <% end %>
+
+    <%= menu_group pull: :right do %>
+        <%= menu_item do %>
+          Выход
+        <% end %>
+    <% end %>
+<% end %>
 
 <%= yield %>
 

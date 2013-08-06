@@ -2,6 +2,7 @@ CMS::Application.routes.draw do
   # admin routes
   namespace :admin do
     root :to => 'welcome#index'
+    resources :countries
   end
 
   #content cms
