@@ -1,4 +1,13 @@
 CMS::Application.routes.draw do
+
+  namespace :admin do
+    resources :languages
+  end
+
+  namespace :admin do
+    resources :countries
+  end
+
   # admin routes
   namespace :admin do
     root :to => 'welcome#index'

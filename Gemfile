@@ -61,6 +61,9 @@ gem "paperclip"
 
 gem "foreigner"
 
+# nested forms
+gem "cocoon"
+
 group :development do
   gem "hirb", "0.7.1"
   gem "capistrano"

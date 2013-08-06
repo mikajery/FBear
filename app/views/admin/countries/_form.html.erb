@@ -1,0 +1,13 @@
+<%= simple_form_for @admin_country, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name, label: 'Название' %>
+    <%= f.input :code, label: 'Код' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, value: if @admin_country.nil? then 'Добавить' else 'Сохранить' end ,class: 'btn btn-primary' %>
+    <%= link_to 'Отменить', admin_countries_path, class: 'btn' %>
+  </div>
+<% end %>
