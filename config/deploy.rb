@@ -27,7 +27,7 @@ set :ssh_options, { :forward_agent => true }
 
 role :web, 'lll.weboshin.ru' # Your HTTP server, Apache/etc
 role :app, 'lll.weboshin.ru' # This may be the same as your `Web` server
-role :db,  'localhost', :primary => true        # This is where Rails migrations will run
+role :db,  'lll.weboshin.ru', :primary => true        # This is where Rails migrations will run
 
 require 'bundler/capistrano'
 #require "thinking_sphinx/deploy/capistrano"
