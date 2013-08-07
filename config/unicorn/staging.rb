@@ -1,7 +1,7 @@
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
 timeout 15
 
-app_folder = "/var/www/lll/staging"
+app_folder = "/var/www/lll/staging/current"
 working_directory app_folder
 
 stderr_path app_folder + "/log/unicorn.stderr.log"
