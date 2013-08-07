@@ -1,0 +1,28 @@
+<h1>Страны</h1>
+
+<table class="table table-stripped table-condensed">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th width="100px"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @countries.each do |country| %>
+      <tr>
+        <td><%= country.name %>, <%= country.code %></td>
+        <td>
+          <div class="pull-right">
+            <%= link_to raw('<i class="icon icon-pencil"></i>'), edit_country_path(country), class: 'btn btn-mini' %>
+            <%= link_to raw('<i class="icon icon-trash icon-white"></i>'), country, method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: 'Are you sure?' } %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="form-actions">
+  <%= link_to 'New Country', new_country_path, class: 'btn' %>
+</div>

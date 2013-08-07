@@ -18,7 +18,7 @@ class Admin::CountriesControllerTest < ActionController::TestCase
 
   test "should create admin_country" do
     assert_difference('Admin::Country.count') do
-      post :create, admin_country: { code: @admin_country.code, name: @admin_country.name }
+      post :create, admin_country: {  }
     end
 
     assert_redirected_to admin_country_path(assigns(:admin_country))
@@ -35,7 +35,7 @@ class Admin::CountriesControllerTest < ActionController::TestCase
   end
 
   test "should update admin_country" do
-    patch :update, id: @admin_country, admin_country: { code: @admin_country.code, name: @admin_country.name }
+    patch :update, id: @admin_country, admin_country: {  }
     assert_redirected_to admin_country_path(assigns(:admin_country))
   end
 
