@@ -1,7 +1,7 @@
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
 timeout 15
 
-app_folder = "#{release_path}"
+app_folder = "/var/www/lll"
 working_directory app_folder
 
 stderr_path app_folder + "/log/unicorn.stderr.log"
@@ -9,7 +9,7 @@ stdout_path app_folder + "/log/unicorn.stdout.log"
 
 pid app_folder + "/tmp/pids/unicorn.pid"
 
-listen app_folder + "tmp/.unicorn.sock", :backlog => 64
+listen app_folder + "/tmp/.unicorn.sock", :backlog => 64
 listen 8080, :tcp_nopush => true
 
 preload_app true
