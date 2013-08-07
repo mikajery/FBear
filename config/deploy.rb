@@ -1,21 +1,3 @@
-# set :application, "lll-cms"
-# set :user, "www"
-
-# set :scm, :git
-# set :repository,  "git@bitbucket.org:cslstudio/lll.git"
-# set :deploy_via, :remote_cache
-
-# # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
-# # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
-
-# # role :web, domain                          # Your HTTP server, Apache/etc
-# # role :app, domain                          # This may be the same as your `Web` server
-# # role :db,  domain, :primary => true # This is where Rails migrations will run
-
-# # if you want to clean up old releases on each deploy uncomment this:
-# after 'deploy:update_code', 'deploy:migrate'
-# after "deploy:restart", "deploy:cleanup"
-
 require "rvm/capistrano"
 
 set :rvm_ruby_string, :local              # use the same ruby as used locally for deployment
@@ -63,7 +45,7 @@ end
 #  run "cp #{mail_config} #{release_path}/config/email.yml"
 #end
 
-set (:unicorn_conf) {"/etc/unicorn/scoore.#{stage_name}.rb"}
+set (:unicorn_conf) {"#{release_path}/config/unicorn/#{stage_name}.rb"}
 set (:unicorn_pid) {"#{shared_path}/pids/unicorn.pid"}
 set (:unicorn_start_cmd) {"(cd #{deploy_to}/current; rvm use 2.0.0 do bundle exec unicorn_rails -Dc #{unicorn_conf})"}
 
