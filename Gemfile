@@ -77,3 +77,5 @@ group :development do
   gem "binding_of_caller"
   # gem "rails-backbone", ">= 0.9.10"
 end
+
+gem 'rvm-capistrano'
