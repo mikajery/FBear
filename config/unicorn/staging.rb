@@ -1,7 +1,7 @@
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
 timeout 15
 
-app_folder = "/var/www/lll"
+app_folder = "/var/www/lll/staging"
 working_directory app_folder
 
 stderr_path app_folder + "/log/unicorn.stderr.log"
@@ -17,7 +17,6 @@ GC.respond_to?(:copy_on_write_friendly=) and
   GC.copy_on_write_friendly = true
 
 check_client_connection false  
-
 
 before_fork do |server, worker|
   Signal.trap 'TERM' do
