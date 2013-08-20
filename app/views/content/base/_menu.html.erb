@@ -2,7 +2,7 @@
 	<i class="icon icon-menu"></i>
 </a>
 
-<ul class="b-menu hide-on-smaller">
+<ul class="b-menu b-content-menu hide-on-smaller active">
 	<% content_menu.each do |i| %>
 		<%= render :partial => 'menu_item', :locals => { :item => i } %>
 	<% end %>
