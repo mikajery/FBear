@@ -1,11 +1,12 @@
 class HtmlController < Content::BaseController
-  layout 'map', :only => :map
+  layout 'content'
+
 
   def index
   end
 
   def map
-  	
+  	render layout: "map"
   end
 
   def landing
