@@ -1,4 +1,5 @@
 @import 'mixins';
+@import 'icons';
 
 body {
 	background: image-url('content/bg-white.png') #eee repeat-x top;
@@ -8,7 +9,7 @@ body {
 		size: 14px;
 	}
 
-	&.black {
+	&.dark {
 		background-image: image-url('content/bg-black.png');
 	}
 }

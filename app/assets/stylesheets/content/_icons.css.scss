@@ -1,0 +1,23 @@
+.icon {
+	width: 24px;
+	height: 24px;
+	margin-right: .4em;
+	background: image-url('content/icons-777777.png') no-repeat;
+	display: inline-block;
+
+	&.icon-search {
+		bacground-position: 0 0;
+	}
+
+	&.icon-phone {
+		width: 26px;
+		height: 26px;
+		background-position: -30px -48px;
+	}
+
+	&.icon-menu {
+		width: 29px;
+		height: 27px;
+		background-position: 0 -48px;
+	}
+}

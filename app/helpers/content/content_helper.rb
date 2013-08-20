@@ -22,6 +22,12 @@ module Content::ContentHelper
       },
       {
         :title  => 'Как купить'
+      },
+      {
+        :title  => 'Блог'
+      },
+      {
+        :title  => 'Контакты'
       }
   	]
   end
