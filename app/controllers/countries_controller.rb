@@ -41,6 +41,8 @@ class CountriesController < Admin::BaseController
   # PATCH/PUT /countries/1.json
   def update
     respond_to do |format|
+      # abort params[:country].keys.join ", "
+      abort country_params.keys.join ", "
       if @country.update(country_params)
         format.html { redirect_to countries_url, notice: 'Country was successfully updated.' }
         format.json { head :no_content }
@@ -67,8 +69,7 @@ class CountriesController < Admin::BaseController
       @country = Country.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def country_params
-      params.require(:country).permit(:name, :code)
+      params.require(:country).permit(:language_ids, :name, :code)
     end
 end

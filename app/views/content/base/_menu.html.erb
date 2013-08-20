@@ -1,0 +1,5 @@
+<ul class="b-menu">
+	<% content_menu.each do |i| %>
+		<%= render :partial => 'menu_item', :locals => { :item => i } %>
+	<% end %>
+</ul>

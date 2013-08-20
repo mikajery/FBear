@@ -11,8 +11,10 @@ gem 'bootstrap-sass'
 # navbar generator
 gem 'rails_bootstrap_navbar'
 
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+group :assets do
+  # Use SCSS for stylesheets
+  gem 'sass-rails', '~> 4.0.0'
+end
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

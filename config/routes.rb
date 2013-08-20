@@ -1,17 +1,23 @@
 CMS::Application.routes.draw do
 
+  get "html/index"
   # admin routes
   namespace :admin do
     root :to => 'welcome#index'
   end
 
   scope '/admin' do
-    resources :countries
-    resources :languages
+    resources :countries, :languages
   end
 
   #content cms
-  root :to => 'welcome#index'
+  # root :to => 'welcome#index'
+
+  # static routes for markup
+  get 'html/index'   => 'html#index'
+  get 'html/map'     => 'html#map'
+  get 'html/landing' => 'html#landing'
+  get 'html/catalog' => 'html#catalog'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
