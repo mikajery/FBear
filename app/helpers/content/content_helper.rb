@@ -3,10 +3,36 @@ module Content::ContentHelper
   	'LLLOOCH'
   end
 
-  def languages 
+  def languages
+    [
+      {
+        :title  => 'Английский',
+        :short  => 'en',
+      }
+    ]
+  end
+
+  def languages_select
   	[
   		{
-        :title  => 'EN'
+        :title  => 'Русский',
+        :short  => 'ru',
+      },
+      {
+        :title  => 'Английский',
+        :short  => 'en',
+      },
+      {
+        :title  => 'Французский',
+        :short  => 'fr',
+      },
+      {
+        :title  => 'Немецкий',
+        :short  => 'de',
+      },
+      {
+        :title  => 'Японский',
+        :short  => 'jp',
       }
     ]
   end

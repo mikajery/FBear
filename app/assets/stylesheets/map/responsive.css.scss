@@ -1,0 +1,34 @@
+@media (max-width: 1239px) {
+	body {
+		min-width: 1024px;
+	}
+
+	.container {
+		width: 964px;
+	}
+
+	.map {
+		background-image: image-url('map/bg-1024.jpg');
+		background-position: 30px center;
+	}
+
+	.languages-wrap {
+		position: absolute;
+		right: 0;
+	}	
+}
+
+@media (max-width: 1023px) {
+	body {
+		min-width: 768px;
+	}
+
+	.map {
+		background-image: image-url('map/bg-768.jpg');
+		background-position: 0 center;
+	}
+
+	.container {
+		width: 708px;
+	}
+}

@@ -10,14 +10,15 @@
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width">
 
-		<%= stylesheet_link_tag    "content", media: "all", "data-turbolinks-track" => true %>
+		<%= stylesheet_link_tag    "map", media: "all", "data-turbolinks-track" => true %>
 		<%= javascript_include_tag "shared/modernizr.min", "data-turbolinks-track" => true %>
 		<%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Roboto:400,500&subset=latin,cyrillic" %>
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
-		<%= render :partial => 'header' %>
+
 		<%= yield %>
-		<%= javascript_include_tag "content", "data-turbolinks-track" => true %>
+
+		<%= javascript_include_tag "map", "data-turbolinks-track" => true %>
 	</body>
 </html>

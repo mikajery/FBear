@@ -1,0 +1,21 @@
+<div class="languages-wrap">
+	<a href="#" class="logo"></a>
+	
+	<table class="languages-table">
+		<tr>
+			<td>
+				<ul class="languages">
+					<% languages_select.each do |lang| %>
+						<li>
+							
+							<a href="#">
+								<div class="hint"><%= lang[:short] %></div>
+								<%= lang[:title] %>
+							</a>
+						</li>
+					<% end %>
+				</ul>
+			</td>
+		</tr>
+	</table>
+</div>
