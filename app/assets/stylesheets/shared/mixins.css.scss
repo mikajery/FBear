@@ -26,3 +26,19 @@
 @mixin border-radius($radius) {
 	border-radius: $radius;
 }
+
+@mixin row($selector) {
+	#{$selector}:before,
+	#{$selector}:after {
+	    content:"";
+	    display:table;
+	}
+
+	#{$selector}:after {
+	    clear:both;
+	}
+
+	#{$selector} {
+	    zoom:1;
+	}
+}

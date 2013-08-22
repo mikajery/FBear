@@ -1,0 +1,68 @@
+@include block_list(".search-results-items");
+
+.search-results {
+	width: 800px;
+	margin: 0 auto;	
+
+	h1 {
+		margin: 0;
+		padding: 20px 0 40px 30px; 
+
+		font: {
+			weight: 900;
+			size: 48px;
+		}
+
+		a {
+		  color: #1b979d;
+		  text-decoration: none;
+		}
+	}
+}
+
+.search-results-items {
+	margin-bottom: 100px;
+	
+	& > li {
+		border-top: 1px solid #d7d7d7;
+		padding: 40px 0;
+
+		& > .picture {
+			width: 240px;
+			height: 240px;
+			float: left;
+		}
+
+		& > .desc {
+			padding-left: 270px;
+
+			font: {
+				size: 14px;
+			}
+
+			& > .title {
+				font: {
+					size: 30px;
+					weight: 900;
+				}
+
+				margin-bottom: 20px;
+			}
+
+			& > .desc {
+				padding-left: 270px;
+			}
+
+			& > .location {
+				a {
+					color: inherit;
+					font-size: 12px;
+				}
+
+				margin-bottom: 30px;
+			}
+		}
+	}
+}
+
+@include row(".search-results-items > li");

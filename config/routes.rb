@@ -18,6 +18,7 @@ CMS::Application.routes.draw do
   get 'html/map'     => 'html#map'
   get 'html/landing' => 'html#landing'
   get 'html/catalog' => 'html#catalog'
+  get 'html/search'  => 'html#search'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
