@@ -5,7 +5,7 @@
     display: none !important;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1259px) {
 	.hide-on-smaller {
 		display: none;
 	}
@@ -93,7 +93,9 @@
 	.hide-on-smaller {
 		display: none;
 	}
+}
 
+@media (max-width: 1023px) {
 	.search-results {
 		width: 688px;
 	}

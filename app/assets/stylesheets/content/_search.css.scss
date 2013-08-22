@@ -2,7 +2,7 @@
 
 .search-results {
 	width: 800px;
-	margin: 0 auto;	
+	margin: 20px auto 0;	
 
 	h1 {
 		margin: 0;
@@ -22,7 +22,7 @@
 
 .search-results-items {
 	margin-bottom: 100px;
-	
+
 	& > li {
 		border-top: 1px solid #d7d7d7;
 		padding: 40px 0;
