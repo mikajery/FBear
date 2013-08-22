@@ -1,9 +1,7 @@
-<a href="#" class="b-menu-link hide-on-full">
-	<i class="icon icon-menu"></i>
-</a>
-
-<ul class="b-menu b-content-menu hide-on-smaller active">
-	<% content_menu.each do |i| %>
-		<%= render :partial => 'menu_item', :locals => { :item => i } %>
-	<% end %>
-</ul>
+<table class="b-menu">
+	<tr>
+		<% content_menu.each do |i| %>
+			<%= render :partial => 'menu_item', :locals => { :item => i } %>
+		<% end %>	
+	</tr>
+</table>

@@ -1,10 +1,23 @@
 @import 'shared/mixins';
 
-.hide-on-full {
+.hide-on-full,
+.show-on-smaller {
     display: none !important;
 }
 
 @media (max-width: 1023px) {
+	.hide-on-smaller {
+		display: none;
+	}
+
+	.show-on-smaller {
+		display: block !important;
+	}
+
+	td.show-on-smaller {
+		display: table-cell !important;
+	}
+
 	body {
 		min-width: 748px;
 	}
@@ -19,13 +32,17 @@
 		display: block !important;
 	}
 
-	.b-content-menu.active {
-		display: block;
+	.b-content-menu {
 		position: absolute;
 		top: 80px;
 		left: 30px;
 		right: 30px;
 		overflow: hidden;
+		display: none;
+
+		&.active {
+			display: block;
+		}
 
 		& > li {
 			background: #fff;
@@ -40,7 +57,7 @@
 
 			&:last-child {
 				border-radius: 0 0 5px 5px;
-				border-bottom: none;
+				border-bottom: none !important;
 			}
 
 			.dark & {
@@ -65,7 +82,6 @@
 
 	.b-header-phone .icon {
 		background-image: image-url('content/icons-small-black.png');
-		margin-top: 8px;
 		margin-bottom: -9px;
 		margin-right: 0;
 		.dark & {

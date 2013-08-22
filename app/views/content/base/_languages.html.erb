@@ -1,9 +1,13 @@
-<ul class="b-menu">
-	<li>
-		<a href="#" class="b-cart-link">Корзина</a>
-	</li>
-	
-	<% languages.each do |i| %>
-		<%= render :partial => 'language_item', :locals => { :item => i } %>
-	<% end %>
-</ul>
+<table class="b-menu">
+	<tr>
+		<td>
+			<div>
+				<a href="#" class="b-cart-link">Корзина</a>
+			</div>
+		</td>
+
+		<% languages.each do |i| %>
+			<%= render :partial => 'language_item', :locals => { :item => i } %>
+		<% end %>
+	</tr>
+</table>

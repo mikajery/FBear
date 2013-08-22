@@ -1,28 +1,41 @@
 <header>
-	<ul class="b-header">
-		<li>
-			<a href="#" class="b-logo"></a>
-		</li>
+	<table class="b-header">
+		<tr>
+			<td width="150px">
+				<a href="#" class="b-logo"></a>
+			</td>
 
-		<li class="right-on-smaller">
-			<%= render :partial => 'menu' %>
-		</li>
+			<td class="space"></td>
 
-		<li class="right">
-			<a href="#" class="b-search-link">
-				<i class="icon icon-search"></i>
-			</a>
-		</li>
+			<td width="1px" class="hide-on-smaller">
+				<%= render :partial => 'menu' %>
+			</td>
 
-		<li class="right">
-			<%= render :partial => 'languages' %>
-		</li>
+			<td class="space"></td>
 
-		<li class="right b-header-phone">
-			<i class="icon icon-phone"></i> 8 800 123 4567
-		</li>
+			<td width="1px">
+				<div class="nowrap b-header-phone">
+					<i class="icon icon-phone"></i> 8&nbsp;800&nbsp;123&nbsp;4567
+				</div>
+			</td>
 
-	</ul>
+			<td class="space"></td>
 
-	<div class="clearfix"></div>
+			<td width="1px">
+				<%= render :partial => 'languages' %>
+			</td>
+
+			<td class="space"></td>
+
+			<td width="60px">
+				<a href="#" class="b-search-link">
+					<i class="icon icon-search"></i>
+				</a>
+			</td>
+
+			<td class="show-on-smaller" width="60px">
+				<%= render :partial => 'responsive_menu' %>
+			</td>
+		</tr>
+	</table>
 </header>

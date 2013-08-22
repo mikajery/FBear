@@ -1,0 +1,21 @@
+var Toggler = function(el) {
+	var item   = $('[data-toggle-item=' + el.data('toggle') + ']'),
+		opened = item.hasClass('active')
+	;
+
+	var toggle = function() {
+		opened = !opened;
+		item.toggleClass('active', opened);
+	};
+
+	el.click(function(e) {
+		toggle();
+		e.preventDefault();
+	});
+}
+
+$(function() {
+	$('[data-action=toggle]').each(function() {
+		new Toggler($(this));
+	});	
+});
