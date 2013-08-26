@@ -13,7 +13,7 @@
 	</ul>
 
 	<div class="showroom-slide" data-showroom="slide">
-		<%= render :partial => 'showroom_promo', :locals => { :promo => promo } if defined? promo %>
+		<%= render 'content/showroom/promo', :promo => promo if defined? promo %>
 
 		<% if defined? items %>
 			<div class="showroom-items" data-action="showroom">
@@ -21,7 +21,7 @@
 					<% if i % 2 == 0 %>
 						<div class="showroom-col">
 					<% end %>
-							<%= render :partial => 'showroom_item', :locals => { :item => item } %>
+							<%= render 'content/showroom/item', :item => item %>
 					<% if i % 2 == 1 %>
 						</div>
 					<% end %>

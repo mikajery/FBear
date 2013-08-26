@@ -60,6 +60,15 @@ class Content::BaseController < ApplicationController
   	}
   end
 
+  def getCartItems 
+  	[
+  		{
+  			title: '',
+  			pic:   'content/product/2.jpg'
+  		}
+  	]
+  end
+
   def getItems
 		[
 			{

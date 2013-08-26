@@ -20,6 +20,27 @@ body {
 	}
 }
 
+
+.container {
+	width: 800px;
+	margin: 20px auto 0;	
+
+	h1 {
+		margin: 0;
+		padding: 20px 0 40px 30px; 
+
+		font: {
+			weight: 900;
+			size: 48px;
+		}
+
+		a {
+		  color: #1b979d;
+		  text-decoration: none;
+		}
+	}
+}
+
 @import 'header';
 @import 'footer';
 @import 'search';

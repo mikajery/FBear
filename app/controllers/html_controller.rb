@@ -9,6 +9,12 @@ class HtmlController < Content::BaseController
   	render layout: "map"
   end
 
+  def order1
+    @items = self.getCartItems
+
+    render layout: "cart"
+  end
+
   def landing
     @navigation = self.getNavigation
     @promo      = self.getPromo

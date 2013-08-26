@@ -17,7 +17,7 @@
 
 				<ul class="links">
 					<% @navigation[:links].each do |link| %>
-						<%= render :partial => 'navigation_link', :locals => { :link => link } %>
+						<%= render 'content/navigation/link', :link => link %>
 					<% end %>
 				</ul>
 

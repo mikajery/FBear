@@ -16,16 +16,9 @@
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
-		<div class="slide" data-action="navigation">
-			<%= render 'content/navigation/navigation' if @navigation %>
-
-			<div class="slide-wrap" data-navigation="slide">
-				<%= render 'header' %>
-				<%= yield %>
-			</div>
-		</div>
-		
-		<%= render 'footer' %>
+		<%= render :partial => 'header' %>
+		<%= yield %>
+		<%= render :partial => 'footer' %>
 		<%= javascript_include_tag "content", "data-turbolinks-track" => true %>
 	</body>
 </html>

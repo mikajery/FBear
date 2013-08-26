@@ -7,9 +7,11 @@
 				<ul class="languages">
 					<% languages_select.each do |lang| %>
 						<li>
-							
 							<a href="#">
-								<div class="hint"><%= lang[:short] %></div>
+								<div class="hint">
+									<%= lang[:short] %>
+								</div>
+
 								<%= lang[:title] %>
 							</a>
 						</li>

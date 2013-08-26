@@ -6,8 +6,8 @@
 			</div>
 		</td>
 
-		<% languages.each do |i| %>
-			<%= render :partial => 'language_item', :locals => { :item => i } %>
+		<% languages.each do |item| %>
+			<%= render 'content/languages/item', :item => item %>
 		<% end %>
 	</tr>
 </table>
