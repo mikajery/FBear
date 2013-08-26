@@ -44,6 +44,37 @@
 
 			.showroom-item {
 				overflow: hidden;
+				position: relative;
+
+				.showroom-item-logo {
+					position: relative;
+					height: 100%;
+				}
+
+				&:hover {
+					.showroom-item-mask {
+						display: block;
+					}
+				}
+
+				.showroom-item-mask {
+					display: none;
+					img {
+						position: absolute;
+						top: 50%;
+						display: block;
+						width: 80%;
+						margin: 0 10%
+					}
+
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					background: image-url('content/catalog-noise.png');
+				}
+
 				.showroom-item-pic {
 					position: relative;
 					height: 100%;

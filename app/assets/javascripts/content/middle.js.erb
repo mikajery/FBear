@@ -1,10 +1,10 @@
 var Middle = function(el) {
-	var images = el.find('img');
+	var images = el.filter('img');
 
-	var center = function() {
+	var center = function(height) {
 		el.css({
 			top: '50%',
-			marginTop: -1 * el.height()/2
+			marginTop: height ? height : (-1 * el.height()/2)
 		});
 	};
 
@@ -15,7 +15,23 @@ var Middle = function(el) {
 	if (images.size())
 	{
 		images.each(function() {
-			$(this).load(function() {
+			var img = $(this),
+				interval
+			;
+			img.load(function() {
+				if (!img.height())
+				{
+					img.hide();
+					interval = setInterval(function() {
+						if (img.height() > 0)
+						{
+							center();
+							img.show();
+							clearInterval();	
+						}
+					}, 100);
+				}
+
 				center();
 			});
 		});

@@ -63,28 +63,36 @@ class Content::BaseController < ApplicationController
   def getItems
 		[
 			{
-				pic: 'content/product/2.jpg'
+				pic:  'content/product/2.jpg',
+				logo: 'content/logo/2.jpg'
 			},
 			{
-				pic: 'content/product/3.jpg'
+				pic:  'content/product/3.jpg',
+				logo: 'content/logo/3.jpg'
 			},
 			{
-				pic: 'content/product/4.jpg'
+				pic:  'content/product/4.jpg',
+				logo: 'content/logo/4.png'
 			},
 			{
-				pic: 'content/product/5.jpg'
+				pic:  'content/product/5.jpg',
+				logo: 'content/logo/5.jpg'
 			},
 			{
-				pic: 'content/product/6.jpg'
+				pic:  'content/product/6.jpg',
+				logo: 'content/logo/6.jpg'
 			},
 			{
-				pic: 'content/product/7.jpg'
+				pic:  'content/product/7.jpg',
+				logo: 'content/logo/7.jpg'
 			},
 			{
-				pic: 'content/product/1.jpg'
+				pic:  'content/product/1.jpg',
+				logo: 'content/logo/1.jpg'
 			},
 			{
-				pic: 'content/product/8.jpg'
+				pic:  'content/product/8.jpg',
+				logo: 'content/logo/8.jpg'
 			}
 		]
   end

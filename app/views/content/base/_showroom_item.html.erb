@@ -1,5 +1,11 @@
 <div class="showroom-item" data-showroom="item">
 	<div class="showroom-item-pic">
-		<img src="<%= image_url(item[:pic]) %>">
+		<img src="<%= image_url(item[:pic]) %>" />
+	</div>
+
+	<div class="showroom-item-mask">
+		<div class="showroom-item-logo">
+			<img src="<%= image_url(item[:logo]) %>" data-action="middle" />
+		</div>
 	</div>
 </div>
