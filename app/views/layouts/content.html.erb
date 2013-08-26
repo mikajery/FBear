@@ -11,20 +11,26 @@
 		<meta name="viewport" content="width=device-width">
 
 		<%= stylesheet_link_tag    "content", media: "all", "data-turbolinks-track" => true %>
-		<%= javascript_include_tag "shared/modernizr.min", "data-turbolinks-track" => true %>
+		<%= javascript_include_tag "shared/modernizr.min",  "data-turbolinks-track" => true %>
 		<%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Roboto:400,500,700,900&subset=latin,cyrillic" %>
 		<%= csrf_meta_tags %>
 	</head>
 	<body>
-		<div class="slide" data-action="navigation">
-			<%= render 'content/navigation/navigation' if @navigation %>
+		<% if @navigation %>
+			<div class="slide" data-action="navigation">
+				<%= render 'content/navigation/navigation' %>
 
-			<div class="slide-wrap" data-navigation="slide">
-				<%= render 'header' %>
-				<%= yield %>
-			</div>
-		</div>
+				<div class="slide-wrap" data-navigation="slide">
+		<% end %>
 		
+		<%= render 'header' %>
+		<%= yield %>
+
+		<% if @navigation %>		
+				</div>
+			</div>
+		<% end %>
+
 		<%= render 'footer' %>
 		<%= javascript_include_tag "content", "data-turbolinks-track" => true %>
 	</body>

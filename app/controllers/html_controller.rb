@@ -11,8 +11,6 @@ class HtmlController < Content::BaseController
 
   def order1
     @items = self.getCartItems
-
-    render layout: "cart"
   end
 
   def landing

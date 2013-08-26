@@ -1,5 +1,6 @@
 @import 'shared/mixins';
 @import 'icons';
+@import 'buttons';
 
 html {
 	height: 100%;
@@ -43,7 +44,8 @@ body {
 
 @import 'header';
 @import 'footer';
-@import 'search';
-
 @import 'navigation';
+
+@import 'search';
 @import 'showroom';
+@import 'cart';

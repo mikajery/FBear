@@ -1,18 +1,18 @@
 <li class="cart-item">
 	<div class="cart-item-remove">
-		<i class="control control-close"></i>
-	</div>
-
-	<div class="cart-item-pic">
-		<img src="<%= image_url(item[:pic]) %>" />
+		<i class="control control-remove"></i>
 	</div>
 
 	<div class="cart-item-info">
+		<div class="cart-item-pic">
+			<img src="<%= image_url(item[:pic]) %>" />
+		</div>
+
 		<div class="cart-item-title">
 			<%= item[:title] %>
 		</div>
 
-		<% render 'content/cart/options',     :options     => item[:options]     if item[:options] %>
-		<% render 'content/cart/additionals', :additionals => item[:additionals] if item[:additionals] %>
+		<%= render 'content/cart/options',     :options     => item[:options]     if item[:options] %>
+		<%= render 'content/cart/additionals', :additionals => item[:additionals] if item[:additionals] %>
 	</div>
 </li>

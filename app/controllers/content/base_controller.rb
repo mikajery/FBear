@@ -63,8 +63,59 @@ class Content::BaseController < ApplicationController
   def getCartItems 
   	[
   		{
-  			title: '',
-  			pic:   'content/product/2.jpg'
+  			title: 'Diesel',
+  			pic:   'content/product/2.jpg',
+  			options:     self.getCartOptions("Diesel"),
+  			additionals: self.getCartAdditionals("Diesel")
+  		},
+  		{
+  			title: 'Moo',
+  			pic:   'content/product/2.jpg',
+  			options:     self.getCartOptions("Moo"),
+  			additionals: self.getCartAdditionals("Moo")
+  		}
+  	]
+  end
+
+  def getCartAdditionals(key)
+  	[
+  		{
+  			title: 'USB Apple',
+  			pic:   'content/product/thumb/1.jpg',
+  			desc:  'Такой маленький кабель, чтобы телефон от стула заряжать.'
+  		}
+  	]
+  end
+
+  def getCartOptions(key)
+  	[
+  		{
+  			title: "Материал",
+  			items: [
+  				{
+  					title: "Материал 1"
+  				},
+  				{
+  					title: "Материал 2"
+  				},
+  				{
+  					title: "Материал 3"
+  				}
+  			]
+  		},
+  		{
+  			title: "Ориентация",
+  			items: [
+  				{
+  					title: "Ориентация 1"
+  				},
+  				{
+  					title: "Ориентация 2"
+  				},
+  				{
+  					title: "Ориентация 3"
+  				}
+  			]
   		}
   	]
   end

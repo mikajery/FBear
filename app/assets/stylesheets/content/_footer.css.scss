@@ -1,7 +1,7 @@
 @include inline_list(".foot-icons");
 
 footer {
-	position: absolute;
+	position: fixed;
 	z-index: 20;
 	right: 80px;
 	bottom: 30px;

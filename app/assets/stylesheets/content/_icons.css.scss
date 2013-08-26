@@ -50,4 +50,10 @@
 	&.control-right {
 		background-position: -60px 0;
 	}
+
+	&.control-remove {
+		width: 21px;
+		height: 21px;
+		background-position: 0 -20px;
+	}
 }
