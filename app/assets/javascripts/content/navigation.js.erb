@@ -1,0 +1,50 @@
+var Navigation = function(el) {
+	var nav    = el.find('[data-navigation=nav]'),
+		helper = el.find('[data-navigation=helper]'),
+		slide  = el.find('[data-navigation=slide]'),
+		opened = false,
+		self   = this
+	;
+
+	this.close = function() {
+		nav
+			.removeClass('opened')
+			.animate({
+				marginLeft: -1 * nav.width()
+			})
+		;
+
+		slide.animate({
+			marginLeft: 0
+		});
+	}
+
+	this.open = function() {
+		nav
+			.addClass('opened')
+			.animate({
+				marginLeft: 0
+			})
+		;
+
+		slide.animate({
+			marginLeft: nav.width()
+		});
+	}
+
+	var toggle = function() {
+		self[opened ? 'close' : 'open']();
+		opened = !opened;
+	};
+
+	helper.click(function(e) {
+		toggle();
+		e.preventDefault();
+	});
+};
+
+$(function() {
+	$('[data-action=navigation]').each(function() {
+		new Navigation($(this));
+	});
+});

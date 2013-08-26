@@ -1,0 +1,32 @@
+<div class="showroom">
+	<ul class="showroom-controls" data-action="middle">
+		<li>
+			<div class="showroom-control" data-showroom="control">
+				<i class="control control-left"></i>
+			</div>
+		</li>
+		<li>
+			<div class="showroom-control" data-showroom="control" data-showroom-control="right">
+				<i class="control control-right"></i>
+			</div>
+		</li>
+	</ul>
+
+	<div class="showroom-slide" data-showroom="slide">
+		<%= render :partial => 'showroom_promo', :locals => { :promo => promo } if defined? promo %>
+
+		<% if defined? items %>
+			<div class="showroom-items" data-action="showroom">
+				<% items.each_with_index do |item, i| %>
+					<% if i % 2 == 0 %>
+						<div class="showroom-col">
+					<% end %>
+							<%= render :partial => 'showroom_item', :locals => { :item => item } %>
+					<% if i % 2 == 1 %>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+</div>

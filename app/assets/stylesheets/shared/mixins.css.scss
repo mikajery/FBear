@@ -21,6 +21,8 @@
 			float: left;
 		}
 	}
+
+	@include row(#{$selector});
 }
 
 @mixin border-radius($radius) {
@@ -41,4 +43,11 @@
 	#{$selector} {
 	    zoom:1;
 	}
+}
+
+@mixin rotate($deg) {
+	-webkit-transform: rotate(#{$deg}); /* Safari and Chrome */
+	   -moz-transform: rotate(#{$deg}); /* Firefox */
+		-ms-transform: rotate(#{$deg}); /* IE 9 */
+		 -o-transform: rotate(#{$deg}); /* Opera */	
 }

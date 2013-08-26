@@ -21,3 +21,33 @@
 		background-position: 0 -48px;
 	}
 }
+
+.social {
+	display: block;
+	width: 24px;
+	height: 24px;
+	background: image-url('content/social.png') no-repeat;
+
+	&.facebook {
+		background-position: -24px 0;
+	}
+
+	&.pinterest {
+		background-position: -48px 0;
+	}
+}
+
+.control {
+	display: block;
+	width: 20px;
+	height: 20px;
+	background: image-url('content/control.png') no-repeat;
+
+	&.control-left {
+		background-position: -40px 0;
+	}
+
+	&.control-right {
+		background-position: -60px 0;
+	}
+}

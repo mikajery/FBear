@@ -1,0 +1,31 @@
+var Middle = function(el) {
+	var images = el.find('img');
+
+	var center = function() {
+		el.css({
+			top: '50%',
+			marginTop: -1 * el.height()/2
+		});
+	};
+
+	el.on('middle', function () {
+		center();
+	});
+
+	if (images.size())
+	{
+		images.each(function() {
+			$(this).load(function() {
+				center();
+			});
+		});
+	}
+
+	center();
+};
+
+$(function() {
+	$('[data-action=middle]').each(function() {
+		new Middle($(this));
+	});
+});

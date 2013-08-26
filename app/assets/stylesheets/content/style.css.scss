@@ -1,7 +1,13 @@
 @import 'shared/mixins';
 @import 'icons';
 
+html {
+	height: 100%;
+}
+
+
 body {
+	min-height: 100%;
 	background: image-url('content/bg-white.png') #eee repeat-x top;
 
 	font: {
@@ -15,4 +21,8 @@ body {
 }
 
 @import 'header';
+@import 'footer';
 @import 'search';
+
+@import 'navigation';
+@import 'showroom';

@@ -1,0 +1,26 @@
+var Showroom = function(el) {
+	var items = function() { return el.find('[data-showroom=item]') }
+	;
+
+	var resize = function() {
+		var width = el.height()/2;
+
+		items().each(function() {
+			$(this).css({
+				'width': width
+			});
+		});
+	};	
+
+	$('body').on('resize:height', function() {
+		resize();
+	});	
+
+	resize();
+};
+
+$(function() {
+	$('[data-action=showroom]').each(function() {
+		new Showroom($(this));
+	});	
+});

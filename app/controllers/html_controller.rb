@@ -10,34 +10,17 @@ class HtmlController < Content::BaseController
   end
 
   def landing
-
+    @navigation = self.getNavigation
+    @promo      = self.getPromo
+    @items      = self.getItems
   end  
 
   def catalog
+    @navigation = self.getNavigation
+    @items      = self.getItems
   end
 
   def search
-    @results = [
-      {
-        picture:  'content/search/1.jpg',
-        title:    'Как думают пользователи?',
-        location: 'Найдено в блогах',
-        content:  'В принципе, поведение пользователей на веб-сайте не особо отличаются от их поведения в, скажем, магазине. На самом деле, на большую часть страницы они даже не посмотрят.'
-      },
-
-      {
-        picture:  'content/search/2.jpg',
-        title:    'Moo',
-        location: 'Найдено в продуктах',
-        content:  'Очень простой принцип: если веб-сайт не может оправдать ожиданий пользователей, то дизайн не выполняет свою функцию, а компания теряет деньги. Чем менее интуитивная навигация, тем сильнее желание пользователя покинуть веб-сайт и найти альтернативу.'
-      },
-
-      {
-        picture:  'content/search/3.jpg',
-        title:    'Оптимальные решения',
-        location: 'Найдено в блогах',
-        content:  'Пользователи не ищут самый быстрый способ для поиска желаемой информации. Они также не сканируют веб-сайты последовательно, переходя от одного раздела к другому. '
-      }
-    ]
+    @results = self.getResults
   end
 end
