@@ -16,11 +16,15 @@ CMS::Application.routes.draw do
   # static routes for markup
   get 'html/index'   => 'html#index'
   get 'html/map'     => 'html#map'
+  
   get 'html/landing' => 'html#landing'
   get 'html/catalog' => 'html#catalog'
+
   get 'html/search'  => 'html#search'
+
   get 'html/order1'  => 'html#order1'
   get 'html/order2'  => 'html#order2'  
+  get 'html/order3'  => 'html#order3'  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

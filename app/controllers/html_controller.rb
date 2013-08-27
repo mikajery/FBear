@@ -1,7 +1,6 @@
 class HtmlController < Content::BaseController
   layout 'content'
 
-
   def index
   end
 
@@ -10,6 +9,10 @@ class HtmlController < Content::BaseController
   end
 
   def order1
+    @items = self.getCartItems
+  end
+
+  def order3
     @items = self.getCartItems
   end
 

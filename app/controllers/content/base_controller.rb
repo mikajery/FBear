@@ -63,14 +63,16 @@ class Content::BaseController < ApplicationController
   def getCartItems 
   	[
   		{
-  			title: 'Diesel',
-  			pic:   'content/product/2.jpg',
+  			title:       'Diesel',
+  			pic:         'content/product/2.jpg',
+        desc:        'Пользователи не ищут самый быстрый способ для поиска желаемой информации. Они также не сканируют веб-сайты последовательно, переходя от одного раздела к другому.',
   			options:     self.getCartOptions("Diesel"),
   			additionals: self.getCartAdditionals("Diesel")
   		},
   		{
-  			title: 'Moo',
-  			pic:   'content/product/2.jpg',
+  			title:       'Moo',
+  			pic:         'content/product/3.jpg',
+        desc:        'Пользователи не ищут самый быстрый способ для поиска желаемой информации. Они также не сканируют веб-сайты последовательно, переходя от одного раздела к другому.',
   			options:     self.getCartOptions("Moo"),
   			additionals: self.getCartAdditionals("Moo")
   		}
