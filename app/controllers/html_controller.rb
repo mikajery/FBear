@@ -16,6 +16,14 @@ class HtmlController < Content::BaseController
     @items = self.getCartItems
   end
 
+  def designer
+    @designer   = self.getDesigners.first
+  end 
+
+  def designers
+    @designers  = self.getDesigners[1..-1]
+  end 
+
   def landing
     @navigation = self.getNavigation
     @promo      = self.getPromo

@@ -1,0 +1,32 @@
+<div class="designers">
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span6">
+				<h1>
+					Who Is LLLDESIGN
+				</h1>
+
+				<p>
+					Традиционный канал, следовательно, не так уж очевиден. К тому же диктат потребителя изменяет общественный баинг и селлинг, опираясь на опыт западных коллег. Косвенная реклама, анализируя результаты рекламной кампании, повсеместно ускоряет анализ зарубежного опыта, осознав маркетинг как часть производства. 
+				</p>
+			</div>
+
+				<% @designers.each_with_index do |d, index| %>
+					<% index = index + 3 %>
+					<% if index > 1 and index % 5 == 0 %>
+						<div class="row-fluid">
+					<% end %>
+
+						<div class="span2">
+							<div class="designers-item">	
+								<img src="<%= image_url(d[:pic]) %>" />
+							</div>
+						</div>
+
+					<% if index == 1 or index > 1 and index % 5 == 4 %>
+						</div>
+					<% end %>
+				<% end %>
+		</div>
+	</div>
+</div>

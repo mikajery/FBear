@@ -2,6 +2,79 @@ class Content::BaseController < ApplicationController
   layout 'content'
   helper Content::ContentHelper
 
+  def getDesigners
+    [
+      {
+        title: 'Антон Цибарев',
+        motto: 'Разрушая стереотип, сохраняй традицию',
+        pic:   'content/designer/1.jpg',
+        desc:  '<p>Родился и вырос в Зеленограде. В 2011 году с отличием закончил МИЭТ по специальности «промышленный дизайнер». Сформулировал для себя два подхода к профессии. Первое: внешний вид предмета - это инструмент, благодаря которому дизайнер может вызвать у зрителя те или иные эмоции. И второе: у русских нет привычки печься о комфорте и технологичности, поэтому русские традиции необходимо скрещивать с европейским качеством и азиатской страстью к инновациям. В LLLdesign пришел с намерением создавать именно такие вещи.</p><div class="clearfix"></div><p>Я много путешествовал по России, складывая свое собственное восприятие национального быта. «Астрахань отличается от Норильска примерно так же сильно, как Греция отличается от Гренландии. Русская природа необычайно разнообразна – значит, разнообразным должен быть и русский дизайн».</p>',
+        projects: [
+          {
+            pic: 'content/product/2.jpg'
+          },
+          {
+            pic: 'content/product/3.jpg'
+          },
+          {
+            pic: 'content/product/4.jpg'
+          },
+          {
+            pic: 'content/product/5.jpg'
+          }
+        ]
+      },
+      {
+        title: 'Антон Цибарев',
+        pic:   'content/designer/2.jpg'
+      },
+      {
+        title: 'Антон Цибарев',
+        pic:   'content/designer/3.jpg'
+      },
+      {
+        title: 'Антон Цибарев',
+        pic:   'content/designer/4.jpg'
+      },
+      {
+        title: 'Антон Цибарев',
+        pic:   'content/designer/5.jpg'
+      },
+      {
+        title: 'Антон Цибарев',
+        pic:   'content/designer/6.jpg'
+      },
+      {
+        title: 'Антон Цибарев',
+        pic:   'content/designer/7.jpg'
+      },
+      {
+        title: 'Антон Цибарев',
+        pic:   'content/designer/2.jpg'
+      },
+      {
+        title: 'Антон Цибарев',
+        pic:   'content/designer/3.jpg'
+      },
+      {
+        title: 'Антон Цибарев',
+        pic:   'content/designer/4.jpg'
+      },
+      {
+        title: 'Антон Цибарев',
+        pic:   'content/designer/5.jpg'
+      },
+      {
+        title: 'Антон Цибарев',
+        pic:   'content/designer/6.jpg'
+      },
+      {
+        title: 'Антон Цибарев',
+        pic:   'content/designer/7.jpg'
+      }
+    ]
+  end
+
   def getNavigation 
   	{
 		  title:  'Выберите категорию товара',
