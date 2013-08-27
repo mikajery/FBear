@@ -36,7 +36,7 @@ require 'bundler/capistrano'
 #require "thinking_sphinx/deploy/capistrano"
 #require "whenever/capistrano"
 
-before 'deploy:finalize_update' :copy_database_config#, :copy_email_config
+before 'deploy:finalize_update', :copy_database_config#, :copy_email_config
 
 task :copy_database_config, roles => :app do
   db_config = "#{shared_path}/database.yml"
