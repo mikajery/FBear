@@ -1,0 +1,280 @@
+<div class="container cart">
+	<h1>
+		Доставка и оплата
+	</h1>
+
+	<form class="form-vertical">
+
+		<div class="form-block">
+			<h2>Персональные данные</h2>
+
+			<div class="row">
+				<div class="span2">
+					<div class="form-row">
+						<label for="name">
+							Имя<sup>*</sup>:
+						</label>
+
+						<div class="input-wrap">
+							<input type="text" name="name" placeholder="Введите Ваше имя" required />
+						</div>
+					</div>
+				</div>
+
+				<div class="span2">
+					<div class="form-row">
+						<label for="surname">
+							Фамилия<sup>*</sup>:
+						</label>
+
+						<div class="input-wrap">
+							<input type="text" name="surname" placeholder="Введите Вашу фамилию" required />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="span2">
+					<div class="form-row">
+						<label for="email">
+							Email<sup>*</sup>:
+						</label>
+
+						<div class="input-wrap">
+							<input type="text" name="email" placeholder="Введите Ваш Email" required />
+						</div>
+					</div>
+				</div>
+
+				<div class="span2">
+					<div class="form-row">
+						<label for="phone">
+							Телефон:
+						</label>
+						<div class="input-wrap">
+							<input type="text" name="phone" placeholder="Введите Ваш телефон" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-block">
+			<h2>Адрес доставки</h2>
+
+			<div class="row">
+				<div class="span2">
+					<div class="form-row">
+						<div class="select-wrap">
+							<select placeholder="Страна">
+								<option>Страна</option>
+							</select>
+						</div>
+					</div>
+
+					<ul class="radio-group">
+						<li class="text">
+							Вариант доставки:
+						</li>
+
+						<li>
+							<label>
+								<input type="radio" name="delivery" value="1" checked /> DPD
+							</label>
+						</li>
+
+						<li>
+							<label>
+								<input type="radio" name="delivery" value="2" /> Курьером
+							</label>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="span2">
+					<div class="form-row">
+						<label for="city">
+							Город<sup>*</sup>:
+						</label>
+						<div class="input-wrap">
+							<input type="text" name="city" placeholder="Введите ваш город" required />
+						</div>
+					</div>
+				</div>
+
+				<div class="span2">
+					<div class="form-row">
+						<label for="region">
+							Регион / Область<sup>*</sup>:
+						</label>
+						<div class="input-wrap">
+							<input type="text" name="region" placeholder="Enter your State / Province / Region" required />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="span2">
+					<div class="form-row">
+						<label for="address">
+							Адрес<sup>*</sup>:
+						</label>
+						<div class="input-wrap">
+							<input type="text" name="address" placeholder="Введите Ваш адрес" required />
+						</div>
+					</div>
+				</div>
+
+				<div class="span2">
+					<div class="form-row">
+						<label for="zip">
+							Индекс<sup>*</sup>:
+						</label>
+						<div class="input-wrap">
+							<input type="text" name="zip" placeholder="Введите Ваш индекс" required />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-block">
+			<h2>Способ оплаты</h2>
+
+			<div class="row">
+				<div class="span2">
+					<ul class="radio-group">
+						<li>
+							<label>
+								<input type="radio" name="payment" value="1" checked /> Кредитная карта
+							</label>
+						</li>
+
+						<li>
+							<label>
+								<input type="radio" name="payment" value="2" /> Наличными
+							</label>
+						</li>
+					</ul>
+
+					<div class="form-row">
+						<div class="select-wrap">
+							<select name="">
+								<option>MasterCard</option>
+								<option>Visa</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row">
+				<div class="span2">
+					<div class="form-row">
+						<label>
+							Номер карты:
+						</label>
+
+						<ul class="text-group size-1">
+							<li>
+								<div class="input-wrap">
+									<input type="text" placeholder="XXXX" />
+								</div>
+							</li>
+
+							<li>
+								<div class="input-wrap">
+									<input type="text" placeholder="XXXX" />
+								</div>
+							</li>
+
+							<li>
+								<div class="input-wrap">
+									<input type="text" placeholder="XXXX" />
+								</div>
+							</li>
+
+							<li>
+								<div class="input-wrap">
+									<input type="text" placeholder="XXXX" />
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="span2">
+					<div class="form-row">
+						<div class="input-wrap">
+							<input type="text" placeholder="Имя на карте" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="span2">
+					<div class="form-row">
+						<label>
+							Дата активности карты:
+						</label>
+						<ul class="text-group select-group size-2">
+							<li>
+								<div class="select-wrap">
+									<select placeholder="Месяц">
+
+									</select>
+								</div>
+							</li>
+
+							<li>
+								<div class="select-wrap">
+									<select placeholder="Год">
+										
+									</select>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="span2">
+					<div class="form-row">
+						<label>
+							Код защиты:
+						</label>
+
+						<ul class="text-group size-1">
+							<li>
+								<div class="input-wrap">
+									<input type="text" placeholder="XXX" />
+								</div>
+							</li>
+
+							<li>
+								<a href="#">Что это такое?</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="pull-right">
+					<button class="btn">
+						оформить
+					</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

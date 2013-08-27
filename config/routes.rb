@@ -20,6 +20,7 @@ CMS::Application.routes.draw do
   get 'html/catalog' => 'html#catalog'
   get 'html/search'  => 'html#search'
   get 'html/order1'  => 'html#order1'
+  get 'html/order2'  => 'html#order2'  
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
