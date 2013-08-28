@@ -25,17 +25,22 @@ class HtmlController < Content::BaseController
   end 
 
   def landing
-    @navigation = self.getNavigation
-    @promo      = self.getPromo
-    @items      = self.getItems
+    @navigation = self.getCatalogNavigation
+    @promo      = self.getCatalogPromo
+    @items      = self.getCatalogItems
   end  
 
   def catalog
-    @navigation = self.getNavigation
-    @items      = self.getItems
+    @navigation = self.getCatalogNavigation
+    @items      = self.getCatalogItems
+  end
+
+  def blogs
+    @navigation = self.getBlogsNavigation
+    @items      = self.getBlogsItems
   end
 
   def search
-    @results = self.getResults
+    @results = self.getSearchResults
   end
 end

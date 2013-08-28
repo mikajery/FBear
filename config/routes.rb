@@ -29,6 +29,9 @@ CMS::Application.routes.draw do
   get 'html/designer'   => 'html#designer'
   get 'html/designers'  => 'html#designers'
 
+  get 'html/blog'    => 'html#blog'
+  get 'html/blogs'   => 'html#blogs'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

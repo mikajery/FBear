@@ -1,16 +1,18 @@
 <div class="showroom">
-	<ul class="showroom-controls" data-action="middle">
-		<li>
-			<div class="showroom-control" data-showroom="control">
-				<i class="control control-left"></i>
-			</div>
-		</li>
-		<li>
-			<div class="showroom-control" data-showroom="control" data-showroom-control="right">
-				<i class="control control-right"></i>
-			</div>
-		</li>
-	</ul>
+	<% if !defined? controls or (defined? controls and controls != false) %>
+		<ul class="showroom-controls" data-action="middle">
+			<li>
+				<div class="showroom-control" data-showroom="control">
+					<i class="control control-left"></i>
+				</div>
+			</li>
+			<li>
+				<div class="showroom-control" data-showroom="control" data-showroom-control="right">
+					<i class="control control-right"></i>
+				</div>
+			</li>
+		</ul>
+	<% end %>
 
 	<div class="showroom-slide" data-showroom="slide">
 		<%= render 'content/showroom/promo', :promo => promo if defined? promo %>

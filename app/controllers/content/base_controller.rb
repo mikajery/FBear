@@ -75,10 +75,97 @@ class Content::BaseController < ApplicationController
     ]
   end
 
-  def getNavigation 
+  def getBlogsItems
+    [
+      {
+        pic:  'content/blog/1.jpg'
+      },
+      {
+        pic:  'content/blog/2.jpg'
+      },
+      {
+        pic:  'content/blog/3.jpg'
+      },
+      {
+        pic:  'content/blog/4.jpg'
+      },
+      {
+        pic:  'content/blog/5.jpg'
+      },
+      {
+        pic:  'content/blog/6.jpg'
+      },
+      {
+        pic:  'content/blog/7.jpg'
+      },
+      {
+        pic:  'content/blog/8.jpg'
+      },
+      {
+        pic:  'content/blog/9.jpg'
+      },
+      {
+        pic:  'content/blog/10.jpg'
+      }
+    ]
+  end
+
+  def getBlogsNavigation 
+    {
+      helper: 'Теги',
+      title:  'Выберите категорию блога',
+      search: 'Поиск по блогам',
+      links:  [
+        {
+          title: 'Все товары',
+          active: true,
+          link:  '#'
+        },
+        {
+          title: 'Освещение',
+          link:  '#'
+        },
+        {
+          title: 'Без батареек',
+          link:  '#'
+        },
+        {
+          title: 'Детские товары',
+          link:  '#'
+        },
+        {
+          title: 'Стулья / табуретки',
+          link:  '#'
+        },
+        {
+          title: 'Системы хранения',
+          link:  '#'
+        },
+        {
+          title: 'Столы',
+          link:  '#'
+        },
+        {
+          title: 'Кабинет',
+          link:  '#'
+        },
+        {
+          title: 'Аксессуары для тв',
+          link:  '#'
+        },
+        {
+          title: 'Все для интерьера',
+          link:  '#'
+        }
+      ]
+    }
+  end
+
+  def getCatalogNavigation 
   	{
+      helper: 'Категории',
 		  title:  'Выберите категорию товара',
-		  search: true,
+		  search: 'Поиск по каталогу',
 		  links:  [
 		    {
 		      title: 'Все товары',
@@ -125,7 +212,7 @@ class Content::BaseController < ApplicationController
 		}
   end
 
-  def getPromo
+  def getCatalogPromo
   	{
   		pic:  "content/promo/1.jpg",
   		logo: "content/logo/1.png",
@@ -195,7 +282,7 @@ class Content::BaseController < ApplicationController
   	]
   end
 
-  def getItems
+  def getCatalogItems
 		[
 			{
 				pic:  'content/product/2.jpg',
@@ -232,7 +319,7 @@ class Content::BaseController < ApplicationController
 		]
   end
 
-  def getResults 
+  def getSearchResults 
   	[
       {
         picture:  'content/search/1.jpg',

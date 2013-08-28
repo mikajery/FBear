@@ -5,7 +5,9 @@
 				<div class="control control-opener"></div>
 			</div>
 			<div class="navigation-title-wrap">
-				<div class="navigation-title">Категории</div>
+				<div class="navigation-title">
+					<%= @navigation[:helper] %>
+				</div>
 			</div>
 		</div>
 
@@ -25,7 +27,7 @@
 
 			<% if @navigation[:search] %>
 				<div class="navigation-block navigation-search">
-					<div class="title">Поиск</div>
+					<div class="title"><%= @navigation[:search] %></div>
 
 					<div class="hint">например, &laquo;<span class="fake">дизайнерская розетка</span>&raquo;</div>
 
