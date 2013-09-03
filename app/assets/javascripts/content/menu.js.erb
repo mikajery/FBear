@@ -12,6 +12,11 @@ var Toggler = function(el) {
 		toggle();
 		e.preventDefault();
 	});
+
+	$('body').click(function(e) {
+		if (opened && !$(e.target).closest(el).size())
+			toggle();
+	})
 }
 
 $(function() {

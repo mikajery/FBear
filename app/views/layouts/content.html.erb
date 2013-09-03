@@ -15,7 +15,7 @@
 		<%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Roboto:400,500,700,900&subset=latin,cyrillic" %>
 		<%= csrf_meta_tags %>
 	</head>
-	<body>
+	<body<%= ' class=navigated' if @navigation %>>
 		<% if @navigation %>
 			<div class="slide" data-action="navigation">
 				<%= render 'content/navigation/navigation' %>
@@ -25,13 +25,13 @@
 		
 		<%= render 'header' %>
 		<%= yield %>
+		<%= render 'footer' %>
 
 		<% if @navigation %>		
 				</div>
 			</div>
 		<% end %>
 
-		<%= render 'footer' %>
 		<%= javascript_include_tag "content", "data-turbolinks-track" => true %>
 	</body>
 </html>

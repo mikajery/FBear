@@ -59,9 +59,18 @@
 
 				.showroom-item-mask {
 					display: none;
-					img {
+
+					table {
 						position: absolute;
-						top: 50%;
+						height: 100%;
+						width: 100%;
+
+						td {
+							vertical-align: center;
+						}
+					}
+
+					img {
 						display: block;
 						width: 80%;
 						margin: 0 10%
@@ -85,7 +94,7 @@
 						height: 100%;
 					}
 				}
-				width: 400px;
+				width: 100%;
 				height: 50%;
 			}
 		}

@@ -286,11 +286,11 @@ class Content::BaseController < ApplicationController
 		[
 			{
 				pic:  'content/product/2.jpg',
-				logo: 'content/logo/2.jpg'
+				logo: 'content/logo/2.png'
 			},
 			{
 				pic:  'content/product/3.jpg',
-				logo: 'content/logo/3.jpg'
+				logo: 'content/logo/3.png'
 			},
 			{
 				pic:  'content/product/4.jpg',
@@ -298,23 +298,23 @@ class Content::BaseController < ApplicationController
 			},
 			{
 				pic:  'content/product/5.jpg',
-				logo: 'content/logo/5.jpg'
+				logo: 'content/logo/5.png'
 			},
 			{
 				pic:  'content/product/6.jpg',
-				logo: 'content/logo/6.jpg'
+				logo: 'content/logo/6.png'
 			},
 			{
 				pic:  'content/product/7.jpg',
-				logo: 'content/logo/7.jpg'
+				logo: 'content/logo/7.png'
 			},
 			{
 				pic:  'content/product/1.jpg',
-				logo: 'content/logo/1.jpg'
+				logo: 'content/logo/1.png'
 			},
 			{
 				pic:  'content/product/8.jpg',
-				logo: 'content/logo/8.jpg'
+				logo: 'content/logo/8.png'
 			}
 		]
   end

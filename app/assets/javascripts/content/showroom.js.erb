@@ -1,20 +1,69 @@
 var Showroom = function(el) {
-	var items = function() { return el.find('[data-showroom=item]') }
+	var items    = function() { return el.find('[data-showroom=item-col]') },
+		controls = el.find('[data-showroom=control]'),
+		step     = 0,
+		slider   = el.find('[data-showroom=slide]')
 	;
+
+	var total = function() {
+		return items().size();
+	};
+
+	var check = function(step) {
+		var _total = total() - 1;
+
+		if (step < 0) step = 0;
+		if (step > _total) step = _total;
+
+		return step;
+	};
+
+	var updateSlider = function(instant) {
+		var toLeft = $(items().get(step)).data('showroom-left');
+
+		console.log(toLeft);
+
+		if (step && toLeft || !step)
+			slider[instant ? 'css' : 'animate']({
+				marginLeft: -1 * toLeft
+			});
+	};
+
+	var slide = function(toLeft) {
+		step = check(toLeft ? step - 1 : step + 1);
+		updateSlider();
+	};
 
 	var resize = function() {
 		var width = el.height()/2;
 
-		items().each(function() {
+		items().not('.promo').each(function() {
 			$(this).css({
 				'width': width
 			});
 		});
+
+		var currentWidth = 0;
+
+		items().each(function() {
+			$(this).data('showroom-left', currentWidth);
+			currentWidth += $(this).width();
+		});
 	};	
 
-	$('body').on('resize:height', function() {
-		resize();
-	});	
+	controls.click(function() {
+		slide($(this).data('showroom-control') == 'right');
+	});
+
+	$('body')
+		.on('resize:height', function() {
+			resize();
+			updateSlider(true);
+		})
+		.on('resize:width', function() {
+			resize();
+			updateSlider(true);
+		});
 
 	resize();
 };

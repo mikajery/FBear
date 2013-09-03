@@ -16,6 +16,10 @@ var Navigation = function(el) {
 
 		slide.animate({
 			marginLeft: 0
+		}, function() {
+			slide.css({
+				width: ''
+			});
 		});
 	}
 
@@ -26,6 +30,10 @@ var Navigation = function(el) {
 				marginLeft: 0
 			})
 		;
+		
+		slide.css({
+			width: slide.width()
+		});
 
 		slide.animate({
 			marginLeft: nav.width()

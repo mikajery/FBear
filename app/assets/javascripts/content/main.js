@@ -9,10 +9,19 @@ var _document = function(_window) {
 		body.trigger('resize:height');
 	};
 
+	var resizedWidth = function(w) {
+		width = w;
+		body.trigger('resize:width');
+	};
+
 	var resizeListener = function() {
 		$(window).resize(function() {
-			var _height = body.height();
+			var _height = body.height(),
+				_width  = body.width()
+			;
+			
 			if (height != _height) resizedHeight(_height);
+			if (width  != _width)  resizedWidth(_width);
 		});
 	};
 

@@ -8,8 +8,11 @@ html {
 	height: 100%;
 }
 
-
 body {
+	&.navigated {
+		overflow-x: hidden;
+	}
+
 	min-height: 100%;
 	background: image-url('content/bg-white.png') #eee repeat-x top;
 

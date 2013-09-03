@@ -15,7 +15,7 @@ module Content::ContentHelper
   def languages_select
   	[
   		{
-        :title  => 'Русский1',
+        :title  => 'Русский',
         :short  => 'ru',
       },
       {
@@ -34,6 +34,8 @@ module Content::ContentHelper
         :title  => 'Японский',
         :short  => 'jp',
       },
+
+      # doubled for scroll testing
       {
         :title  => 'Русский',
         :short  => 'ru',

@@ -1,4 +1,4 @@
-<div class="showroom">
+<div class="showroom" data-action="showroom">
 	<% if !defined? controls or (defined? controls and controls != false) %>
 		<ul class="showroom-controls" data-action="middle">
 			<li>
@@ -18,10 +18,10 @@
 		<%= render 'content/showroom/promo', :promo => promo if defined? promo %>
 
 		<% if defined? items %>
-			<div class="showroom-items" data-action="showroom">
+			<div class="showroom-items">
 				<% items.each_with_index do |item, i| %>
 					<% if i % 2 == 0 %>
-						<div class="showroom-col">
+						<div class="showroom-col" data-showroom="item-col">
 					<% end %>
 							<%= render 'content/showroom/item', :item => item %>
 					<% if i % 2 == 1 %>
