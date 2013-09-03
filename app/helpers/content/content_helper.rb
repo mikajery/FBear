@@ -15,6 +15,26 @@ module Content::ContentHelper
   def languages_select
   	[
   		{
+        :title  => 'Русский1',
+        :short  => 'ru',
+      },
+      {
+        :title  => 'Английский',
+        :short  => 'en',
+      },
+      {
+        :title  => 'Французский',
+        :short  => 'fr',
+      },
+      {
+        :title  => 'Немецкий',
+        :short  => 'de',
+      },
+      {
+        :title  => 'Японский',
+        :short  => 'jp',
+      },
+      {
         :title  => 'Русский',
         :short  => 'ru',
       },

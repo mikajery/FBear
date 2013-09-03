@@ -6,6 +6,10 @@ html, body {
 	color: #121212;
 }
 
+.ps-container .ps-scrollbar-y {
+	width: 5px;
+}
+
 .container {
 	margin: 0 auto;
 	width: 1200px;
@@ -52,6 +56,13 @@ html, body {
 		height: 196px;
 	}
 
+	.languages-scroll {
+		overflow: hidden;
+		height: 100%;
+		position: relative;
+		margin-right: -10px;
+	}
+
 	.languages-table {
 		width: 100%;
 		border-collapse: collapse;
@@ -72,7 +83,7 @@ html, body {
 
 		.hint {
 			position: absolute;
-			right: 0;
+			right: 10px;
 			padding: 0 10px;
 			text-transform: uppercase;
 		}
@@ -82,6 +93,7 @@ html, body {
 
 	.languages {
 		overflow-y: scroll;
+		padding-right: 10px;
 
 		& > li {
 			border-bottom: 1px solid #222;

@@ -25,4 +25,5 @@ var _document = function(_window) {
 	});
 };
 
-var Document = new _document(this) ;
+var Document = new _document(this);
+
