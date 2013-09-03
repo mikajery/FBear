@@ -44,7 +44,7 @@ class HtmlController < Content::BaseController
 
   def blog
     @navigation = self.getBlogsNavigation
-    @items      = self.getBlogsItems.first
+    @blog       = self.getBlogsItems.first
   end
 
   def search

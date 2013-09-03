@@ -111,3 +111,40 @@
 		}
 	}	
 }
+
+.blog {
+	width: 800px;
+	font-size: 14px;
+
+	h1 {
+		letter-spacing: -3px;
+		line-height: 1;
+		margin: 0;
+		padding: 30px 30px 0;
+		text-transform: none;
+
+		font: {
+			size: 48px;
+			weight: bolder;
+		}
+	}
+
+	h2 {
+		letter-spacing: -1px;
+		padding: 30px 30px 0;
+		line-height: 1;
+		margin: 0;
+
+		font: {
+			size: 30px;
+			weight: bolder;
+		}
+	}
+
+	@include inline_list(".img-list");
+
+	p {
+		padding: 30px;
+		line-height: 1.8;
+	}
+}
