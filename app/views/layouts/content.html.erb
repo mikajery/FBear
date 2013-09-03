@@ -25,7 +25,7 @@
 		
 		<%= render 'header' %>
 		<%= yield %>
-		<%= render 'footer' %>
+		<%= render 'footer', :absolute => (true if @absolute_footer) %>
 
 		<% if @navigation %>		
 				</div>

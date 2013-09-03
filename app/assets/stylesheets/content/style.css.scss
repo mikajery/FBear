@@ -26,6 +26,20 @@ body {
 	}
 }
 
+.centrify {
+	position: relative;
+	.centrify-left {
+		float: left;
+		left: 50%;
+		position: relative;
+	}
+
+	.centrify-right {
+		float: right;
+		left: -50%;
+		position: relative;
+	}
+}
 
 .container {
 	width: 800px;
@@ -58,3 +72,4 @@ body {
 @import 'order';
 
 @import 'designer';
+@import 'blogs';

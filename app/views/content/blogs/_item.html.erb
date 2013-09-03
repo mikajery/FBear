@@ -1,0 +1,35 @@
+<li>
+	<div class="blog-wrap blog-<%= blog[:color] %>">
+		<div class="blog-border">
+			<div class="shadow"></div>
+		</div>
+
+		<div class="blog-img">
+			<img src="<%= image_url blog[:pic] %>" />
+		</div>
+
+		<div class="blog-info">
+			<div class="blog-info-wrap">
+				<h2>
+					<%= blog[:title] %>
+				</h2>
+
+				<div class="blog-desc">
+					<%= blog[:desc] %>
+				</div>
+
+				<div class="blog-category">
+					<a href="#">
+						<%= blog[:category] %>
+					</a>
+				</div>
+
+				<div class="blog-more">
+					<a href="#">
+						Подробнее
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</li>

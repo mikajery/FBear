@@ -5,10 +5,8 @@ footer {
 	z-index: 20;
 	right: 80px;
 	bottom: 30px;
-}
-
-.slide {
-	footer {
+	
+	&.absolute {
 		position: absolute;
 	}
 }

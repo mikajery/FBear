@@ -28,16 +28,23 @@ class HtmlController < Content::BaseController
     @navigation = self.getCatalogNavigation
     @promo      = self.getCatalogPromo
     @items      = self.getCatalogItems
+    @absolute_footer = true
   end  
 
   def catalog
     @navigation = self.getCatalogNavigation
     @items      = self.getCatalogItems
+    @absolute_footer = true
   end
 
   def blogs
     @navigation = self.getBlogsNavigation
     @items      = self.getBlogsItems
+  end
+
+  def blog
+    @navigation = self.getBlogsNavigation
+    @items      = self.getBlogsItems.first
   end
 
   def search

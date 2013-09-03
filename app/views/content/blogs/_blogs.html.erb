@@ -1,0 +1,5 @@
+<ul class="blogs">
+	<% @items.each do |i| %>
+		<%= render 'content/blogs/item', :blog => i %>
+	<% end %>
+</ul>
