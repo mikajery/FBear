@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  designer_id: 
+  language_id: 
+  name: MyString
+  motto: MyText
+  description: MyText
+
+two:
+  designer_id: 
+  language_id: 
+  name: MyString
+  motto: MyText
+  description: MyText

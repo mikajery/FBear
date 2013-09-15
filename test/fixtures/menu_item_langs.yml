@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  menu_item_id: 
+  language_id: 
+  title: MyString
+  heading: MyString
+  meta_keywords: MyText
+  meta_description: MyText
+
+two:
+  menu_item_id: 
+  language_id: 
+  title: MyString
+  heading: MyString
+  meta_keywords: MyText
+  meta_description: MyText

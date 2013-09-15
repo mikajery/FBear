@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  menu_id: 
+  template_id: 
+  url: MyString
+
+two:
+  menu_id: 
+  template_id: 
+  url: MyString
