@@ -1,11 +1,22 @@
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
 timeout 15
-preload_app true
 
-app_folder = "#{release_path}"
+app_folder = "/var/www/lll/production/current"
+working_directory app_folder
 
 stderr_path app_folder + "/log/unicorn.stderr.log"
 stdout_path app_folder + "/log/unicorn.stdout.log"
+
+pid app_folder + "/tmp/pids/unicorn.pid"
+
+listen app_folder + "/tmp/unicorn.sock", :backlog => 64
+listen 8080, :tcp_nopush => true
+
+preload_app true
+GC.respond_to?(:copy_on_write_friendly=) and
+  GC.copy_on_write_friendly = true
+
+check_client_connection false  
 
 before_fork do |server, worker|
   Signal.trap 'TERM' do
