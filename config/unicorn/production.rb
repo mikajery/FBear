@@ -10,7 +10,7 @@ stdout_path app_folder + "/log/unicorn.stdout.log"
 pid app_folder + "/tmp/pids/unicorn.pid"
 
 listen app_folder + "/tmp/unicorn.sock", :backlog => 64
-listen 8080, :tcp_nopush => true
+listen 8081, :tcp_nopush => true
 
 preload_app true
 GC.respond_to?(:copy_on_write_friendly=) and
