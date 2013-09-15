@@ -1,6 +1,6 @@
 CMS::Application.routes.draw do
+  root :to => 'welcome#index'
 
-  get "html/index"
   # admin routes
   namespace :admin do
     root :to => 'welcome#index'
