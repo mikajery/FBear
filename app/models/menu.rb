@@ -1,3 +1,5 @@
 class Menu < ActiveRecord::Base
-  belongs_to :language
+  module Languageable
+
+  validates_uniqueness_of :key, :scope => :language
 end
