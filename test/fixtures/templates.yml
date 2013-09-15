@@ -1,9 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  filename: MyString
-
-two:
-  name: MyString
-  filename: MyString
+  name: Template1
+  filename: template1.html.erb

@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  category_id: 
-  language_id: 
-  name: MyString
-  meta_title: MyString
-  meta_keywords: MyText
-  meta_description: MyText
+  category_id: 1
+  language_id: 2
+  name: Название
+  meta_title: Тайтл
+  meta_keywords: Кейворды
+  meta_description: Описание
 
 two:
-  category_id: 
-  language_id: 
-  name: MyString
-  meta_title: MyString
-  meta_keywords: MyText
-  meta_description: MyText
+  category_id: 1
+  language_id: 1
+  name: Name
+  meta_title: Title
+  meta_keywords: Keywords
+  meta_description: Description

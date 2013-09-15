@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  designer_id: 
-  language_id: 
-  name: MyString
-  motto: MyText
-  description: MyText
+  designer_id: 1
+  language_id: 1
+  name: Name
+  motto: Motto
+  description: Description
 
 two:
-  designer_id: 
-  language_id: 
-  name: MyString
-  motto: MyText
-  description: MyText
+  designer_id: 1
+  language_id: 2
+  name: Имя
+  motto: Мотто
+  description: Описание
