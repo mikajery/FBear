@@ -1,5 +1,6 @@
 class Menu < ActiveRecord::Base
-  module Languageable
+  include Languageable
 
   validates_uniqueness_of :key, :scope => :language
+  
 end

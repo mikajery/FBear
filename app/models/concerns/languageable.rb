@@ -1,4 +1,6 @@
 module Languageable
+  extend ActiveSupport::Concern
+
   included do 
   	belongs_to :language
 

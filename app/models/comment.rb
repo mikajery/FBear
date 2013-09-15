@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  module Languageable
+  include Languageable
 
   belongs_to :post
   belongs_to :comment  
