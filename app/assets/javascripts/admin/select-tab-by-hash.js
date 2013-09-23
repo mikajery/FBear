@@ -11,13 +11,11 @@ var Tabbable = function(el) {
 };
 
 $(function() {
-	TabByHash.select(window.location.hash);
-
 	$('[data-toggle=tab]').each(function() {
 		new Tabbable($(this));
 	});
 
 	$(window).on('hashchange', function() {
 		TabByHash.select(window.location.hash);
-	})
+	});
 });
