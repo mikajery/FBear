@@ -1,0 +1,9 @@
+<%= simple_form_for @templet, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :filename %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                templets_path, :class => 'btn' %>
+  </div>
+<% end %>

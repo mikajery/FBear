@@ -14,9 +14,20 @@
             <%= brand_link 'CMS', admin_root_path %>
 
             <%= menu_group do %>
-                <%= drop_down "Языковые настройки" do %>
-                  <%= menu_item "Страны", countries_path %>
+                <%= drop_down "Сайт" do %>
+                  <%= menu_item "Меню", menus_path %>
+                <% end %>
+
+                <%= drop_down "Контент" do %>
+                  <%= menu_item "Дизайнеры", designers_path %>
+                  <%= menu_item "Блоги", posts_path %>
+                  <%= menu_item "Товары", goods_path %>
+                <% end %>
+
+                <%= drop_down "Настройки" do %>
                   <%= menu_item "Языки", languages_path %>
+                  <%= menu_item "Шаблоны", templets_path %>
+                  <%= menu_item "Параметры", settings_path %>
                 <% end %>
             <% end %>
 

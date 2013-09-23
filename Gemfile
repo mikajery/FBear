@@ -66,6 +66,8 @@ gem "foreigner"
 # nested forms
 gem "cocoon"
 
+gem "twitter-bootstrap-rails"
+
 group :development do
   gem "hirb", "0.7.1"
   gem "capistrano"

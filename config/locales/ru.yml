@@ -1,0 +1,74 @@
+ru:
+  Languages: "Языки"
+  Menus: "Меню"
+  Templets: "Шаблоны"
+  Settings: "Параметры"
+  Designers: "Дизайнеры"
+  Posts: "Блоги"
+  Goods: "Товары"
+
+
+  prompt:
+    language: Выберите язык
+
+
+  helpers:
+    links:
+      cancel: Отмена
+      back: Назад
+      edit: Правка
+      destroy: Удалить
+      new: Добавить
+
+  activerecord:
+    model:
+      language:
+        one: "Язык"
+        other: "Языки"
+
+      menu:
+        one: "Меню"
+        other: "Меню"
+
+      designer:
+        one: "Дизайнер"
+        other: "Дизайнеры"
+
+      post:
+        one: "Блог"
+        other: "Блоги"
+
+      good:
+        one: "Товар"
+        other: "Товары"
+
+      templet:
+        one: "Шаблон"
+        other: "Шаблоны"
+
+      setting:
+        one: "Параметр"
+        other: "Параметры"
+
+    attributes:
+      language:
+        name: "Язык"
+        slug: "Путь"
+        abbr: "Аббревиатура"
+
+      designer:
+        photo: "Фото"
+
+      menu:
+        name: "Меню"
+        key: "Псевдоним"
+        language: "Язык"
+
+      templet: 
+        name: "Шаблон"
+        filename: "Путь к файлу"
+
+      setting:
+        key: "Переменная"
+
+
