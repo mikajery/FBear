@@ -12,9 +12,11 @@
     <tr>
       <th width="30%">Меню</th>
       <th>Язык</th>
+      <th>Ссылки</th>
       <th width="60px"></th>
     </tr>
   </thead>
+  
   <tbody>
     <% @menus.each do |menu| %>
       <tr>
@@ -25,6 +27,11 @@
         <td>
           <%= menu.language.full_name %>
         </td>
+
+        <td>
+          <%= link_to menu.items.size, edit_menu_path(menu, anchor: 'items') %>
+        </td>
+
         <td>
           <%= link_to t('.edit', :default => pencil_icon),
                       edit_menu_path(menu), :class => 'btn btn-mini' %>

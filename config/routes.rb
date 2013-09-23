@@ -7,7 +7,11 @@ CMS::Application.routes.draw do
   end
 
   scope '/admin' do
-    resources :templets, :languages, :menus, :settings, :designers, :goods, :posts
+    resources :templets, :languages, :settings, :designers, :goods, :posts
+
+    resources :menus do
+      resources :menu_items
+    end
   end
 
   #content cms

@@ -10,6 +10,7 @@ ru:
 
   prompt:
     language: Выберите язык
+    templet: Выберите шаблон
 
 
   helpers:
@@ -25,6 +26,10 @@ ru:
       language:
         one: "Язык"
         other: "Языки"
+
+      menu_item: 
+        one: "Элемент меню"
+        other: "Элементы меню"
 
       menu:
         one: "Меню"
@@ -63,6 +68,17 @@ ru:
         name: "Меню"
         key: "Псевдоним"
         language: "Язык"
+
+      menu_item: 
+        url: "Ссылка"
+        templet: "Шаблон"
+        menu: "Меню"
+        is_absolute: "Внешняя ссылка"
+        title: "Название"
+        heading: "Заголовок"
+        meta_keywords: "Ключевые слова"
+        meta_description: "Описание"
+
 
       templet: 
         name: "Шаблон"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130922224839) do
+ActiveRecord::Schema.define(version: 20130923015239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -148,14 +148,19 @@ ActiveRecord::Schema.define(version: 20130922224839) do
 
   create_table "menu_items", force: true do |t|
     t.integer  "menu_id"
-    t.integer  "template_id"
+    t.integer  "templet_id"
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_absolute",      default: false
+    t.string   "title"
+    t.string   "heading"
+    t.text     "meta_keywords"
+    t.text     "meta_description"
   end
 
   add_index "menu_items", ["menu_id"], name: "index_menu_items_on_menu_id", using: :btree
-  add_index "menu_items", ["template_id"], name: "index_menu_items_on_template_id", using: :btree
+  add_index "menu_items", ["templet_id"], name: "index_menu_items_on_templet_id", using: :btree
 
   create_table "menus", force: true do |t|
     t.integer  "language_id"
