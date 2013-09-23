@@ -79,6 +79,18 @@ ru:
         meta_keywords: "Ключевые слова"
         meta_description: "Описание"
 
+      good:
+        name: "Товар"
+
+      good_lang:
+        name: "Наименование"
+        slug: "Путь"
+        price: "Цена"
+        logo: "Логотип"
+        description: "Описание"
+        meta_title: "Заголовок страницы"
+        meta_keywords: "Ключевые слова"
+        meta_description: "Описание"
 
       templet: 
         name: "Шаблон"

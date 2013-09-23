@@ -5,10 +5,14 @@ CMS::Application.routes.draw do
   end
 
   scope '/admin' do
-    resources :templets, :languages, :settings, :designers, :goods, :posts
+    resources :templets, :languages, :settings, :designers, :posts
 
     resources :menus do
       resources :menu_items
+    end
+
+    resources :goods do
+      resources :good_langs
     end
   end
 

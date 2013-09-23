@@ -69,6 +69,6 @@ class GoodsController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def good_params
-      params[:good]
+      params.require(:good).permit(:name)
     end
 end

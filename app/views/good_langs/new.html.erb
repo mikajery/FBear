@@ -1,0 +1,5 @@
+<%- model_class = GoodLang -%>
+<div class="page-header">
+  <h1>Новый: <%= @good_lang.good.name %>, <%= @good_lang.language.name %></h1>
+</div>
+<%= render :partial => 'form' %>
