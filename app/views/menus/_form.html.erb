@@ -1,12 +1,17 @@
-<ul class="nav nav-tabs">
-  <li class="active"><a href="#main" data-toggle="tab">Основное</a></li>
-  <li><a href="#items" data-toggle="tab">Элементы меню</a></li>
-</ul>
+<% if @menu.id %>
+	<ul class="nav nav-tabs">
+	  <li class="active"><a href="#main" data-toggle="tab">Основное</a></li>
+	  <li><a href="#items" data-toggle="tab">Элементы меню</a></li>
+	</ul>
 
-<div class="tab-content">
-  <div class="tab-pane active" id="main">
+	<div class="tab-content">
+	  <div class="tab-pane active" id="main">
+
+<% end %>	  
+
+
 		<%= simple_form_for @menu, :html => { :class => 'form-horizontal' } do |f| %>
-		  <%= f.association :language, prompt: false %>
+		  <%= f.association :language, include_blank: t('prompt.language') %>
 		  <%= f.input :name %>
 		  <%= f.input :key %>
 		  <div class="form-actions">
@@ -15,45 +20,53 @@
 		                menus_path, :class => 'btn' %>
 		  </div>
 		<% end %>
-	</div>
 
-	<div class="tab-pane" id="items">
-		<table class="table table-hover table-condensed">
-		  <thead>
-		    <tr>
-			    <th width="50%">Элемент</th>
-			    <th>Шаблон</th>
-		      <th width="60px"></th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    <% @menu.items.each do |menu_item| %>
-		      <tr>
-		      	<td>
-				      	<%= icon menu_item.type %> <%= if !menu_item.title.empty? then menu_item.title else content_tag :span, 'Без названия' end %>
-
-			      		<%= content_tag :div, icon('') + ' ' + menu_item.url, class: 'muted' %>
-		      	</td>
-		        <td><%= if menu_item.templet then menu_item.templet.name else '&mdash;'.html_safe end %></td>
-		        <td>
-		          <%= link_to t('.edit', :default => pencil_icon),
-		                      edit_menu_item_path(menu_item), :class => 'btn btn-mini' %>
-		          <%= link_to t('.destroy', :default => trash_icon(true)),
-		                      menu_item_path(menu_item),
-		                      :method => :delete,
-		                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-		                      :class => 'btn btn-mini btn-danger' %>
-		        </td>
-		      </tr>
-		    <% end %>
-		  </tbody>
-		</table>
-
-		<div class="form-actions">
-			<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_menu_menu_item_path(@menu),
-            :class => 'btn btn-primary' %>
+<% if @menu.id %>		
 		</div>
 
+		<div class="tab-pane" id="items">
+
+			<% if @menu.items.empty? %>
+				<%= empty_list %>
+			<% else %>
+				<table class="table table-hover table-condensed">
+				  <thead>
+				    <tr>
+					    <th width="50%">Элемент</th>
+					    <th>Шаблон</th>
+				      <th width="60px"></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <% @menu.items.each do |menu_item| %>
+				      <tr>
+				      	<td>
+						      	<%= icon menu_item.type %> <%= if !menu_item.title.empty? then menu_item.title else content_tag :span, 'Без названия' end %>
+
+					      		<%= content_tag :div, icon('') + ' ' + menu_item.url, class: 'muted' %>
+				      	</td>
+				        <td><%= if menu_item.templet then menu_item.templet.name else '&mdash;'.html_safe end %></td>
+				        <td>
+				          <%= link_to t('.edit', :default => pencil_icon),
+				                      edit_menu_item_path(menu_item), :class => 'btn btn-mini' %>
+				          <%= link_to t('.destroy', :default => trash_icon(true)),
+				                      menu_item_path(menu_item),
+				                      :method => :delete,
+				                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+				                      :class => 'btn btn-mini btn-danger' %>
+				        </td>
+				      </tr>
+				    <% end %>
+				  </tbody>
+				</table>
+			<% end %>
+
+			<div class="form-actions">
+				<%= link_to t('.new', :default => t("helpers.links.new")),
+	            new_menu_menu_item_path(@menu),
+	            :class => 'btn btn-primary' %>
+			</div>
+
+		</div>
 	</div>
-</div>
+<% end %>

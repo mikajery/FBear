@@ -7,45 +7,48 @@
             :class => 'btn btn-mini' %>
   </h1>
 </div>
-<table class="table table-hover table-condensed">
-  <thead>
-    <tr>
-      <th width="30%">Меню</th>
-      <th>Язык</th>
-      <th>Ссылки</th>
-      <th width="60px"></th>
-    </tr>
-  </thead>
-  
-  <tbody>
-    <% @menus.each do |menu| %>
+
+<% if @menus.empty? %>
+  <div class="well">
+    Пусто :(
+  </div>
+<% else %>
+  <table class="table table-hover table-condensed">
+    <thead>
       <tr>
-        <td>
-          <%= link_to menu.name, edit_menu_path(menu) %>
-          <%= content_tag :div, menu.key, class: 'muted' if !menu.key.empty? %>
-        </td>
-        <td>
-          <%= menu.language.full_name %>
-        </td>
-
-        <td>
-          <%= link_to menu.items.size, edit_menu_path(menu, anchor: 'items') %>
-        </td>
-
-        <td>
-          <%= link_to t('.edit', :default => pencil_icon),
-                      edit_menu_path(menu), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => trash_icon(true)),
-                      menu_path(menu),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
+        <th width="30%">Меню</th>
+        <th>Язык</th>
+        <th>Ссылки</th>
+        <th width="60px"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    
+    <tbody>
+      <% @menus.each do |menu| %>
+        <tr>
+          <td>
+            <%= link_to menu.name, edit_menu_path(menu) %>
+            <%= content_tag :div, menu.key, class: 'muted' if !menu.key.empty? %>
+          </td>
+          <td>
+            <%= menu.language.full_name if menu.language %>
+          </td>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_menu_path,
-            :class => 'btn btn-primary' %>
+          <td>
+            <%= link_to menu.items.size, edit_menu_path(menu, anchor: 'items') %>
+          </td>
+
+          <td>
+            <%= link_to t('.edit', :default => pencil_icon),
+                        edit_menu_path(menu), :class => 'btn btn-mini' %>
+            <%= link_to t('.destroy', :default => trash_icon(true)),
+                        menu_path(menu),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-mini btn-danger' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
