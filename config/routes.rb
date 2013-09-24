@@ -1,4 +1,5 @@
 CMS::Application.routes.draw do
+  get "landing/show"
   # admin routes
   namespace :admin do
     root :to => 'welcome#index'
@@ -15,6 +16,8 @@ CMS::Application.routes.draw do
       resources :good_langs
     end
   end
+
+  get 'landing' => 'landing#show'
 
   # static routes for markup
   get 'html/index'   => 'html#index'
