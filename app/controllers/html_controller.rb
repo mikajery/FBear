@@ -37,6 +37,10 @@ class HtmlController < Content::BaseController
     @absolute_footer = true
   end
 
+  def good
+    @body_dark = true
+  end
+
   def blogs
     @navigation = self.getBlogsNavigation
     @items      = self.getBlogsItems

@@ -15,7 +15,7 @@
 		<%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Roboto:400,500,700,900&subset=latin,cyrillic" %>
 		<%= csrf_meta_tags %>
 	</head>
-	<body<%= ' class=navigated' if @navigation %>>
+	<body class="<%= 'navigated' if @navigation %><%= ' dark' if @body_dark %>">
 		<% if @navigation %>
 			<div class="slide" data-action="navigation">
 				<%= render 'content/navigation/navigation' %>

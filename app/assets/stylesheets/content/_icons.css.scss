@@ -56,4 +56,44 @@
 		height: 21px;
 		background-position: 0 -20px;
 	}
+
+	&.control-up {
+		background-position: -24px -20px;
+	}
+
+	&.control-down {
+		background-position: -44px -20px;
+	}
+}
+
+.product-icon {
+	height: 15px;
+	width: 19px;
+	float: left;
+	margin-right: 10px;
+	background: image-url('content/product-icons.png') no-repeat;
+
+	&.icon-360 {	
+		width: 30px;
+		background-position: -19px 0;
+	}
+
+	&.icon-pan {
+		width: 27px;
+		background-position: -49px 0;
+	}
+}
+
+.active > .product-icon {
+	background-position: 0 -15px;
+	
+	&.icon-360 {	
+		width: 30px;
+		background-position: -19px -15px;
+	}
+
+	&.icon-pan {
+		width: 27px;
+		background-position: -49px -15px;
+	}
 }

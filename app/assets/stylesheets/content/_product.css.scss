@@ -1,0 +1,394 @@
+.b-product {
+  .shadow {
+    background: image-url('content/bg-black.png');
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    position:absolute;
+    z-index: 9;
+  }
+
+  &.loaded {
+    background: none;
+    .loading {
+      display: none;
+    }
+  }
+
+  .media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    display: none;
+    background: #fff;
+
+    &.three60 { 
+      & > img {
+        position: absolute;
+        width: 1000px;
+        height: 600px;
+        left: 50%;
+        top: 50%;
+        margin: -300px 0 0 -500px;
+      }
+
+      .b-thumbs {
+        position: relative;
+        z-index: 2;
+      }
+      
+    } 
+
+    .b-thumbs {
+      & > li {
+        &.active {
+          border-color: #1b979d;
+        }
+        width: 80px;
+        height: 60px;
+        margin-right: 10px;
+        border-radius: 4px;
+        overflow: hidden;
+        border: 1px solid #e4e4e4;
+
+        & > img {
+          display: block;
+        }
+      }
+    }
+
+    &.main-pic {
+      display: block;
+      z-index: 2;
+
+      img {
+        position:absolute;
+        top: 50%;
+        left: 50%;
+        margin: -600px 0 0 -960px;
+        width: 1920px;
+        height: 1200px;
+      }
+    }
+  }
+
+  &.show-360 {
+    .three60 {
+      display: block;
+    }
+  }
+
+  &.show-pan {
+    .pan {
+      display: block;
+    }
+  }
+
+  &.show-video {
+    .video {
+      display: block;
+    }
+  }
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+
+  background: image-url('content/product-loading-bg.png');
+
+  .wrap {
+    padding: 125px 80px;
+  }
+
+  .loading {
+    & > .wrap {
+      margin: 26px 0;
+    }
+    position: absolute;
+    margin: -65px 0 0 -155px;
+    top: 50%;
+    left: 50%;
+    width: 310px;
+    height: 130px;
+    background: image-url('content/product-loader-bg.png');
+
+    color: #fff;
+    text-align: center;
+
+    line-height: 80px;
+    text-transform: uppercase;
+
+    .loader {
+      height: 80px;
+      width: 110px;
+      border-right: 1px solid #2a2a2a;
+      float: left;
+
+      & > img {
+        display: block;
+        height: 30px;
+        width: 30px;
+        margin: 25px auto 0;
+      }
+    }
+
+    font: {
+      weight: bold;
+      size: 14px;
+    }
+  }
+
+  .info {
+    z-index: 10;
+
+    .info-block {
+      float: left;
+      position: relative;
+      margin-right: 50px;
+
+      & > .controls {
+        overflow: hidden;
+        & > .shadow {
+          position: absolute;
+          z-index: 2;
+          box-shadow: 0 0 20px #000;
+          height: 100%;
+          width: 20px;
+          right: 100%;
+        }
+
+        background: image-url('content/product-info-bg.png');
+        position: absolute;
+        right: 0;
+        width: 100px;
+        height: 150px;
+
+        .b-farrow {
+          position: absolute;
+          width: 100%;
+          margin: 0;
+        }
+
+      }
+
+      & > .description {
+        width: 530px;
+        min-height: 150px;
+        background: image-url('content/product-info-bg.png');
+        margin-right: 100px;
+        position: relative;
+        z-index: 3;
+
+        .logo {
+          height: 20px;
+          margin-bottom: 15px;
+
+          img {
+            height: 100%;
+          }
+        }
+
+        &.active {
+          margin-top: -390px;
+          height: 500px;
+          .long {
+            display: block;
+          }
+
+          .opener {
+            .control-down {
+              display: block;
+            }
+
+            .control-up {
+              display: none;
+            }
+          }
+        }
+
+        .opener {
+          top: 20px;
+          right: 20px;
+          position: absolute;
+          cursor: pointer;
+
+          .control-down {
+            display: none;
+          }
+        }
+
+        padding: 20px;
+        .short {
+          color: #fff;
+        }
+
+        .long {
+          position: absolute;
+          top: 150px;
+          bottom: 0;
+          left: 20px;
+          right: 20px;
+          overflow-y: scroll;
+          display: none;
+          color: #888;
+          font: {
+            size: 12px;
+          }
+
+          .b-thumbs { 
+            border: { 
+              top: 1px solid #222;
+              bottom: 1px solid #222;
+            }
+
+            padding: 10px 10px 20px;
+            & > li {
+              img {
+                margin-top: 10px;
+                display: block;
+                margin-right: 40px;
+              }
+            }
+          }
+
+          .block {
+            .title {
+              a {
+                color: inherit;
+              }
+              font-size: 20px;
+              margin-bottom: 10px;
+            }
+
+            line-height: 1.5;
+            margin-bottom: 20px;
+          }
+        }
+
+      }
+    }
+
+    height: 150px;
+    position: absolute;
+    top: 100%;
+    margin-top: -150px;
+  }
+
+  .price {
+    font-size: 16px;
+    height: 54px;
+    color: #fff;
+    text-align: center;
+    line-height: 54px;
+  }
+
+  .buy {
+    height: 92px;
+    background: image-url('content/product-buy-bg.png');
+
+    & > div {
+      margin: 20px auto 0;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: image-url('content/buy-icon.png') no-repeat #1b979d;
+    }
+  }
+
+  @include inline_list('.features');
+
+  .features {
+    padding-top: 70px;
+
+    .product-icon {
+      margin-top: 18px;
+    }
+
+    & > li {
+      &.active {
+        color: #1b969c;
+        cursor: default;
+      }
+
+      cursor: pointer;
+
+      float: left;
+      margin-right: 18px;
+      height: 50px;
+      line-height: 50px;
+      border-radius: 6px;
+
+      color:#fff;
+      text-transform: uppercase;
+
+      font: {
+        size: 12px;
+      }
+      padding: 0 15px;
+
+      background: image-url('content/product-info-bg.png');
+    }
+
+  }
+}
+
+.b-farrow {
+  &.small {
+    height: 8px;
+
+    & > .tip {
+      width: 15px;
+      height: 8px;
+      margin-left: -7px;
+    }
+
+    .line {
+      &.l {
+        margin: 0 7px 0 -7px;
+      }
+
+      &.r {
+        margin: 0 -8px 0 7px;
+      }
+    }
+  }
+
+  margin-top: 15px;
+  height: 12px;
+  overflow-x: hidden;
+  position: relative;
+
+  .tip {
+    position: absolute;
+    width: 24px;
+    height: 12px;
+    left: 50%;
+    margin-left: -12px;
+    background: image-url("content/farrow-tip.png") center bottom;
+  }
+
+  .line {
+    &.l {
+      margin: 0 12px 0 -12px;
+    }
+
+    &.r {
+      margin: 0 -12px 0 12px;
+    }
+
+    width: 50%;
+    height: 1px;
+    background: #222222;
+    float: left;
+  }
+}
+
+@include inline_list('.b-thumbs');
+@include inline_list('.three60-thumbs');

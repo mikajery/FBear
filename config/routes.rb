@@ -25,6 +25,7 @@ CMS::Application.routes.draw do
   
   get 'html/landing' => 'html#landing'
   get 'html/catalog' => 'html#catalog'
+  get 'html/good'    => 'html#good'
 
   get 'html/search'  => 'html#search'
 

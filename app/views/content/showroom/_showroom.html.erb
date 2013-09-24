@@ -17,7 +17,7 @@
 	<div class="showroom-slide" data-showroom="slide">
 		<%= render 'content/showroom/promo', :promo => promo if defined? promo %>
 
-		<% if defined? items %>
+		<% if items %>
 			<div class="showroom-items">
 				<% items.each_with_index do |item, i| %>
 					<% if i % 2 == 0 %>
