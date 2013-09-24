@@ -1,5 +1,9 @@
-<div class="b-product loaded show-pan" data-action="product">
+<div class="b-product loaded" data-action="product">
   <div class="shadow"></div>
+
+  <div class="media-dismiss" data-product-dismiss="media">
+    <i class="control control-dismiss"></i>
+  </div>
 
   <div class="loading">
     <div class="wrap">
@@ -14,7 +18,7 @@
     <%= image_tag "content/product/huge/1.jpg" %>
   </div>
 
-  <div class="media three60">
+  <div class="media three60" data-product-media="360">
     <div class="wrap">
       <ul class="b-thumbs">
         <li class="active">
@@ -30,11 +34,11 @@
     <%= image_tag "content/product/360/1.jpg" %>
   </div>
 
-  <div class="media video">
+  <div class="media video" data-product-media="video">
     <iframe src="//player.vimeo.com/video/74333429?portrait=0&amp;badge=0" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
   </div>
 
-  <div class="media pan">
+  <div class="media pan" data-product-media="pan">
     <%= image_tag "content/product/huge/1.jpg" %>
   </div>
 
@@ -59,8 +63,8 @@
             </div>
           </div>
 
-          <div class="description">
-            <div class="opener" data-product="toggle">
+          <div class="description" data-product="description">
+            <div class="opener" data-product-toggle="description">
               <i class="control control-up"></i>
               <i class="control control-down"></i>
             </div>
@@ -129,17 +133,17 @@
     <div class="info-block">
 
       <ul class="features">
-        <li>
+        <li data-product-media="video">
           <i class="product-icon icon-video"></i>
           Видео
         </li>
 
-        <li>
+        <li data-product-media="360">
           <i class="product-icon icon-360"></i>
           360 просмотр
         </li>
 
-        <li>
+        <li data-product-media="pan">
           <i class="product-icon icon-pan"></i>
           Панорама
         </li>

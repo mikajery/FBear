@@ -9,6 +9,29 @@
     z-index: 9;
   }
 
+  & > .media-dismiss {
+    position: absolute;
+    right: 80px;
+    top: 125px;
+    width: 40px;
+    height: 40px;
+    background: #171717;
+    border-radius: 50%;
+    z-index: 10;
+    display: none;
+    cursor: pointer;
+
+    & > .control {
+      margin: 12px;
+    }
+  }
+
+  &.show-360, &.show-pan, &.show-video {
+    & > .media-dismiss {
+      display: block;
+    }
+  }
+
   &.loaded {
     background: none;
     .loading {
@@ -196,8 +219,6 @@
         }
 
         &.active {
-          margin-top: -390px;
-          height: 500px;
           .long {
             display: block;
           }

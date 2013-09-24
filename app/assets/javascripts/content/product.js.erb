@@ -1,0 +1,57 @@
+var Product = function(el) {
+  var description = el.find('[data-product=description]'),
+      opener      = el.find('[data-product-toggle=description]'),
+      _descInitH  = description.height(),
+      media       = el.find('[data-product-media]'),
+      mediaTypes  = ['360', 'video', 'pan'],
+      mediaClose  = el.find('[data-product-dismiss=media]')
+  ;
+
+  var toggleDescription = function(show) {
+    if (show)
+    {
+      description.addClass('active');
+      description.height(el.height()*3/4);
+      description.animate({
+        marginTop: -1 * (description.height() - _descInitH + 40)
+      });
+    }
+    else
+    {
+      description.animate({
+        marginTop: 0, 
+      }, function() {
+        description.removeClass('active');
+        description.height(_descInitH);
+      });
+    }
+  };
+
+  var toggleMedia = function(media) {
+    $.each(mediaTypes, function(i, k) {
+      el.removeClass('show-' + k);
+    });
+
+    if (media) el.addClass('show-' + media);
+  };
+
+  opener.click(function() {
+    toggleDescription(!description.hasClass('active'));
+  });
+
+  media.click(function() {
+    media.removeClass('active');
+    $(this).addClass('active');
+    toggleMedia($(this).data('product-media'));
+  });
+
+  mediaClose.click(function() {
+    toggleMedia(false);
+  });
+};
+
+$(function() {
+  $('[data-action=product]').each(function() {
+    new Product($(this));
+  });
+});
