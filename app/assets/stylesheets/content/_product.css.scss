@@ -1,5 +1,5 @@
 .b-product {
-  .shadow {
+  & > .shadow {
     background: image-url('content/bg-black.png');
     top: 0;
     left: 0;
