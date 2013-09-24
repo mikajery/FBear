@@ -6,8 +6,8 @@ set :rvm_autolibs_flag, "read-only"       # more info: rvm help autolibs
 before 'deploy:setup', 'rvm:install_rvm'  # install RVM
 before 'deploy:setup', 'rvm:install_ruby'
 
-set :stages, %w(production staging)
-set :default_stage, 'staging'
+set :stages, %w(production development)
+set :default_stage, 'development'
 
 require 'capistrano/ext/multistage'
 
