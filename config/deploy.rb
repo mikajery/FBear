@@ -58,6 +58,12 @@ namespace :deploy do
     run unicorn_start_cmd
   end
 
+  desc "reload the database with seed data"
+  task :seed do
+    run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{rails_env}"
+  end
+
+
   desc 'Stop application'
   task :stop, :roles => :app do
     run "[ -f #{unicorn_pid} ] && kill -QUIT `cat #{unicorn_pid}`"
