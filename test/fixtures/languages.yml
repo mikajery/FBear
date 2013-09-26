@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  slug: en
-  name: English
-  abbr: en
+  name: MyString
+  native: MyString
+  code: MyString
 
 two:
-  slug: ru
-  name: Русский
-  abbr: ru
+  name: MyString
+  native: MyString
+  code: MyString

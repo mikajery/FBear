@@ -1,7 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  photo: photo1.jpg
+  name: MyString
+  title: MyString
+  heading: MyString
+  keywords: MyText
+  description: MyText
 
 two:
-  photo: photo2.jpg
+  name: MyString
+  title: MyString
+  heading: MyString
+  keywords: MyText
+  description: MyText

@@ -1,0 +1,8 @@
+- name: Русский
+  native: Русский
+  is_default: true
+  slug: ru
+
+- name: Английский
+  native: English
+  slug: en

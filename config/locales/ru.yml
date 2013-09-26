@@ -59,7 +59,6 @@ ru:
       language:
         name: "Язык"
         slug: "Путь"
-        abbr: "Аббревиатура"
 
       designer:
         photo: "Фото"

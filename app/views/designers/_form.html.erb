@@ -1,5 +1,27 @@
+<%= language_prompt %>
+
 <%= simple_form_for @designer, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :photo %>
+  <%= form_errors f %>
+
+  <%= tabs [[:main, 'Основное'], [:meta, 'META']] %>
+
+  <%= tab_contents do %>
+    <%= tab_pane :main, {active: true} do %>
+      <%= f.input :name %>
+    <% end %>
+
+    <%= tab_pane :meta do %>
+      <% Globalize.with_locale(@locale.slug) do %>
+        <%= f.input :title %>
+        <%= f.input :heading %>
+        <%= f.input :keywords %>
+        <%= f.input :description %>
+      <% end %>
+    <% end %>    
+  <% end %>
+
+  <%= language_input f %>
+
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

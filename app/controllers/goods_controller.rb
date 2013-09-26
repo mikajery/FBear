@@ -1,4 +1,6 @@
 class GoodsController < Admin::BaseController
+  include MultilingualController
+  
   before_action :set_good, only: [:show, :edit, :update, :destroy]
 
   # GET /goods
@@ -67,8 +69,12 @@ class GoodsController < Admin::BaseController
       @good = Good.find(params[:id])
     end
 
+    def safe_params
+      [:name, :logo, :title, :heading, :keywords, :description]
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def good_params
-      params.require(:good).permit(:name)
+      permit_params
     end
 end

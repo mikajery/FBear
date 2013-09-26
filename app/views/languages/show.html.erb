@@ -4,12 +4,12 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:slug) %>:</strong></dt>
-  <dd><%= @language.slug %></dd>
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @language.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:abbr) %>:</strong></dt>
-  <dd><%= @language.abbr %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:native) %>:</strong></dt>
+  <dd><%= @language.native %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:is_default) %>:</strong></dt>
+  <dd><%= @language.code %></dd>
 </dl>
 
 <div class="form-actions">

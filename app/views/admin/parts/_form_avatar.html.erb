@@ -1,0 +1,19 @@
+<div class="control-group">
+  <label class="control-label" for="avatar">
+    <%= t('helpers.labels.avatar') %>
+  </label>
+
+  <div class="controls">
+    <div class="fileupload fileupload-new" data-provides="fileupload">
+      <div class="fileupload-preview thumbnail" style="width: <%= defined?(size[:width]) ? size[:width].to_s + 'px' : '200px' %>; height: <%= defined?(size[:height]) ? size[:height].to_s + 'px' : '100px' %>">
+        <%= image_tag item.avatar.url(:medium) %>
+      </div>
+
+      <div>
+        <span class="btn btn-file"><span class="fileupload-new"><%= t('helpers.files.select') %></span><span class="fileupload-exists"><%= t('helpers.files.change') %></span><%= form.file_field :avatar %></span>
+        <a href="#" class="btn fileupload-exists" data-dismiss="fileupload"><%= t('helpers.files.remove') %></a>
+      </div>
+    </div>
+    
+  </div>
+</div>

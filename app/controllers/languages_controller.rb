@@ -1,4 +1,6 @@
 class LanguagesController < Admin::BaseController
+  include MultilingualController
+  
   before_action :set_language, only: [:show, :edit, :update, :destroy]
 
   # GET /languages
@@ -67,8 +69,12 @@ class LanguagesController < Admin::BaseController
       @language = Language.find(params[:id])
     end
 
+    def safe_params
+      [:name, :is_default, :native, :title]
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def language_params
-      params.require(:language).permit(:slug, :name, :abbr)
+      permit_params
     end
 end

@@ -1,6 +1,7 @@
 class MenuItemsController < Admin::BaseController
+  include MultilingualController
+  
   before_action :set_menu_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_menu
 
   # GET /menu_items
   # GET /menu_items.json
@@ -22,15 +23,10 @@ class MenuItemsController < Admin::BaseController
   def edit
   end
 
-  def menu_items_url
-    edit_menu_url(id: @menu.id, anchor: 'items')
-  end
-
   # POST /menu_items
   # POST /menu_items.json
   def create
     @menu_item = MenuItem.new(menu_item_params)
-    @menu_item.menu = @menu
 
     respond_to do |format|
       if @menu_item.save
@@ -73,12 +69,12 @@ class MenuItemsController < Admin::BaseController
       @menu_item = MenuItem.find(params[:id])
     end
 
-    def set_menu
-      @menu = Menu.find(params[:menu_id])
+    def safe_params
+      [:name, :page, :url, :title]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def menu_item_params
-      params.require(:menu_item).permit(:templet_id, :url, :title, :heading, :is_absolute, :meta_keywords, :meta_description)
+      permit_params
     end
 end

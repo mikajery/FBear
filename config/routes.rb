@@ -6,14 +6,10 @@ CMS::Application.routes.draw do
   end
 
   scope '/admin' do
-    resources :templets, :languages, :settings, :designers, :posts
+    resources :categories, :designers, :goods, :languages, :media, :menus, :menu_items, :pages, :posts, :settings, :templets
 
-    resources :menus do
-      resources :menu_items
-    end
-
-    resources :goods do
-      resources :good_langs
+    resources :post_categories, :good_categories, :designers, :goods, :languages, :menu_items, :pages, :posts, :settings do
+      get ':locale', on: :member, action: :edit, as: 'languaged'
     end
   end
 
@@ -39,5 +35,5 @@ CMS::Application.routes.draw do
   get 'html/blog'    => 'html#blog'
   get 'html/blogs'   => 'html#blogs'
 
-  get '*url' => 'content#show', format: false
+  # get '*url' => 'content#show', format: false
 end

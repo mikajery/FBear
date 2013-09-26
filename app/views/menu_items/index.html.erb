@@ -6,14 +6,9 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:menu_id) %></th>
-      <th><%= model_class.human_attribute_name(:templet_id) %></th>
+      <th><%= model_class.human_attribute_name(:page_id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:url) %></th>
-      <th><%= model_class.human_attribute_name(:is_absolute) %></th>
-      <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:heading) %></th>
-      <th><%= model_class.human_attribute_name(:meta_keywords) %></th>
-      <th><%= model_class.human_attribute_name(:meta_description) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -22,14 +17,9 @@
     <% @menu_items.each do |menu_item| %>
       <tr>
         <td><%= link_to menu_item.id, menu_item_path(menu_item) %></td>
-        <td><%= menu_item.menu_id %></td>
-        <td><%= menu_item.templet_id %></td>
+        <td><%= menu_item.page_id %></td>
+        <td><%= menu_item.name %></td>
         <td><%= menu_item.url %></td>
-        <td><%= menu_item.is_absolute %></td>
-        <td><%= menu_item.title %></td>
-        <td><%= menu_item.heading %></td>
-        <td><%= menu_item.meta_keywords %></td>
-        <td><%= menu_item.meta_description %></td>
         <td><%=l menu_item.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

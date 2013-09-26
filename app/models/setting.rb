@@ -1,3 +1,6 @@
 class Setting < ActiveRecord::Base
-	include Multilingual
+  include MultilingualModel
+  translates :value
+
+  validates :key, presence: true
 end

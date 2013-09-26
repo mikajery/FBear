@@ -1,7 +1,6 @@
 class Language < ActiveRecord::Base
-	validates_uniqueness_of :slug
+  include MultilingualModel
+  translates :title
 
-	def full_name
-		name + (' [' + slug + ']' if slug).to_s
-	end
+  validates :name, presence: true
 end

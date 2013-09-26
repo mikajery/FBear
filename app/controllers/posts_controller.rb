@@ -1,4 +1,6 @@
 class PostsController < Admin::BaseController
+  include MultilingualController
+  
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
@@ -67,8 +69,12 @@ class PostsController < Admin::BaseController
       @post = Post.find(params[:id])
     end
 
+    def safe_params
+      [:category, :name, :title, :heading, :keywords, :description, :content]
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params[:post]
+      permit_params
     end
 end

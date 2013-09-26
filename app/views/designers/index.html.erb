@@ -1,38 +1,44 @@
 <%- model_class = Designer -%>
 <div class="page-header">
-  <h1>
-    <%=t '.title', :default => t(model_class.model_name.human.pluralize.titleize) %>
-    <%= link_to t('.new', :default => plus_icon),
-            new_designer_path,
-            :class => 'btn btn-mini' %>
-  </h1>
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-
-<% if @designers.empty? %>
-  <%= empty_list %>
-<% else %>
-  <table class="table table-hover table-condensed">
-    <thead>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:heading) %></th>
+      <th><%= model_class.human_attribute_name(:keywords) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @designers.each do |designer| %>
       <tr>
-        <th><%= model_class.human_attribute_name(:photo) %></th>
-        <th width="60px"></th>
+        <td><%= link_to designer.id, designer_path(designer) %></td>
+        <td><%= designer.name %></td>
+        <td><%= designer.title %></td>
+        <td><%= designer.heading %></td>
+        <td><%= designer.keywords %></td>
+        <td><%= designer.description %></td>
+        <td><%=l designer.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_designer_path(designer), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      designer_path(designer),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
       </tr>
-    </thead>
-    <tbody>
-      <% @designers.each do |designer| %>
-        <tr>
-          <td><%= designer.photo %></td>
-          <td>
-            <%= link_to t('.edit', :default => pencil_icon),
-                        edit_designer_path(designer), :class => 'btn btn-mini' %>
-            <%= link_to t('.destroy', :default => trash_icon(true)),
-                        designer_path(designer),
-                        :method => :delete,
-                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                        :class => 'btn btn-mini btn-danger' %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_designer_path,
+            :class => 'btn btn-primary' %>

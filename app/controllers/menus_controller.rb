@@ -1,4 +1,5 @@
 class MenusController < Admin::BaseController
+  
   before_action :set_menu, only: [:show, :edit, :update, :destroy]
 
   # GET /menus
@@ -69,6 +70,6 @@ class MenusController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def menu_params
-      params.require(:menu).permit(:language_id, :name, :key)
+      params[:menu]
     end
 end

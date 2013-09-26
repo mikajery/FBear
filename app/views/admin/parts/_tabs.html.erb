@@ -1,0 +1,9 @@
+<ul class="nav nav-tabs">
+  <% items.each_with_index do |item, index| %>
+    <li<%= ' class=active' if index == 0 %>>
+      <a href="#<%= item[0] %>" data-toggle="tab">
+        <%= item[1] %>
+      </a>
+    </li>
+  <% end %>
+</ul>

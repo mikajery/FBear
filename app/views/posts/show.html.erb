@@ -4,6 +4,20 @@
 </div>
 
 <dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:category_id) %>:</strong></dt>
+  <dd><%= @post.category_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @post.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
+  <dd><%= @post.title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:heading) %>:</strong></dt>
+  <dd><%= @post.heading %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:keywords) %>:</strong></dt>
+  <dd><%= @post.keywords %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @post.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:content) %>:</strong></dt>
+  <dd><%= @post.content %></dd>
 </dl>
 
 <div class="form-actions">

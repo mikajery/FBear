@@ -1,6 +1,30 @@
 module Admin::AdminHelper
+  delegate :url_helpers, to: 'Rails.application.routes'
+  
   def empty_list
   	content_tag :div, 'Пусто', class: 'well'
+  end
+
+  def get_languages
+    Language.all
+  end
+
+  def get_another_locale
+    get_languages.select do |l|
+      l != @locale
+    end
+  end
+
+  def locale_icon locale
+    result = []
+    result << content_tag(:i, '', class: ('icon icon-' + (get_item.locale_exists(locale.slug) ? 'pencil' : 'plus')))
+    result << ' ' 
+    result << locale.name
+    result.join.html_safe
+  end
+
+  def get_path route, params, additional = false
+    url_helpers.send(route, params.symbolize_keys)
   end
 
   def icon(type, white = false)
@@ -17,5 +41,53 @@ module Admin::AdminHelper
 
   def plus_icon(white = false)
     icon "plus", white
+  end
+
+  def tabs items
+    render partial: 'admin/parts/tabs', locals: {items: items}
+  end
+
+  def get_item
+    eval '@' + get_item_name
+  end
+
+  def get_item_name dirty=false
+    name = controller_name
+
+    if !dirty and ['good_categories', 'post_categories'].include? name
+      name = 'categories'
+    end
+
+    name.singularize
+  end
+
+  def language_prompt
+    render partial: 'admin/parts/language_prompt', locals: {item: get_item}
+  end 
+
+  def language_select
+    render partial: 'admin/parts/language_select', locals: {route: 'languaged_' + get_item_name(true) + '_path', item: get_item}
+  end 
+
+  def form_errors form
+    render partial: 'admin/parts/form_errors', locals: {object: form.object}
+  end
+
+  def language_input form
+    render partial: 'admin/parts/form_language_input', locals: {form: form}
+  end
+
+  def category_types 
+    ['goods', 'blogs']
+  end
+
+  def tab_pane name, options={}, &block
+    content = capture(&block)
+    render partial: 'admin/parts/tab_pane', locals: {content: content, name: name, options: options}
+  end
+
+  def tab_contents &block
+    content = capture(&block)
+    content_tag :div, content, class: 'tab-content'
   end
 end

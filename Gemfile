@@ -59,8 +59,6 @@ end
 
 gem "better_errors", "0.9.0"
 
-gem "paperclip"
-
 gem "foreigner"
 
 # nested forms
@@ -83,3 +81,12 @@ group :development do
 end
 
 gem 'rvm-capistrano'
+
+gem 'globalize3', github: 'svenfuchs/globalize3', branch: 'rails4'
+gem 'paper_trail', github: 'airblade/paper_trail', branch: 'master'
+
+gem "paperclip", github: 'thoughtbot/paperclip', branch: 'rails-4'
+
+gem 'jasny_bootstrap_extension_rails'
+
+gem "select2-rails"

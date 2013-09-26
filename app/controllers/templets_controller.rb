@@ -1,4 +1,5 @@
 class TempletsController < Admin::BaseController
+
   before_action :set_templet, only: [:show, :edit, :update, :destroy]
 
   # GET /templets
@@ -69,6 +70,6 @@ class TempletsController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def templet_params
-      params.require(:templet).permit(:name, :filename)
+      params.require(:templet).permit(:name, :src)
     end
 end

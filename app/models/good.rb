@@ -1,17 +1,9 @@
 class Good < ActiveRecord::Base
-	include Multilingual
-	has_many :good_langs
+  include MultilingualModel
+  translates :title, :heading, :keywords, :description
 
-	def langs
-		self.good_langs
-	end
+  has_and_belongs_to_many :good_category
 
-	def unused_langs
-		langs = []
-		self.langs.each do |gl|
-			langs << gl.language
-		end
-
-		Language.all - langs
-	end
+  validates :name, presence: true
+  validates :logo, presence: true
 end

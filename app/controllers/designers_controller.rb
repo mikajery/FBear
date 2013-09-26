@@ -1,4 +1,6 @@
 class DesignersController < Admin::BaseController
+  include MultilingualController
+  
   before_action :set_designer, only: [:show, :edit, :update, :destroy]
 
   # GET /designers
@@ -67,8 +69,12 @@ class DesignersController < Admin::BaseController
       @designer = Designer.find(params[:id])
     end
 
+    def safe_params
+      [:name, :title, :heading, :keywords, :description, :content]
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def designer_params
-      params.require(:designer).permit(:photo)
+      permit_params
     end
 end

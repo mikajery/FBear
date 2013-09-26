@@ -1,4 +1,6 @@
 class SettingsController < Admin::BaseController
+  include MultilingualController
+
   before_action :set_setting, only: [:show, :edit, :update, :destroy]
 
   # GET /settings
@@ -67,8 +69,12 @@ class SettingsController < Admin::BaseController
       @setting = Setting.find(params[:id])
     end
 
+    def safe_params
+      [:key, :value]
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def setting_params
-      params.require(:setting).permit(:key)
+      permit_params
     end
 end

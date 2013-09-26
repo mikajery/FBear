@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  template_id: 
+  title: MyString
+  heading: MyString
+  keywords: MyText
+  description: MyText
+  content: MyText
+
+two:
+  name: MyString
+  template_id: 
+  title: MyString
+  heading: MyString
+  keywords: MyText
+  description: MyText
+  content: MyText
