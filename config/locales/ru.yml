@@ -114,10 +114,11 @@ ru:
 
       templet: 
         name: "Шаблон"
-        filename: "Путь к файлу"
+        src: "Путь к файлу"
 
       setting:
         key: "Переменная"
+        value: "Значение"
 
       page: 
         name: "Страница"

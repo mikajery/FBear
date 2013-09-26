@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130926162211) do
+ActiveRecord::Schema.define(version: 20130926170056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 20130926162211) do
     t.text     "keywords"
     t.text     "description"
     t.text     "content"
+    t.string   "motto"
   end
 
   add_index "designer_translations", ["designer_id"], name: "index_designer_translations_on_designer_id", using: :btree

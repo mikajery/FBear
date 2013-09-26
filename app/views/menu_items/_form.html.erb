@@ -11,7 +11,7 @@
     <%= f.input :title %>
   <% end %>
 
-  <%= f.input :url %>
+  <%= f.input :url, as: :string %>
 
   <%= f.association :page, collection: Page.with_translations('ru'), prompt: 'Выберите страницу' %>
 
