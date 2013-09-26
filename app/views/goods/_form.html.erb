@@ -3,16 +3,26 @@
 <%= simple_form_for @good, :html => { :class => 'form-horizontal' } do |f| %>
   <%= form_errors f %>
 
-  <%= tabs [[:main, 'Основное'], [:meta, 'META']] %>
+  <%= tabs [[:main, 'Основное'], [:logo, 'Лого'], [:picture, 'Изображение'], [:meta, 'META']] %>
 
   <%= tab_contents do %>
     <%= tab_pane :main, {active: true} do %>
       <%= f.input :name %>
+      <%= f.input :slug %>
+
       <% Globalize.with_locale(@locale.slug) do %>
         <%= f.input :price %>
       <% end %>
-      <%= f.input :logo %>
+
       <%= f.association :good_category %>
+    <% end %>
+
+    <%= tab_pane :logo do %>
+      <%= image_field @good, 'logo', f, [300, 300] %>
+    <% end %>
+
+    <%= tab_pane :picture do %>
+      <%= image_field @good, 'picture', f, [300, 300] %>
     <% end %>
 
     <%= tab_pane :meta do %>
@@ -30,6 +40,6 @@
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                goods_path, :class => 'btn' %>
+                good_categories_path, :class => 'btn' %>
   </div>
 <% end %>

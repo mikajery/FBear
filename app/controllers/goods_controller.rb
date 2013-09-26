@@ -30,7 +30,7 @@ class GoodsController < Admin::BaseController
 
     respond_to do |format|
       if @good.save
-        format.html { redirect_to goods_url, notice: 'Good was successfully created.' }
+        format.html { redirect_to good_categories_url, notice: 'Good was successfully created.' }
         format.json { render action: 'show', status: :created, location: @good }
       else
         format.html { render action: 'new' }
@@ -44,7 +44,7 @@ class GoodsController < Admin::BaseController
   def update
     respond_to do |format|
       if @good.update(good_params)
-        format.html { redirect_to goods_url, notice: 'Good was successfully updated.' }
+        format.html { redirect_to good_categories_url, notice: 'Good was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -70,7 +70,7 @@ class GoodsController < Admin::BaseController
     end
 
     def safe_params
-      [:name, :logo, :title, :heading, :keywords, :description, :good_category_ids => []]
+      [:name, :logo, :price, :picture, :slug, :title, :heading, :keywords, :description, :good_category_ids => []]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -69,7 +69,7 @@ class PostCategoriesController < Admin::BaseController
     end
 
     def safe_params
-      [:name, :parent_id, :title, :heading, :keywords, :description]
+      [:name, :slug, :parent_id, :title, :heading, :keywords, :description]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

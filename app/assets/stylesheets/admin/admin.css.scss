@@ -1,3 +1,23 @@
 body {
 	padding-top: 65px;
 }
+
+.nav {
+  & > li {
+    &:hover {
+      .controls {
+        opacity: 1;
+      }
+    }
+
+    .controls {
+      opacity: .3;
+      float: right;
+      margin-top: 3px;
+      padding: 3px 10px 0;
+      .btn {
+        padding: 2px;
+      }
+    }
+  }
+}

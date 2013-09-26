@@ -1,48 +1,77 @@
 <%- model_class = Category -%>
 <div class="page-header">
+  <div class="pull-right">
+    <%= link_to (plus_icon + ' Категория'),
+            new_good_category_path,
+            :class => 'btn' %>
+    <%= link_to (plus_icon + ' Товар'),
+            new_good_path,
+            :class => 'btn' %>
+  </div>
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:parent_id) %></th>
-      <th><%= model_class.human_attribute_name(:type) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:heading) %></th>
-      <th><%= model_class.human_attribute_name(:keywords) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= link_to category.id, category_path(category) %></td>
-        <td><%= category.parent_id %></td>
-        <td><%= category.type %></td>
-        <td><%= category.name %></td>
-        <td><%= category.title %></td>
-        <td><%= category.heading %></td>
-        <td><%= category.keywords %></td>
-        <td><%= category.description %></td>
-        <td><%=l category.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_good_category_path(category), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      good_category_path(category),
+
+<div class="row">
+  <div class="span9">
+    <% unless @items.empty? %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Товар</th>
+            <th width="30%">Название</th>
+            <th width="100px">Цена</th>
+            <th width="60px"></th>
+          </tr>
+        </thead>
+        <tbody>        
+          <% @items.each do |good| %>
+            <tr>
+              <td>
+                <%= with_pic good, good.picture %>
+              </td>
+              <td><%= good.title %></td>
+              <td><%= good.price %></td>
+              <td>
+                <%= link_to pencil_icon,
+                            edit_good_path(good), :class => 'btn btn-mini' %>
+                <%= link_to trash_icon(true),
+                            good_path(good),
+                            :method => :delete,
+                            :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                            :class => 'btn btn-mini btn-danger' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="well">
+        Товаров нету :(
+      </div>
+    <% end %>
+  </div>
+
+  <div class="span3">
+    <ul class="nav nav-tabs nav-stacked">
+      <li<%= ' class=active' if !@collection %>>
+        <%= link_to('Все товары', good_categories_path) %>
+      </li>
+      <% @collections.each do |collection| %>
+        <li<%= ' class=active' if @collection && @collection == collection %>>
+          <div class="controls">
+            <%= link_to(pencil_icon,
+                      edit_good_category_path(collection), :class => 'btn btn-link') %>
+            <%= link_to(trash_icon,
+                      good_category_path(collection),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_good_category_path,
-            :class => 'btn btn-primary' %>
+                      :class => 'btn btn-link') %>
+          </div>
+          
+            <%= link_to (collection.name + tag(:br) + content_tag(:small, collection.slug, class: :muted)).html_safe, items_good_category_path(collection) %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -15,6 +15,15 @@ module Admin::AdminHelper
     end
   end
 
+  def with_pic item, image
+    render partial: 'admin/parts/with_pic', locals: {item: item, image: image}
+  end
+
+  def image_field item, property, form, size={}
+    render partial: 'admin/parts/form_avatar', locals: {image: item.send(property), property: property, form: form, field: form.file_field(property), size: size}
+  end
+
+
   def locale_icon locale
     result = []
     result << content_tag(:i, '', class: ('icon icon-' + (get_item.locale_exists(locale.slug) ? 'pencil' : 'plus')))

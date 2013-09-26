@@ -5,7 +5,13 @@ class GoodCategoriesController < Admin::BaseController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = GoodCategory.all
+    @collections = GoodCategory.all
+    @items = Good.all
+
+    if params[:id]
+      @collection = GoodCategory.find(params[:id])
+      @items = @items.delete_if {|i| i.good_category != @collection }
+    end
   end
 
   # GET /categories/1
@@ -69,7 +75,7 @@ class GoodCategoriesController < Admin::BaseController
     end
 
     def safe_params
-      [:name, :parent_id, :title, :heading, :keywords, :description]
+      [:name, :slug, :parent_id, :title, :heading, :keywords, :description]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
