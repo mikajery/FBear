@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 20130926090508) do
     t.string   "locale",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "price"
     t.string   "title"
     t.string   "heading"
     t.text     "keywords"
@@ -115,7 +116,6 @@ ActiveRecord::Schema.define(version: 20130926090508) do
 
   create_table "goods", force: true do |t|
     t.string   "name",       null: false
-    t.decimal  "price"
     t.string   "logo",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -140,16 +140,6 @@ ActiveRecord::Schema.define(version: 20130926090508) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "media", force: true do |t|
-    t.integer  "good_id"
-    t.string   "type",       null: false
-    t.string   "src",        null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "media", ["good_id"], name: "index_media_on_good_id", using: :btree
 
   create_table "menu_item_translations", force: true do |t|
     t.integer  "menu_item_id", null: false
@@ -219,13 +209,13 @@ ActiveRecord::Schema.define(version: 20130926090508) do
   add_index "post_translations", ["post_id"], name: "index_post_translations_on_post_id", using: :btree
 
   create_table "posts", force: true do |t|
-    t.integer  "category_id", null: false
-    t.string   "name",        null: false
+    t.integer  "post_category_id", null: false
+    t.string   "name",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "posts", ["category_id"], name: "index_posts_on_category_id", using: :btree
+  add_index "posts", ["post_category_id"], name: "index_posts_on_post_category_id", using: :btree
 
   create_table "setting_translations", force: true do |t|
     t.integer  "setting_id", null: false

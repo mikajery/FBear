@@ -70,7 +70,7 @@ class PostsController < Admin::BaseController
     end
 
     def safe_params
-      [:category, :name, :title, :heading, :keywords, :description, :content]
+      [:post_category_id, :name, :title, :heading, :keywords, :description, :content]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

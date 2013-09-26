@@ -8,7 +8,9 @@
   <%= tab_contents do %>
     <%= tab_pane :main, {active: true} do %>
       <%= f.input :name %>
-      <%= f.input :price %>
+      <% Globalize.with_locale(@locale.slug) do %>
+        <%= f.input :price %>
+      <% end %>
       <%= f.input :logo %>
       <%= f.association :good_category %>
     <% end %>

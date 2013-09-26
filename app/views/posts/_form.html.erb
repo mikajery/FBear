@@ -7,7 +7,7 @@
 
   <%= tab_contents do %>
     <%= tab_pane :main, {active: true} do %>
-      <%= f.input :category, collection: Category.with_translations('ru'), prompt: 'Выберите категорию' %>
+      <%= f.association :post_category, include_blank: false %>
       <%= f.input :name %>
     <% end %>
 

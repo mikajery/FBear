@@ -21,7 +21,7 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= link_to post.id, post_path(post) %></td>
-        <td><%= post.category_id %></td>
+        <td><%= post.post_category.name if post.post_category %></td>
         <td><%= post.name %></td>
         <td><%= post.title %></td>
         <td><%= post.heading %></td>
