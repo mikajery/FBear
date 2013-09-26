@@ -58,7 +58,7 @@ class GoodsController < Admin::BaseController
   def destroy
     @good.destroy
     respond_to do |format|
-      format.html { redirect_to goods_url }
+      format.html { redirect_to good_categories_url }
       format.json { head :no_content }
     end
   end
