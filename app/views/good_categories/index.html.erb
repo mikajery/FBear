@@ -12,17 +12,21 @@
 
 <div class="row">
   <div class="span9">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Товар</th>
-          <th width="23%">Категории</th>
-          <th width="23%">Дизайнеры</th>
-          <th width="60px">Цена</th>
-          <th width="60px"></th>
-        </tr>
-      </thead>
-      <% unless @items.empty? %>
+    <% if @items.empty? %>  
+      <div class="well">
+        Опаньки.. А товаров-то и нету :(
+      </div>
+    <% else %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Товар</th>
+            <th width="23%">Категории</th>
+            <th width="23%">Дизайнеры</th>
+            <th width="60px">Цена</th>
+            <th width="60px"></th>
+          </tr>
+        </thead>
         <tbody>        
           <% @items.each do |good| %>
             <tr>
@@ -49,16 +53,8 @@
             </tr>
           <% end %>
         </tbody>
-      <% else %>
-        <tbody>
-          <tr colspan="4">
-            <div class="well">
-              Товаров нету :(
-            </div>
-          </tr>
-        </tbody>
-      <% end %>
-    </table>
+      </table>
+    <% end %>
   </div>
 
   <div class="span3">

@@ -7,6 +7,7 @@ class Good < ActiveRecord::Base
 
   has_and_belongs_to_many :good_category
   has_and_belongs_to_many :designer
+  has_and_belongs_to_many :material
 
   validates :name, presence: true
   validates :designer, presence: true
