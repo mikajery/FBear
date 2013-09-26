@@ -3,7 +3,7 @@
 <%= simple_form_for @designer, :html => { :class => 'form-horizontal' } do |f| %>
   <%= form_errors f %>
 
-  <%= tabs [[:main, 'Основное'], [:avatar, 'Фотография'], [:meta, 'META']] %>
+  <%= tabs [[:main, 'Основное'], [:avatar, 'Фотография'], [:meta, 'META'], [:about, 'О дизайнере']] %>
 
   <%= tab_contents do %>
     <%= tab_pane :main, {active: true} do %>
@@ -22,6 +22,10 @@
         <%= f.input :description %>
       <% end %>
     <% end %>    
+
+    <%= tab_pane :about do %>
+      <%= f.input :content %>
+    <% end %>
   <% end %>
 
   <%= language_input f %>

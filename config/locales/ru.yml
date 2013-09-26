@@ -7,7 +7,6 @@ ru:
   Posts: "Блоги"
   Goods: "Товары"
 
-
   prompt:
     language: Выберите язык
     templet: Выберите шаблон
@@ -74,6 +73,11 @@ ru:
 
       designer:
         photo: "Фото"
+        name: "Как зовут"
+        title: "Название"
+        heading: "Заголовок"
+        keywords: "Ключевые слова"
+        description: "Описание"
 
       menu:
         name: "Меню"
@@ -114,4 +118,16 @@ ru:
       setting:
         key: "Переменная"
 
+      page: 
+        name: "Страница"
+        templet: "Шаблон"
+        title: "Название"
+        heading: "Заголовок"
+        keywords: "Ключевые слова"
+        description: "Описание"
+        content: "Содержание"
 
+      material:
+        name: "Материал"
+        title: "Название"
+        description: "Описание"

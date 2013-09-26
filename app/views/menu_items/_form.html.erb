@@ -1,6 +1,10 @@
 <%= language_prompt %>
 
-<%= simple_form_for @menu_item, :html => { class: 'form-horizontal' }, url: menu_menu_item_path do |f| %>
+<% form_action = if @menu_item.id then menu_menu_item_path(@menu, @menu_item) else menu_menu_items_path(@menu) end %>
+
+  
+
+<%= simple_form_for @menu_item, :html => { class: 'form-horizontal' }, url: form_action do |f| %>
   <%= f.input :name %>
 
   <% Globalize.with_locale(@locale.slug) do %>    

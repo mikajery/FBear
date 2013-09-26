@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130926132428) do
+ActiveRecord::Schema.define(version: 20130926160704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -157,6 +157,28 @@ ActiveRecord::Schema.define(version: 20130926132428) do
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "material_translations", force: true do |t|
+    t.integer  "material_id", null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.text     "description"
+  end
+
+  add_index "material_translations", ["locale"], name: "index_material_translations_on_locale", using: :btree
+  add_index "material_translations", ["material_id"], name: "index_material_translations_on_material_id", using: :btree
+
+  create_table "materials", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   create_table "menu_item_translations", force: true do |t|

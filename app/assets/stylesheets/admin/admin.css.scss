@@ -21,3 +21,11 @@ body {
     }
   }
 }
+
+.table {
+  td, th {
+    &.center {
+      text-align: center;
+    }
+  }
+}

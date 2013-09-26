@@ -17,7 +17,7 @@ CMS::Application.routes.draw do
       # get 'items', on: :member, action: :index, as: :items
     end
 
-    resources :post_categories, :good_categories, :designers, :goods, :languages, :menu_items, :pages, :posts, :settings do
+    resources :post_categories, :good_categories, :designers, :goods, :languages, :menu_items, :pages, :posts, :settings, :materials do
       get ':locale', on: :member, action: :edit, as: 'languaged'
     end
   end
