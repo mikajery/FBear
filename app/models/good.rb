@@ -1,11 +1,15 @@
 class Good < ActiveRecord::Base
   include MultilingualModel
+  include SluggableModel
+  include AutotitleableModel
 
   translates :price, :title, :heading, :keywords, :description
 
   has_and_belongs_to_many :good_category
+  has_and_belongs_to_many :designer
 
   validates :name, presence: true
+  validates :designer, presence: true
 
   attr_accessor :picture
   attr_accessor :logo

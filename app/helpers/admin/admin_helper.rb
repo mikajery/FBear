@@ -15,6 +15,14 @@ module Admin::AdminHelper
     end
   end
 
+  def save_or_update item
+    if item.id then 'Сохранить' else 'Добавить' end
+  end
+
+  def link_list items
+    render partial: 'admin/parts/link_list', locals: {items: items}
+  end
+
   def with_pic item, image
     render partial: 'admin/parts/with_pic', locals: {item: item, image: image}
   end

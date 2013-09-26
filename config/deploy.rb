@@ -63,6 +63,16 @@ namespace :deploy do
     run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{rails_env}"
   end
 
+  desc "drop the database"
+  task :db_drop do
+    run "cd #{current_path}; bundle exec rake db:drop RAILS_ENV=#{rails_env}"
+  end
+
+  desc "create the database"
+  task :db_create do
+    run "cd #{current_path}; bundle exec rake db:create RAILS_ENV=#{rails_env}"
+  end
+
 
   desc 'Stop application'
   task :stop, :roles => :app do

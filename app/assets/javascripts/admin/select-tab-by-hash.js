@@ -5,8 +5,13 @@ var TabByHash = {
 };
 
 var Tabbable = function(el) {
-	el.on('click', function() {
-		window.location.hash = el.attr('href');
+	el.on('click', function(e) {
+		if (0 == el.closest('.disabled').size())
+			window.location.hash = el.attr('href');
+		else {
+			e.preventDefault();
+			return false;
+		}
 	});
 };
 

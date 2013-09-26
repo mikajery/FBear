@@ -1,40 +1,67 @@
-<%- model_class = MenuItem -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
-</div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:page_id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:url) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @menu_items.each do |menu_item| %>
-      <tr>
-        <td><%= link_to menu_item.id, menu_item_path(menu_item) %></td>
-        <td><%= menu_item.page_id %></td>
-        <td><%= menu_item.name %></td>
-        <td><%= menu_item.url %></td>
-        <td><%=l menu_item.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_menu_item_path(menu_item), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      menu_item_path(menu_item),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="pull-right">
+    <%= link_to plus_icon + ' Добавить',
+        new_menu_menu_item_path,
+        :class => 'btn' %>
+  </div>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_menu_item_path,
-            :class => 'btn btn-primary' %>
+  <h1>Правка элементов меню: <%= @menu.name %></h1>
+</div>
+
+<%= tabs [[:main, 'Основное', {active: false, path: edit_menu_path(@menu)}], [:items, 'Элементы', {active: true}]] %>
+
+    <table class="table table-hover table-stripped">
+      <thead>
+        <tr>
+          <th>
+            Элемент
+          </th>
+          <th width="30%">
+            Ссылка
+          </th>
+          <th width="30%">
+            Страница
+          </th>
+          <th width="60px"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% unless @menu_items %>
+          <div class="well">
+            В этом меню нет элементов :(
+          </div>
+        <% else %>
+          <% @menu_items.each do |item| %>
+            <tr>
+              <td>
+                <%= item.name %>
+              </td>
+
+              <td>
+                <%= item.url %>
+              </td>
+
+              <td>
+                <%= item.page.name if item.page %>
+              </td>
+
+              <td>
+                <%= link_to pencil_icon,
+                    edit_menu_menu_item_path(@menu, item), :class => 'btn btn-mini' %>
+
+                <%= link_to trash_icon(true),
+                    menu_menu_item_path(@menu, item),
+                    :method => :delete,
+                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                    :class => 'btn btn-mini btn-danger' %>
+              </td>
+            </tr>
+          <% end %>
+
+        <% end %>
+
+
+
+      </tbody>
+    </table>

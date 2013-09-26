@@ -23,6 +23,10 @@ ru:
 
   activerecord:
     model:
+      category:
+        one: "Категория"
+        other: "Категории"
+
       language:
         one: "Язык"
         other: "Языки"
@@ -56,6 +60,14 @@ ru:
         other: "Параметры"
 
     attributes:
+      category:
+        name: "Категория"
+        parent: "Родитель"
+        title: "Название"
+        heading: "Заголовок"
+        keywords: "Ключевые слова"
+        description: "Описание"
+
       language:
         name: "Язык"
         slug: "Путь"
@@ -69,17 +81,21 @@ ru:
         language: "Язык"
 
       menu_item: 
-        url: "Ссылка"
-        templet: "Шаблон"
-        menu: "Меню"
-        is_absolute: "Внешняя ссылка"
+        page: "Страница"
+        name: "Элемент"
         title: "Название"
-        heading: "Заголовок"
-        meta_keywords: "Ключевые слова"
-        meta_description: "Описание"
+        url: "Ссылка"
 
       good:
         name: "Товар"
+        designer: "Дизайнер"
+        good_category: "Категория"
+        slug: "Путь"
+        price: "Цена"
+        title: "Название"
+        heading: "Заголовок"
+        keywords: "Ключевые слова"
+        description: "Описание"
 
       good_lang:
         name: "Наименование"

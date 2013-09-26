@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130926122245) do
+ActiveRecord::Schema.define(version: 20130926132428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,9 +95,18 @@ ActiveRecord::Schema.define(version: 20130926122245) do
   add_index "designer_translations", ["locale"], name: "index_designer_translations_on_locale", using: :btree
 
   create_table "designers", force: true do |t|
-    t.string   "name",       null: false
+    t.string   "name",                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+  end
+
+  create_table "designers_goods", force: true do |t|
+    t.integer "designer_id"
+    t.integer "good_id"
   end
 
   create_table "good_translations", force: true do |t|
@@ -163,12 +172,14 @@ ActiveRecord::Schema.define(version: 20130926122245) do
 
   create_table "menu_items", force: true do |t|
     t.integer  "page_id"
+    t.integer  "menu_id",    null: false
     t.string   "name",       null: false
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "menu_items", ["menu_id"], name: "index_menu_items_on_menu_id", using: :btree
   add_index "menu_items", ["page_id"], name: "index_menu_items_on_page_id", using: :btree
 
   create_table "menus", force: true do |t|

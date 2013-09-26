@@ -6,7 +6,7 @@
   <div class="controls">
     <div class="fileupload fileupload-new" data-provides="fileupload">
       <div class="fileupload-preview thumbnail" style="width: <%= defined?(size[0]) ? size[0].to_s + 'px' : '200px' %>; height: <%= defined?(size[1]) ? size[1].to_s + 'px' : '100px' %>">
-        <%= image_tag image.url(:preview) %>
+        <%= image_tag image.url(:preview) if image and defined? image.url %>
       </div>
 
       <div>

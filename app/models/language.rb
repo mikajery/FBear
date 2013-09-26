@@ -1,6 +1,8 @@
 class Language < ActiveRecord::Base
   include MultilingualModel
-  translates :title
+  include SluggableModel
+  include AutotitleableModel
 
+  translates :title
   validates :name, presence: true
 end

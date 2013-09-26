@@ -2,11 +2,16 @@ class MenuItemsController < Admin::BaseController
   include MultilingualController
   
   before_action :set_menu_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_menu
 
   # GET /menu_items
   # GET /menu_items.json
   def index
-    @menu_items = MenuItem.all
+    if @menu
+      @menu_items = @menu.items
+    else
+      @menu_items = MenuItem.all
+    end
   end
 
   # GET /menu_items/1
@@ -27,10 +32,11 @@ class MenuItemsController < Admin::BaseController
   # POST /menu_items.json
   def create
     @menu_item = MenuItem.new(menu_item_params)
+    @menu_item.menu = @menu
 
     respond_to do |format|
       if @menu_item.save
-        format.html { redirect_to menu_items_url, notice: 'Menu item was successfully created.' }
+        format.html { redirect_to menu_menu_items_url, notice: 'Menu item was successfully created.' }
         format.json { render action: 'show', status: :created, location: @menu_item }
       else
         format.html { render action: 'new' }
@@ -44,7 +50,7 @@ class MenuItemsController < Admin::BaseController
   def update
     respond_to do |format|
       if @menu_item.update(menu_item_params)
-        format.html { redirect_to menu_items_url, notice: 'Menu item was successfully updated.' }
+        format.html { redirect_to menu_menu_items_url, notice: 'Menu item was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -58,7 +64,7 @@ class MenuItemsController < Admin::BaseController
   def destroy
     @menu_item.destroy
     respond_to do |format|
-      format.html { redirect_to menu_items_url }
+      format.html { redirect_to menu_menu_items_url }
       format.json { head :no_content }
     end
   end
@@ -67,6 +73,10 @@ class MenuItemsController < Admin::BaseController
     # Use callbacks to share common setup or constraints between actions.
     def set_menu_item
       @menu_item = MenuItem.find(params[:id])
+    end
+
+    def set_menu
+      @menu = Menu.find(params[:menu_id])
     end
 
     def safe_params

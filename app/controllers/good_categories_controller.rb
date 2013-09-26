@@ -10,7 +10,13 @@ class GoodCategoriesController < Admin::BaseController
 
     if params[:id]
       @collection = GoodCategory.find(params[:id])
-      @items = @items.delete_if {|i| i.good_category != @collection }
+      
+      @items = @items.delete_if {|i| 
+        i.good_categories.each do |c|
+          c == @collection
+          break
+        end
+      }
     end
   end
 

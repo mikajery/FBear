@@ -70,7 +70,7 @@ class DesignersController < Admin::BaseController
     end
 
     def safe_params
-      [:name, :title, :heading, :keywords, :description, :content]
+      [:name, :title, :heading, :keywords, :description, :content, :avatar]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

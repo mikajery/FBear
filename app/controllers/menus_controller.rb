@@ -70,6 +70,6 @@ class MenusController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def menu_params
-      params[:menu]
+      params.require(:menu).permit(:name, :key)
     end
 end
