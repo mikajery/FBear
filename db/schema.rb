@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130926170056) do
+ActiveRecord::Schema.define(version: 20130926180613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -257,10 +257,15 @@ ActiveRecord::Schema.define(version: 20130926170056) do
   add_index "post_translations", ["post_id"], name: "index_post_translations_on_post_id", using: :btree
 
   create_table "posts", force: true do |t|
-    t.integer  "post_category_id", null: false
-    t.string   "name",             null: false
+    t.integer  "post_category_id",     null: false
+    t.string   "name",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "posts", ["post_category_id"], name: "index_posts_on_post_category_id", using: :btree

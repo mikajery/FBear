@@ -8,7 +8,5 @@ class Category < ActiveRecord::Base
   validates :type, presence: true
   validates :name, presence: true
 
-  belongs_to :parent
-
-  
+  belongs_to :parent  
 end

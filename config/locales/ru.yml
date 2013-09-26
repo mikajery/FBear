@@ -62,10 +62,22 @@ ru:
       category:
         name: "Категория"
         parent: "Родитель"
+        slug: "Путь"
         title: "Название"
         heading: "Заголовок"
         keywords: "Ключевые слова"
         description: "Описание"
+
+      post:
+        name: "Пост"
+        post_category: "Категория"
+        slug: "Путь"
+        title: "Название"
+        heading: "Заголовок"
+        keywords: "Ключевые слова"
+        description: "Описание"
+        content: "Содержание"
+
 
       language:
         name: "Язык"

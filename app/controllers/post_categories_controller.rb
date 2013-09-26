@@ -5,7 +5,16 @@ class PostCategoriesController < Admin::BaseController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = PostCategory.all
+    @collections = PostCategory.all
+    @items = Post.all
+
+    if params[:id]
+      @collection = PostCategory.find(params[:id])
+      
+      @items = @items.delete_if do |i| 
+        i.post_category != @collection
+      end
+    end
   end
 
   # GET /categories/1
@@ -57,7 +66,7 @@ class PostCategoriesController < Admin::BaseController
   def destroy
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to categories_url }
+      format.html { redirect_to post_categories_url }
       format.json { head :no_content }
     end
   end

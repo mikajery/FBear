@@ -30,7 +30,7 @@ class PostsController < Admin::BaseController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to posts_url, notice: 'Post was successfully created.' }
+        format.html { redirect_to post_categories_url, notice: 'Post was successfully created.' }
         format.json { render action: 'show', status: :created, location: @post }
       else
         format.html { render action: 'new' }
@@ -44,7 +44,7 @@ class PostsController < Admin::BaseController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to posts_url, notice: 'Post was successfully updated.' }
+        format.html { redirect_to post_categories_url, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -58,7 +58,7 @@ class PostsController < Admin::BaseController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url }
+      format.html { redirect_to post_categories_url }
       format.json { head :no_content }
     end
   end
@@ -70,7 +70,7 @@ class PostsController < Admin::BaseController
     end
 
     def safe_params
-      [:post_category_id, :name, :title, :heading, :keywords, :description, :content]
+      [:post_category_id, :name, :title, :heading, :keywords, :description, :content, :picture]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -8,8 +8,11 @@
   <%= tab_contents do %>
     <%= tab_pane :main, {active: true} do %>
       <%= f.input :name %>
-      <%= f.input :slug %>
-      <%= f.association :parent, collection: PostCategory.with_translations('ru').select{|c| c != @category}, include_blank: 'Отсутствует' %>
+      <%= f.input :slug if @category.id %>
+      <%= f.association :parent, 
+          collection: PostCategory.with_translations('ru').select{|c| c != @category}, 
+          include_blank: 'Отсутствует' if false %>
+
     <% end %>
 
     <%= tab_pane :meta do %>
