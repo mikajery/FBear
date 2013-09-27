@@ -70,7 +70,13 @@ class GoodsController < Admin::BaseController
     end
 
     def safe_params
-      [:name, :logo, :price, :picture, :slug, :title, :heading, :keywords, :description, :good_category_ids => [], :designer_ids => [], :material_ids => []]
+      [ 
+        :name, :logo, :price, :picture, :slug, 
+        :width, :depth, :height, :box_depth, :box_width, :box_height, :is_electrical,
+        :announce, :content, :additional,
+        :title, :heading, :keywords, :description, 
+        :good_category_ids => [], :designer_ids => [], :material_ids => []
+      ]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

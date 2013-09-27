@@ -113,6 +113,16 @@ ru:
         keywords: "Ключевые слова"
         description: "Описание"
         material: "Материал"
+        width: "Ширина"
+        depth: "Глубина"
+        height: "Высота"
+        box_width: "Ширина упаковки"
+        box_height: "Высота упаковки"
+        box_depth: "Глубина упаковки"
+        is_electrical: "Питание от электросети"
+        announce: "Короткое описание"
+        content: "Описание товара"
+        additional: "Дополнительно"
 
       good_lang:
         name: "Наименование"

@@ -3,7 +3,7 @@
 <%= simple_form_for @good, :html => { :class => 'form-horizontal' } do |f| %>
   <%= form_errors f %>
 
-  <%= tabs [[:main, 'Основное'], [:logo, 'Лого'], [:picture, 'Изображение'], [:meta, 'META']] %>
+  <%= tabs [[:main, 'Основное'], [:logo, 'Лого'], [:picture, 'Изображение'], [:tech, 'Характеристики'], [:descriptions, 'Описания'], [:meta, 'META']] %>
 
   <%= tab_contents do %>
     <%= tab_pane :main, {active: true} do %>
@@ -34,6 +34,25 @@
         <%= f.input :heading %>
         <%= f.input :keywords %>
         <%= f.input :description %>
+      <% end %>
+    <% end %>
+
+    <%= tab_pane :tech do %>
+      <%= f.input :width %>
+      <%= f.input :height %>
+      <%= f.input :depth %>
+      <%= f.input :box_width %>
+      <%= f.input :box_height %>
+      <%= f.input :box_depth %>
+
+      <%= f.input :is_electrical %>
+    <% end %>
+
+    <%= tab_pane :descriptions do %>
+      <% Globalize.with_locale(@locale.slug) do %>
+        <%= f.input :announce %>
+        <%= f.input :content %>
+        <%= f.input :additional %>
       <% end %>
     <% end %>
   <% end %>

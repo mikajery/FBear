@@ -3,7 +3,7 @@ class Good < ActiveRecord::Base
   include SluggableModel
   include AutotitleableModel
 
-  translates :price, :title, :heading, :keywords, :description
+  translates :price, :title, :heading, :keywords, :description, :announce, :content, :additional
 
   has_and_belongs_to_many :good_category
   has_and_belongs_to_many :designer
@@ -36,5 +36,26 @@ class Good < ActiveRecord::Base
   def categories
     good_category
   end
+
+  def size
+    size = []
+
+    size << width if width
+    size << height if height
+    size << depth if depth
+
+    (size.join "&times;").html_safe
+  end
+
+  def box_size
+    size = []
+
+    size << box_width if box_width
+    size << box_height if box_height
+    size << box_depth if box_depth
+
+    (size.join "&times;").html_safe
+  end
+
 
 end

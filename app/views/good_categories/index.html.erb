@@ -21,9 +21,10 @@
         <thead>
           <tr>
             <th>Товар</th>
-            <th width="23%">Категории</th>
-            <th width="23%">Дизайнеры</th>
-            <th width="60px">Цена</th>
+            <th class="center">Категории</th>
+            <th width="18%" class="center">Дизайнеры</th>
+            <th width="18%" class="center">Размеры</th>
+            <th width="60px" class="center">Цена</th>
             <th width="60px"></th>
           </tr>
         </thead>
@@ -33,13 +34,17 @@
               <td>
                 <%= with_pic good, good.picture %>
               </td>
-              <td>
+              <td class="center">
                 <%= link_list(good.good_category) %>
               </td>
-              <td>
+              <td class="center">
                 <%= link_list(good.designer) %>
               </td>
-              <td><%= good.price %></td>
+              <td class="center">
+                <%= good.size %>
+                <%= (content_tag :div, content_tag(:small, good.box_size, class: 'muted')) if good.box_size %>
+              </td>
+              <td class="center"><%= good.price %></td>
               <td>
                 <%= link_to pencil_icon,
                     edit_good_path(good), :class => 'btn btn-mini' %>
