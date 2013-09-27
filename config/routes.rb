@@ -1,11 +1,10 @@
 CMS::Application.routes.draw do
-  get "landing/show"
-  # admin routes
-  namespace :admin do
-    root :to => 'welcome#index'
-  end
+  root :to => 'content#show'
 
   scope '/admin' do
+    # root :to => 'welcome#index', as: 'admin_root'
+    get '' => 'welcome#index', as: 'admin_root'
+
     resources :menus, :templets
 
     resources :post_categories, :good_categories do
@@ -29,6 +28,7 @@ CMS::Application.routes.draw do
   get 'html/map'     => 'html#map'
   
   get 'html/landing' => 'html#landing'
+
   get 'html/catalog' => 'html#catalog'
   get 'html/good'    => 'html#good'
 
@@ -44,5 +44,15 @@ CMS::Application.routes.draw do
   get 'html/blog'    => 'html#blog'
   get 'html/blogs'   => 'html#blogs'
 
-  # get '*url' => 'content#show', format: false
+  routes = []
+
+  Page.routes(':_locale').each do |r|
+    get r[:route] => 'content#show',
+        as: 'locale_' + r[:name].to_s,
+        constraints: lambda{|req| Language.all.map{|a| a.slug}.include?(req.params[:_locale])}
+  end
+
+  Page.routes.each do |r|
+    get r[:route] => 'content#show', as: r[:name]
+  end
 end

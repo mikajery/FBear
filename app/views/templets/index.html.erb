@@ -25,7 +25,7 @@
         <tr>
           <td>
             <%= templet.name %>
-            <%= content_tag :div, content_tag(:small, templet.src + '.hmtl.erb', class: 'muted') %>
+            <%= content_tag :div, content_tag(:small, 'rails ' + templet.src, class: 'muted') %>
           </td>
           <td>
             <%= link_to pencil_icon,

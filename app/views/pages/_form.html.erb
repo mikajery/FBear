@@ -3,11 +3,12 @@
 <%= simple_form_for @page, :html => { :class => 'form-horizontal' } do |f| %>
   <%= form_errors f %>
 
-  <%= tabs [[:main, 'Основное'], [:meta, 'META'], [:content, 'HTML']] %>
+  <%= tabs [[:main, 'Основное'], [:content, 'HTML'], [:meta, 'META']] %>
 
   <%= tab_contents do %>
     <%= tab_pane :main, {active: true} do %>
       <%= f.input :name %>
+      <%= f.input :url %>
       <%= f.association :templet, prompt: 'Выберите шаблон' %>
     <% end %>
 

@@ -80,7 +80,7 @@ class MenuItemsController < Admin::BaseController
     end
 
     def safe_params
-      [:name, :page, :url, :title]
+      [:name, :page_id, :url, :title]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

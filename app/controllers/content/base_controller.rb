@@ -394,11 +394,11 @@ class Content::BaseController < ApplicationController
   end
 
   protected 
-  def render_error(status, exception)
-    respond_to do |format|
-      format.html { render template: "errors/error_#{status}", layout: 'errors', status: status }
-      format.all { render nothing: true, status: status }
+    def render_error(status, exception)
+      respond_to do |format|
+        format.html { render template: "errors/error_#{status}", layout: 'errors', status: status }
+        format.all { render nothing: true, status: status }
+      end
     end
-  end
 	
 end

@@ -23,7 +23,15 @@
     <tbody>
       <% @pages.each do |page| %>
         <tr>
-          <td><%= page.name %></td>
+          <td>
+            <%= page.name %>
+
+            <%= content_tag :div do %>
+              <%= content_tag :small do %>
+                <%= content_tag :span, 'lllooch.ru/', class: :muted %><%= page.url %>
+              <% end %>
+            <% end %>
+          </td>
           <td><%= page.templet.name if page.templet %></td>
           <td>
             <%= link_to pencil_icon,

@@ -7,6 +7,4 @@ class MenuItem < ActiveRecord::Base
   belongs_to :page
   belongs_to :menu
   validates :name, presence: true
-
-
 end

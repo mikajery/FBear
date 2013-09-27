@@ -15,6 +15,7 @@
       <tr>
         <th>Меню</th>
         <th width="40%">Ключ</th>
+        <th width="20%" class="center">Элементы</th>
         <th width="60px"></th>
       </tr>
     </thead>
@@ -23,6 +24,7 @@
         <tr>
           <td><%= menu.name %></td>
           <td><%= menu.key %></td>
+          <td class="center"><%= link_to menu.items.size, menu_menu_items_path(menu) %></td>
           <td>
             <%= link_to pencil_icon,
                         edit_menu_path(menu), :class => 'btn btn-mini' %>
