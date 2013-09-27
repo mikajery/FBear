@@ -19,4 +19,8 @@ class Post < ActiveRecord::Base
     default_url: "/images/:style/missing.png",
     url: "/uploads/blogs/:id/:style/:basename.:extension",
     path: ":rails_root/public/uploads/blogs/:id/:style/:basename.:extension"
+
+  def category
+    post_category
+  end
 end

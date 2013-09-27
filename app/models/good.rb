@@ -33,4 +33,8 @@ class Good < ActiveRecord::Base
     url: "/uploads/good/:id/picture/:style/:basename.:extension",
     path: ":rails_root/public/uploads/good/:id/picture/:style/:basename.:extension"
 
+  def categories
+    good_category
+  end
+
 end

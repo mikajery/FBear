@@ -20,7 +20,8 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Товар</th>
+            <th>Пост</th>
+            <th width="30%">Категория</th>
             <th width="60px"></th>
           </tr>
         </thead>
@@ -29,6 +30,9 @@
             <tr>
               <td>
                 <%= with_pic post, post.picture %>
+              </td>
+              <td>
+                <%= post.category.name if post.category %>
               </td>
               <td>
                 <%= link_to pencil_icon,
