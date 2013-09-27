@@ -27,8 +27,15 @@ module Admin::AdminHelper
     render partial: 'admin/parts/with_pic', locals: {item: item, image: image}
   end
 
-  def image_field item, property, form, size={}
-    render partial: 'admin/parts/form_avatar', locals: {image: item.send(property), property: property, form: form, field: form.file_field(property), size: size}
+  def image_field item, property, form, size=[], options={}
+    render partial: 'admin/parts/form_avatar', locals: {
+      image: item.send(property), 
+      property: property, 
+      form: form, 
+      field: form.file_field(property), 
+      size: size, 
+      options: options
+    }
   end
 
 

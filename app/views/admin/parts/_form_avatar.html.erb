@@ -5,7 +5,7 @@
 
   <div class="controls">
     <div class="fileupload fileupload-new" data-provides="fileupload">
-      <div class="fileupload-preview thumbnail" style="width: <%= defined?(size[0]) ? size[0].to_s + 'px' : '200px' %>; height: <%= defined?(size[1]) ? size[1].to_s + 'px' : '100px' %>">
+      <div class="fileupload-preview thumbnail" style="width: <%= defined?(size[0]) ? size[0].to_s + 'px' : '200px' %>; height: <%= defined?(size[1]) ? size[1].to_s + 'px' : '100px' %><%= if options[:transparent] then '; background: url(' + image_url('admin/transparent.png') + ');' end %>">
         <%= image_tag image.url(:preview) if image and defined? image.url %>
       </div>
 
