@@ -30,8 +30,13 @@ CMS::Application.routes.draw do
       get ':locale', on: :member, action: :edit, as: 'languaged'
     end
 
+    resources :three60s do
+      get ':locale', on: :member, action: :edit, as: 'languaged'
+    end
+
     resources :goods do
-      resources :pdfs, only: [:new, :create]
+      resources :pdfs
+      resources :three60s, only: [:new, :create]
     end
   end
 

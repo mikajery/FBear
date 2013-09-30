@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130930101949) do
+ActiveRecord::Schema.define(version: 20130930114921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -199,7 +199,7 @@ ActiveRecord::Schema.define(version: 20130930101949) do
 
   create_table "media_files", force: true do |t|
     t.string   "type"
-    t.integer  "parent_id"
+    t.integer  "media_file_id"
     t.integer  "good_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -211,7 +211,7 @@ ActiveRecord::Schema.define(version: 20130930101949) do
   end
 
   add_index "media_files", ["good_id"], name: "index_media_files_on_good_id", using: :btree
-  add_index "media_files", ["parent_id"], name: "index_media_files_on_parent_id", using: :btree
+  add_index "media_files", ["media_file_id"], name: "index_media_files_on_media_file_id", using: :btree
 
   create_table "menu_item_translations", force: true do |t|
     t.integer  "menu_item_id", null: false

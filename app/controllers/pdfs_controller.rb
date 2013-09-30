@@ -2,7 +2,7 @@ class PdfsController < Admin::BaseController
   include MultilingualController
 
   before_action :set_pdf, only: [:show, :edit, :update, :destroy]
-  before_action :set_good, only: [:new, :edit, :create, :update]
+  before_action :set_good, only: [:new, :edit, :create, :update, :destroy]
   
 
   # GET /pdfs
@@ -76,7 +76,11 @@ class PdfsController < Admin::BaseController
     end
 
     def set_good
-      @good = @pdf.good || Good.find(params[:good_id] || pdf_params[:good_id])
+      if @pdf.nil?
+        @good = Good.find(params[:good_id] || pdf_params[:good_id])
+      else
+        @good = @pdf.good
+      end
     end
 
     def safe_params

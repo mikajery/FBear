@@ -12,6 +12,7 @@ class Good < ActiveRecord::Base
   has_one :video
   has_one :panorama
   has_many :pdfs
+  has_many :three60s, conditions: {media_file_id: nil}
 
   validates :name, presence: true
   validates :designer, presence: true
