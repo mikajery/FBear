@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130930122959) do
+ActiveRecord::Schema.define(version: 20130930160012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -259,15 +259,22 @@ ActiveRecord::Schema.define(version: 20130930122959) do
   add_index "page_translations", ["locale"], name: "index_page_translations_on_locale", using: :btree
   add_index "page_translations", ["page_id"], name: "index_page_translations_on_page_id", using: :btree
 
+  create_table "page_types", force: true do |t|
+    t.string   "name"
+    t.string   "method"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "pages", force: true do |t|
-    t.string   "name",       null: false
-    t.integer  "templet_id"
+    t.string   "name",         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "url"
+    t.integer  "page_type_id"
   end
 
-  add_index "pages", ["templet_id"], name: "index_pages_on_templet_id", using: :btree
+  add_index "pages", ["page_type_id"], name: "index_pages_on_page_type_id", using: :btree
 
   create_table "pdf_translations", force: true do |t|
     t.integer  "pdf_id",     null: false

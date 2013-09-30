@@ -25,6 +25,8 @@ CMS::Application.routes.draw do
     end
 
     resources :designers, :goods, :languages, :menu_items, :pages, :posts, :settings, :materials do
+      get 'edit', on: :member, action: :edit
+      get 'new', on: :member, action: :new
       get ':locale', on: :member, action: :edit, as: 'languaged'
     end
 
@@ -66,6 +68,15 @@ CMS::Application.routes.draw do
   get 'html/blogs'   => 'html#blogs'
 
   # routes = []
+  Page.all.each do |page|
+    page.routes.each do |r|
+      if r[:as]
+        get page.routed_url(r) => 'content#' + r[:action].to_s, as: r[:as] if r[:as]
+      else
+        get page.routed_url(r) => 'content#' + r[:action].to_s
+      end
+    end
+  end
 
   # Page.routes(':_locale').each do |r|
   #   get r[:route] => 'content#show',
@@ -74,6 +85,7 @@ CMS::Application.routes.draw do
   # end
 
   # Page.routes.each do |r|
-  #   get r[:route] => 'content#show', as: r[:name]
+  #   abort r.to_s
+  #   # get r[:route] => 'content#show', as: r[:name]
   # end
 end

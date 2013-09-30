@@ -70,7 +70,7 @@ class PagesController < Admin::BaseController
     end
 
     def safe_params
-      [:name, :templet_id, :title, :heading, :keywords, :description, :content, :url]
+      [:name, :page_type_id, :title, :heading, :keywords, :description, :content, :url]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

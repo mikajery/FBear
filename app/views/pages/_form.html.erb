@@ -8,8 +8,8 @@
   <%= tab_contents do %>
     <%= tab_pane :main, {active: true} do %>
       <%= f.input :name %>
-      <%= f.input :url %>
-      <%= f.association :templet, prompt: 'Выберите шаблон' %>
+      <%= f.input :url, as: :string %>
+      <%= f.association :page_type, include_blank: false %>
     <% end %>
 
     <%= tab_pane :meta do %>

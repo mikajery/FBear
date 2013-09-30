@@ -3,54 +3,24 @@ class Page < ActiveRecord::Base
   include AutotitleableModel
   
   translates :title, :heading, :keywords, :description, :content
+  belongs_to :page_type
 
-  belongs_to :templet
-  validates :name, presence: true
-  validates :url, presence: true
+  validates :name,      presence: true
+  validates :url,       presence: true
+  validates :page_type, presence: true
 
-  def self.routes prefix=false
-    routes = []
-    all.each do |i|
-      routes = routes + i.routes(prefix)
-    end
-
-    routes
+  def type
+    page_type
   end
 
-  def routes prefix
-    routes = []
-
-    if prefix
-      prefix = [prefix]
-    else
-      prefix = []
-    end
-
-    if '/*' == url[-2, 2]
-      prefix << url[0..-3]
-    else
-      prefix << url
-      routes << { route: prefix.join('/'), name: templet.src }
-    end
-
-
-    
-    params.each do |r|
-      route = prefix + [r[:route]]
-      name = [templet.src]
-      name << r[:name] unless r[:name].nil?
-      routes << { route: route.join('/'), name: name.join('_')  }
-    end
-
-    routes
+  def routes
+    type.routes url
   end
 
-  def params
-    case templet.src
-    when 'blog'
-      [{ route: ':slug'}, { name: 'show', route: ':slug/show/:id'} ]
-    else 
-      []
-    end
+  def routed_url route
+    path = [url]
+    path << route[:route]
+
+    path.join "/"
   end
 end

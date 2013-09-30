@@ -1,0 +1,5 @@
+- name: Обычная страница
+  method: simple
+
+- name: Страница с элементами
+  method: items

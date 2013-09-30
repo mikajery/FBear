@@ -16,7 +16,7 @@
     <thead>
       <tr>
         <th>Страница</th>
-        <th>Шаблон</th>
+        <th>Тип</th>
         <th width="60px"></th>
       </tr>
     </thead>
@@ -26,13 +26,15 @@
           <td>
             <%= page.name %>
 
-            <%= content_tag :div do %>
-              <%= content_tag :small do %>
-                <%= content_tag :span, 'lllooch.ru/', class: :muted %><%= page.url %>
+            <% page.routes.each do |r| %>
+              <%= content_tag :div do %>
+                <%= content_tag :small do %>
+                  <%= content_tag :span, 'lllooch.ru/', class: :muted %><%= page.routed_url r %>
+                <% end %>
               <% end %>
             <% end %>
           </td>
-          <td><%= page.templet.name if page.templet %></td>
+          <td><%= page.type.name if page.type %></td>
           <td>
             <%= link_to pencil_icon,
                 edit_page_path(page), :class => 'btn btn-mini' %>

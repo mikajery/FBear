@@ -148,7 +148,8 @@ ru:
 
       page: 
         name: "Страница"
-        templet: "Шаблон"
+        page_type: "Тип страницы"
+        url: "Ссылка"
         title: "Название"
         heading: "Заголовок"
         keywords: "Ключевые слова"
