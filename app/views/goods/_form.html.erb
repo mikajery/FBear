@@ -93,7 +93,7 @@
               <th>
                 Файл
               </th>
-              <th>
+              <th class="center">
                 Кадров
               </th>
               <th width="60px">
@@ -104,9 +104,9 @@
             <% @good.three60s.each do |three60| %>
               <tr>
                 <td>
-                  <i class="icon icon-book"></i> <%= three60.name %>
+                  <%= with_pic three60, three60.src %>
                 </td>
-                <td>
+                <td class="center">
                   <%= three60.items.size %>
                 </td>
                 <td>

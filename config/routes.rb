@@ -1,6 +1,8 @@
 CMS::Application.routes.draw do
   root :to => 'content#show'
 
+  get '/admin' => 'admin/welcome#index'
+
   scope '/admin' do
     # root :to => 'welcome#index', as: 'admin_root'
     get '' => 'welcome#index', as: 'admin_root'
