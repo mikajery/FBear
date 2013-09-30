@@ -169,9 +169,9 @@
 
     <%= tab_pane :descriptions do %>
       <% Globalize.with_locale(@locale.slug) do %>
-        <%= f.input :announce %>
-        <%= f.input :content %>
-        <%= f.input :additional %>
+        <%= f.input :announce, as: :html %>
+        <%= f.input :content, as: :html %>
+        <%= f.input :additional, as: :html %>
       <% end %>
     <% end %>
   <% end %>

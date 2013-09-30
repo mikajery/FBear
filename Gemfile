@@ -93,3 +93,4 @@ gem "select2-rails"
 
 gem 'carrierwave'
 gem 'rubyzip'
+gem 'redactor-rails'
