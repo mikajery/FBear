@@ -1,4 +1,7 @@
 ru:
+  errors:
+    messages:
+      extension_white_list_error: 'неверный формат файла!'
   simple_form:
     "да": 'Да'
     "нет": 'Нет'

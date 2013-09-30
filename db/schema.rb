@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130930114921) do
+ActiveRecord::Schema.define(version: 20130930122959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -148,6 +148,7 @@ ActiveRecord::Schema.define(version: 20130930114921) do
     t.decimal  "box_height"
     t.decimal  "box_depth"
     t.boolean  "is_electrical"
+    t.text     "vimeo"
   end
 
   create_table "goods_materials", force: true do |t|

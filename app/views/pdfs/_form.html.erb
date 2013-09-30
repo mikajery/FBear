@@ -17,6 +17,6 @@
   <div class="form-actions">
     <%= f.button :submit, save_or_update(@pdf), :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                edit_good_path(@good), :class => 'btn' %>
+        edit_good_path(@good, anchor: "pdfs"), :class => 'btn' %>
   </div>
 <% end %>

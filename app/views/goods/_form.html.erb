@@ -9,7 +9,6 @@
       [:three60, '360-просмотр'], 
       [:video, 'Видео'], 
       [:panorama, 'Панорама'], 
-      [:descriptions, 'Описания'], 
       [:meta, 'META']] %>
 
   <%= tab_contents do %>
@@ -130,7 +129,7 @@
     <% end %>
 
     <%= tab_pane :video do %>
-      
+      <%= f.input :vimeo %>
     <% end %>
 
     <%= tab_pane :panorama do %>

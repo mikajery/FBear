@@ -38,7 +38,7 @@ class Three60sController < Admin::BaseController
 
     respond_to do |format|
       if @three60.save
-        format.html { redirect_to edit_good_url(@good), notice: 'Three60 was successfully created.' }
+        format.html { redirect_to edit_good_url(@good, anchor: "three60"), notice: 'Three60 was successfully created.' }
         format.json { render action: 'show', status: :created, location: @three60 }
       else
         format.html { render action: 'new' }
@@ -52,7 +52,7 @@ class Three60sController < Admin::BaseController
   def update
     respond_to do |format|
       if @three60.update(three60_params)
-        format.html { redirect_to edit_good_url(@good), notice: 'Three60 was successfully updated.' }
+        format.html { redirect_to edit_good_url(@good, anchor: "three60"), notice: 'Three60 was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -66,7 +66,7 @@ class Three60sController < Admin::BaseController
   def destroy
     @three60.destroy
     respond_to do |format|
-      format.html { redirect_to edit_good_url(@good) }
+      format.html { redirect_to edit_good_url(@good, anchor: "three60") }
       format.json { head :no_content }
     end
   end

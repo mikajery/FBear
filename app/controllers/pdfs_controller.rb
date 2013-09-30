@@ -34,7 +34,7 @@ class PdfsController < Admin::BaseController
 
     respond_to do |format|
       if @pdf.save
-        format.html { redirect_to edit_good_url(@good), notice: 'Pdf was successfully created.' }
+        format.html { redirect_to edit_good_url(@good, anchor: "pdfs"), notice: 'Pdf was successfully created.' }
         format.json { render action: 'show', status: :created, location: @pdf }
       else
         format.html { render action: 'new' }
@@ -48,7 +48,7 @@ class PdfsController < Admin::BaseController
   def update
     respond_to do |format|
       if @pdf.update(pdf_params)
-        format.html { redirect_to edit_good_url(@good), notice: 'Pdf was successfully updated.' }
+        format.html { redirect_to edit_good_url(@good, anchor: "pdfs"), notice: 'Pdf was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -64,7 +64,7 @@ class PdfsController < Admin::BaseController
     
     @pdf.destroy
     respond_to do |format|
-      format.html { redirect_to edit_good_url(@good) }
+      format.html { redirect_to edit_good_url(@good, anchor: "pdfs") }
       format.json { head :no_content }
     end
   end
