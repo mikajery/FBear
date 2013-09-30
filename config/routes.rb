@@ -7,7 +7,7 @@ CMS::Application.routes.draw do
     # root :to => 'welcome#index', as: 'admin_root'
     get '' => 'welcome#index', as: 'admin_root'
 
-    resources :menus, :templets
+    resources :menus
 
     resources :good_categories, path: 'catalog' do
       get 'items', on: :member, action: :index, as: :items
@@ -65,15 +65,15 @@ CMS::Application.routes.draw do
   get 'html/blog'    => 'html#blog'
   get 'html/blogs'   => 'html#blogs'
 
-  routes = []
+  # routes = []
 
-  Page.routes(':_locale').each do |r|
-    get r[:route] => 'content#show',
-        as: 'locale_' + r[:name].to_s,
-        constraints: lambda{|req| Language.all.map{|a| a.slug}.include?(req.params[:_locale])}
-  end
+  # Page.routes(':_locale').each do |r|
+  #   get r[:route] => 'content#show',
+  #       as: 'locale_' + r[:name].to_s,
+  #       constraints: lambda{|req| Language.all.map{|a| a.slug}.include?(req.params[:_locale])}
+  # end
 
-  Page.routes.each do |r|
-    get r[:route] => 'content#show', as: r[:name]
-  end
+  # Page.routes.each do |r|
+  #   get r[:route] => 'content#show', as: r[:name]
+  # end
 end
