@@ -82,6 +82,10 @@ module Admin::AdminHelper
       name = 'categories'
     end
 
+    # if dirty and 'pdfs' == name
+    #   name = 'good_pdfs'
+    # end
+
     name.singularize
   end
 

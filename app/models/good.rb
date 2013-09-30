@@ -9,6 +9,10 @@ class Good < ActiveRecord::Base
   has_and_belongs_to_many :designer
   has_and_belongs_to_many :material
 
+  has_one :video
+  has_one :panorama
+  has_many :pdfs
+
   validates :name, presence: true
   validates :designer, presence: true
 
@@ -57,5 +61,13 @@ class Good < ActiveRecord::Base
     (size.join "&times;").html_safe
   end
 
+  def update params
+    if params[:panorama]
+      panorama = Panorama.create({
+        good: self,
+        src: params[:panorama]
+      })
+    end
+  end
 
 end

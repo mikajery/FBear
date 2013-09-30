@@ -102,6 +102,10 @@ ru:
         title: "Название"
         url: "Ссылка"
 
+      pdf:
+        name: "Название"
+        src: "PDF"
+
       good:
         name: "Товар"
         designer: "Дизайнер"

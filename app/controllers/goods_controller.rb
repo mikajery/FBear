@@ -75,6 +75,7 @@ class GoodsController < Admin::BaseController
         :width, :depth, :height, :box_depth, :box_width, :box_height, :is_electrical,
         :announce, :content, :additional,
         :title, :heading, :keywords, :description, 
+        :panorama, :video,
         :good_category_ids => [], :designer_ids => [], :material_ids => []
       ]
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130927051538) do
+ActiveRecord::Schema.define(version: 20130930101949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -197,6 +197,22 @@ ActiveRecord::Schema.define(version: 20130927051538) do
     t.datetime "picture_updated_at"
   end
 
+  create_table "media_files", force: true do |t|
+    t.string   "type"
+    t.integer  "parent_id"
+    t.integer  "good_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "src_file_name"
+    t.string   "src_content_type"
+    t.integer  "src_file_size"
+    t.datetime "src_updated_at"
+    t.string   "name"
+  end
+
+  add_index "media_files", ["good_id"], name: "index_media_files_on_good_id", using: :btree
+  add_index "media_files", ["parent_id"], name: "index_media_files_on_parent_id", using: :btree
+
   create_table "menu_item_translations", force: true do |t|
     t.integer  "menu_item_id", null: false
     t.string   "locale",       null: false
@@ -251,6 +267,27 @@ ActiveRecord::Schema.define(version: 20130927051538) do
   end
 
   add_index "pages", ["templet_id"], name: "index_pages_on_templet_id", using: :btree
+
+  create_table "pdf_translations", force: true do |t|
+    t.integer  "pdf_id",     null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
+
+  add_index "pdf_translations", ["locale"], name: "index_pdf_translations_on_locale", using: :btree
+  add_index "pdf_translations", ["pdf_id"], name: "index_pdf_translations_on_pdf_id", using: :btree
+
+  create_table "pdfs", force: true do |t|
+    t.integer  "good_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "src"
+    t.integer  "size"
+  end
+
+  add_index "pdfs", ["good_id"], name: "index_pdfs_on_good_id", using: :btree
 
   create_table "post_translations", force: true do |t|
     t.integer  "post_id",     null: false

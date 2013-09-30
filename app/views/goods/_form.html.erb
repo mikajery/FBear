@@ -3,7 +3,14 @@
 <%= simple_form_for @good, :html => { :class => 'form-horizontal' } do |f| %>
   <%= form_errors f %>
 
-  <%= tabs [[:main, 'Основное'], [:logo, 'Лого'], [:picture, 'Изображение'], [:tech, 'Характеристики'], [:descriptions, 'Описания'], [:meta, 'META']] %>
+  <%= tabs [[:main, 'Основное'], [:logo, 'Лого'], [:picture, 'Изображение'], [:tech, 'Характеристики'], 
+      [:descriptions, 'Описания'], 
+      [:pdfs, 'PDF'], 
+      [:three60, '360-просмотр'], 
+      [:video, 'Видео'], 
+      [:panorama, 'Панорама'], 
+      [:descriptions, 'Описания'], 
+      [:meta, 'META']] %>
 
   <%= tab_contents do %>
     <%= tab_pane :main, {active: true} do %>
@@ -23,6 +30,75 @@
     <%= tab_pane :logo do %>
       <%= image_field @good, 'logo', f, [300, 300], transparent: true %>
     <% end %>
+
+    <%= tab_pane :pdfs do %>
+      <% if @good.pdfs.empty? %>
+        <div class="well">
+          Опаньки.. Ни одного PDF-файла не добавлено..
+        </div>
+      <% else %>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>
+                Файл
+              </th>
+              <th width="30%" class="center">
+                Размер
+              </th>
+              <th width="60px">
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @good.pdfs.each do |pdf| %>
+              <tr>
+                <td>
+                  <i class="icon icon-file"></i> <%= pdf.name %>
+                  <%= content_tag :div, content_tag(:small, pdf.filename), class: 'muted' if pdf.src %>
+                </td>
+                <td class="center">
+                  <%= number_to_human_size pdf.size %>
+                </td>
+                <td>
+                  <%= link_to pencil_icon,
+                      edit_pdf_path(pdf), :class => 'btn btn-mini' %>
+                  <%= link_to trash_icon(true),
+                      pdf_path(pdf),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+
+      <a href="<%= new_good_pdf_path @good %>" class="btn">
+        <i class="icon-file"></i> Добавить файл
+      </a>
+
+    <% end %>
+
+    <%= tab_pane :three60 do %>
+      
+    <% end %>
+
+    <%= tab_pane :video do %>
+      
+    <% end %>
+
+    <%= tab_pane :panorama do %>
+      <%= image_field @good, 'panorama', f, [300, 300], transparent: true %>
+    <% end %>
+
+
+    <%= tab_pane :logo do %>
+      <%= image_field @good, 'logo', f, [300, 300], transparent: true %>
+    <% end %>
+
+
 
     <%= tab_pane :picture do %>
       <%= image_field @good, 'picture', f, [300, 300] %>

@@ -7,8 +7,14 @@ CMS::Application.routes.draw do
 
     resources :menus, :templets
 
-    resources :post_categories, :good_categories do
+    resources :good_categories, path: 'catalog' do
       get 'items', on: :member, action: :index, as: :items
+      get ':locale', on: :member, action: :edit, as: 'languaged'
+    end
+
+    resources :post_categories, path: 'blogs' do
+      get 'items', on: :member, action: :index, as: :items
+      get ':locale', on: :member, action: :edit, as: 'languaged'
     end
 
     resources :menus do
@@ -16,8 +22,16 @@ CMS::Application.routes.draw do
       # get 'items', on: :member, action: :index, as: :items
     end
 
-    resources :post_categories, :good_categories, :designers, :goods, :languages, :menu_items, :pages, :posts, :settings, :materials do
+    resources :designers, :goods, :languages, :menu_items, :pages, :posts, :settings, :materials do
       get ':locale', on: :member, action: :edit, as: 'languaged'
+    end
+
+    resources :pdfs do
+      get ':locale', on: :member, action: :edit, as: 'languaged'
+    end
+
+    resources :goods do
+      resources :pdfs, only: [:new, :create]
     end
   end
 
