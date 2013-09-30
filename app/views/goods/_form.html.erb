@@ -53,8 +53,10 @@
             <% @good.pdfs.each do |pdf| %>
               <tr>
                 <td>
-                  <i class="icon icon-file"></i> <%= pdf.name %>
-                  <%= content_tag :div, content_tag(:small, pdf.filename), class: 'muted' if pdf.src %>
+                  <% Globalize.with_locale(@locale.slug) do %>
+                    <i class="icon icon-file"></i> <%= pdf.name %>
+                    <%= content_tag :div, content_tag(:small, pdf.filename), class: 'muted' if pdf.src %>
+                  <% end %>
                 </td>
                 <td class="center">
                   <%= number_to_human_size pdf.size %>
