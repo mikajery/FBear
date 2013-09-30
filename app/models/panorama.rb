@@ -1,4 +1,4 @@
-class Panorama < MediaFile
+class Panorama < MediaFile  
   belongs_to :good
 
   attr_accessor :src

@@ -1,4 +1,5 @@
 class Category < ActiveRecord::Base  
+  include SortedByName
   include MultilingualModel
   include SluggableModel
   include AutotitleableModel

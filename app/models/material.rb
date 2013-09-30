@@ -1,4 +1,5 @@
 class Material < ActiveRecord::Base
+  include SortedByName  
   include MultilingualModel
 
   translates :title, :description

@@ -1,4 +1,5 @@
 class Page < ActiveRecord::Base
+  include SortedByName
   include MultilingualModel
   include AutotitleableModel
   
@@ -14,7 +15,13 @@ class Page < ActiveRecord::Base
   end
 
   def routes
-    type.routes url
+    type.routes(url).map do |route|
+      unless route[:controller]
+        route.merge({controller: url.underscore.pluralize}) 
+      else 
+        route
+      end
+    end
   end
 
   def routed_url route

@@ -1,4 +1,5 @@
 CMS::Application.routes.draw do
+  get "content/show"
   root :to => 'content#show'
 
   get '/admin' => 'admin/welcome#index'
@@ -25,8 +26,6 @@ CMS::Application.routes.draw do
     end
 
     resources :designers, :goods, :languages, :menu_items, :pages, :posts, :settings, :materials do
-      get 'edit', on: :member, action: :edit
-      get 'new', on: :member, action: :new
       get ':locale', on: :member, action: :edit, as: 'languaged'
     end
 
@@ -70,11 +69,11 @@ CMS::Application.routes.draw do
   # routes = []
   Page.all.each do |page|
     page.routes.each do |r|
-      if r[:as]
-        get page.routed_url(r) => 'content#' + r[:action].to_s, as: r[:as] if r[:as]
-      else
-        get page.routed_url(r) => 'content#' + r[:action].to_s
-      end
+      options = {
+        page.routed_url(r) => 'content/' + r[:controller].to_s + '#' + r[:action].to_s
+      }
+      options[:as] = r[:as] if r[:as]
+      get options
     end
   end
 
@@ -82,10 +81,5 @@ CMS::Application.routes.draw do
   #   get r[:route] => 'content#show',
   #       as: 'locale_' + r[:name].to_s,
   #       constraints: lambda{|req| Language.all.map{|a| a.slug}.include?(req.params[:_locale])}
-  # end
-
-  # Page.routes.each do |r|
-  #   abort r.to_s
-  #   # get r[:route] => 'content#show', as: r[:name]
   # end
 end

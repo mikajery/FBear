@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
+  include SortedByName  
   include MultilingualModel
   include AutotitleableModel
   include SluggableModel

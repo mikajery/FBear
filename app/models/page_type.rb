@@ -10,12 +10,12 @@ class PageType < ActiveRecord::Base
 
   private 
     def simple_routes url
-      [{route: '', action: :index}]
+      [{route: '', action: :show, controller: 'content'}]
     end
 
     def items_routes url
       [
-        {route: '',      action: :index},
+        {route: '',      action: :list},
         {route: ':slug', action: :item, as: url + '_item'}
       ]
     end

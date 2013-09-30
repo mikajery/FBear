@@ -1,4 +1,4 @@
-class Pdf < ActiveRecord::Base
+class Pdf < ActiveRecord::Base  
   include MultilingualModel
 
   translates :name

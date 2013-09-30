@@ -1,4 +1,5 @@
 class Designer < ActiveRecord::Base
+  include SortedByName  
   include MultilingualModel
   include AutotitleableModel
   

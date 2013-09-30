@@ -1,4 +1,6 @@
 class MediaFile < ActiveRecord::Base
+  include SortedByName
+    
   belongs_to :media_file
   belongs_to :good
 
