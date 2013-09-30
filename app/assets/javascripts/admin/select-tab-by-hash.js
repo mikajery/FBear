@@ -11,7 +11,7 @@ var Tabbable = function(el) {
 	el.on('shown', function(e) {
 		if (0 == el.closest('.disabled').size())
 		{
-			location.hash = $(e.target).attr('href').substr(1);
+			location.hash = $(e.target).attr('href');
 		}
 
 		e.preventDefault();

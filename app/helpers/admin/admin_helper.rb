@@ -67,8 +67,8 @@ module Admin::AdminHelper
     icon "plus", white
   end
 
-  def tabs items
-    render partial: 'admin/parts/tabs', locals: {items: items}
+  def tabs items, options={}
+    render partial: 'admin/parts/tabs', locals: {items: items, options: options}
   end
 
   def get_item
@@ -81,10 +81,6 @@ module Admin::AdminHelper
     if !dirty and ['good_categories', 'post_categories'].include? name
       name = 'categories'
     end
-
-    # if dirty and 'pdfs' == name
-    #   name = 'good_pdfs'
-    # end
 
     name.singularize
   end

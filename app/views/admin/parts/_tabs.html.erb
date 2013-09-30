@@ -1,4 +1,4 @@
-<ul class="nav nav-tabs">
+<%= content_tag :ul, class: 'nav nav-tabs', data: options[:data] do %>
   <% items.each_with_index do |item, index| %>
     <% options = item[2] || {} %>
 
@@ -14,4 +14,4 @@
       <% end %>
     <% end %>
   <% end %>
-</ul>
+<% end %>
