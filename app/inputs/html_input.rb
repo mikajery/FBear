@@ -2,7 +2,7 @@ class HtmlInput < SimpleForm::Inputs::FileInput
   def input
     # get this custom attribute from :input_html
     # size = input_html_options.delete(:preview_size)
-    input_html_options[:data] = {action: 'redactor'}
+    input_html_options[:data] = {action: 'redactor', minheight: '180'}
     input_html_options[:class] << 'input-block-level'
     res = ''
     # if object.send("#{attribute_name}?")

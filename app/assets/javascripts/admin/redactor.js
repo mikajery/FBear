@@ -1,5 +1,9 @@
 var Redactor = function(el) {
-  el.redactor();
+  var options = {};
+  if (el.data('minheight'))
+    options['minHeight'] = el.data('minheight')
+
+  el.redactor(options);
 }
 
 $(function() {
