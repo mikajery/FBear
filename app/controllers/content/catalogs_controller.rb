@@ -6,24 +6,27 @@ class Content::CatalogsController < Content::BaseController
   end
 
   def item
-    @category = GoodCategory.find_by_slug(params[:slug])
-    @items = @category.posts
+    @items = @category.goods
 
     render 'list'
   end
 
   private
     def navigation
-      items = []
+      links = []
+
+      if params[:slug]
+        @category = GoodCategory.find_by_slug(params[:slug])
+      end
 
       GoodCategory.all.each do |i|
-        items << { active: false, href: blogs_item_path(i.slug), title: i.title }
+        links << { active: (true if @category == i), href: catalog_item_path(i.slug), title: i.title }
       end
 
       @navigation = {
         helper: t('navigation.catalog.helper'),
         title: t('navigation.catalog.title'),
-        items: items
+        items: links
       }
     end  
 end

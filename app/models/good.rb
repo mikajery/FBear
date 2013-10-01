@@ -12,6 +12,9 @@ class Good < ActiveRecord::Base
 
   has_one :video
   has_many :pdfs
+  
+  has_many :good_categories, through: :category_good
+  has_many :category_goods
 
   has_many :three60s, -> { where media_file_id: nil}
 

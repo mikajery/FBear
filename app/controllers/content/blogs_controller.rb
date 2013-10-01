@@ -6,9 +6,7 @@ class Content::BlogsController < Content::BaseController
   end
 
   def item
-    @category = PostCategory.find_by_slug(params[:slug])
     @items = @category.posts
-
     render 'list'
   end
 
@@ -16,8 +14,12 @@ class Content::BlogsController < Content::BaseController
     def navigation
       items = []
 
+      if params[:slug]
+        @category = PostCategory.find_by_slug(params[:slug])
+      end
+
       PostCategory.all.each do |i|
-        items << { active: false, href: blogs_item_path(i.slug), title: i.title }
+        items << { active: (true if @category == i), href: blogs_item_path(i.slug), title: i.title }
       end
 
       @navigation = {
