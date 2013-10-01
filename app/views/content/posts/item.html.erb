@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="blog">
+    <h1>
+      <%= @post.title %>
+    </h1>
+
+    <div class="blog-info">
+      <%= @post.content.html_safe %>
+    </div>
+  </div>
+
+  <% unless @post.comments.empty? %>
+    <%= render 'partials/comments/comments', post: @post %>
+  <% end %>
+</div>

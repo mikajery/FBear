@@ -6,6 +6,8 @@ class Post < ActiveRecord::Base
   
   translates :announce, :title, :heading, :keywords, :description, :content
 
+  has_many :post_comments
+
   belongs_to :post_category
   belongs_to :blog_color
 
@@ -29,5 +31,9 @@ class Post < ActiveRecord::Base
 
   def color
     blog_color
+  end
+
+  def comments
+    post_comments
   end
 end

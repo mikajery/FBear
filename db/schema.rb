@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131001034936) do
+ActiveRecord::Schema.define(version: 20131001043551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -307,6 +307,19 @@ ActiveRecord::Schema.define(version: 20131001034936) do
   end
 
   add_index "pdfs", ["good_id"], name: "index_pdfs_on_good_id", using: :btree
+
+  create_table "post_comments", force: true do |t|
+    t.boolean  "is_safe"
+    t.string   "author"
+    t.string   "email"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "locale"
+    t.integer  "post_id"
+  end
+
+  add_index "post_comments", ["post_id"], name: "index_post_comments_on_post_id", using: :btree
 
   create_table "post_translations", force: true do |t|
     t.integer  "post_id",     null: false

@@ -31,6 +31,7 @@ class Content::BaseController < ApplicationController
     def get_path
       Page.all.each do |page|
         page.routes.each do |r|
+
           if '/' + page.routed_url(r) == request.path + '/'
             @current_page = page
             break
