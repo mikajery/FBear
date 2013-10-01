@@ -137,7 +137,7 @@
           </li>
         <% end %>
 
-        <% if @good.three60s %>
+        <% unless @good.three60s.empty? %>
           <li data-product-media="360">
             <i class="product-icon icon-360"></i>
             360 просмотр

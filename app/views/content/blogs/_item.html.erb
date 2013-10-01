@@ -15,7 +15,7 @@
 				</h2>
 
 				<div class="blog-desc">
-					<%= blog.announce.html_safe %>
+					<%= blog.announce.truncate(300).html_safe if blog.announce %>
 				</div>
 
 				<div class="blog-category">

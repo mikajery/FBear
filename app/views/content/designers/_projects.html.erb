@@ -1,11 +1,11 @@
 <h2>
-	Проекты Антона Цибарева
+	Проекты
 </h2>
 
 <div class="designer-projects">
 	<div class="row">
 		<% projects.each do |p| %>
-			<%= render 'content/designer/project', :project => p %>
+			<%= render 'project', :project => p %>
 		<% end %>
 	</div>
 </div>

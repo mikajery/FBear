@@ -1,1 +1,5 @@
-<%= render 'partials/blogs/blogs', items: @items %>
+<ul class="blogs">
+  <% @items.each do |i| %>
+    <%= render 'item', :blog => i %>
+  <% end %>
+</ul>

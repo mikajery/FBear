@@ -4,7 +4,7 @@ class Designer < ActiveRecord::Base
 
   translates :title, :heading, :keywords, :description, :content, :motto
 
-  has_many :designer_goods
+  has_and_belongs_to_many :goods
   validates :name, presence: true
 
   attr_accessor :avatar
@@ -17,5 +17,4 @@ class Designer < ActiveRecord::Base
     default_url: "/images/:style/missing.png",
     url: "/uploads/designers/:id/logo/:style/:basename.:extension",
     path: ":rails_root/public/uploads/designers/:id/logo/:style/:basename.:extension"
-
 end

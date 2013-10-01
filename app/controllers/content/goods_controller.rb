@@ -6,6 +6,10 @@ class Content::GoodsController < Content::BaseController
     @body_dark = true
   end
 
+  def get_item
+    @good
+  end
+
   private
     def navigation
       links = []

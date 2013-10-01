@@ -10,6 +10,6 @@
   </div>
 
   <% unless @post.comments.empty? %>
-    <%= render 'partials/comments/comments', post: @post %>
+    <%= render 'comments', post: @post %>
   <% end %>
 </div>

@@ -5,7 +5,7 @@
 <ul class="b-menu b-content-menu" data-toggle-item="header-menu">
   <% if menu('header') %>
   	<% menu('header').items.each do |item| %>
-  		<%= render 'partials/menu/responsive_item', :item => item %>
+  		<%= render 'content/menu/responsive_item', :item => item %>
   	<% end %>
   <% end %>
 </ul>
