@@ -1,4 +1,5 @@
 CMS::Application.routes.draw do
+  mount RedactorRails::Engine => '/redactor_rails'
   root :to => 'content/content#index'
 
   get '/admin' => 'admin/welcome#index'

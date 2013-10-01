@@ -73,6 +73,11 @@ namespace :deploy do
     run "cd #{current_path}; bundle exec rake db:create RAILS_ENV=#{rails_env}"
   end
 
+  desc "create symlink to uploads"
+  task :uploads do
+    run "cd #{current_path}/public; rm -r uploads; ln -s #{deploy_to}shared/uploads"
+  end
+
 
   desc 'Stop application'
   task :stop, :roles => :app do
@@ -88,7 +93,7 @@ end
 
 set :max_asset_age, 2 ## Set asset age in minutes to test modified date against.
 
-after 'deploy:finalize_update', 'deploy:assets:determine_modified_assets', 'deploy:assets:conditionally_precompile'
+after 'deploy:finalize_update', 'deploy:assets:determine_modified_assets', 'deploy:assets:conditionally_precompile', 'deploy:uploads'
 
 namespace :deploy do
   namespace :assets do
