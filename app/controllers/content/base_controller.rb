@@ -27,22 +27,56 @@ class Content::BaseController < ApplicationController
   def list
   end
 
+  def meta
+    get_meta
+  end
+
   protected 
+    def get_item
+      @current_page
+    end
+
+    def page_title_suffix
+      ''
+    end
+
+    def page_title_prefix
+      ''
+    end
+
+    def get_meta
+      item = get_item
+
+      if item.nil? 
+        item = @current_page
+      end
+
+      if item
+        title = []
+        title << page_title_prefix.to_s if page_title_prefix
+        title << item.title.to_s if item.title
+        title << page_title_suffix.to_s if page_title_suffix
+
+        {
+          title: title.join(" "),
+          heading: item.heading,
+          keywords: item.keywords,
+          description: item.description
+        }
+      else
+        {}
+      end
+    end
+
     def get_path
       Page.all.each do |page|
         page.routes.each do |r|
-
-          if '/' + page.routed_url(r) == request.path + '/'
+          if controller_name == r[:controller] and action_name = r[:action]
             @current_page = page
             break
           end
-          # abort page.routed_url(r)
         end
       end
-      # abort request.path
-      # path = ActionController::Routing::Routes.recognize_path "/your/path/here/"
-      # controller = path[:controller]
-      # action = path[:action]
     end
 
     def get_locale

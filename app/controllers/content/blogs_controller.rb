@@ -10,6 +10,16 @@ class Content::BlogsController < Content::BaseController
     render 'list'
   end
 
+  def get_item
+    @category
+  end
+
+  def page_title_prefix
+    if @category
+      'Блоги:'
+    end
+  end
+
   private
     def navigation
       items = []

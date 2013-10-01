@@ -7,8 +7,17 @@ class Content::CatalogsController < Content::BaseController
 
   def item
     @items = @category.goods
-
     render 'list'
+  end
+
+  def get_item
+    @category
+  end
+
+  def page_title_prefix
+    if @category
+      'Каталог:'
+    end
   end
 
   private

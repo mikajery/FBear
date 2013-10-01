@@ -1,6 +1,6 @@
 module Content::ContentHelper
-  def page_title
-    ''
+  def meta
+    controller.meta
   end
 
   def menu key

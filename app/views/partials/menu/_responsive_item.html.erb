@@ -1,5 +1,5 @@
-<li<%= ' class=active' if item[:active] %>>
-	<a href="#">
-		<%= item[:title] %>
-	</a>
+<li<%= ' class=active' if current_url?(item.path) %>>
+	<a href="<%= item.path %>">
+    <%= item.title %>
+  </a>
 </li>
