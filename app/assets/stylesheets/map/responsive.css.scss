@@ -16,6 +16,11 @@
 		position: absolute;
 		right: 0;
 	}	
+
+	.logo {
+		left: 235px;
+		margin: -250px 0 0 -150px;
+	}
 }
 
 @media (max-width: 1023px) {
@@ -26,6 +31,11 @@
 	.map {
 		background-image: image-url('map/bg-768.jpg');
 		background-position: 0 center;
+	}
+
+	.logo {
+		left: 190px;
+		margin: -210px 0 0 -150px;
 	}
 
 	.container {
