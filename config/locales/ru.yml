@@ -3,6 +3,9 @@ ru:
     blogs:
       title: Выберите категорию блога
       helper: Теги
+    catalog:
+      title: Выберите категорию товара
+      helper: Категории
 
   Languages: "Языки"
   Menus: "Меню"
