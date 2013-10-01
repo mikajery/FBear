@@ -35,6 +35,7 @@ CMS::Application.routes.draw do
   end
 
   if ActiveRecord::Base.connection.table_exists? 'pages'
+    
     Page.all.each do |page|
       page.routes.each do |r|
         options = {
