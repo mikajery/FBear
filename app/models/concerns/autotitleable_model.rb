@@ -5,7 +5,7 @@ module AutotitleableModel
     before_create :check_title
 
     def check_title
-      self.title = name if title.empty?
+      self.title = name if title and title.empty?
     end
   end
 end
