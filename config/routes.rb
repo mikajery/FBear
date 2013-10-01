@@ -34,13 +34,15 @@ CMS::Application.routes.draw do
     end
   end
 
-  Page.all.each do |page|
-    page.routes.each do |r|
-      options = {
-        page.routed_url(r) => 'content/' + r[:controller].to_s + '#' + r[:action].to_s
-      }
-      options[:as] = r[:as].underscore if r[:as]
-      get options
+  if ActiveRecord::Base.connection.table_exists? 'pages'
+    Page.all.each do |page|
+      page.routes.each do |r|
+        options = {
+          page.routed_url(r) => 'content/' + r[:controller].to_s + '#' + r[:action].to_s
+        }
+        options[:as] = r[:as].underscore if r[:as]
+        get options
+      end
     end
   end
 
