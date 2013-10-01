@@ -15,7 +15,7 @@
 	<% end %>
 
 	<div class="showroom-slide" data-showroom="slide">
-		<%= render 'content/showroom/promo', :promo => promo if defined? promo %>
+		<%= render 'partials/showroom/promo', :promo => promo if defined? promo %>
 
 		<% if items %>
 			<div class="showroom-items">
@@ -23,7 +23,7 @@
 					<% if i % 2 == 0 %>
 						<div class="showroom-col" data-showroom="item-col">
 					<% end %>
-							<%= render 'content/showroom/item', :item => item %>
+							<%= render 'partials/showroom/item', :item => item %>
 					<% if i % 2 == 1 %>
 						</div>
 					<% end %>

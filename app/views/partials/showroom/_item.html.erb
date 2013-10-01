@@ -1,6 +1,6 @@
-<div class="showroom-item" data-showroom="item">
+<a href="<%= goods_item_path(item.slug) %>" class="showroom-item" data-showroom="item">
 	<div class="showroom-item-pic">
-		<img src="<%= image_url(item[:pic]) %>" />
+		<img src="<%= image_url(item.picture) %>" />
 	</div>
 
 	<div class="showroom-item-mask">
@@ -8,7 +8,7 @@
 			<table>
 				<tr>
 					<td>
-						<img src="<%= image_url(item[:logo]) %>" />
+						<img src="<%= image_url(item.logo) %>" />
 					</td>
 				</tr>
 			</table>

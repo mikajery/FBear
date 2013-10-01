@@ -1,4 +1,3 @@
 class GoodCategory < Category
-  has_many :goods, through: :category_goods
-  has_many :category_goods
+  has_and_belongs_to_many :goods
 end
