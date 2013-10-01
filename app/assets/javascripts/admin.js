@@ -4,5 +4,5 @@
 //= require jasny-bootstrap
 //= require select2
 //= require select2_locale_ru
-//= require redactor-rails
+//= require admin/redactor.min
 //= require_tree ./admin
