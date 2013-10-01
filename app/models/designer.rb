@@ -1,9 +1,8 @@
 class Designer < ActiveRecord::Base
-  include SortedByName  
   include MultilingualModel
   include AutotitleableModel
-  
-  translates :title, :heading, :keywords, :description, :content, :motto
+
+  translates :name, :title, :heading, :keywords, :description, :content, :motto
 
   has_many :designer_goods
   validates :name, presence: true

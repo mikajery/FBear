@@ -1,21 +1,24 @@
 var TabByHash = {
 	select: function(hash) {
-		$('a[href=' + hash + ']').tab('show');
+		$('li').not('.disabled').find('a[href=' + hash + ']').tab('show');
 	},
 	init: function() {
-		if (location.hash !== '') $('a[href="' + location.hash + '"]').tab('show');
+		if (location.hash !== '') $('li').not('.disabled').find('> a[href="' + location.hash + '"]').tab('show');
 	}
 };
 
 var Tabbable = function(el) {
-	el.on('shown', function(e) {
-		if (0 == el.closest('.disabled').size())
+	el.on('click', function(e) {
+		if (0 != el.closest('li.disabled').size())
 		{
-			location.hash = $(e.target).attr('href');
+			e.preventDefault();
+			return false;
 		}
 
-		e.preventDefault();
-		return false
+	});
+
+	el.on('shown', function(e) {
+		location.hash = $(e.target).attr('href');
 	});
 };
 

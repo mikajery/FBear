@@ -1,5 +1,5 @@
 class Setting < ActiveRecord::Base
-  include SortedByName  
+  default_scope { order('key ASC') }
   include MultilingualModel
 
   translates :value

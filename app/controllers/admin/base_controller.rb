@@ -4,7 +4,6 @@ class Admin::BaseController < ApplicationController
 
   private
     def permit_params
-      params.require(controller_path.singularize).permit get_safe_params
+      params.require(controller_name.singularize).permit get_safe_params
     end
-
 end

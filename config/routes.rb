@@ -4,9 +4,9 @@ CMS::Application.routes.draw do
 
   get '/admin' => 'admin/welcome#index'
 
-  scope '/admin' do
+  namespace :admin do
     # root :to => 'welcome#index', as: 'admin_root'
-    get '' => 'welcome#index', as: 'admin_root'
+    get '' => 'welcome#index', as: 'root'
 
     resources :menus
 
@@ -25,7 +25,7 @@ CMS::Application.routes.draw do
       # get 'items', on: :member, action: :index, as: :items
     end
 
-    resources :designers, :goods, :languages, :menu_items, :pages, :posts, :settings, :materials do
+    resources :designers, :languages, :menu_items, :pages, :posts, :settings, :materials do
       get ':locale', on: :member, action: :edit, as: 'languaged'
     end
 
@@ -38,8 +38,9 @@ CMS::Application.routes.draw do
     end
 
     resources :goods do
-      resources :pdfs
+      resources :pdfs, only: [:new, :create]
       resources :three60s, only: [:new, :create]
+      get ':locale', on: :member, action: :edit, as: 'languaged'
     end
   end
 

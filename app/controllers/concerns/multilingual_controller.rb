@@ -38,7 +38,7 @@ module MultilingualController
       end
 
       def item_params
-        self.send(controller_path.singularize + '_params')
+        self.send(controller_name.singularize + '_params')
       end
   end
 end

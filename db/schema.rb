@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130930160012) do
+ActiveRecord::Schema.define(version: 20131001005743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,13 +90,13 @@ ActiveRecord::Schema.define(version: 20130930160012) do
     t.text     "description"
     t.text     "content"
     t.string   "motto"
+    t.string   "name"
   end
 
   add_index "designer_translations", ["designer_id"], name: "index_designer_translations_on_designer_id", using: :btree
   add_index "designer_translations", ["locale"], name: "index_designer_translations_on_locale", using: :btree
 
   create_table "designers", force: true do |t|
-    t.string   "name",                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "avatar_file_name"
@@ -129,10 +129,10 @@ ActiveRecord::Schema.define(version: 20130930160012) do
   add_index "good_translations", ["locale"], name: "index_good_translations_on_locale", using: :btree
 
   create_table "goods", force: true do |t|
-    t.string   "name",                 null: false
+    t.string   "name",                  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug",                 null: false
+    t.string   "slug",                  null: false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
@@ -149,6 +149,10 @@ ActiveRecord::Schema.define(version: 20130930160012) do
     t.decimal  "box_depth"
     t.boolean  "is_electrical"
     t.text     "vimeo"
+    t.string   "panorama_file_name"
+    t.string   "panorama_content_type"
+    t.integer  "panorama_file_size"
+    t.datetime "panorama_updated_at"
   end
 
   create_table "goods_materials", force: true do |t|
