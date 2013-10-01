@@ -1,6 +1,6 @@
 <a href="<%= goods_item_path(item.slug) %>" class="showroom-item" data-showroom="item">
 	<div class="showroom-item-pic">
-		<img src="<%= image_url(item.picture) %>" />
+		<img src="<%= image_url(item.picture.url(:preview)) %>" />
 	</div>
 
 	<div class="showroom-item-mask">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131001043551) do
+ActiveRecord::Schema.define(version: 20131001104104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,7 +97,6 @@ ActiveRecord::Schema.define(version: 20131001043551) do
     t.text     "description"
     t.text     "content"
     t.string   "motto"
-    t.string   "name"
   end
 
   add_index "designer_translations", ["designer_id"], name: "index_designer_translations_on_designer_id", using: :btree
@@ -110,6 +109,7 @@ ActiveRecord::Schema.define(version: 20131001043551) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "name"
   end
 
   create_table "designers_goods", force: true do |t|

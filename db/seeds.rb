@@ -6,6 +6,8 @@ languages.each do |l|
   l.each do |k, v|
     language.update_attribute k, v
   end
+
+  language.slug = l[:slug]
 end
 
 page_types = YAML::load_file File.join(Rails.root, 'db', 'seeds', 'page_types.yml')

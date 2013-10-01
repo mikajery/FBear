@@ -81,7 +81,7 @@
                 <%= image_tag @good.logo %>
               </div>
 
-              <%= @good.announce.html_safe %>
+              <%= @good.announce.html_safe if @good.announce %>
 
               <div class="b-farrow">
                 <div class="line l"></div>

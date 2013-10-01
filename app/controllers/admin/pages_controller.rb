@@ -2,6 +2,7 @@ class Admin::PagesController < Admin::BaseController
   include MultilingualController
   
   before_action :set_page, only: [:show, :edit, :update, :destroy]
+  after_action :reload_routes, only: [:create, :update]
 
   # GET /pages
   # GET /pages.json
@@ -64,6 +65,10 @@ class Admin::PagesController < Admin::BaseController
   end
 
   private
+    def reload_routes
+      CMS::Application.reload_routes!
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_page
       @page = Page.find(params[:id])

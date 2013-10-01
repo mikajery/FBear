@@ -1,5 +1,5 @@
 class Content::GoodsController < Content::BaseController
-  before_action :navigation, only: [:list, :item]
+  before_action :navigation, only: [:item]
 
   def item
     @good = Good.find_by_slug params[:slug]

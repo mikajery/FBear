@@ -22,7 +22,6 @@ class Good < ActiveRecord::Base
   attr_accessor :logo
   attr_accessor :panorama
 
-  validates :panorama, :attachment_presence => true
   validates_attachment_content_type :panorama, :content_type => ['image/jpeg', 'image/png','image/gif']
 
   validates :logo, :attachment_presence => true
