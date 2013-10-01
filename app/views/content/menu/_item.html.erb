@@ -1,0 +1,7 @@
+<td>
+	<div<%= ' class=active' if current_url?(item.path) %>>
+		<a href="<%= item.path %>">
+			<%= item[:title] %>
+		</a>
+	</div>
+</td>

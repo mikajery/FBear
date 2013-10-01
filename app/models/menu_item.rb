@@ -11,4 +11,12 @@ class MenuItem < ActiveRecord::Base
   def routes
     page.routes
   end
+
+  def url
+    page.url unless page.nil?
+  end
+  
+  def path
+    '/' + url
+  end
 end

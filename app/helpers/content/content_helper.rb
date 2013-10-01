@@ -3,11 +3,11 @@ module Content::ContentHelper
     ''
   end
 
-  def content_menu
-    []
+  def menu key
+    Menu.find_by_key key
   end
 
   def languages
-    []
+    Language.all
   end
 end

@@ -1,6 +1,6 @@
 <table class="b-menu">
 	<tr>
-		<% content_menu.each do |item| %>
+		<% menu('header').items.each do |item| %>
 			<%= render 'content/menu/item', :item => item %>
 		<% end %>	
 	</tr>

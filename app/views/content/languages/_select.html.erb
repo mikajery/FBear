@@ -4,14 +4,14 @@
 			<tr>
 				<td>
 					<ul class="languages">
-						<% languages_select.each do |lang| %>
+						<% languages.each do |lang| %>
 							<li>
 								<a href="#">
 									<div class="hint">
-										<%= lang[:short] %>
+										<%= lang.slug %>
 									</div>
 
-									<%= lang[:title] %>
+									<%= lang.native %>
 								</a>
 							</li>
 						<% end %>

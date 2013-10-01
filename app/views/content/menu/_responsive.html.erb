@@ -3,7 +3,7 @@
 </a>
 
 <ul class="b-menu b-content-menu" data-toggle-item="header-menu">
-	<% content_menu.each do |item| %>
+	<% menu('header').items.each do |item| %>
 		<%= render 'content/menu/responsive_item', :item => item %>
 	<% end %>
 </ul>

@@ -18,8 +18,8 @@
 				</div>
 
 				<ul class="links">
-					<% @navigation[:links].each do |link| %>
-						<%= render 'content/navigation/link', :link => link %>
+					<% @navigation[:items].each do |link| %>
+						<%= render 'partials/navigation/link', :link => link %>
 					<% end %>
 				</ul>
 

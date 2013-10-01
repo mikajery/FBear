@@ -9,6 +9,7 @@
     <%= tab_pane :main, {active: true} do %>
       <%= f.input :name %>
       <%= f.input :slug if @post.id %>
+      <%= f.association :blog_color, include_blank: false %>
       <%= f.association :post_category, include_blank: false %>
     <% end %>
 
@@ -18,17 +19,18 @@
 
     <%= tab_pane :meta do %>
       <% Globalize.with_locale(@locale.slug) do %>
-
         <%= f.input :title %>
         <%= f.input :heading %>
         <%= f.input :keywords %>
         <%= f.input :description %>
-
       <% end %>
     <% end %>
 
     <%= tab_pane :content do %>
-      <%= f.input :content, as: :html %>
+      <% Globalize.with_locale(@locale.slug) do %>
+        <%= f.input :announce, as: :html %>
+        <%= f.input :content, as: :html %>
+      <% end %>
     <% end %>
   <% end %>
 
@@ -36,7 +38,7 @@
   <%= language_input f %>
 
   <div class="form-actions">
-    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= f.button :submit, save_or_update(@post), :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 admin_post_categories_url, :class => 'btn' %>
   </div>

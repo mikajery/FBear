@@ -11,9 +11,7 @@ class Admin::PostCategoriesController < Admin::BaseController
     if params[:id]
       @collection = PostCategory.find(params[:id])
       
-      @items = @items.delete_if do |i| 
-        i.post_category != @collection
-      end
+      @items = @collection.posts
     end
   end
 

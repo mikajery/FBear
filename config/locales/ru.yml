@@ -1,4 +1,9 @@
 ru:
+  navigation:
+    blogs:
+      title: Выберите категорию блога
+      helper: Теги
+
   Languages: "Языки"
   Menus: "Меню"
   Templets: "Шаблоны"
@@ -70,6 +75,7 @@ ru:
 
       post:
         name: "Пост"
+        announce: "Вкратце"
         post_category: "Категория"
         slug: "Путь"
         title: "Название"

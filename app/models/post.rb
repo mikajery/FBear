@@ -4,9 +4,11 @@ class Post < ActiveRecord::Base
   include AutotitleableModel
   include SluggableModel
   
-  translates :title, :heading, :keywords, :description, :content
+  translates :announce, :title, :heading, :keywords, :description, :content
 
   belongs_to :post_category
+  belongs_to :blog_color
+
   validates :name, presence: true
   validates :post_category, presence: true
 
@@ -23,5 +25,9 @@ class Post < ActiveRecord::Base
 
   def category
     post_category
+  end
+
+  def color
+    blog_color
   end
 end

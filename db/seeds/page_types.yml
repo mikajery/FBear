@@ -1,5 +1,8 @@
-- name: Обычная страница
-  method: simple
+- name: Контент
+  method: content
 
-- name: Страница с элементами
+- name: Список/элемент
   method: items
+
+- name: Элемент
+  method: item
