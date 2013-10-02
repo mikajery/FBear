@@ -10,8 +10,8 @@ class Three60 < MediaFile
   has_attached_file :src, 
     styles: {preview: "600x400#", thumb: "120x120#"},
     default_url: "/images/:style/missing.png",
-    url: "/uploads/good/:id/three60/:style/:basename.:extension",
-    path: ":rails_root/public/uploads/good/:id/three60/:style/:basename.:extension"
+    url: "/uploads/three60/:id/:style/:basename.:extension",
+    path: ":rails_root/public/uploads/three60/:id/:style/:basename.:extension"
 
   def unpack zip
     unless zip.nil?
