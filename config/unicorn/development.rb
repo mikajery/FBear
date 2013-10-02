@@ -1,3 +1,7 @@
+Rainbows! do
+  client_max_body_size(2 * 1024 * 1024)
+end
+
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
 timeout 15
 
