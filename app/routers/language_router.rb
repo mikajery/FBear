@@ -10,7 +10,7 @@ class LanguageRouter < Object
 
         options = {
           'locale/:slug' => 'content/language#select',
-          as: 'language_select'
+          as: 'locale_select'
         }
         @@routes << options
       end
