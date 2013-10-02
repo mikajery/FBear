@@ -6,3 +6,6 @@
 
 - name: Элемент
   method: item
+
+- name: Главная
+  method: welcome

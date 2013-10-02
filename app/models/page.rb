@@ -7,7 +7,7 @@ class Page < ActiveRecord::Base
   belongs_to :page_type
 
   validates :name,      presence: true
-  validates :url,       presence: true
+  validates :url,       uniqueness: true
   validates :page_type, presence: true
 
   def type
@@ -32,6 +32,6 @@ class Page < ActiveRecord::Base
     path = [url]
     path << route[:route]
 
-    path.join "/"
+    path.select {|a| !a.empty?}.join "/"
   end
 end

@@ -34,18 +34,26 @@ CMS::Application.routes.draw do
     end
   end
 
-  if ActiveRecord::Base.connection.table_exists? 'pages'
-    
-    Page.all.each do |page|
-      page.routes.each do |r|
-        options = {
-          page.routed_url(r) => 'content/' + r[:controller].to_s + '#' + r[:action].to_s
-        }
-        options[:as] = r[:as].underscore if r[:as]
-        get options
-      end
-    end
+  ContentRouter.routes.each do |r|
+    get r
   end
+
+
+  #   def self.content_routes
+  #     if _content_routes.nil?
+  #       _content_routes = []
+        
+  #     end
+
+  #     _content_routes
+  #   end
+
+  #   private 
+  #     _content_routes = nil
+
+  # CMS::Application.content_routes.each do |r|
+  #   get r
+  # end
 
   # Page.routes(':_locale').each do |r|
   #   get r[:route] => 'content#show',

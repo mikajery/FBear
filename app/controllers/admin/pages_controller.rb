@@ -66,6 +66,7 @@ class Admin::PagesController < Admin::BaseController
 
   private
     def reload_routes
+      ContentRouter.reload
       CMS::Application.reload_routes!
     end
     

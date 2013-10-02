@@ -69,13 +69,8 @@ class Content::BaseController < ApplicationController
     end
 
     def get_path
-      Page.all.each do |page|
-        page.routes.each do |r|
-          if controller_name == r[:controller] and action_name = r[:action]
-            @current_page = page
-            break
-          end
-        end
+      Rails.application.routes.router.recognize(request) do |route, matches, param|
+        @current_page = ContentRouter.routes.select{|r| r[:as] == route.name}.first[:page]
       end
     end
 
