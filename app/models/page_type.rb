@@ -5,8 +5,10 @@ class PageType < ActiveRecord::Base
       content_routes url
     elsif method == 'welcome'
       welcome_routes url
-    elsif method == 'items'
-      items_routes url
+    elsif method == 'list_with_items'
+      list_with_items_routes url
+    elsif method == 'list'
+      list_routes url      
     else method == 'item'
       item_routes url
     end
@@ -14,18 +16,22 @@ class PageType < ActiveRecord::Base
 
   private 
     def welcome_routes url
-      [{route: '', action: 'index', controller: 'welcome', as: 'welcome'}]
+      [{route: '', action: 'index', controller: 'welcome', as: 'locale_select'}]
     end
 
     def content_routes url
       [{route: '', action: 'show', controller: 'content', as: url}]
     end
 
-    def items_routes url
+    def list_with_items_routes url
       [
         {route: '',      action: 'list', as: url},
         {route: ':slug', action: 'item', as: url + '_item'}
       ]
+    end
+
+    def list_routes url
+      [{route: '', action: 'list', as: url}]
     end
 
     def item_routes url

@@ -1,4 +1,5 @@
 class Content::CatalogsController < Content::BaseController
+  before_action :get_locale
   before_action :navigation, only: [:list, :item]
 
   def list

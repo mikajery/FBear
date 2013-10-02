@@ -16,9 +16,15 @@ class Page < ActiveRecord::Base
 
   def routes
     unless type.nil?
-      type.routes(url).map do |route|
+      _url = url
+
+      if _url == '' and !route.nil? and route != ''
+        _url = route.to_s
+      end
+
+      type.routes(_url).map do |route|
         unless route[:controller]
-          route.merge({controller: url.underscore.pluralize}) 
+          route.merge({controller: _url.underscore.pluralize}) 
         else 
           route
         end
@@ -28,10 +34,10 @@ class Page < ActiveRecord::Base
     end
   end
 
-  def routed_url route
+  def routed_url r
     path = [url]
-    path << route[:route]
+    path << r[:route]
 
-    path.select {|a| !a.empty?}.join "/"
+    path.join "/"
   end
 end

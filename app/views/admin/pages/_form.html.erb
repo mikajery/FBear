@@ -9,6 +9,7 @@
     <%= tab_pane :main, {active: true} do %>
       <%= f.input :name %>
       <%= f.input :url, as: :string %>
+      <%= f.input :route %>
       <%= f.association :page_type, include_blank: false %>
     <% end %>
 

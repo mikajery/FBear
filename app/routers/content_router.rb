@@ -7,6 +7,7 @@ class ContentRouter < Object
     if @@routes.nil?
       if ActiveRecord::Base.connection.table_exists? 'pages'
         @@routes = []
+        last = []
 
         Page.all.each do |page|
           page.routes.each do |r|
@@ -15,13 +16,18 @@ class ContentRouter < Object
             }
             options[:as] = r[:as].underscore if r[:as]
             options[:page] = page
-            @@routes << options
+
+            if page.url == ''
+              last << options
+            else
+              @@routes << options
+            end
           end
         end
+
+        @@routes += last
       end
     end
-
-    # abort @@routes.to_s
   
     @@routes
   end

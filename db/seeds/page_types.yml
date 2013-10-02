@@ -1,8 +1,11 @@
 - name: Контент
   method: content
 
+- name: Список
+  method: list  
+
 - name: Список/элемент
-  method: items
+  method: list_with_items
 
 - name: Элемент
   method: item

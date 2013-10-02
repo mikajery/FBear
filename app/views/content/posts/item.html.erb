@@ -5,7 +5,7 @@
     </h1>
 
     <div class="blog-info">
-      <%= @post.content.html_safe %>
+      <%= @post.content.html_safe if @post.content %>
     </div>
   </div>
 

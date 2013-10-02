@@ -42,7 +42,7 @@ CMS::Application.routes.draw do
 
   ContentRouter.reload
   ContentRouter.routes.each do |r|
-    get r
+    get r.except(:page)
   end
 
 

@@ -1,4 +1,6 @@
 class Content::DesignersController < Content::BaseController
+  before_action :get_locale
+  
   def list
     @designers = Designer.all
   end

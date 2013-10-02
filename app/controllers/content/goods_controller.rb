@@ -1,4 +1,5 @@
 class Content::GoodsController < Content::BaseController
+  before_action :get_locale
   before_action :navigation, only: [:item]
 
   def item

@@ -84,13 +84,13 @@ class Content::BaseController < ApplicationController
 
     def get_locale
       if @@check_locale
-        if session['_locale'].nil?
-          redirect_to welcome_path
+        if cookies['_locale'].nil?
+          redirect_to locale_select_path
         end
       end
 
-      if params[:_locale] or session['_locale']
-        @language = Language.find_by_slug params[:_locale] || session['_locale']
+      if params[:_locale] or cookies['_locale']
+        @language = Language.find_by_slug(params[:_locale] || cookies['_locale'])
       else
         @language = Language.find_by_is_default(true)
       end

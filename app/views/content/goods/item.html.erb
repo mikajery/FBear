@@ -98,10 +98,12 @@
 
             <div class="long">
             
-              <div class="block">
-                <div class="title">Спецификация</div>
-                <%= @good.content.html_safe %>
-              </div>
+              <% if @good.content %>
+                <div class="block">
+                  <div class="title">Спецификация</div>
+                  <%= @good.content.html_safe %>
+                </div>
+              <% end %>
 
               <div class="block">
                 <div class="title">
@@ -122,10 +124,12 @@
                 </ul>
               </div>
 
-              <div class="block">
-                <div class="title">Дополнительно</div>
-                <%= @good.additional.html_safe %>
-              </div>
+              <% if @good.additional %>
+                <div class="block">
+                  <div class="title">Дополнительно</div>
+                  <%= @good.additional.html_safe %>
+                </div>
+              <% end %>
 
             </div>
           <div>
