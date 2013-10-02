@@ -1,9 +1,5 @@
-Rainbows! do
-  client_max_body_size(2 * 1024 * 1024)
-end
-
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
-timeout 15
+timeout 200
 
 app_folder = "/var/www/lll/development/current"
 working_directory app_folder

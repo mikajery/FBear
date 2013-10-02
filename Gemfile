@@ -58,4 +58,3 @@ gem 'jasny_bootstrap_extension_rails'
 gem "select2-rails"
 gem 'carrierwave'
 gem 'rubyzip'
-gem "rainbows-rails"
