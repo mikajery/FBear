@@ -78,9 +78,9 @@
         </table>
       <% end %>
 
-      <a href="<%= new_admin_good_pdf_path @good %>" class="btn">
-        <i class="icon-file"></i> Добавить файл
-      </a>
+      <%= link_to (content_tag :i, '', class: 'icon icon-file') + ' Добавить файл',
+          new_admin_good_pdf_path(@good),
+          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Произойдет переход на другую страницу. Вы действительно хотите продолжить?')) }, :class => 'btn' %>
 
     <% end %>
 
@@ -127,9 +127,10 @@
         </table>
       <% end %>
 
-      <a href="<%= new_admin_good_three60_path @good %>" class="btn">
-        <i class="icon icon-book"></i> Добавить 3D-просмотр
-      </a>      
+      <%= link_to (content_tag :i, '', class: 'icon icon-book') + ' Добавить 3D-просмотр',
+          new_admin_good_three60_path(@good),
+          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Произойдет переход на другую страницу. Вы действительно хотите продолжить?')) }, :class => 'btn' %>
+
     <% end %>
 
     <%= tab_pane :video do %>
