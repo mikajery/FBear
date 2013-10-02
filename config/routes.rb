@@ -34,6 +34,7 @@ CMS::Application.routes.draw do
     end
   end
 
+  ContentRouter.reload
   ContentRouter.routes.each do |r|
     get r
   end
