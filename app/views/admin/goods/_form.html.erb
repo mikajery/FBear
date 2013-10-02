@@ -3,7 +3,9 @@
 <%= simple_form_for [:admin, @good], :html => { :class => 'form-horizontal' } do |f| %>
   <%= form_errors f %>
 
-  <%= tabs [[:main, 'Основное'], [:logo, 'Лого'], [:picture, 'Изображение'], [:tech, 'Характеристики'], 
+  <%= tabs [[:main, 'Основное'], 
+      [:logo, 'Лого'], [:picture, 'Рекламное изображение'], [:thumb, 'Превью'], 
+      [:tech, 'Характеристики'], 
       [:descriptions, 'Описания'], 
       [:pdfs, 'PDF', {disabled: (true unless @good.id)}], 
       [:three60, '360-просмотр', {disabled: (true unless @good.id)}], 
@@ -105,7 +107,7 @@
             <% @good.three60s.each do |three60| %>
               <tr>
                 <td>
-                  <%= with_pic three60, three60.src %>
+                  <%= with_pic three60, three60.src, :thumb %>
                 </td>
                 <td class="center">
                   <%= three60.items.size %>
@@ -138,6 +140,9 @@
       <%= image_field @good, 'panorama', f, [300, 300], transparent: true %>
     <% end %>
 
+    <%= tab_pane :thumb do %>
+      <%= image_field @good, 'thumb', f, [300, 300], transparent: true %>
+    <% end %>
 
     <%= tab_pane :logo do %>
       <%= image_field @good, 'logo', f, [300, 300], transparent: true %>

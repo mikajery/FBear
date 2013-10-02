@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131001104104) do
+ActiveRecord::Schema.define(version: 20131002093954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -160,6 +160,10 @@ ActiveRecord::Schema.define(version: 20131001104104) do
     t.string   "panorama_content_type"
     t.integer  "panorama_file_size"
     t.datetime "panorama_updated_at"
+    t.string   "thumb_file_name"
+    t.string   "thumb_content_type"
+    t.integer  "thumb_file_size"
+    t.datetime "thumb_updated_at"
   end
 
   create_table "goods_materials", force: true do |t|

@@ -23,8 +23,8 @@ module Admin::AdminHelper
     render partial: 'admin/parts/link_list', locals: {items: items}
   end
 
-  def with_pic item, image
-    render partial: 'admin/parts/with_pic', locals: {item: item, image: image}
+  def with_pic item, image, size=:admin
+    render partial: 'admin/parts/with_pic', locals: {item: item, image: image, size: size}
   end
 
   def image_field item, property, form, size=[], options={}

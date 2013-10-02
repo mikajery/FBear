@@ -32,7 +32,7 @@
           <% @items.each do |good| %>
             <tr>
               <td>
-                <%= with_pic good, good.picture %>
+                <%= with_pic good, good.thumb %>
               </td>
               <td class="center">
                 <%= link_list(good.good_category) %>

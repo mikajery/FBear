@@ -20,12 +20,16 @@ class Good < ActiveRecord::Base
 
   attr_accessor :picture
   attr_accessor :logo
+  attr_accessor :thumb
   attr_accessor :panorama
 
   validates_attachment_content_type :panorama, :content_type => ['image/jpeg', 'image/png','image/gif']
 
   validates :logo, :attachment_presence => true
   validates_attachment_content_type :logo, :content_type => ['image/jpeg', 'image/png','image/gif']
+
+  validates :thumb, :attachment_presence => true
+  validates_attachment_content_type :thumb, :content_type => ['image/jpeg', 'image/png','image/gif']
 
   validates :picture, :attachment_presence => true
   validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/png','image/gif']
@@ -36,14 +40,20 @@ class Good < ActiveRecord::Base
     url: "/uploads/goods/:id/logo/:style/:basename.:extension",
     path: ":rails_root/public/uploads/goods/:id/logo/:style/:basename.:extension"
 
-  has_attached_file :picture, 
+  has_attached_file :thumb, 
     styles: {preview: "300x300#", admin: "30x30#"},
+    default_url: "/images/:style/missing.png",
+    url: "/uploads/goods/:id/thumb/:style/:basename.:extension",
+    path: ":rails_root/public/uploads/goods/:id/thumb/:style/:basename.:extension"
+
+  has_attached_file :picture, 
+    styles: {preview: "300x300#"},
     default_url: "/images/:style/missing.png",
     url: "/uploads/goods/:id/picture/:style/:basename.:extension",
     path: ":rails_root/public/uploads/goods/:id/picture/:style/:basename.:extension"
 
   has_attached_file :panorama, 
-    styles: {preview: "300x300#", admin: "30x30#"},
+    styles: {preview: "300x300#"},
     default_url: "/images/:style/missing.png",
     url: "/uploads/goods/:id/panorama/:style/:basename.:extension",
     path: ":rails_root/public/uploads/goods/:id/panorama/:style/:basename.:extension"

@@ -20,14 +20,20 @@
 
   <% if @good.three60s %>
     <div class="media three60" data-product-media="360">
+      <div class="viewer-wrap">
+        <div data-type="viewer"></div>
+      </div>
       <div class="wrap">
         <ul class="b-thumbs">
-          <% @good.three60s.each do |t| %>
+          <% @good.three60s.each_with_index do |t, i| %>
             <script type="text/javascript">
-
+              var frames<%= i %> = [
+                <%= raw t.items.map{|f| '\'' + f.src.url(:preview) + "'"}.join "," %>
+              ];
             </script>
-            <li class="active">
-              <%= image_tag t.src.url(:preview) %>
+
+            <li data-threesixty="frames<%= i %>">
+              <%= image_tag t.src.url(:thumb) %>
             </li>
           <% end %>
         </ul>
@@ -39,11 +45,11 @@
 
   <% unless @good.vimeo.empty? %>
     <div class="media video" data-product-media="video">
-      <%= @good.vimeo %>
+      <%= @good.vimeo.html_safe %>
     </div>
   <% end %>
 
-  <% if @good.panorama %>
+  <% if @good.panorama.file? %>
     <div class="media pan" data-product-media="pan">
       <%= image_tag @good.panorama %>
     </div>
@@ -144,7 +150,7 @@
           </li>
         <% end %>
 
-        <% if @good.panorama %>
+        <% if @good.panorama.file? %>
           <li data-product-media="pan">
             <i class="product-icon icon-pan"></i>
             Панорама

@@ -75,7 +75,7 @@ namespace :deploy do
 
   desc "create symlink to uploads"
   task :uploads do
-    run "cd #{current_path}/public; rm -r uploads; ln -s #{deploy_to}shared/uploads"
+    run "cd #{current_path}/public; rm -rf uploads; ln -s #{deploy_to}shared/uploads"
   end
 
 

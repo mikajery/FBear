@@ -8,7 +8,7 @@ class Three60 < MediaFile
   # validates_attachment_content_type :src, :content_type => ['image/jpeg', 'image/png','image/gif']
 
   has_attached_file :src, 
-    styles: {preview: "300x300#", admin: "30x30#"},
+    styles: {preview: "600x400#", thumb: "120x120#"},
     default_url: "/images/:style/missing.png",
     url: "/uploads/good/:id/three60/:style/:basename.:extension",
     path: ":rails_root/public/uploads/good/:id/three60/:style/:basename.:extension"

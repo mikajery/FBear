@@ -27,25 +27,121 @@ var Product = function(el) {
     }
   };
 
-  var toggleMedia = function(media) {
+  var togglePanorama = function(stop) {
+    var pan = media.filter('.media[data-product-media=pan]'),
+        image = pan.find('img'),
+        _x = 0,
+        _y = 0,
+        _l = 0,
+        _t = 0,
+        timeout = false
+    ;
+
+    $('body')
+      .on('mousedown', function(e) {
+        _x  = e.pageX;
+        _y  = e.pageY;
+        _l = pan.scrollLeft();
+        _t = pan.scrollTop();
+
+        clearTimeout(timeout);
+
+        $('body').on('mousemove', function(e) {
+          var _dX = _x - e.pageX,
+              _dY = _y - e.pageY
+          ;
+
+          pan.scrollLeft(_l + _dX);
+          pan.scrollTop(_t + _dY);          
+        });
+
+        e.preventDefault();
+        return false;
+      })
+      .on('mouseup', function() {
+        $('body').off('mousemove');
+        scrollPan();
+      });
+  };
+
+  var toggle360 = function() {
+
+    var wrap = media.filter('.media[data-product-media=360]'),
+        items = wrap.find('[data-threesixty]'),
+        viewer = media.find('[data-type=viewer]')
+    ;
+
+    if (wrap.data('_threesixty')) return
+
+    var toggleItem = function(item) {
+      items.removeClass('active');
+      item.addClass('active');
+
+      showThreeSixty(window[item.data('threesixty')]);
+    };
+
+    var showThreeSixty = function(frames) {
+      viewer.spritespin({
+        width     : 600,
+        height    : 400,
+        resolutionX      : 600,
+        resolutionY      : 400,
+        sizeX     : 600,
+        sizeY     : 400,
+        frames    : frames.length,
+        behavior  : "drag", // "hold"
+        module    : "360",
+        sense     : -1,
+        source    : frames,
+        animate   : true,
+        loop      : true,
+        frameWrap : true,
+        frameStep : 1,
+        frameTime : 30,
+        enableCanvas : true
+      });
+    }
+
+    items.click(function() {
+      toggleItem($(this));
+    });
+
+    if (0 == items.filter('.active').size())
+      items.first().trigger('click');
+
+    wrap.data('_threesixty', this);
+  };
+
+  var toggleMedia = function(type) {
     $.each(mediaTypes, function(i, k) {
       el.removeClass('show-' + k);
     });
 
-    if (media) el.addClass('show-' + media);
+    if (media) {
+      el.addClass('show-' + type);
+
+      if ('pan' == type)
+        togglePanorama();
+      else if ('360' == type)
+        toggle360();
+    }
   };
 
   opener.click(function() {
     toggleDescription(!description.hasClass('active'));
   });
 
-  media.click(function() {
-    media.removeClass('active');
-    $(this).addClass('active');
-    toggleMedia($(this).data('product-media'));
+  media.filter('li').click(function() {
+    if (!$(this).hasClass('active'))
+    {
+      media.removeClass('active');
+      $(this).addClass('active');
+      toggleMedia($(this).data('product-media'));
+    }
   });
 
   mediaClose.click(function() {
+    media.removeClass('active');
     toggleMedia(false);
   });
 };
