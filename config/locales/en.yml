@@ -20,4 +20,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  navigation:
+    blogs:
+      title: Choose blogs category
+      helper: Tags
+    catalog:
+      title: Choose goods category
+      helper: Categories
+

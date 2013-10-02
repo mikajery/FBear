@@ -1,5 +1,5 @@
 CMS::Application.routes.draw do
-  root :to => 'content/content#index'
+  # root :to => 'content/content#index'
 
   get '/admin' => 'admin/welcome#index'
 
@@ -33,6 +33,12 @@ CMS::Application.routes.draw do
       get ':locale', on: :member, action: :edit, as: 'languaged'
     end
   end
+
+  LanguageRouter.reload
+  LanguageRouter.routes.each do |r|
+    get r
+  end
+
 
   ContentRouter.reload
   ContentRouter.routes.each do |r|

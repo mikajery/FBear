@@ -20,10 +20,13 @@
     <% if @items %>
       <div class="showroom-items">
         <% @items.each_with_index do |item, i| %>
+
           <% if i % 2 == 0 %>
             <div class="showroom-col" data-showroom="item-col">
           <% end %>
+          
               <%= render 'item', :item => item %>
+
           <% if i % 2 == 1 %>
             </div>
           <% end %>

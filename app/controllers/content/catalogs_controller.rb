@@ -6,7 +6,7 @@ class Content::CatalogsController < Content::BaseController
   end
 
   def item
-    @items = @category.goods
+    @items = @category.goods 
     render 'list'
   end
 

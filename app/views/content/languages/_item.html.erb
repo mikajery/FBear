@@ -1,6 +1,6 @@
 <td>
 	<div<%= ' class=active' if item == @locale %>>
-		<a href="#">
+		<a href="<%= language_select_path item.slug %>">
 			<%= item.native %>
 		</a>
 	</div>

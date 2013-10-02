@@ -2,6 +2,8 @@ class Content::BaseController < ApplicationController
   layout 'content'
   helper Content::ContentHelper
 
+  @@check_locale = true
+
   before_action :get_locale
   before_action :get_path
 
@@ -69,19 +71,33 @@ class Content::BaseController < ApplicationController
     end
 
     def get_path
+      @current_page = nil
       Rails.application.routes.router.recognize(request) do |route, matches, param|
-        @current_page = ContentRouter.routes.select{|r| r[:as] == route.name}.first[:page]
+        page = ContentRouter.routes.each do |r| 
+          if r[:as] == route.name 
+            @current_page=r[:page] 
+            break 
+          end
+        end
       end
     end
 
     def get_locale
-      if params[:_locale]
-        @language = Language.find_by_slug params[:_locale]
+      if @@check_locale
+        if session['_locale'].nil?
+          redirect_to welcome_path
+        end
+      end
+
+      if params[:_locale] or session['_locale']
+        @language = Language.find_by_slug params[:_locale] || session['_locale']
       else
         @language = Language.find_by_is_default(true)
       end
 
       raise UnknownLocaleException unless @language
+
+      I18n.locale = @language.slug
     end
 
     def render_error(status, exception)

@@ -1,3 +1,6 @@
+- name: Главная
+  page_type: Главная
+
 - name: Блоги
   url: blogs
   page_type: Список/элемент
