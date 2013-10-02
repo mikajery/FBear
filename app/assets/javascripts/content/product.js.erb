@@ -73,6 +73,12 @@ var Product = function(el) {
 
     if (wrap.data('_threesixty')) return
 
+    var getViewer = function() {
+      var div = $('<div>');
+      viewer.empty().append(div);
+      return div;
+    };
+
     var toggleItem = function(item) {
       items.removeClass('active');
       item.addClass('active');
@@ -81,7 +87,7 @@ var Product = function(el) {
     };
 
     var showThreeSixty = function(frames) {
-      viewer.spritespin({
+      getViewer().spritespin({
         width     : 600,
         height    : 400,
         resolutionX      : 600,
