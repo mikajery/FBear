@@ -85,7 +85,7 @@ class Content::BaseController < ApplicationController
     def get_locale
       if @@check_locale
         if cookies['_locale'].nil?
-          redirect_to locale_select_path
+          redirect_to language_select_path
         end
       end
 

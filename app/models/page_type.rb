@@ -3,8 +3,8 @@ class PageType < ActiveRecord::Base
   def routes url
     if method == 'content'
       content_routes url
-    elsif method == 'welcome'
-      welcome_routes url
+    elsif method == 'languages_select'
+      languages_select_routes url
     elsif method == 'list_with_items'
       list_with_items_routes url
     elsif method == 'list'
@@ -15,8 +15,8 @@ class PageType < ActiveRecord::Base
   end
 
   private 
-    def welcome_routes url
-      [{route: '', action: 'index', controller: 'welcome', as: 'locale_select'}]
+    def languages_select_routes url
+      [{route: '', action: 'index', controller: 'language_select', as: 'language_select'}]
     end
 
     def content_routes url

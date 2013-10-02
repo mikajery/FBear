@@ -6,7 +6,7 @@
 					<ul class="languages">
 						<% languages.each do |lang| %>
 							<li>
-								<a href="<%= language_select_path lang.slug %>">
+								<a href="<%= locale_set_path lang.slug %>">
 									<div class="hint">
 										<%= lang.slug %>
 									</div>

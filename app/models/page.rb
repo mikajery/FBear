@@ -38,6 +38,6 @@ class Page < ActiveRecord::Base
     path = [url]
     path << r[:route]
 
-    path.join "/"
+    path.select{|a| !a.empty?}.join "/"
   end
 end

@@ -10,5 +10,5 @@
 - name: Элемент
   method: item
 
-- name: Главная
-  method: welcome
+- name: Выбор языка
+  method: languages_select

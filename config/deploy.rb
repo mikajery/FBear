@@ -78,6 +78,10 @@ namespace :deploy do
     run "cd #{current_path}/public; rm -rf uploads; ln -s #{deploy_to}shared/uploads"
   end
 
+  desc "show routes"
+  task :routes do
+    run "cd #{current_path}/public; rm -rf uploads; bundle exec rake routes RAILS_ENV=#{rails_env}"
+  end
 
   desc 'Stop application'
   task :stop, :roles => :app do

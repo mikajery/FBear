@@ -1,4 +1,4 @@
-class Content::WelcomeController < Content::BaseController
+class Content::LanguageSelectController < Content::BaseController
   layout 'map'  
   @@check_locale = false
   
