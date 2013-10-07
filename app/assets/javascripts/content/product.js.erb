@@ -1,11 +1,20 @@
 var Product = function(el) {
-  var description = el.find('[data-product=description]'),
-      opener      = el.find('[data-product-toggle=description]'),
-      _descInitH  = description.height(),
-      media       = el.find('[data-product-media]'),
-      mediaTypes  = ['360', 'video', 'pan'],
-      mediaClose  = el.find('[data-product-dismiss=media]')
+  var description  = el.find('[data-product=description]'),
+      opener       = el.find('[data-product-toggle=description]'),
+      _descInitH   = description.height(),
+      media        = el.find('[data-product-media]'),
+      mediaTypes   = ['360', 'video', 'pan'],
+      videoContainer = el.find('.media[data-product-media]').filter('[data-product-media=video]'),
+      videoContent = videoContainer.html(),
+      mediaClose   = el.find('[data-product-dismiss=media]'),
+      cover        = el.find('[data-product-cover]')
   ;
+
+  console.log(cover.attr('data-product-cover'));
+
+  cover.css({
+    backgroundImage: 'url(' + cover.attr('data-product-cover') + ')'
+  });
 
   var toggleDescription = function(show) {
     if (show)
@@ -36,6 +45,11 @@ var Product = function(el) {
         _t = 0,
         timeout = false
     ;
+
+    setInterval(function() {
+      _l += 0.1;
+      pan.scrollLeft(_l);
+    })
 
     $('body')
       .on('mousedown', function(e) {
@@ -118,10 +132,17 @@ var Product = function(el) {
     wrap.data('_threesixty', this);
   };
 
+  var clearVideoContainer = function() {
+    videoContainer.empty();
+    videoContainer.html(videoContent);
+  };
+
   var toggleMedia = function(type) {
     $.each(mediaTypes, function(i, k) {
       el.removeClass('show-' + k);
     });
+
+    clearVideoContainer();
 
     if (media) {
       el.addClass('show-' + type);

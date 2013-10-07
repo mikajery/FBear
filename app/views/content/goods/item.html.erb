@@ -14,8 +14,8 @@
     </div>
   </div>
 
-  <div class="media main-pic">
-    <%= image_tag @good.picture %>
+  <div class="media main-pic" data-product-cover="<%= @good.picture %>">
+    
   </div>
 
   <% if @good.three60s %>
@@ -76,8 +76,8 @@
             </div>
           </div>
 
-          <div class="description" data-product="description">
-            <div class="opener" data-product-toggle="description">
+          <div class="description" data-product="description" data-product-toggle="description">
+            <div class="opener">
               <i class="control control-up"></i>
               <i class="control control-down"></i>
             </div>

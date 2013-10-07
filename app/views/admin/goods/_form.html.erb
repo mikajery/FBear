@@ -26,6 +26,10 @@
       <%= f.association :good_category %>
       <%= f.association :designer %>
       <%= f.association :material %>
+
+      <% Globalize.with_locale(@locale.slug) do %>
+        <%= f.association :tags %>
+      <% end %>
     <% end %>
 
     <%= tab_pane :logo do %>
@@ -106,21 +110,29 @@
           <tbody>
             <% @good.three60s.each do |three60| %>
               <tr>
-                <td>
-                  <%= with_pic three60, three60.src, :thumb %>
-                </td>
-                <td class="center">
-                  <%= three60.items.size %>
-                </td>
-                <td>
-                  <%= link_to pencil_icon,
-                      edit_admin_three60_path(three60), :class => 'btn btn-mini' %>
-                  <%= link_to trash_icon(true),
-                      admin_three60_path(three60),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
-                </td>
+                <% if three60.is_uploaded %>
+                  <td>
+                    <%= with_pic three60, three60.src, :thumb %>
+                  </td>
+                  <td class="center">
+                    <%= three60.items.size %>
+                  </td>
+                <% else %>
+                  <td colspan="2">
+                    <div class="muted">
+                      <i class="icon"></i> &laquo;<%= three60.name %>&raquo; загружается...
+                    </div>
+                  </td>
+                  <td>
+                    <%= link_to pencil_icon,
+                        edit_admin_three60_path(three60), :class => 'btn btn-mini' %>
+                    <%= link_to trash_icon(true),
+                        admin_three60_path(three60),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-mini btn-danger' %>
+                  </td>
+                <% end %>
               </tr>
             <% end %>
           </tbody>

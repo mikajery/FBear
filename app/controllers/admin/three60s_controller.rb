@@ -33,11 +33,16 @@ class Admin::Three60sController < Admin::BaseController
 
     @three60 = Three60.new(params)
     @three60.good = @good
+    @three60.is_uploaded = false
 
-    @three60.unpack(zip)
-
+    file = File.join("tmp/zip", zip.original_filename)
+    FileUtils.cp zip.path, file
+  
     respond_to do |format|
       if @three60.save
+        if zip
+          Three60Worker.perform_async @three60.id, file
+        end
         format.html { redirect_to edit_admin_good_url(@good, anchor: "three60"), notice: 'Three60 was successfully created.' }
         format.json { render action: 'show', status: :created, location: @three60 }
       else
@@ -45,6 +50,8 @@ class Admin::Three60sController < Admin::BaseController
         format.json { render json: @three60.errors, status: :unprocessable_entity }
       end
     end
+
+    # 
   end
 
   # PATCH/PUT /three60s/1

@@ -4,6 +4,15 @@ require 'zip'
 class Three60 < MediaFile
   attr_accessor :src
 
+  default_scope { order('src_file_name ASC') }
+  default_scope { where('is_uploaded is not null') }
+
+
+  def items
+    media_files.order('src_file_name ASC')
+  end
+
+
   # validates :src, :attachment_presence => true
   # validates_attachment_content_type :src, :content_type => ['image/jpeg', 'image/png','image/gif']
 
@@ -13,47 +22,51 @@ class Three60 < MediaFile
     url: "/uploads/three60/:id/:style/:basename.:extension",
     path: ":rails_root/public/uploads/three60/:id/:style/:basename.:extension"
 
-  def unpack zip
-    unless zip.nil?
-      Zip::File::open(zip.path) do |archive|
+  def unpack path
+    unless path.empty?
+      Zip::File::open(path) do |archive|
         archive.each_with_index do |entry, index|
           
           if entry.file?
-            path = File.join('tmp/zip', entry.name)
+            image = File.join('tmp/zip/goods/', good.id.to_s, entry.name)
 
-            FileUtils.mkdir_p File.dirname(path)
-            archive.extract entry, path unless File.exist?(path)
+            FileUtils.mkdir_p File.dirname(image)
+            archive.extract entry, image unless File.exist?(image)
+
+            file = File.open image
 
             if index == 0
-              Three60.preview self, path
-            else
-              Three60.item self, path
+              Three60.preview self, file
             end
 
-            File.delete path if File.exist?(path)
+            Three60.item self, file
+            file.close
+
+            File.delete image if File.exist?(image)
           end
         end
       end
+
+      File.delete path if File.exist?(path)
     end
+
+    update({
+      is_uploaded: true
+    })
   end
 
   def self.preview model, file
-    file = File.open file
     model.src = file
-    file.close
   end
 
   def self.item parent, file
-    file = File.open file
-
     item = Three60.new(
       good: parent.good,
-      src: file
+      src: file,
+      is_uploaded: true
     )
 
     item.media_file = parent
     item.save
-
-    file.close
   end
 end

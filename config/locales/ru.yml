@@ -117,6 +117,7 @@ ru:
 
       good:
         name: "Товар"
+        tags: "Теги"
         designer: "Дизайнер"
         good_category: "Категория"
         slug: "Путь"
@@ -174,3 +175,7 @@ ru:
         name: "3D-просмотр"
         src: "Превью"
         zip: "Файлы"
+
+      tag:
+        name: "Тег"
+        title: "Название"

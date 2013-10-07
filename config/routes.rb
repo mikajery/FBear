@@ -23,7 +23,7 @@ CMS::Application.routes.draw do
       resources :menu_items
     end
 
-    resources :designers, :languages, :menu_items, :pages, :posts, :settings, :materials, :pdfs, :three60s do
+    resources :designers, :languages, :menu_items, :pages, :posts, :tags, :settings, :materials, :pdfs, :three60s do
       get ':locale', on: :member, action: :edit, as: 'languaged'
     end
 

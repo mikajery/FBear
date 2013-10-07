@@ -78,7 +78,7 @@ class Admin::GoodsController < Admin::BaseController
         :announce, :content, :additional, :price,
         :title, :heading, :keywords, :description, 
         :panorama, :vimeo, :thumb,
-        :good_category_ids => [], :designer_ids => [], :material_ids => []
+        :good_category_ids => [], :designer_ids => [], :material_ids => [], :tag_ids => []
       ]
     end
 

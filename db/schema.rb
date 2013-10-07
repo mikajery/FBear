@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131002124333) do
+ActiveRecord::Schema.define(version: 20131007112320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -171,6 +171,14 @@ ActiveRecord::Schema.define(version: 20131002124333) do
     t.integer "material_id"
   end
 
+  create_table "goods_tags", force: true do |t|
+    t.integer "good_id"
+    t.integer "tag_id"
+  end
+
+  add_index "goods_tags", ["good_id"], name: "index_goods_tags_on_good_id", using: :btree
+  add_index "goods_tags", ["tag_id"], name: "index_goods_tags_on_tag_id", using: :btree
+
   create_table "language_translations", force: true do |t|
     t.integer  "language_id", null: false
     t.string   "locale",      null: false
@@ -224,6 +232,7 @@ ActiveRecord::Schema.define(version: 20131002124333) do
     t.integer  "src_file_size"
     t.datetime "src_updated_at"
     t.string   "name"
+    t.boolean  "is_uploaded"
   end
 
   add_index "media_files", ["good_id"], name: "index_media_files_on_good_id", using: :btree
@@ -370,6 +379,23 @@ ActiveRecord::Schema.define(version: 20131002124333) do
 
   create_table "settings", force: true do |t|
     t.string   "key",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tag_translations", force: true do |t|
+    t.integer  "tag_id",     null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+  end
+
+  add_index "tag_translations", ["locale"], name: "index_tag_translations_on_locale", using: :btree
+  add_index "tag_translations", ["tag_id"], name: "index_tag_translations_on_tag_id", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
