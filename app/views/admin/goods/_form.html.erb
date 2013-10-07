@@ -117,6 +117,15 @@
                   <td class="center">
                     <%= three60.items.size %>
                   </td>
+                  <td>
+                    <%= link_to pencil_icon,
+                        edit_admin_three60_path(three60), :class => 'btn btn-mini' %>
+                    <%= link_to trash_icon(true),
+                        admin_three60_path(three60),
+                        :method => :delete,
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                        :class => 'btn btn-mini btn-danger' %>
+                  </td>
                 <% else %>
                   <td colspan="2">
                     <div class="muted">
@@ -124,8 +133,6 @@
                     </div>
                   </td>
                   <td>
-                    <%= link_to pencil_icon,
-                        edit_admin_three60_path(three60), :class => 'btn btn-mini' %>
                     <%= link_to trash_icon(true),
                         admin_three60_path(three60),
                         :method => :delete,
