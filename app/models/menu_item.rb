@@ -1,6 +1,8 @@
 class MenuItem < ActiveRecord::Base
   include MultilingualModel
   include AutotitleableModel
+
+  default_scope { order('weight') }
   
   translates :title
 

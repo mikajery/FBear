@@ -15,7 +15,7 @@
     Опаньки.. А элементов-то у этого меню нету :(
   </div>
 <% else %>
-  <table class="table table-hover table-stripped">
+  <table class="table table-hover table-stripped table-nested" data-type="nested" data-nested-url="<%= order_admin_menu_items_path %>">
     <thead>
       <tr>
         <th>
@@ -32,12 +32,8 @@
     </thead>
 
     <tbody>
-      <% unless @menu_items %>
-        <div class="well">
-          В этом меню нет элементов :(
-        </div>
-      <% else %>
-        <% @menu_items.each do |item| %>
+      <% @menu_items.each do |item| %>
+        <tbody data-nested="item" data-nested-id="<%= item.id %>">
           <tr>
             <td>
               <%= item.name %>
@@ -66,12 +62,12 @@
                   :class => 'btn btn-mini btn-danger' %>
             </td>
           </tr>
-        <% end %>
-
+          <tr>
+            <td colspan="4" class="drop-helper">
+            </td>
+          </tr>
+        </tbody>
       <% end %>
-
-
-
     </tbody>
   </table>
 <% end %>

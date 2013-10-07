@@ -29,3 +29,21 @@ body {
     }
   }
 }
+
+.table-nested { 
+  .placeholder {
+    background: red;
+    height: 30px;
+  }
+
+  tr {
+    cursor: row-resize;
+  }
+
+  tbody + tbody {
+    border: none;
+    .drop-helper {
+      display: none;
+    }
+  }
+}

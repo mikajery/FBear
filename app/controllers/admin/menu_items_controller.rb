@@ -2,7 +2,8 @@ class Admin::MenuItemsController < Admin::BaseController
   include MultilingualController
   
   before_action :set_menu_item, only: [:show, :edit, :update, :destroy]
-  before_action :set_menu
+  before_action :set_menu, except: [:order]
+  before_action :order_params, only: [:order]
 
   # GET /menu_items
   # GET /menu_items.json
@@ -41,6 +42,29 @@ class Admin::MenuItemsController < Admin::BaseController
       else
         format.html { render action: 'new' }
         format.json { render json: @menu_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def order
+    errors = []
+
+    if order_params
+      order_params.each_with_index do |id, weight|
+        menu_item = MenuItem.find id
+        menu_item.weight = weight
+
+        unless menu_item.save
+          errors << @menu_item.errors
+        end
+      end
+    end
+
+    respond_to do |format|
+      if errors.empty?
+        format.json { head :no_content }
+      else
+        format.json { render json: errors, status: :unprocessable_entity }
       end
     end
   end
@@ -86,5 +110,9 @@ class Admin::MenuItemsController < Admin::BaseController
     # Never trust parameters from the scary internet, only allow the white list through.
     def menu_item_params
       permit_params
+    end
+
+    def order_params
+      params.require(:order)
     end
 end

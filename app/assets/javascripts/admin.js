@@ -1,5 +1,7 @@
 //= require jquery
+//= require jquery.ui.sortable
 //= require jquery_ujs
+//= require jquery.ui.effect-highlight
 //= require bootstrap
 //= require jasny-bootstrap
 //= require select2

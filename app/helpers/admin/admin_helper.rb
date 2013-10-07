@@ -59,6 +59,14 @@ module Admin::AdminHelper
     icon "trash", white
   end
 
+  def down_icon(white = false)
+    icon "arrow-down", white
+  end
+
+  def up_icon(white = false)
+    icon "arrow-up", white
+  end
+
   def pencil_icon(white = false)
     icon "pencil", white
   end
