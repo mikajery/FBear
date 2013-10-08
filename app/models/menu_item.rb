@@ -8,7 +8,14 @@ class MenuItem < ActiveRecord::Base
 
   belongs_to :page
   belongs_to :menu
+  has_many :menu_items
+  belongs_to :menu_item
+
   validates :name, presence: true
+
+  def items
+    menu_items
+  end
 
   def routes
     page.routes
@@ -17,7 +24,7 @@ class MenuItem < ActiveRecord::Base
   def url
     page.url unless page.nil?
   end
-  
+
   def path
     '/' + url
   end

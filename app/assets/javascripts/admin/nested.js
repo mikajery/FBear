@@ -11,6 +11,7 @@ var Nested = function(el) {
     items: "> [data-nested=item]",
     axis: 'y',
     placeholder: "placeholder",
+    // connectWith: '[data-type=nested]',
     helper: 'clone',
     forcePlaceholderSize: true,
     update: function(e, ui) {

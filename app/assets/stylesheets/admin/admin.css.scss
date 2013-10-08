@@ -43,7 +43,22 @@ body {
   tbody + tbody {
     border: none;
     .drop-helper {
-      display: none;
+      padding: 0;
+      > table {
+        margin-bottom: 0;
+      }
+
+      > table > tbody > tr:first-child > td {
+        border: none;
+      }
+
+      > table > tbody > tr > td:first-child {
+        padding-left: 25px;
+      }
+
+      &.empty {
+        display: none;
+      }
     }
   }
 }

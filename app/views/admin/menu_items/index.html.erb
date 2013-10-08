@@ -63,7 +63,41 @@
             </td>
           </tr>
           <tr>
-            <td colspan="4" class="drop-helper">
+            <td colspan="4" class="drop-helper<%= ' empty' if item.items.empty? %>">
+              <table class="table table-condenced" data-type="nested" data-nested-url="<%= order_admin_menu_items_path %>">
+                <% item.items.each_with_index do |subitem, index| %>
+                  <tbody data-nested="item" data-nested-id="<%= subitem.id %>">
+                    <tr>
+                      <td>
+                        <%= subitem.name %>
+                      </td>
+
+                      <td<%= ' width=30%' if index == 0 %>>
+                        <%= content_tag :div do %>
+                          <%= content_tag :small do %>
+                            <%= content_tag :span, 'lllooch.ru/', class: :muted %><%= subitem.url %>
+                          <% end %>
+                        <% end %>
+                      </td>
+
+                      <td<%= ' width=30%' if index == 0 %>>
+                        <%= subitem.page.name if subitem.page %>
+                      </td>
+
+                      <td<%= ' width=60px' if index == 0 %>>
+                        <%= link_to pencil_icon,
+                            edit_admin_menu_menu_item_path(@menu, subitem), :class => 'btn btn-mini' %>
+
+                        <%= link_to trash_icon(true),
+                            admin_menu_menu_item_path(@menu, subitem),
+                            :method => :delete,
+                            :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                            :class => 'btn btn-mini btn-danger' %>
+                      </td>
+                    </tr>
+                  </tbody>
+                <% end %>
+              </table>
             </td>
           </tr>
         </tbody>
