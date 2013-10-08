@@ -7,14 +7,32 @@ var Product = function(el) {
       videoContainer = el.find('.media[data-product-media]').filter('[data-product-media=video]'),
       videoContent = videoContainer.html(),
       mediaClose   = el.find('[data-product-dismiss=media]'),
-      cover        = el.find('[data-product-cover]')
+      cover        = el.find('[data-product-cover]'),
+      content      = el.find('[data-product=content]'),
+      loading      = el.find('[data-product=loading]')
   ;
 
-  console.log(cover.attr('data-product-cover'));
+  var img = new Image();
 
-  cover.css({
-    backgroundImage: 'url(' + cover.attr('data-product-cover') + ')'
-  });
+  content.hide();
+
+  img.onload = function() {
+    console.log(img.src);
+    cover.css({
+      backgroundImage: 'url(' + img.src + ')'
+    });  
+
+    loading.fadeOut();
+    
+    el.addClass('loaded');
+    content.fadeIn(function() {
+      
+    });
+  }
+
+  img.src = cover.attr('data-product-cover');
+
+  
 
   var toggleDescription = function(show) {
     if (show)

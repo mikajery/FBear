@@ -1,167 +1,169 @@
-<div class="b-product loaded" data-action="product">
+<div class="b-product" data-action="product">
   <div class="shadow"></div>
 
   <div class="media-dismiss" data-product-dismiss="media">
     <i class="control control-dismiss"></i>
   </div>
 
-  <div class="loading">
-    <div class="wrap">
-      <div class="loader">
-        <%= image_tag "content/product-loader.gif" %>
-      </div>
-      Please wait
-    </div>
-  </div>
-
-  <div class="media main-pic" data-product-cover="<%= @good.picture %>">
-    
-  </div>
-
-  <% if @good.three60s %>
-    <div class="media three60" data-product-media="360">
-      <div class="viewer-wrap">
-        <div data-type="viewer"></div>
-      </div>
+  <div class="loading-wrap" data-product="loading">
+    <div class="loading">
       <div class="wrap">
-        <ul class="b-thumbs">
-          <% @good.three60s.each_with_index do |t, i| %>
-            <script type="text/javascript">
-              var frames<%= i %> = [
-                <%= raw t.items.map{|f| '\'' + f.src.url(:preview) + "'"}.join "," %>
-              ];
-            </script>
-
-            <li data-threesixty="frames<%= i %>">
-              <%= image_tag t.src.url(:thumb) %>
-            </li>
-          <% end %>
-        </ul>
+        <div class="loader">
+          <%= image_tag "content/product-loader.gif" %>
+        </div>
+        Please wait
       </div>
-
-      <div class="three60-viewer" data-viewer="360"></div>
     </div>
-  <% end %>
+  </div>
 
-  <% unless @good.vimeo.empty? %>
-    <div class="media video" data-product-media="video">
-      <%= @good.vimeo.html_safe %>
-    </div>
-  <% end %>
+  <div class="product-content" data-product="content">
+    <div class="media main-pic" data-product-cover="<%= @good.picture %>"></div>
 
-  <% if @good.panorama.file? %>
-    <div class="media pan" data-product-media="pan">
-      <%= image_tag @good.panorama %>
-    </div>
-  <% end %>
+    <% if @good.three60s %>
+      <div class="media three60" data-product-media="360">
+        <div class="viewer-wrap">
+          <div data-type="viewer"></div>
+        </div>
+        <div class="padder">
+          <ul class="b-thumbs">
+            <% @good.three60s.each_with_index do |t, i| %>
+              <script type="text/javascript">
+                var frames<%= i %> = [
+                  <%= raw t.items.map{|f| '\'' + f.src.url(:preview) + "'"}.join "," %>
+                ];
+              </script>
 
-  <div class="wrap">
-    <div class="info">
-        <div class="info-block">
-          <div class="controls">
-            <div class="shadow"></div>
+              <li data-threesixty="frames<%= i %>">
+                <%= image_tag t.src.url(:thumb) %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
 
-            <div class="price">
-              <%= @good.price %>
-            </div>
+        <div class="three60-viewer" data-viewer="360"></div>
+      </div>
+    <% end %>
 
-            <div class="b-farrow small">
-              <div class="line l"></div>
-              <div class="line r"></div>
-              <div class="tip"></div>
-            </div>
+    <% unless @good.vimeo.empty? %>
+      <div class="media video" data-product-media="video">
+        <%= @good.vimeo.html_safe %>
+      </div>
+    <% end %>
 
-            <div class="buy">
-              <div></div>
-            </div>
-          </div>
+    <% if @good.panorama.file? %>
+      <div class="media pan" data-product-media="pan">
+        <%= image_tag @good.panorama %>
+      </div>
+    <% end %>
 
-          <div class="description" data-product="description" data-product-toggle="description">
-            <div class="opener">
-              <i class="control control-up"></i>
-              <i class="control control-down"></i>
-            </div>
+    <div class="padder">
+      <div class="info">
+          <div class="info-block">
+            <div class="controls">
+              <div class="shadow"></div>
 
-            <div class="short">
-              <div class="logo">
-                <%= image_tag @good.logo %>
+              <div class="price">
+                <%= @good.price %>
               </div>
 
-              <%= @good.announce.html_safe if @good.announce %>
-
-              <div class="b-farrow">
+              <div class="b-farrow small">
                 <div class="line l"></div>
                 <div class="line r"></div>
                 <div class="tip"></div>
               </div>
+
+              <div class="buy">
+                <div></div>
+              </div>
             </div>
 
-            <div class="long">
-            
-              <% if @good.content %>
-                <div class="block">
-                  <div class="title">Спецификация</div>
-                  <%= @good.content.html_safe %>
-                </div>
-              <% end %>
-
-              <div class="block">
-                <div class="title">
-                  Материалы
-                </div>
-
-                Мебель производится на ультра современном оборудовании, с использованием только высококачественных и натуральных материалов.
+            <div class="description" data-product="description" data-product-toggle="description">
+              <div class="opener">
+                <i class="control control-up"></i>
+                <i class="control control-down"></i>
               </div>
 
-              <div class="block">
-                <ul class="b-thumbs">
-                  <% @good.material.each do |m| %>
-                    <li>
-                      <%= m.title %>
-                      <%= image_tag m.picture.url(:thumb) %>
-                    </li>
-                  <% end %>
-                </ul>
+              <div class="short">
+                <div class="logo">
+                  <%= image_tag @good.logo %>
+                </div>
+
+                <%= @good.announce.html_safe if @good.announce %>
+
+                <div class="b-farrow">
+                  <div class="line l"></div>
+                  <div class="line r"></div>
+                  <div class="tip"></div>
+                </div>
               </div>
 
-              <% if @good.additional %>
-                <div class="block">
-                  <div class="title">Дополнительно</div>
-                  <%= @good.additional.html_safe %>
-                </div>
-              <% end %>
+              <div class="long">
+              
+                <% if @good.content %>
+                  <div class="block">
+                    <div class="title">Спецификация</div>
+                    <%= @good.content.html_safe %>
+                  </div>
+                <% end %>
 
-            </div>
-          <div>
+                <div class="block">
+                  <div class="title">
+                    Материалы
+                  </div>
+
+                  Мебель производится на ультра современном оборудовании, с использованием только высококачественных и натуральных материалов.
+                </div>
+
+                <div class="block">
+                  <ul class="b-thumbs">
+                    <% @good.material.each do |m| %>
+                      <li>
+                        <%= m.title %>
+                        <%= image_tag m.picture.url(:thumb) %>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+
+                <% if @good.additional %>
+                  <div class="block">
+                    <div class="title">Дополнительно</div>
+                    <%= @good.additional.html_safe %>
+                  </div>
+                <% end %>
+
+              </div>
+            <div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="info-block">
+      <div class="info-block">
 
-      <ul class="features">
-        <% unless @good.vimeo.empty? %>
-          <li data-product-media="video">
-            <i class="product-icon icon-video"></i>
-            Видео
-          </li>
-        <% end %>
+        <ul class="features">
+          <% unless @good.vimeo.empty? %>
+            <li data-product-media="video">
+              <i class="product-icon icon-video"></i>
+              Видео
+            </li>
+          <% end %>
 
-        <% unless @good.three60s.empty? %>
-          <li data-product-media="360">
-            <i class="product-icon icon-360"></i>
-            360 просмотр
-          </li>
-        <% end %>
+          <% unless @good.three60s.empty? %>
+            <li data-product-media="360">
+              <i class="product-icon icon-360"></i>
+              360 просмотр
+            </li>
+          <% end %>
 
-        <% if @good.panorama.file? %>
-          <li data-product-media="pan">
-            <i class="product-icon icon-pan"></i>
-            Панорама
-          </li>
-        <% end %>
+          <% if @good.panorama.file? %>
+            <li data-product-media="pan">
+              <i class="product-icon icon-pan"></i>
+              Панорама
+            </li>
+          <% end %>
 
-      </ul>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
