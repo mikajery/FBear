@@ -1,8 +1,9 @@
 class Good < ActiveRecord::Base
-  include SortedByName
   include MultilingualModel
   include SluggableModel
   include AutotitleableModel
+
+  default_scope { order('weight, name') }
 
   translates :price, :title, :heading, :keywords, :description, :announce, :content, :additional
 
@@ -24,6 +25,8 @@ class Good < ActiveRecord::Base
   attr_accessor :logo
   attr_accessor :thumb
   attr_accessor :panorama
+  attr_accessor :portrait
+  attr_accessor :landscape
 
   validates_attachment_content_type :panorama, :content_type => ['image/jpeg', 'image/png','image/gif']
 
