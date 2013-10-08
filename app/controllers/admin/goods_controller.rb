@@ -76,7 +76,7 @@ class Admin::GoodsController < Admin::BaseController
         :name, :logo, :picture, :slug,
         :width, :depth, :height, :box_depth, :box_width, :box_height, :is_electrical, 
         :announce, :content, :additional, :price,
-        :title, :heading, :keywords, :description, 
+        :title, :heading, :keywords, :description, :bg,
         :panorama, :vimeo, :thumb, :portrait, :landscape,
         :good_category_ids => [], :designer_ids => [], :material_ids => [], :tag_ids => []
       ]

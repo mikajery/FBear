@@ -28,6 +28,8 @@
       <%= f.association :designer %>
       <%= f.association :material %>
 
+      <%= f.input :bg, collection: {'темный' => 'dark', 'светлый' => 'light'}, include_blank: false %>
+
       <% Globalize.with_locale(@locale.slug) do %>
         <%= f.association :tags %>
       <% end %>

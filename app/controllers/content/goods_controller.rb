@@ -4,7 +4,9 @@ class Content::GoodsController < Content::BaseController
 
   def item
     @good = Good.find_by_slug params[:slug]
-    @body_dark = true
+    if @good.bg == 'dark'
+      @body_dark = true
+    end
   end
 
   def get_item

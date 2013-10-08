@@ -117,6 +117,7 @@ ru:
         src: "PDF"
 
       good:
+        bg: Вид страницы
         name: "Товар"
         tags: "Теги"
         designer: "Дизайнер"
