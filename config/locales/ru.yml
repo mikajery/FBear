@@ -138,6 +138,13 @@ ru:
         announce: "Короткое описание"
         content: "Описание товара"
         additional: "Дополнительно"
+        picture: Десктоп
+        thumb: Иконка
+        logo: Лого
+        portrait: Портретная
+        landscape: Альбомная
+        panorama: Панорама
+
 
       good_lang:
         name: "Наименование"

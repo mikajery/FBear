@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131008053120) do
+ActiveRecord::Schema.define(version: 20131008072841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,10 +136,10 @@ ActiveRecord::Schema.define(version: 20131008053120) do
   add_index "good_translations", ["locale"], name: "index_good_translations_on_locale", using: :btree
 
   create_table "goods", force: true do |t|
-    t.string   "name",                  null: false
+    t.string   "name",                   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug",                  null: false
+    t.string   "slug",                   null: false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
@@ -164,6 +164,14 @@ ActiveRecord::Schema.define(version: 20131008053120) do
     t.string   "thumb_content_type"
     t.integer  "thumb_file_size"
     t.datetime "thumb_updated_at"
+    t.string   "portrait_file_name"
+    t.string   "portrait_content_type"
+    t.integer  "portrait_file_size"
+    t.datetime "portrait_updated_at"
+    t.string   "landscape_file_name"
+    t.string   "landscape_content_type"
+    t.integer  "landscape_file_size"
+    t.datetime "landscape_updated_at"
   end
 
   create_table "goods_materials", force: true do |t|

@@ -12,14 +12,36 @@ var Product = function(el) {
       loading      = el.find('[data-product=loading]')
   ;
 
-  var img = new Image();
+  var imagesLoaded = {};
+  var covers = JSON.parse(cover.attr('data-product-cover'));
+
+  $.each(covers, function(k, v) {
+    imagesLoaded[k] = false;
+
+    var img = new Image();
+    img.onload = function() {
+      imagesLoaded[k] = true;
+      showContent();
+    }
+
+    img.src = v;
+  });
+  // 
 
   content.hide();
 
-  img.onload = function() {
-    console.log(img.src);
-    cover.css({
-      backgroundImage: 'url(' + img.src + ')'
+  var showContent = function() {
+    var stop = false;
+    $.each(imagesLoaded, function(k, v) {
+      stop = stop || !v;
+    });
+
+    if (stop) return;
+
+    cover.find('[data-cover]').each(function() {
+      $(this).css({
+        backgroundImage: 'url(' + covers[$(this).data('cover')] + ')'
+      });
     });  
 
     loading.fadeOut();
@@ -29,8 +51,6 @@ var Product = function(el) {
       _descInitH = description.find('.short').height();
     });
   }
-
-  img.src = cover.attr('data-product-cover');
 
   
 

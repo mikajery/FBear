@@ -36,6 +36,12 @@ class Good < ActiveRecord::Base
   validates :picture, :attachment_presence => true
   validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/png','image/gif']
 
+  validates :portrait, :attachment_presence => true
+  validates_attachment_content_type :portrait, :content_type => ['image/jpeg', 'image/png','image/gif']
+
+  validates :landscape, :attachment_presence => true
+  validates_attachment_content_type :landscape, :content_type => ['image/jpeg', 'image/png','image/gif']
+
   has_attached_file :logo, 
     styles: {preview: "300x300#"},
     default_url: "/images/:style/missing.png",
@@ -47,6 +53,18 @@ class Good < ActiveRecord::Base
     default_url: "/images/:style/missing.png",
     url: "/uploads/goods/:id/thumb/:style/:basename.:extension",
     path: ":rails_root/public/uploads/goods/:id/thumb/:style/:basename.:extension"
+
+  has_attached_file :portrait, 
+    styles: {normal: "768x1024#", admin: "30x30#", preview: '100x100#'},
+    default_url: "/images/:style/missing.png",
+    url: "/uploads/goods/:id/portrait/:style/:basename.:extension",
+    path: ":rails_root/public/uploads/goods/:id/portrait/:style/:basename.:extension"    
+
+  has_attached_file :landscape, 
+    styles: {normal: "1024x768#", admin: "30x30#", preview: '100x100#'},
+    default_url: "/images/:style/missing.png",
+    url: "/uploads/goods/:id/landscape/:style/:basename.:extension",
+    path: ":rails_root/public/uploads/goods/:id/landscape/:style/:basename.:extension"        
 
   has_attached_file :picture, 
     styles: {preview: "300x300#"},
@@ -83,4 +101,15 @@ class Good < ActiveRecord::Base
 
     (size.join "&times;").html_safe
   end
+
+  def pictures 
+    {
+      desktop: picture,
+      retina_portrait: portrait,
+      retina_landscape: landscape,
+      portrait: portrait.url(:normal),
+      landscape: landscape.url(:normal)
+    }
+  end
+
 end

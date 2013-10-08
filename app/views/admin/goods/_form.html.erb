@@ -7,6 +7,7 @@
       [:logo, 'Лого'], [:picture, 'Рекламное изображение'], [:thumb, 'Превью'], 
       [:tech, 'Характеристики'], 
       [:descriptions, 'Описания'], 
+      [:ipad, 'Ipad'], 
       [:pdfs, 'PDF', {disabled: (true unless @good.id)}], 
       [:three60, '360-просмотр', {disabled: (true unless @good.id)}], 
       [:video, 'Видео'], 
@@ -30,6 +31,11 @@
       <% Globalize.with_locale(@locale.slug) do %>
         <%= f.association :tags %>
       <% end %>
+    <% end %>
+
+    <%= tab_pane :ipad do %>
+      <%= image_field @good, 'portrait', f, [100, 100] %>
+      <%= image_field @good, 'landscape', f, [100, 100] %>
     <% end %>
 
     <%= tab_pane :logo do %>
@@ -157,11 +163,11 @@
     <% end %>
 
     <%= tab_pane :panorama do %>
-      <%= image_field @good, 'panorama', f, [300, 300], transparent: true %>
+      <%= image_field @good, 'panorama', f, [300, 300] %>
     <% end %>
 
     <%= tab_pane :thumb do %>
-      <%= image_field @good, 'thumb', f, [300, 300], transparent: true %>
+      <%= image_field @good, 'thumb', f, [300, 300] %>
     <% end %>
 
     <%= tab_pane :logo do %>
