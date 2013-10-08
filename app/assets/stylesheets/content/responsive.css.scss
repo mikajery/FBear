@@ -95,6 +95,16 @@
 		display: block !important;
 	}
 
+	@include block_list('.b-submenu');
+
+	.b-submenu {
+		padding-left: 0;
+		line-height: 30px;
+		font-weight: normal;
+		margin-top: -20px;
+		padding-bottom: 20px
+	}
+
 	.b-content-menu {
 		position: absolute;
 		top: 80px;

@@ -69,6 +69,44 @@ body {
   }
 }
 
+@include block_list(".b-dropdown .dropdown ul");
+.b-dropdown {
+	cursor: pointer;
+	position: relative;
+
+	&:hover > .dropdown {
+		display: block;
+	}
+
+	& > .dropdown {
+		display: none;
+		& > .wrap {
+			float: left;
+			position: relative;
+			left: -50%;
+		}
+
+		left: 50%;
+		position: absolute;
+		z-index: 20;
+		/* display: none; */
+
+		ul > li {
+			background: #fafafa;
+			margin-bottom: 1px;
+			border-radius: 6px;
+			color: #222;
+			padding: 0 15px;
+		}
+	}
+
+	&:hover {
+		& > ul {
+			display: block;
+		}
+	}
+}
+
 @import 'header';
 @import 'footer';
 @import 'navigation';

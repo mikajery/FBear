@@ -75,10 +75,13 @@ header {
 	td {
 		white-space: nowrap;
 		padding: 0 10px;
+		& > div {
+			border-bottom: 3px solid transparent;
+		}
 	}
 
 	.active {
-		border-bottom: 3px solid #000;	
+		border-bottom-color: #000;	
 		.dark & {
 			border-bottom-color: #fff;
 		}

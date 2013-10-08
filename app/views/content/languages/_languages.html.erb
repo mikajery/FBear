@@ -6,8 +6,24 @@
 			</div>
 		</td>
 
-		<% languages.each do |item| %>
-			<%= render 'content/languages/item', :item => item %>
-		<% end %>
+		<td>
+			<div class="b-dropdown">
+				<div class="current">
+					<%= @language.native %>
+				</div>
+
+				<div class="dropdown">
+					<div class="wrap">
+						<div class="inner">
+							<ul>
+								<% languages.select{|l| l != @language}.each do |item| %>
+									<%= render 'content/languages/item', :item => item %>
+								<% end %>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</td>
 	</tr>
 </table>
