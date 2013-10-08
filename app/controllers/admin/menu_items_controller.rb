@@ -55,7 +55,7 @@ class Admin::MenuItemsController < Admin::BaseController
         menu_item.weight = weight
 
         unless menu_item.save
-          errors << @menu_item.errors
+          errors << menu_item.errors
         end
       end
     end

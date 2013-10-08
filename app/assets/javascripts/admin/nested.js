@@ -3,9 +3,11 @@
 // }).disableSelection();
 
 var Nested = function(el) {
-  el.find('td').each(function() {
+  el.find('> [data-nested=item] td').each(function() {
     $(this).width($(this).width());
   });
+
+  console.log(el)
 
   el.sortable({
     items: "> [data-nested=item]",
@@ -22,7 +24,6 @@ var Nested = function(el) {
 
       $.post(el.data('nested-url'), {order: items});
     },
-    handle: 'td:first',
     stop: function(e, ui) {
       ui.item.children('tr:first-child').children('td').effect('highlight', {}, 1000)
     }

@@ -35,6 +35,7 @@ CMS::Application.routes.draw do
     resources :goods do
       resources :pdfs, only: [:new, :create]
       resources :three60s, only: [:new, :create]
+      post 'order', on: :collection, as: 'order'
       get ':locale', on: :member, action: :edit, as: 'languaged'
     end
   end
