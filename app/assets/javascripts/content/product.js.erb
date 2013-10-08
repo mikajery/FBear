@@ -1,7 +1,7 @@
 var Product = function(el) {
   var description  = el.find('[data-product=description]'),
       opener       = el.find('[data-product-toggle=description]'),
-      _descInitH   = description.height(),
+      _descInitH   = 0,
       media        = el.find('[data-product-media]'),
       mediaTypes   = ['360', 'video', 'pan'],
       videoContainer = el.find('.media[data-product-media]').filter('[data-product-media=video]'),
@@ -26,7 +26,7 @@ var Product = function(el) {
     
     el.addClass('loaded');
     content.fadeIn(function() {
-      
+      _descInitH = description.find('.short').height();
     });
   }
 
@@ -39,8 +39,9 @@ var Product = function(el) {
     {
       description.addClass('active');
       description.height(el.height()*3/4);
+      console.log(_descInitH);
       description.animate({
-        marginTop: -1 * (description.height() - _descInitH + 40)
+        marginTop: -1 * (description.height() - 110)
       });
     }
     else

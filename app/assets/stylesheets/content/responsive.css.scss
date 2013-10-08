@@ -98,6 +98,7 @@
 
 	.b-header-phone {
 		margin-top: 0;
+
 		.icon {
 			background-image: image-url('content/icons-small-black.png');
 			margin-bottom: -9px;
@@ -119,13 +120,28 @@
 }
 
 @media (max-width: 768px) {
+	body {
+		padding-bottom: 24px;
+	}
+	.container {
+		width: 708px;
+	}
+	.container h1 {
+		padding-left: 0;
+	}
+
 	.blogs {
 		width: 708px;
 		& > li {
+			height: 308px;
 			width: 708px;
 			.blog-img {
+				height: 308px;
 				width: 308px;
 			}	
+			.blog-info {
+				height: 308px;
+			}
 		}
 	}	
 }

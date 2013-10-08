@@ -1,8 +1,13 @@
+@viewport{
+    zoom: 1.0;
+    width: device-width;
+}
 @media (min-width: 1500px) {
 	.map {
 		max-width: 1400px;
 	}
 }
+
 @media (max-width: 1239px) {
 	body {
 		min-width: 1024px;
@@ -15,12 +20,11 @@
 	.map {
 		background-image: image-url('map/bg-1024.jpg');
 		background-position: 30px center;
+		.languages-wrap {
+			position: absolute;
+			right: 30px;
+		}	
 	}
-
-	.languages-wrap {
-		position: absolute;
-		right: 0;
-	}	
 
 	.logo {
 		left: 235px;
@@ -36,6 +40,10 @@
 	.map {
 		background-image: image-url('map/bg-768.jpg');
 		background-position: 0 center;
+			.languages-wrap {
+				position: absolute;
+				right: 30px;
+			}
 	}
 
 	.logo {
@@ -43,7 +51,4 @@
 		margin: -210px 0 0 -150px;
 	}
 
-	.container {
-		width: 708px;
-	}
 }
