@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131008120824) do
+ActiveRecord::Schema.define(version: 20131009070527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,10 +137,10 @@ ActiveRecord::Schema.define(version: 20131008120824) do
   add_index "good_translations", ["locale"], name: "index_good_translations_on_locale", using: :btree
 
   create_table "goods", force: true do |t|
-    t.string   "name",                   null: false
+    t.string   "name",                       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug",                   null: false
+    t.string   "slug",                       null: false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
@@ -175,6 +175,11 @@ ActiveRecord::Schema.define(version: 20131008120824) do
     t.datetime "landscape_updated_at"
     t.string   "bg"
     t.integer  "weight"
+    t.string   "panorama_ipad_file_name"
+    t.string   "panorama_ipad_content_type"
+    t.integer  "panorama_ipad_file_size"
+    t.datetime "panorama_ipad_updated_at"
+    t.string   "picture_alignment"
   end
 
   create_table "goods_materials", force: true do |t|

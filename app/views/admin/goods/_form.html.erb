@@ -35,11 +35,6 @@
       <% end %>
     <% end %>
 
-    <%= tab_pane :ipad do %>
-      <%= image_field @good, 'portrait', f, [100, 100] %>
-      <%= image_field @good, 'landscape', f, [100, 100] %>
-    <% end %>
-
     <%= tab_pane :logo do %>
       <%= image_field @good, 'logo', f, [300, 300], transparent: true %>
     <% end %>
@@ -165,7 +160,8 @@
     <% end %>
 
     <%= tab_pane :panorama do %>
-      <%= image_field @good, 'panorama', f, [300, 300] %>
+      <%= image_field @good, 'panorama', f, [100, 100] %>
+      <%= image_field @good, 'panorama_ipad', f, [100, 100] %>
     <% end %>
 
     <%= tab_pane :thumb do %>
@@ -176,10 +172,11 @@
       <%= image_field @good, 'logo', f, [300, 300], transparent: true %>
     <% end %>
 
-
-
     <%= tab_pane :picture do %>
-      <%= image_field @good, 'picture', f, [300, 300] %>
+      <%= f.input :picture_alignment, collection: get_alignments.map{|k, v| [v, k]}, include_blank: false %>
+      <%= image_field @good, 'picture', f, [100, 100] %>
+      <%= image_field @good, 'portrait', f, [100, 100] %>
+      <%= image_field @good, 'landscape', f, [100, 100] %>
     <% end %>
 
     <%= tab_pane :meta do %>

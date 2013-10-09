@@ -18,11 +18,11 @@
 
   <div class="product-content" data-product="content">
     <div class="media main-pic" data-product-cover="<%= @good.pictures.to_json %>">
-      <div data-cover="retina_landscape"></div>
-      <div data-cover="retina_portrait"></div>
-      <div class="hide-on-tablets show-on-desktop" data-cover="desktop"></div>
-      <div class="show-on-landscape" data-cover="landscape"></div>
-      <div class="show-on-portrait" data-cover="portrait"></div>
+      <div data-cover="retina_landscape" style="background-position: <%= @good.picture_alignment || 'center' %>"></div>
+      <div data-cover="retina_portrait" style="background-position: <%= @good.picture_alignment || 'center' %>"></div>
+      <div class="hide-on-tablets show-on-desktop" data-cover="desktop" style="background-position: <%= @good.picture_alignment || 'center' %>"></div>
+      <div class="show-on-landscape" data-cover="landscape" style="background-position: <%= @good.picture_alignment || 'center' %>"></div>
+      <div class="show-on-portrait" data-cover="portrait" style="background-position: <%= @good.picture_alignment || 'center' %>"></div>
     </div>
 
     <% if @good.three60s %>
@@ -58,7 +58,19 @@
 
     <% if @good.panorama.file? %>
       <div class="media pan" data-product-media="pan">
-        <%= image_tag @good.panorama %>
+        <% if @good.panorama_ipad %>
+          <div class="hide-on-tablets show-on-desktop">
+        <% end %>
+
+          <%= image_tag @good.panorama %>
+          
+        <% if @good.panorama_ipad %>
+          </div>
+
+          <div class="hide-on-desktop show-on-tablets">
+            <%= image_tag @good.panorama_ipad %>
+          </div>
+        <% end %>
       </div>
     <% end %>
 

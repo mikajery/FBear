@@ -21,14 +21,18 @@ class Good < ActiveRecord::Base
   validates :name, presence: true
   validates :designer, presence: true
 
-  attr_accessor :picture
   attr_accessor :logo
   attr_accessor :thumb
-  attr_accessor :panorama
+
+  attr_accessor :picture
   attr_accessor :portrait
   attr_accessor :landscape
 
+  attr_accessor :panorama
+  attr_accessor :panorama_ipad
+
   validates_attachment_content_type :panorama, :content_type => ['image/jpeg', 'image/png','image/gif']
+  validates_attachment_content_type :panorama_ipad, :content_type => ['image/jpeg', 'image/png','image/gif']
 
   validates :logo, :attachment_presence => true
   validates_attachment_content_type :logo, :content_type => ['image/jpeg', 'image/png','image/gif']
@@ -80,6 +84,12 @@ class Good < ActiveRecord::Base
     default_url: "/images/:style/missing.png",
     url: "/uploads/goods/:id/panorama/:style/:basename.:extension",
     path: ":rails_root/public/uploads/goods/:id/panorama/:style/:basename.:extension"
+
+  has_attached_file :panorama_ipad, 
+    styles: {preview: "300x300#"},
+    default_url: "/images/:style/missing.png",
+    url: "/uploads/goods/:id/panorama/ipad/:style/:basename.:extension",
+    path: ":rails_root/public/uploads/goods/:id/panorama/ipad/:style/:basename.:extension"
 
   def categories
     good_category

@@ -96,11 +96,11 @@ class Admin::GoodsController < Admin::BaseController
 
     def safe_params
       [ 
-        :name, :logo, :picture, :slug,
+        :name, :logo, :slug,
         :width, :depth, :height, :box_depth, :box_width, :box_height, :is_electrical, 
         :announce, :content, :additional, :price,
         :title, :heading, :keywords, :description, :bg,
-        :panorama, :vimeo, :thumb, :portrait, :landscape,
+        :panorama, :panorama_ipad, :vimeo, :thumb, :portrait, :landscape, :picture, :picture_alignment,
         :good_category_ids => [], :designer_ids => [], :material_ids => [], :tag_ids => []
       ]
     end

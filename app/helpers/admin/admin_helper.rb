@@ -15,6 +15,20 @@ module Admin::AdminHelper
     end
   end
 
+  def get_alignments
+    {
+      'center center' => 'По центру',
+      'left center' => 'По левому краю',
+      'right center' => 'По правому краю',
+      'center top' => 'По центру и верхнему краю',
+      'left top' => 'По левому верхнему краю',
+      'right top' => 'По правому вехнему краю',
+      'center bottom' => 'По нижнему краю по центру',
+      'left bottom' => 'По левому нижнему краю',
+      'right bottom' => 'По правому нижнему краю'
+    }
+  end
+
   def save_or_update item
     if item.id then 'Сохранить' else 'Добавить' end
   end
