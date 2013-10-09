@@ -58,13 +58,13 @@
 
     <% if @good.panorama.file? %>
       <div class="media pan" data-product-media="pan">
-        <% if @good.panorama_ipad %>
+        <% if @good.panorama_ipad.file? %>
           <div class="hide-on-tablets show-on-desktop">
         <% end %>
 
           <%= image_tag @good.panorama %>
-          
-        <% if @good.panorama_ipad %>
+
+        <% if @good.panorama_ipad.file? %>
           </div>
 
           <div class="hide-on-desktop show-on-tablets">
