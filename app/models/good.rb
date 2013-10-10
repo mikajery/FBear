@@ -13,6 +13,8 @@ class Good < ActiveRecord::Base
 
   has_and_belongs_to_many :tags
 
+  has_and_belongs_to_many :goods, foreign_key: 'parent_id'
+
   has_one :video
   has_many :pdfs
 

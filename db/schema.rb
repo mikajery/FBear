@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131009070527) do
+ActiveRecord::Schema.define(version: 20131010072032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -181,6 +181,14 @@ ActiveRecord::Schema.define(version: 20131009070527) do
     t.datetime "panorama_ipad_updated_at"
     t.string   "picture_alignment"
   end
+
+  create_table "goods_goods", force: true do |t|
+    t.integer "good_id"
+    t.integer "parent_id"
+  end
+
+  add_index "goods_goods", ["good_id"], name: "index_goods_goods_on_good_id", using: :btree
+  add_index "goods_goods", ["parent_id"], name: "index_goods_goods_on_parent_id", using: :btree
 
   create_table "goods_materials", force: true do |t|
     t.integer "good_id"
