@@ -23,6 +23,7 @@ body {
 
 	&.dark {
 		background-image: image-url('content/bg-black.png');
+		background-repeat: repeat-x;
 	}
 }
 
