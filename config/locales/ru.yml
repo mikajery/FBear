@@ -121,6 +121,7 @@ ru:
         name: "Товар"
         tags: "Теги"
         designer: "Дизайнер"
+        goods: "Дополнительные товары"
         good_category: "Категория"
         slug: "Путь"
         price: "Цена"
