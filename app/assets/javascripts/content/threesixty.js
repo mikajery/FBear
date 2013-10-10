@@ -14,6 +14,7 @@ var Threesixty = function(threesixty) {
       frames            = [],
       endFrame          = 0,
       loadedImages      = 0,
+      interval,
       spinner           = threesixty.find('[data-threesixty=spinner]'),
       spinner_id        = threesixty.data('threesixty-spinner'),
       images            = threesixty.find('[data-threesixty=images]')
@@ -132,6 +133,7 @@ var Threesixty = function(threesixty) {
     event.preventDefault();
     pointerStartPosX = getPointerEvent(event).pageX;
     dragging = true;
+    clearInterval(interval);
   });
   
   $(document).mouseup(function (event){
@@ -161,7 +163,7 @@ var Threesixty = function(threesixty) {
   });
 
   var spin = function() {
-    var timeout = setInterval(function() {
+    interval = setInterval(function() {
       endFrame--;
       refresh();
     }, 50)
