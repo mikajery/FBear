@@ -120,45 +120,21 @@ var Product = function(el) {
   var toggle360 = function() {
 
     var wrap = media.filter('.media[data-product-media=360]'),
-        items = wrap.find('[data-threesixty]'),
+        items = wrap.find('[data-show]'),
         viewer = media.find('[data-type=viewer]')
     ;
-
-    if (wrap.data('_threesixty')) return
-
-    var getViewer = function() {
-      var div = $('<div>');
-      viewer.empty().append(div);
-      return div;
-    };
 
     var toggleItem = function(item) {
       items.removeClass('active');
       item.addClass('active');
 
-      showThreeSixty(window[item.data('threesixty')]);
+      showThreeSixty(item);
     };
 
-    var showThreeSixty = function(frames) {
-      getViewer().spritespin({
-        width     : 600,
-        height    : 400,
-        resolutionX      : 600,
-        resolutionY      : 400,
-        sizeX     : 600,
-        sizeY     : 400,
-        frames    : frames.length,
-        behavior  : "drag", // "hold"
-        module    : "360",
-        sense     : 1,
-        source    : frames,
-        animate   : true,
-        loop      : true,
-        frameWrap : true,
-        frameStep : 1,
-        frameTime : 60,
-        enableCanvas : true
-      });
+    var showThreeSixty = function(item) {
+      console.log(item.data('show'));
+      wrap.find('[data-threesixty]').removeClass('active');
+      wrap.find('[data-threesixty=' + item.data('show') + ']').addClass('active');
     }
 
     items.click(function() {

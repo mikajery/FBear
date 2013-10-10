@@ -27,26 +27,33 @@
 
     <% if @good.three60s %>
       <div class="media three60" data-product-media="360">
-        <div class="viewer-wrap">
-          <div data-type="viewer"></div>
-        </div>
         <div class="padder">
           <ul class="b-thumbs">
             <% @good.three60s.each_with_index do |t, i| %>
-              <script type="text/javascript">
-                var frames<%= i %> = [
-                  <%= raw t.items.map{|f| '\'' + f.src.url(:preview) + "'"}.join "," %>
-                ];
-              </script>
-
-              <li data-threesixty="frames<%= i %>">
+              <li data-show="threesixty<%= i %>">
                 <%= image_tag t.src.url(:thumb) %>
               </li>
             <% end %>
           </ul>
         </div>
 
-        <div class="three60-viewer" data-viewer="360"></div>
+        <div class="three60-viewer" data-type="viewer" data-viewer="360">
+          <% @good.three60s.each_with_index do |t, i| %>
+            <script type="text/javascript">
+              var frames<%= i %> = [
+                <%= raw t.items.map{|f| '\'' + f.src.url(:preview) + "'"}.join "," %>
+              ];
+            </script>
+
+            <div class="threesixty" data-type="threesixty" data-threesixty="threesixty<%= i %>" data-threesixty-frames="frames<%= i %>" data-threesixty-spinner="threesixty-spinner-<%= i %>">
+              <div class="threesixty-spinner" id="threesixty-spinner-<%= i %>" data-threesixty="spinner">
+                <span>0%</span>
+              </div>
+
+              <ol class="threesixty-images" data-threesixty="images"></ol>
+            </div>
+          <% end %>
+        </div>
       </div>
     <% end %>
 
