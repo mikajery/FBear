@@ -132,9 +132,13 @@ var Product = function(el) {
     };
 
     var showThreeSixty = function(item) {
-      console.log(item.data('show'));
       wrap.find('[data-threesixty]').removeClass('active');
-      wrap.find('[data-threesixty=' + item.data('show') + ']').addClass('active');
+      var threesixty = wrap.find('[data-threesixty=' + item.data('show') + ']');
+      threesixty.addClass('active');
+
+      if (item.data('_threesixty')) return;
+
+      item.data('_threesixty', new Threesixty(threesixty));
     }
 
     items.click(function() {

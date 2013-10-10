@@ -169,9 +169,3 @@ var Threesixty = function(threesixty) {
     }, 50)
   }
 };
-
-$(function () {
-  $('[data-type="threesixty"]').each(function() {
-    new Threesixty($(this));
-  });
-});
