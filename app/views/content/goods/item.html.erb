@@ -41,7 +41,7 @@
           <% @good.three60s.each_with_index do |t, i| %>
             <script type="text/javascript">
               var frames<%= i %> = [
-                <%= raw t.items.map{|f| '\'' + f.src.url(:preview) + "'"}.join "," %>
+                <%= raw t.items.map{|f| '\'' + f.src + "'"}.join "," %>
               ];
             </script>
 
