@@ -376,6 +376,16 @@
       margin-bottom: -3px;
       float:none;
       display: inline-block;
+
+      &.icon-360 {
+        margin-right: 3px;
+        margin-bottom: -4px;
+      }
+
+      &.icon-pan {
+        margin-right: 7px;
+        margin-bottom: -3px;
+      }
     }
 
     & > li {
@@ -389,7 +399,7 @@
       float: left;
       margin-right: 18px;
       height: 50px;
-      width:110px;
+      width:105px;
       text-align:center;
       line-height: 50px;
       border-radius: 6px;
