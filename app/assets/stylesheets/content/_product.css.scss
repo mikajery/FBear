@@ -82,6 +82,7 @@
     } 
 
     .b-thumbs {
+      float: left;
       & > li {
         &.active {
           border: 1px solid #1b979d;
