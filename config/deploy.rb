@@ -81,7 +81,7 @@ namespace :deploy do
 
   desc "show routes"
   task :routes do
-    run "cd #{current_path}/public; rm -rf uploads; bundle exec rake routes RAILS_ENV=#{rails_env}"
+    run "cd #{current_path}/public; bundle exec rake routes RAILS_ENV=#{rails_env}"
   end
 
   desc 'Stop application'
@@ -97,8 +97,6 @@ end
 
 
 set :max_asset_age, 2 ## Set asset age in minutes to test modified date against.
-
-after 'deploy:finalize_update', 'deploy:assets:determine_modified_assets', 'deploy:assets:conditionally_precompile', 'deploy:uploads'
 
 namespace :deploy do
   namespace :assets do
@@ -122,4 +120,13 @@ namespace :deploy do
   end
 end
 
-#after "deploy:setup", "thinking_sphinx:shared_sphinx_folder"
+namespace :deploy do
+  namespace :paperclip
+    desc "build missing paperclip styles"
+    task :missing, :roles => :app do
+      run "cd #{release_path}; RAILS_ENV=production bundle exec rake paperclip:refresh:missing_styles"
+    end
+  end
+end
+
+after 'deploy:finalize_update', 'deploy:assets:determine_modified_assets', 'deploy:assets:conditionally_precompile', "deploy:uploads", "deploy:paperclip:missing"
