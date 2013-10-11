@@ -58,15 +58,20 @@
 	.map {
 		background-image: image-url('map/bg-768.jpg');
 		background-position: 0 center;
-			.languages-wrap {
-				position: absolute;
-				right: 30px;
-			}
+		.languages-wrap {
+			position: absolute;
+			right: 30px;
+		}
+
+		.motto {
+			margin-left: 20px;
+			margin-top: -200px;
+		}
 	}
 
 	.logo {
 		left: 190px;
-		margin: -210px 0 0 -150px;
-	}
+		margin: -230px 0 0 -150px;
+	}	
 
 }
