@@ -104,8 +104,8 @@
 
     &.pan {
       overflow: hidden;
-      & > img {
-      height: 100%;
+      img {
+        height: 100%;
       }
     }
 
