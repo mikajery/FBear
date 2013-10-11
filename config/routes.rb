@@ -6,6 +6,7 @@ CMS::Application.routes.draw do
     post controller: :cart, action: :buy, as: :cart_buy
     delete controller: :cart, action: :remove, as: :cart_remove
     get controller: :cart, action: :show, as: :cart
+    get 'info' => 'cart#info', as: :cart_info
   end
 
   get '/admin' => 'admin/welcome#index'

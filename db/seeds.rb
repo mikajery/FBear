@@ -48,3 +48,15 @@ menus.each do |m|
     menu_item.update i
   end
 end
+
+delivery_types = YAML::load_file File.join(Rails.root, 'db', 'seeds', 'delivery_types.yml')
+
+delivery_types.each do |type|
+  DeliveryType.find_or_create_by type
+end
+
+payment_types = YAML::load_file File.join(Rails.root, 'db', 'seeds', 'payment_types.yml')
+
+payment_types.each do |type|
+  PaymentType.find_or_create_by type
+end

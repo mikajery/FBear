@@ -1,0 +1,5 @@
+- name: DPD
+  key: dpd
+
+- name: Курьером
+  key: courier

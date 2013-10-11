@@ -35,9 +35,14 @@ var Threesixty = function(threesixty) {
   var loadImage = function() {
     var li = document.createElement("li");
     var imageName = collection[loadedImages + 1];
-    var image = $('<img>').attr('src', imageName).addClass("previous-image").appendTo(li);
+    var image = $('<img>').attr('src', imageName);
+    var div = $('<div>').addClass('previous-image').appendTo(li);
 
-    frames.push(image);
+    div.css({
+      'background-image': 'url(' + imageName + ')'
+    });
+
+    frames.push(div);
     images.append(li);
 
     $(image).load(function() {

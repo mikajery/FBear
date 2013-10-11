@@ -1,0 +1,5 @@
+- name: Наличными
+  key: cash
+
+- name: Кредитной картой
+  key: credit_card

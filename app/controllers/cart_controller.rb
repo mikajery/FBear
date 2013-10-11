@@ -2,7 +2,7 @@ class CartController < Content::BaseController
   layout 'content'
 
   before_action :set_token
-  before_action :set_cart, only: [:show]
+  before_action :set_cart, only: [:show, :info]
   before_action :set_good, only: [:buy]
 
   def buy
@@ -18,6 +18,9 @@ class CartController < Content::BaseController
   end
 
   def show
+  end
+
+  def info
   end
 
   def remove

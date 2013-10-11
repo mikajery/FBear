@@ -4,6 +4,9 @@ class Cart < ActiveRecord::Base
 
   has_many :cart_goods, autosave: true
 
+  belongs_to :delivery_type
+  belongs_to :payment_type
+
   validates :key, presence: true, uniqueness: true
 
   def items
