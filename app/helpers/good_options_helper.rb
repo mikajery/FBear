@@ -1,0 +1,2 @@
+module GoodOptionsHelper
+end

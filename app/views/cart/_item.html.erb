@@ -1,0 +1,23 @@
+<% good = item.good if item.good %>
+
+<li class="cart-item">
+  <div class="cart-item-remove">
+    <%= simple_form_for item, url: cart_remove_path, method: :delete do |f| %>
+      <%= f.input :id, as: :hidden %>
+      <%= content_tag :button, content_tag(:i, '', class: 'control control-remove'), type: :submit %>
+    <% end %>
+  </div>
+
+  <div class="cart-item-info">
+    <div class="cart-item-pic">
+      <%= image_tag(good.thumb.url(:cart)) %>
+    </div>
+
+    <div class="cart-item-title">
+      <%= good.title %>
+    </div>
+
+    <%# <%= render 'options', :options => good.options if good.options %>
+    <%= render 'additionals', :item => good.goods.sample unless good.goods.empty? %>
+  </div>
+</li>

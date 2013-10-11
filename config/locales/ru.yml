@@ -191,3 +191,7 @@ ru:
       tag:
         name: "Тег"
         title: "Название"
+
+      good_option:
+        name: Опция
+        price: Цена

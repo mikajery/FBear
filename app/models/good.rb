@@ -17,6 +17,7 @@ class Good < ActiveRecord::Base
 
   has_one :video
   has_many :pdfs
+  has_many :good_options
 
   has_many :three60s, -> { where media_file_id: nil}
 
@@ -58,7 +59,7 @@ class Good < ActiveRecord::Base
     path: ":rails_root/public/uploads/goods/:id/logo/:style/:basename.:extension"
 
   has_attached_file :thumb, 
-    styles: {preview: "300x300#", admin: "30x30#"},
+    styles: {preview: "300x300#", cart: "400x400#", additional: '90x90#', admin: "30x30#"},
     default_url: "/images/:style/missing.png",
     url: "/uploads/goods/:id/thumb/:style/:basename.:extension",
     path: ":rails_root/public/uploads/goods/:id/thumb/:style/:basename.:extension"
@@ -95,6 +96,10 @@ class Good < ActiveRecord::Base
 
   def categories
     good_category
+  end
+
+  def options
+    good_options
   end
 
   def size

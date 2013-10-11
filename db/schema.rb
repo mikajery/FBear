@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131010072032) do
+ActiveRecord::Schema.define(version: 20131011042115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,38 @@ ActiveRecord::Schema.define(version: 20131010072032) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "cart_goods", force: true do |t|
+    t.integer  "cart_id"
+    t.integer  "good_option_id"
+    t.integer  "price"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "good_id"
+  end
+
+  add_index "cart_goods", ["cart_id"], name: "index_cart_goods_on_cart_id", using: :btree
+  add_index "cart_goods", ["good_id"], name: "index_cart_goods_on_good_id", using: :btree
+  add_index "cart_goods", ["good_option_id"], name: "index_cart_goods_on_good_option_id", using: :btree
+
+  create_table "carts", force: true do |t|
+    t.string   "key"
+    t.integer  "status_id"
+    t.integer  "payment_id"
+    t.integer  "delivery_id"
+    t.string   "name"
+    t.string   "surname"
+    t.string   "city"
+    t.string   "region"
+    t.string   "address"
+    t.string   "zip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "carts", ["payment_id"], name: "index_carts_on_payment_id", using: :btree
+  add_index "carts", ["status_id"], name: "index_carts_on_status_id", using: :btree
 
   create_table "categories", force: true do |t|
     t.integer  "parent_id"
@@ -77,6 +109,13 @@ ActiveRecord::Schema.define(version: 20131010072032) do
   add_index "comments", ["comment_id"], name: "index_comments_on_comment_id", using: :btree
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
 
+  create_table "delivery_types", force: true do |t|
+    t.string   "name"
+    t.string   "key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "designer_goods", force: true do |t|
     t.integer  "designer_id"
     t.integer  "good_id"
@@ -117,6 +156,26 @@ ActiveRecord::Schema.define(version: 20131010072032) do
     t.integer "designer_id"
     t.integer "good_id"
   end
+
+  create_table "good_option_translations", force: true do |t|
+    t.integer  "good_option_id", null: false
+    t.string   "locale",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.integer  "price"
+  end
+
+  add_index "good_option_translations", ["good_option_id"], name: "index_good_option_translations_on_good_option_id", using: :btree
+  add_index "good_option_translations", ["locale"], name: "index_good_option_translations_on_locale", using: :btree
+
+  create_table "good_options", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "good_id"
+  end
+
+  add_index "good_options", ["good_id"], name: "index_good_options_on_good_id", using: :btree
 
   create_table "good_translations", force: true do |t|
     t.integer  "good_id",     null: false
@@ -327,6 +386,13 @@ ActiveRecord::Schema.define(version: 20131010072032) do
   end
 
   add_index "pages", ["page_type_id"], name: "index_pages_on_page_type_id", using: :btree
+
+  create_table "payment_types", force: true do |t|
+    t.string   "name"
+    t.string   "key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pdf_translations", force: true do |t|
     t.integer  "pdf_id",     null: false

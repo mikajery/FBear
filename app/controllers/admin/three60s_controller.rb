@@ -35,9 +35,11 @@ class Admin::Three60sController < Admin::BaseController
     @three60.good = @good
     @three60.is_uploaded = false
 
-    file = File.join("tmp/zip", @good.id.to_s, zip.original_filename)
-    FileUtils.mkdir_p File.dirname(file)
-    FileUtils.cp zip.path, file
+    unless zip.nil?
+      file = File.join("tmp/zip", @good.id.to_s, zip.original_filename)
+      FileUtils.mkdir_p File.dirname(file)
+      FileUtils.cp zip.path, file
+    end 
   
     respond_to do |format|
       if @three60.save

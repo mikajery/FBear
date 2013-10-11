@@ -98,7 +98,14 @@
               </div>
 
               <div class="buy">
-                <div></div>
+                <%= simple_form_for @good, url: cart_buy_path, method: :post do |f| %>
+                  <%= f.input :id, as: :hidden %>
+
+                  <%= content_tag :button, '', type: :submit %>
+                <% end %>
+                  
+                  
+                </form>
               </div>
             </div>
 

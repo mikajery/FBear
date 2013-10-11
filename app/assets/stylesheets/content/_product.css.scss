@@ -348,7 +348,12 @@
     height: 92px;
     background: image-url('content/product-buy-bg.png');
 
-    & > div {
+    form {
+      margin: 0;
+    }
+    button {
+      border: none;
+      display: block;
       margin: 20px auto 0;
       width: 54px;
       height: 54px;

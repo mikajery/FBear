@@ -1,0 +1,17 @@
+<% if cart.items.empty? %>
+    Ваша корзина пуста
+<% else %>
+  <ul class="cart-items">
+    <% cart.items.each do |item| %>
+      <%= render 'item', :item => item %>
+    <% end %>
+
+    <li class="cart-item cart-item-btn">
+      <div class="cart-btn">
+        <div class="btn">
+          Продолжить оформление
+        </div>
+      </div>
+    </li>
+  </ul>
+<% end %>

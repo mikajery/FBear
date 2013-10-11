@@ -1,0 +1,31 @@
+<div class="cart-additionals">
+  <div class="title">
+    Дополнительные продукты
+  </div>
+
+  <ul class="cart-additionals-items">
+    <li class="cart-additional-item">
+      <div class="info">
+        <div class="pic">
+          <%= image_tag(item.thumb.url(:preview)) if item.thumb %>
+        </div>
+
+        <div class="title">
+          <%= item.title %>
+        </div>
+
+        <div class="desc">
+          <%= item.announce.html_safe if item.announce %>
+        </div>
+
+        <div class="buy">
+          <%= simple_form_for item, url: cart_buy_path, method: :delete do |f| %>
+            <%= f.input :id, as: :hidden %>
+            <%= content_tag :button, 'Добавить в корзину', type: :submit %>
+          <% end %>
+            
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -108,7 +108,6 @@ html, body {
 	@include block_list(".languages");
 
 	.languages {
-		overflow-y: scroll;
 		padding-right: 10px;
 
 		& > li {

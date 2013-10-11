@@ -1,0 +1,7 @@
+<li>
+  <select<%= " placeholder=#{item[:title]}" if item[:title] %>>
+    <% item[:items].each do |i| %>
+      <option><%= i[:title] %></option>
+    <% end %>
+  </select>
+</li>
