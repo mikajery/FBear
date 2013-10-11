@@ -50,9 +50,7 @@ var Product = function(el) {
     content.fadeIn(function() {
       _descInitH = description.find('.short').height();
     });
-  }
-
-  
+  }  
 
   var toggleDescription = function(show) {
     if (show)
@@ -80,42 +78,48 @@ var Product = function(el) {
     var pan = media.filter('.media[data-product-media=pan]'),
         image = pan.find('img'),
         _x = 0,
-        _y = 0,
         _l = 0,
-        _t = 0,
+        _d = 1,
+
         timeout = false
     ;
 
-    setInterval(function() {
-      _l += 0.1;
+    var scrollPan = function() {
+      _l += _d * 0.1;
       pan.scrollLeft(_l);
-    })
+      timeout = setTimeout(function() {
+        scrollPan();
+      })
+    };
+    
 
     $('body')
       .on('mousedown', function(e) {
         _x  = e.pageX;
-        _y  = e.pageY;
         _l = pan.scrollLeft();
-        _t = pan.scrollTop();
 
         clearTimeout(timeout);
 
         $('body').on('mousemove', function(e) {
-          var _dX = _x - e.pageX,
-              _dY = _y - e.pageY
-          ;
-
+          var _dX = _x - e.pageX;
           pan.scrollLeft(_l + _dX);
-          pan.scrollTop(_t + _dY);          
         });
 
         e.preventDefault();
         return false;
       })
-      .on('mouseup', function() {
+      .on('mouseup', function(e) {
+        var _dX = _x - e.pageX;
+        _l = _l + _dX;
+
+        if (_dX < 0) _d = -1;
+        else _d = 1;
+
         $('body').off('mousemove');
         scrollPan();
       });
+
+      scrollPan();
   };
 
   var toggle360 = function() {
