@@ -171,15 +171,15 @@ var Product = function(el) {
     if (media) {
       el.addClass('show-' + type);
 
-      if (isDark && '360' != type)
-        $('body').addClass('dark');
+      // if (isDark && '360' != type)
+      //   $('body').addClass('dark');
 
       if ('pan' == type)
         togglePanorama();
       else if ('360' == type)
       {
         toggle360();
-        $('body').removeClass('dark');
+        // $('body').removeClass('dark');
       }
     }
   };

@@ -21,7 +21,7 @@ var Showroom = function(el) {
 	var updateSlider = function(instant) {
 		var toLeft = $(items().get(step)).data('showroom-left');
 
-		console.log(toLeft);
+		if (step == 0) toLeft = -60;
 
 		if (step && toLeft || !step)
 			slider[instant ? 'css' : 'animate']({

@@ -127,7 +127,7 @@
     }
 
     .shadow {
-      background: image-url('content/bg-black.png') repeat-x;
+      background: image-url('content/bg-black-solid.png') repeat-x;
     }
   }
 
@@ -373,7 +373,9 @@
     padding-top: 70px;
 
     .product-icon {
-      margin-top: 18px;
+      margin-bottom: -3px;
+      float:none;
+      display: inline-block;
     }
 
     & > li {
@@ -387,6 +389,8 @@
       float: left;
       margin-right: 18px;
       height: 50px;
+      width:110px;
+      text-align:center;
       line-height: 50px;
       border-radius: 6px;
 
