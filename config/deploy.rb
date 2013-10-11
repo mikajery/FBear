@@ -121,7 +121,7 @@ namespace :deploy do
 end
 
 namespace :deploy do
-  namespace :paperclip
+  namespace :paperclip do
     desc "build missing paperclip styles"
     task :missing, :roles => :app do
       run "cd #{release_path}; RAILS_ENV=production bundle exec rake paperclip:refresh:missing_styles"
