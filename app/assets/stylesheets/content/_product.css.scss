@@ -263,6 +263,9 @@
         &.active {
           .long {
             display: block;
+            .ps-scrollbar-x {
+              display: none !important;
+            }
           }
 
           .opener {
