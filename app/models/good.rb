@@ -24,8 +24,9 @@ class Good < ActiveRecord::Base
   validates :name, presence: true
   validates :designer, presence: true
 
-  attr_accessor :logo
   attr_accessor :thumb
+  attr_accessor :logo
+  attr_accessor :logo_desc
 
   attr_accessor :picture
   attr_accessor :portrait
@@ -39,6 +40,9 @@ class Good < ActiveRecord::Base
 
   validates :logo, :attachment_presence => true
   validates_attachment_content_type :logo, :content_type => ['image/jpeg', 'image/png','image/gif']
+
+  validates :logo_desc, :attachment_presence => true
+  validates_attachment_content_type :logo_desc, :content_type => ['image/jpeg', 'image/png','image/gif']
 
   validates :thumb, :attachment_presence => true
   validates_attachment_content_type :thumb, :content_type => ['image/jpeg', 'image/png','image/gif']
@@ -57,6 +61,12 @@ class Good < ActiveRecord::Base
     default_url: "/images/:style/missing.png",
     url: "/uploads/goods/:id/logo/:style/:basename.:extension",
     path: ":rails_root/public/uploads/goods/:id/logo/:style/:basename.:extension"
+
+  has_attached_file :logo_desc, 
+    styles: {preview: "300x20>"},
+    default_url: "/images/:style/missing.png",
+    url: "/uploads/goods/:id/logo_desc/:style/:basename.:extension",
+    path: ":rails_root/public/uploads/goods/:id/logo_desc/:style/:basename.:extension"
 
   has_attached_file :thumb, 
     styles: {preview: "300x300#", cart: "400x400#", additional: '90x90#', admin: "30x30#"},

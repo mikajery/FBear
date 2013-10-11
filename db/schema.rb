@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131011054657) do
+ActiveRecord::Schema.define(version: 20131011095626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -241,6 +241,10 @@ ActiveRecord::Schema.define(version: 20131011054657) do
     t.integer  "panorama_ipad_file_size"
     t.datetime "panorama_ipad_updated_at"
     t.string   "picture_alignment"
+    t.string   "logo_desc_file_name"
+    t.string   "logo_desc_content_type"
+    t.integer  "logo_desc_file_size"
+    t.datetime "logo_desc_updated_at"
   end
 
   create_table "goods_goods", force: true do |t|

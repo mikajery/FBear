@@ -96,7 +96,7 @@ class Admin::GoodsController < Admin::BaseController
 
     def safe_params
       [ 
-        :name, :logo, :slug,
+        :name, :logo, :slug, :logo_desc, 
         :width, :depth, :height, :box_depth, :box_width, :box_height, :is_electrical, 
         :announce, :content, :additional, :price,
         :title, :heading, :keywords, :description, :bg,

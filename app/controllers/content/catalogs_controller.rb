@@ -32,6 +32,8 @@ class Content::CatalogsController < Content::BaseController
       GoodCategory.all.each do |i|
         links << { active: (true if @category == i), href: catalog_item_path(i.slug), title: i.title }
       end
+
+      links << { active: (true unless @category), href: catalog_path, title: 'Все товары' }
       
       @navigation = {
         helper: t('navigation.catalog.helper'),

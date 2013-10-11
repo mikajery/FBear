@@ -9,7 +9,8 @@ var Product = function(el) {
       mediaClose   = el.find('[data-product-dismiss=media]'),
       cover        = el.find('[data-product-cover]'),
       content      = el.find('[data-product=content]'),
-      loading      = el.find('[data-product=loading]')
+      loading      = el.find('[data-product=loading]'),
+      isDark       = $('body').hasClass('dark')
   ;
 
   var imagesLoaded = {};
@@ -170,10 +171,16 @@ var Product = function(el) {
     if (media) {
       el.addClass('show-' + type);
 
+      if (isDark && '360' != type)
+        $('body').addClass('dark');
+
       if ('pan' == type)
         togglePanorama();
       else if ('360' == type)
+      {
         toggle360();
+        $('body').removeClass('dark');
+      }
     }
   };
 
