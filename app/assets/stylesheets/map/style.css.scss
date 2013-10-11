@@ -41,7 +41,7 @@ html, body {
 .map-line {
 	position: absolute;
 	height: 200px;
-	margin-top: -100px;
+	margin-top: -45px;
 	border-bottom: 2px solid #1b979d; 
 	z-index: 2;
 	left: 0;
@@ -54,13 +54,13 @@ html, body {
 	height: 100%;
 	background: image-url('map/bg.jpg') 25% center no-repeat #fafafa;
 	max-width: 1200px;
-	margin: 0 auto;
+	margin: 70px auto 0;
 	position: relative;
 
 	.languages-wrap {
 		z-index: 3;
 		overflow: hidden;
-		margin: -108px 0 0 0;
+		margin: -123px 0 0 0;
 		position: absolute;
 		right: 0;
 		width: 190px;
