@@ -19,9 +19,19 @@ html, body {
 
 .logo {
 	background: image-url('map/logo.png') no-repeat;
-	width: 210px;
-	height: 42px;
-	margin: -310px 0 0 -210px;
+	width: 191px;
+	height: 46px;
+	margin: -370px 0 0 -250px;
+	top: 50%;
+	left: 25%;
+	position: absolute;
+}
+
+.motto {
+	background: image-url('map/motto.png') no-repeat;
+	width: 186px;
+	height: 22px;
+	margin: -333px 0 0 -15px;
 	top: 50%;
 	left: 25%;
 	display: block;
