@@ -129,4 +129,4 @@ namespace :deploy do
   end
 end
 
-after 'deploy:finalize_update', 'deploy:assets:determine_modified_assets', 'deploy:assets:conditionally_precompile', "deploy:uploads", "deploy:paperclip:missing"
+after 'deploy:finalize_update', 'deploy:assets:determine_modified_assets', 'deploy:assets:conditionally_precompile', "deploy:uploads"

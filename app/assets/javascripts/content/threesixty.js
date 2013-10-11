@@ -7,17 +7,17 @@ var Threesixty = function(threesixty) {
       monitorStartTime  = 0,
       monitorInt        = 10,
       ticker            = 0,
-      speedMultiplier   = 10,
+      speedMultiplier   = -10,
       collection        = window[threesixty.data('threesixty-frames')],
       totalFrames       = collection.length - 1,
       currentFrame      = 0,
       frames            = [],
       endFrame          = 0,
       loadedImages      = 0,
-      interval,
       spinner           = threesixty.find('[data-threesixty=spinner]'),
       spinner_id        = threesixty.data('threesixty-spinner'),
-      images            = threesixty.find('[data-threesixty=images]')
+      images            = threesixty.find('[data-threesixty=images]'),
+      interval
   ;
 
   var addSpinner = function () {
