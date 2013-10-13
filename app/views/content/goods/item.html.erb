@@ -144,19 +144,16 @@
 
                 <% unless @good.material.empty? %>
                   <div class="block">
-                    <div class="title">
+                    <div class="title smaller">
                       <%= T (@good.material.size == 1 ? "Материал" : "Материалы") %>
                     </div>
-
-                    <div class="block">
-                      <%= (@good.material.map{|m| link_to m.title, materials_path(anchor: m.id)}.join ", ").html_safe %>
-                    </div>
+                    <%= (@good.material.map{|m| link_to m.title, materials_path(anchor: m.id)}.join ", ").html_safe %>
                   </div>
                 <% end %>
 
                 <% unless @good.designer.empty? %>
                   <div class="block">
-                    <div class="title">
+                    <div class="title smaller">
                       <%= T (@good.designer.size == 1 ? "Дизайнер" : "Дизайнеры") %>
                     </div>
 
