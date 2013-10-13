@@ -269,6 +269,17 @@
 
         @include row('.b-thumbs');
         .b-thumbs { 
+          &.no-lines {
+            border: none;
+            & > li {
+              padding-left: none;
+            }
+          }
+          &.material-thumbs {
+            & > li {
+              width: 120px;
+            }
+          }
           & > li {
             float: left;
             a {
@@ -343,7 +354,7 @@
           height: 1000px;
           position: absolute;
           font: {
-            size: 12px;
+            size: 14px;
           }
 
           .b-thumbs { 
@@ -363,10 +374,14 @@
           }
 
           .block {
-            .title {
-              a {
-                color: inherit;
+            a {
+              color: inherit;
+              &:hover {
+                text-decoration: none;
               }
+            }
+            .title {
+              
               font-size: 20px;
               margin-bottom: 10px;
             }
