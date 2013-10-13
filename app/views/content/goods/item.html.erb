@@ -1,4 +1,4 @@
-<div class="b-product<% ' can-order' if @language.is_default %>" data-action="product">
+<div class="b-product<%= ' can-order' if @language.is_default %>" data-action="product">
   <div class="shadow"></div>
 
   <div class="media-dismiss" data-product-dismiss="media">
@@ -163,7 +163,6 @@
                     <%= @good.additional.html_safe %>
                   </div>
                 <% end %>
-
               </div>
             <div>
           </div>

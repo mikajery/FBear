@@ -1,4 +1,12 @@
 .b-product {
+  &.can-order {
+    .info .info-block > .controls {
+      display: block;
+    }
+    .info .info-block > .description {
+      margin-right: 100px;
+    }
+  }
   & > .shadow {
     background: image-url('content/bg-black.png') repeat-x top left;
     top: 0;
@@ -11,7 +19,7 @@
 
   & > .media-dismiss {
     position: absolute;
-    right: 80px;
+    right: 90px;
     top: 125px;
     width: 40px;
     height: 40px;
@@ -107,9 +115,10 @@
       & > div {
         position: relative;
         height: 100%;
-        & > img {
-          height: 100%;
-        }
+      }
+
+      img {
+        height: 100%;
       }
     }
 
@@ -219,6 +228,7 @@
       margin-right: 50px;
 
       & > .controls {
+        display: none;
         overflow: hidden;
         & > .shadow {
           position: absolute;
@@ -247,7 +257,6 @@
         width: 530px;
         min-height: 150px;
         background: image-url('content/product-info-bg.png');
-        margin-right: 100px;
         position: relative;
         z-index: 3;
 

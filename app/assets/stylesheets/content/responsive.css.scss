@@ -28,7 +28,13 @@
 
 	.b-product {
 		& > .media-dismiss {
-			right: 30px;
+			right: 40px;
+		}
+
+		&.can-order {
+			.info .info-block > .description {
+				width: 490px;
+			}
 		}
 		.info {
 			left: 30px;
@@ -36,7 +42,7 @@
 				margin-right: 0;
 
 				& > .description {
-					width: 490px;
+					width: 590px;
 				}
 			}
 		}
@@ -180,9 +186,9 @@
 		display: block !important;
 	}
 
-	body {
+	/*body {
 		padding-bottom: 24px;
-	}
+	}*/
 
 	.container {
 		width: 708px;
