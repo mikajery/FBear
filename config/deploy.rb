@@ -126,6 +126,11 @@ namespace :deploy do
     task :missing, :roles => :app do
       run "cd #{deploy_to}current; RAILS_ENV=production bundle exec rake paperclip:refresh:missing_styles"
     end
+
+    desc "regenerate 3d-previews"
+    task :three60, :roles => :app do
+      run "cd #{deploy_to}current; RAILS_ENV=production bundle exec rake paperclip:refresh:thumbnails CLASS=Thee60"
+    end
   end
 end
 
