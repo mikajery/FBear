@@ -1,5 +1,6 @@
 CMS::Application.routes.draw do
 
+  get "materials/show"
   scope '/cart' do
     post controller: :cart, action: :buy, as: :cart_buy
     post 'order' => 'cart#order', as: :cart_order

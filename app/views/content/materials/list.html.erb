@@ -1,0 +1,22 @@
+<div class="container">
+  <h1><%= @current_page.heading %></h1>
+  <div class="content">
+    <ul class="materials">
+      <% @materials.each do |m| %>
+        <li>
+          <div class="pic">
+            <%= image_tag m.picture.url(:preview) %>
+          </div>
+
+          <div class="title">
+            <%= m.title %>
+          </div>
+
+          <div class="description">
+            <%= m.description.html_safe %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
