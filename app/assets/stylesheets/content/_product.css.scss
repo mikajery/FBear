@@ -331,6 +331,7 @@
 
         .long {
           display: none;
+          overflow-y: hidden;
           color: #888;
           height: 1000px;
           position: absolute;
@@ -445,11 +446,11 @@
 
   .buy {
     height: 92px;
-    background: image-url('content/product-buy-bg.png');
 
     form {
       margin: 0;
     }
+    
     button {
       border: none;
       display: block;

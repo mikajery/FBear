@@ -66,8 +66,10 @@ var Product = function(el) {
     if (show)
     {
       description.addClass('active');
-      description.find('[data-action=scrollbar]').trigger('size:change');
       description.height(el.height()*3/4);
+
+      description.find('[data-action=scrollbar]').height(description.height() - 130)
+      description.find('[data-action=scrollbar]').trigger('size:change');
 
       description.animate({
         marginTop: -1 * (description.height() - 110)
