@@ -14,9 +14,15 @@
     <% @translations.each do |translation| %>
       <tr>
         <td><%= translation.key %></td>
-        <th>
-          
-        </th>
+        <td>
+          <% Language.all.each do |l| %>
+            <% if translation.locale_exists l.slug %>
+              <% Globalize.with_locale l.slug do %>
+                <%= content_tag :div, truncate(l.slug.to_s + ': ' + translation.value.to_s) %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </td>
         <td>
           <%= link_to pencil_icon,
               edit_admin_translation_path(translation), :class => 'btn btn-mini' %>
