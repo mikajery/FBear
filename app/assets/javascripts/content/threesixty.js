@@ -171,6 +171,6 @@ var Threesixty = function(threesixty) {
     interval = setInterval(function() {
       endFrame--;
       refresh();
-    }, 50)
+    }, 100)
   }
 };

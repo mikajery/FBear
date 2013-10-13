@@ -19,7 +19,12 @@ set :deploy_via, :remote_cache
 
 set :user, 'deploy'
 set :use_sudo, false
+set :project_path, "/var/www/lll/"
 set (:deploy_to) { "/var/www/lll/#{stage_name}/" }
+set (:ts) { 
+  d = DateTime.now
+  d.strftime("%Y%m%d%H%M%S") 
+}
 
 set :whenever_command, 'rvm use 2.0.0 do bundle exec whenever'
 
@@ -77,6 +82,11 @@ namespace :deploy do
   desc "create symlink to uploads"
   task :uploads do
     run "cd #{current_path}/public; rm -rf uploads; ln -s #{deploy_to}shared/uploads"
+  end
+
+  desc "dump uploads"
+  task :dump_uploads do
+    run "mkdir -p #{project_path}dumps/uploads/#{ts}; cp -r #{deploy_to}shared/uploads #{project_path}dumps/uploads/#{ts}"
   end
 
   desc "show routes"
