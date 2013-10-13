@@ -138,7 +138,9 @@
                 <% if @good.content %>
                   <div class="block">
                     <div class="title">Спецификация</div>
-                    <%= @good.content.html_safe %>
+                    <div class="html-safe">
+                      <%= @good.content.html_safe %>
+                    </div>
                   </div>
                 <% end %>
 
@@ -161,35 +163,37 @@
                   </ul>
                 </div>
 
-                <div class="block">
-                  <div class="title">Размеры</div>
-                  Поскольку на сайте указаны французские размеры, для удобства выбора подходящего вам размера ниже расположены
-                </div>
+                <% if false %>
+                  <div class="block">
+                    <div class="title">Размеры</div>
+                    Поскольку на сайте указаны французские размеры, для удобства выбора подходящего вам размера ниже расположены
+                  </div>
 
-                <div class="block">
-                  <ul class="b-thumbs sizes">
-                    <li>
-                      <div class="title">Габариты</div>
-                      <%= content_tag :div, 'H ' + @good.height.to_i.to_s if @good.height %>
-                      <%= content_tag :div, 'W ' + @good.width.to_i.to_s if @good.width %>
-                      <%= content_tag :div, 'D ' + @good.depth.to_i.to_s if @good.depth %>
-                    </li>
-
-                    <li>
-                      <div class="title">Упаковка</div>
-                      <%= content_tag :div, 'H ' + @good.box_height.to_i.to_s if @good.box_height %>
-                      <%= content_tag :div, 'W ' + @good.box_width.to_i.to_s if @good.box_width %>
-                      <%= content_tag :div, 'D ' + @good.box_depth.to_i.to_s if @good.box_depth %>
-                    </li>
-
-                    <% if @good.is_electrical %>
+                  <div class="block">
+                    <ul class="b-thumbs sizes">
                       <li>
-                        <div class="title">Питание от электросети</div>
-                        Check compatibility with your country!
+                        <div class="title">Габариты</div>
+                        <%= content_tag :div, 'H ' + @good.height.to_i.to_s if @good.height %>
+                        <%= content_tag :div, 'W ' + @good.width.to_i.to_s if @good.width %>
+                        <%= content_tag :div, 'D ' + @good.depth.to_i.to_s if @good.depth %>
                       </li>
-                    <% end %>
-                  </ul>
-                </div>
+
+                      <li>
+                        <div class="title">Упаковка</div>
+                        <%= content_tag :div, 'H ' + @good.box_height.to_i.to_s if @good.box_height %>
+                        <%= content_tag :div, 'W ' + @good.box_width.to_i.to_s if @good.box_width %>
+                        <%= content_tag :div, 'D ' + @good.box_depth.to_i.to_s if @good.box_depth %>
+                      </li>
+
+                      <% if @good.is_electrical %>
+                        <li>
+                          <div class="title">Питание от электросети</div>
+                          Check compatibility with your country!
+                        </li>
+                      <% end %>
+                    </ul>
+                  </div>
+                <% end %>
 
                 <% unless @good.pdfs.empty? %>
                   <div class="block">

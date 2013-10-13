@@ -336,6 +336,7 @@
           left: 20px;
           right: 20px;
           overflow-y: hidden;
+          overflow-x: hidden;
           display: none;
           color: #888;
           font: {
@@ -365,6 +366,64 @@
               }
               font-size: 20px;
               margin-bottom: 10px;
+            }
+
+            .html-safe {
+              padding-right: 20px;
+              p {
+                margin: 0;
+                line-height: 1.5;
+                margin-bottom: 20px;
+              }
+
+              a {
+                color: inherit;
+              }
+
+              h1 {
+                font-weight: normal;
+                font-size: 20px;
+                margin-bottom: 10px;
+              }
+
+              ul, ol {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+              }
+
+              @include row('& > ul, & > ol');
+
+              & > ul, & > ol {
+                width: 100%;
+                border: { 
+                  top: 1px solid #222;
+                  bottom: 1px solid #222;
+                }
+
+                padding: 10px 10px 20px;
+                
+                & > li {
+                  float: left;
+                  b, strong {
+                    color: #fff;
+                    display: block;
+                  }
+
+                  a {
+                    color: inherit;
+                    &:hover {
+                      text-decoration: none;
+                    }
+                  }
+                
+                  padding-right: 40px;
+                  .title {
+                    font-size: 12px !important;
+                    color: #fff;
+                  }
+                }
+              }
             }
 
             line-height: 1.5;

@@ -6,17 +6,11 @@ class Admin::GoodCategoriesController < Admin::BaseController
   # GET /categories.json
   def index
     @collections = GoodCategory.all
-    @items = Good.all
-
+    @items = Good.all.to_a
+    
     if params[:id]
       @collection = GoodCategory.find(params[:id])
-      
-      @items = @items.delete_if {|i| 
-        i.good_category.each do |c|
-          c == @collection
-          break
-        end
-      }
+      @items = @items.delete_if {|i| i.good_category.select {|c| c == @collection}.empty?}
     end
   end
 
