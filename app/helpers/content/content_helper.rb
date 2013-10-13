@@ -11,7 +11,9 @@ module Content::ContentHelper
     phones = Setting.find_by_key('phones')
 
     if phones
-      phones.value.split "\n"
+      Globalize.with_locale @language.slug do
+        phones.value.split("\n") if phones.value
+      end
     else
       []
     end
