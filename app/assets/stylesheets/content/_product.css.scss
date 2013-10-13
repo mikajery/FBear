@@ -7,6 +7,13 @@
       margin-right: 100px;
     }
   }
+
+  &.no-shadow.show-360 {
+    & > .shadow {
+      display:none;
+    }
+  }
+
   & > .shadow {
     background: image-url('content/bg-black.png') repeat-x top left;
     top: 0;

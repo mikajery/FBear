@@ -10,7 +10,8 @@ var Product = function(el) {
       cover        = el.find('[data-product-cover]'),
       content      = el.find('[data-product=content]'),
       loading      = el.find('[data-product=loading]'),
-      isDark       = $('body').hasClass('dark')
+      isDark       = $('body').hasClass('dark'),
+      noShadow     = el.data('no-shadow')
   ;
 
   var imagesLoaded = {},
@@ -171,6 +172,8 @@ var Product = function(el) {
     if (0 == items.filter('.active').size())
       items.first().trigger('click');
 
+    if (noShadow) el.addClass('no-shadow')
+
     wrap.data('_threesixty', this);
   };
 
@@ -185,19 +188,20 @@ var Product = function(el) {
     });
 
     clearVideoContainer();
+    if (isDark) $('body').addClass('dark');
 
     if (media) {
       el.addClass('show-' + type);
 
-      // if (isDark && '360' != type)
-      //   $('body').addClass('dark');
-
       if ('pan' == type)
+      {
         togglePanorama();
+        if (isDark) $('body').addClass('dark');
+      }
       else if ('360' == type)
       {
+        $('body').removeClass('dark');
         toggle360();
-        // $('body').removeClass('dark');
       }
     }
   };
