@@ -63,7 +63,7 @@ class Good < ActiveRecord::Base
     path: ":rails_root/public/uploads/goods/:id/logo/:style/:basename.:extension"
 
   has_attached_file :logo_desc, 
-    styles: {preview: "300x20>"},
+    styles: {preview: "400x30>"},
     default_url: "/images/:style/missing.png",
     url: "/uploads/goods/:id/logo_desc/:style/:basename.:extension",
     path: ":rails_root/public/uploads/goods/:id/logo_desc/:style/:basename.:extension"

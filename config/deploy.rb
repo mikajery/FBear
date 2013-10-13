@@ -131,6 +131,11 @@ namespace :deploy do
     task :three60, :roles => :app do
       run "cd #{deploy_to}current; RAILS_ENV=production bundle exec rake paperclip:refresh:thumbnails CLASS=Three60"
     end
+
+    desc "regenerate goods images"
+    task :goods, :roles => :app do
+      run "cd #{deploy_to}current; RAILS_ENV=production bundle exec rake paperclip:refresh:thumbnails CLASS=Good"
+    end
   end
 end
 
