@@ -88,7 +88,7 @@
               <div class="shadow"></div>
 
               <div class="price">
-                <%= @good.price %>
+                <%= number_to_currency(@good.price, precision: 0, unit: 'р.') %>
               </div>
 
               <div class="b-farrow small">
