@@ -3,7 +3,7 @@ class Content::CatalogsController < Content::BaseController
   before_action :navigation, only: [:list, :item]
 
   def list
-    @items = Good.all
+    @items = Good.all.where('on_main is true')
   end
 
   def item

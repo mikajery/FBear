@@ -9,8 +9,12 @@ class Admin::GoodCategoriesController < Admin::BaseController
     @items = Good.all.to_a
     
     if params[:id]
-      @collection = GoodCategory.find(params[:id])
-      @items = @items.delete_if {|i| i.good_category.select {|c| c == @collection}.empty?}
+      if params[:id] == 'all'
+        @items.select! {|i| i.on_main}
+      else 
+        @collection = GoodCategory.find(params[:id])
+        @items = @items.delete_if {|i| i.good_category.select {|c| c == @collection}.empty?}
+      end
     end
   end
 
