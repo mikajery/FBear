@@ -23,6 +23,10 @@ body {
 	}
 
 	&.dark {
+		&.no-shadow {
+			background-image: none;
+		}
+		
 		background-image: image-url('content/bg-black.png');
 		background-repeat: repeat-x;
 	}
@@ -49,7 +53,7 @@ body {
 
 	h1 {
 		margin: 0;
-		padding: 20px 0 40px; 
+		padding: 20px 0; 
 		text-transform: uppercase;
 
 		font: {

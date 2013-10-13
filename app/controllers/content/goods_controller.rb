@@ -6,6 +6,10 @@ class Content::GoodsController < Content::BaseController
     if @good.bg == 'dark'
       @body_dark = true
     end
+
+    unless @good.no_shadow
+      @body_no_shadow = true
+    end
   end
 
   def get_item

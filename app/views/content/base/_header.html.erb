@@ -29,22 +29,6 @@
 			<td class="space"></td>
 
 			<td width="1px">
-				<table class="b-menu">
-					<tr>
-						<td>
-							<div>
-								<% if @language.is_default %>
-									<a href="<%= cart_path %>" class="b-cart-link">Корзина</a>
-								<% end %>
-							</div>
-						</td>
-					</tr>
-				</table>
-			</td>
-
-			<td class="space small"></td>
-
-			<td width="1px">
 				<%= render 'content/languages/languages' %>
 			</td>
 
