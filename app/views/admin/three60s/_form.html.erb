@@ -2,6 +2,7 @@
   <%= form_errors f %>
 
   <%= f.input :name %>
+  <%= f.input :is_reverted %>
 
   <% if @three60.id %>
     <%= image_field @three60, 'src', f, [300, 300] %>

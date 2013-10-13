@@ -9,7 +9,11 @@ class Three60 < MediaFile
 
 
   def items
-    media_files.order('src_file_name ASC')
+    items = media_files.order('src_file_name ASC')
+    if is_reverted
+      items.reverse!
+    end
+    items
   end
 
 

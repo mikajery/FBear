@@ -1,5 +1,11 @@
 var Redactor = function(el) {
-  var options = {};
+  var buttons = [],
+    options = {
+      wym: true,
+      buttonsAdd: buttons
+    }
+  ;
+
   if (el.data('minheight'))
     options['minHeight'] = el.data('minheight')
 

@@ -97,6 +97,6 @@ class Admin::Three60sController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def three60_params
-      params.require(:three60).permit(:name, :src, :zip, :good_id)
+      params.require(:three60).permit(:name, :src, :zip, :good_id, :is_reverted)
     end    
 end

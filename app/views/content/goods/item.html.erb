@@ -134,7 +134,6 @@
               </div>
 
               <div class="long" data-action="scrollbar">
-              
                 <% if @good.content %>
                   <div class="block">
                     <div class="html-safe">
@@ -143,24 +142,26 @@
                   </div>
                 <% end %>
 
-                <div class="block">
-                  <div class="title">
-                    Материалы
+                <% unless @good.material %>
+                  <div class="block">
+                    <div class="title">
+                      Материалы
+                    </div>
+
+                    Мебель производится на ультра современном оборудовании, с использованием только высококачественных и натуральных материалов.
                   </div>
 
-                  Мебель производится на ультра современном оборудовании, с использованием только высококачественных и натуральных материалов.
-                </div>
-
-                <div class="block">
-                  <ul class="b-thumbs">
-                    <% @good.material.each do |m| %>
-                      <li>
-                        <%= m.title %>
-                        <%= image_tag m.picture.url(:thumb) %>
-                      </li>
-                    <% end %>
-                  </ul>
-                </div>
+                  <div class="block">
+                    <ul class="b-thumbs">
+                      <% @good.material.each do |m| %>
+                        <li>
+                          <%= m.title %>
+                          <%= image_tag m.picture.url(:thumb) %>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </div>
+                <% end %>
 
                 <% if false %>
                   <div class="block">
@@ -220,16 +221,13 @@
                   </div>
                 <% end %>
 
-                <% if false && @good.additional %>
+                <% if @good.additional %>
                   <div class="block">
-                    <div class="title">Дополнительно</div>
-                    <%= @good.additional.html_safe %>
+                    <div class="html-safe">
+                      <%= @good.additional.html_safe %>
+                    </div>
                   </div>
                 <% end %>
-
-                <div class="block">
-                  <div class="title">Сделано в России</div>
-                </div>
               </div>
             <div>
           </div>

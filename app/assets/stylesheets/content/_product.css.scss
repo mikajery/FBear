@@ -330,15 +330,10 @@
         }
 
         .long {
-          position: absolute;
-          top: 160px;
-          bottom: 10px;
-          left: 20px;
-          right: 20px;
-          overflow-y: hidden;
-          overflow-x: hidden;
           display: none;
           color: #888;
+          height: 1000px;
+          position: absolute;
           font: {
             size: 12px;
           }

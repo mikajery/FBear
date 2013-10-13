@@ -186,7 +186,7 @@
                     <%= with_pic three60, three60.src, :thumb %>
                   </td>
                   <td class="center">
-                    <%= three60.items.size %>
+                    <%= three60.items.size unless three60.items.empty? %>
                   </td>
                   <td>
                     <%= link_to pencil_icon,
@@ -250,8 +250,8 @@
     <%= tab_pane :descriptions do %>
       <% Globalize.with_locale(@locale.slug) do %>
         <%= f.input :announce, as: :html %>
-        <%= f.input :content, as: :html, label: 'Спецификация' %>
-        <%#= f.input :additional, as: :html %>
+        <%= f.input :content, as: :html %>
+        <%= f.input :additional, as: :html %>
       <% end %>
     <% end %>
   <% end %>
