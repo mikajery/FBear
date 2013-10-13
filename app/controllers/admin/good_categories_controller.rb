@@ -9,7 +9,7 @@ class Admin::GoodCategoriesController < Admin::BaseController
     @items = Good.all.to_a
     
     if params[:id]
-      if params[:id] == 'all'
+      if params[:id] == 'main'
         @items.select! {|i| i.on_main}
       else 
         @collection = GoodCategory.find(params[:id])

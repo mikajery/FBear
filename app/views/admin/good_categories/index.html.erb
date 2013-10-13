@@ -69,8 +69,8 @@
         <%= link_to('Все товары', admin_good_categories_path) %>
       </li>
 
-      <li<%= ' class=active' if params[:id] == 'all' %>>
-        <%= link_to('Товары на главной', items_admin_good_category_path({id: 'all'})) %>
+      <li<%= ' class=active' if params[:id] == 'main' %>>
+        <%= link_to('Товары на главной', items_admin_good_category_path({id: 'main'})) %>
       </li>
 
       <% @collections.each do |collection| %>

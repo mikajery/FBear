@@ -7,7 +7,12 @@ class Content::CatalogsController < Content::BaseController
   end
 
   def item
-    @items = @category.goods 
+    if params[:slug] && params[:slug] == 'all'
+      @items = Good.all
+    else
+      @items = @category.goods 
+    end
+
     render 'list'
   end
 
@@ -22,10 +27,14 @@ class Content::CatalogsController < Content::BaseController
   end
 
   private
+    def all_items
+      params[:slug] && params[:slug] == 'all'
+    end
+
     def navigation
       links = []
 
-      if params[:slug]
+      if !all_items
         @category = GoodCategory.find_by_slug(params[:slug])
       end
 
@@ -33,7 +42,7 @@ class Content::CatalogsController < Content::BaseController
         links << { active: (true if @category == i), href: catalog_item_path(i.slug), title: i.title }
       end
 
-      links << { active: (true unless @category), href: catalog_path, title: T('Все товары') }
+      links << { active: (true if all_items), href: catalog_item_path('all'), title: T('Все товары') }
       
       @navigation = {
         helper: T("Категории"),
