@@ -22,7 +22,7 @@ class Good < ActiveRecord::Base
   has_many :three60s, -> { where media_file_id: nil}
 
   validates :name, presence: true
-  validates :designer, presence: true
+  # validates :designer, presence: true
 
   attr_accessor :thumb
   attr_accessor :logo
@@ -41,7 +41,7 @@ class Good < ActiveRecord::Base
   validates :logo, :attachment_presence => true
   validates_attachment_content_type :logo, :content_type => ['image/jpeg', 'image/png','image/gif']
 
-  validates :logo_desc, :attachment_presence => true
+  #validates :logo_desc, :attachment_presence => true
   validates_attachment_content_type :logo_desc, :content_type => ['image/jpeg', 'image/png','image/gif']
 
   validates :thumb, :attachment_presence => true
@@ -50,10 +50,10 @@ class Good < ActiveRecord::Base
   validates :picture, :attachment_presence => true
   validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/png','image/gif']
 
-  validates :portrait, :attachment_presence => true
+  # validates :portrait, :attachment_presence => true
   validates_attachment_content_type :portrait, :content_type => ['image/jpeg', 'image/png','image/gif']
 
-  validates :landscape, :attachment_presence => true
+  # validates :landscape, :attachment_presence => true
   validates_attachment_content_type :landscape, :content_type => ['image/jpeg', 'image/png','image/gif']
 
   has_attached_file :logo, 

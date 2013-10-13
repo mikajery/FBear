@@ -13,7 +13,7 @@ class Designer < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/png','image/gif']
 
   has_attached_file :avatar, 
-    styles: {preview: "300x300#", admin: "30x30#"},
+    styles: {preview: "400x400#", admin: "30x30#"},
     default_url: "/images/:style/missing.png",
     url: "/uploads/designers/:id/logo/:style/:basename.:extension",
     path: ":rails_root/public/uploads/designers/:id/logo/:style/:basename.:extension"

@@ -140,14 +140,14 @@ ru:
         announce: "Короткое описание"
         content: "Описание товара"
         additional: "Дополнительно"
-        picture: Десктоп
-        thumb: Иконка
-        logo: Лого
-        logo_desc: Лого в описании
-        portrait: Портретная
-        landscape: Альбомная
+        picture: Рекламный вид
+        thumb: Картинка в каталоге
+        logo: Логотип
+        logo_desc: Логотип в описании товара
+        portrait: Рекламный вид (портретная)
+        landscape: Рекламный вид (портретная)
         panorama: Панорама
-        panorama_ipad: Панорама для IPad
+        panorama_ipad: Панорама для iPad
         picture_alignment: Выравнивание
 
 

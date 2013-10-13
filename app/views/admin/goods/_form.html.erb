@@ -251,7 +251,7 @@
       <% Globalize.with_locale(@locale.slug) do %>
         <%= f.input :announce, as: :html %>
         <%= f.input :content, as: :html, label: 'Спецификация' %>
-        <%= f.input :additional, as: :html %>
+        <%#= f.input :additional, as: :html %>
       <% end %>
     <% end %>
   <% end %>

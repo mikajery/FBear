@@ -117,7 +117,11 @@
 
               <div class="short" data-product-toggle="description">
                 <div class="logo">
-                  <%= image_tag @good.logo_desc.url(:preview) %>
+                  <% if @good.logo_desc %>
+                    <%= image_tag @good.logo_desc.url(:preview) %>
+                  <% else %>
+                    <%= @good.title %>
+                  <% end %>
                 </div>
 
                 <%= @good.announce.html_safe if @good.announce %>
