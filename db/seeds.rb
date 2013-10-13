@@ -60,3 +60,9 @@ payment_types = YAML::load_file File.join(Rails.root, 'db', 'seeds', 'payment_ty
 payment_types.each do |type|
   PaymentType.find_or_create_by type
 end
+
+order_statuses = YAML::load_file File.join(Rails.root, 'db', 'seeds', 'order_statuses.yml')
+
+order_statuses.each do |status|
+  OrderStatus.find_or_create_by status
+end
