@@ -142,18 +142,6 @@
                   </div>
                 <% end %>
 
-                <% unless @good.designer.empty? %>
-                  <div class="block">
-                    <div class="title">
-                      <%= T (@good.designer.size == 1 ? "Дизайнер" : "Дизайнеры") %>
-                    </div>
-
-                    <div class="block">
-                      <%= (@good.designer.map{|d| link_to d.name, designers_item_path(d)}.join ", ").html_safe %>
-                    </div>
-                  </div>
-                <% end %>
-
                 <% unless @good.material.empty? %>
                   <div class="block">
                     <div class="title">
@@ -162,6 +150,18 @@
 
                     <div class="block">
                       <%= (@good.material.map{|m| link_to m.title, materials_path(anchor: m.id)}.join ", ").html_safe %>
+                    </div>
+                  </div>
+                <% end %>
+
+                <% unless @good.designer.empty? %>
+                  <div class="block">
+                    <div class="title">
+                      <%= T (@good.designer.size == 1 ? "Дизайнер" : "Дизайнеры") %>
+                    </div>
+
+                    <div class="block">
+                      <%= (@good.designer.map{|d| link_to d.name, designers_item_path(d)}.join ", ").html_safe %>
                     </div>
                   </div>
                 <% end %>
@@ -200,28 +200,23 @@
 
                 <% unless @good.pdfs.empty? %>
                   <div class="block">
-                    <div class="title"><%= T "Файлы для скачивания" %></div>
-                  </div>
-
-                  <div class="block">
-                    <div class="html-safe">
-                      <ul class="b-thumbs sizes">
-                        <% @good.pdfs.each do |pdf| %>
-                          <li>
-                            <table class="vertical">
-                              <tr>
-                                <td>
-                                  <i class="pdf-icon"></i>
-                                </td>
-                                <td>
-                                  <%= link_to pdf.name, pdf.src.url %>
-                                </td>
-                              </tr>
-                            </table>
-                          </li>
-                        <% end %>
-                      </ul>
-                    </div>
+                    <ul class="b-thumbs sizes">
+                      <div class="title"><%= T "Файлы для скачивания" %></div>
+                      <% @good.pdfs.each do |pdf| %>
+                        <li>
+                          <table class="vertical">
+                            <tr>
+                              <td>
+                                <i class="pdf-icon"></i>
+                              </td>
+                              <td>
+                                <%= link_to pdf.name, pdf.src.url %>
+                              </td>
+                            </tr>
+                          </table>
+                        </li>
+                      <% end %>
+                    </ul>
                   </div>
                 <% end %>
 
