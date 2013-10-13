@@ -7,10 +7,11 @@ class Content::BaseController < ApplicationController
   before_action :get_locale
   before_action :get_path
 
-  class UnknownLocaleException < StandardError
-  end
+  class UnknownLocaleException < StandardError; end
+  class PageNotFound < StandardError; end
 
   rescue_from UnknownLocaleException, :with => :not_found
+  rescue_from PageNotFound, :with => :not_found
 
   def not_found(exception)
     render_error 404, exception

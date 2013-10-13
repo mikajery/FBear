@@ -1,6 +1,7 @@
 class CartController < Content::BaseController
   layout 'content'
 
+  before_action :check
   before_action :set_token
   before_action :set_cart, only: [:show, :info, :order, :done]
   before_action :set_good, only: [:buy]
@@ -44,6 +45,11 @@ class CartController < Content::BaseController
   end
 
   private 
+    def check 
+      raise PageNotFound unless @language.is_default
+
+    end
+
     def set_token
       @token = cookies['_token'] ? cookies['_token'] : Cart.token
     end
