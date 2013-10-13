@@ -8,7 +8,7 @@
     }
   }
 
-  &.no-shadow.show-360 {
+  &.no-shadow, &.show-360 {
     & > .shadow {
       display:none;
     }
