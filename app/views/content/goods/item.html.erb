@@ -137,7 +137,6 @@
               
                 <% if @good.content %>
                   <div class="block">
-                    <div class="title">Спецификация</div>
                     <div class="html-safe">
                       <%= @good.content.html_safe %>
                     </div>
@@ -227,6 +226,10 @@
                     <%= @good.additional.html_safe %>
                   </div>
                 <% end %>
+
+                <div class="block">
+                  <div class="title">Сделано в России</div>
+                </div>
               </div>
             <div>
           </div>
