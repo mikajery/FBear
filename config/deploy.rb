@@ -116,7 +116,7 @@ namespace :deploy do
         logger.info("#{updated_assets.length} updated assets. Will precompile.")
       end
     end
-
+    
   end
 end
 
@@ -124,7 +124,7 @@ namespace :deploy do
   namespace :paperclip do
     desc "build missing paperclip styles"
     task :missing, :roles => :app do
-      run "cd #{release_path}; RAILS_ENV=production bundle exec rake paperclip:refresh:missing_styles"
+      run "cd #{deploy_to}current; RAILS_ENV=production bundle exec rake paperclip:refresh:missing_styles"
     end
   end
 end
