@@ -200,7 +200,7 @@ var Product = function(el) {
       }
       else if ('360' == type)
       {
-        $('body').removeClass('dark');
+        if (noShadow) $('body').removeClass('dark');
         toggle360();
       }
     }
