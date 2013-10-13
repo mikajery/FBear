@@ -1,18 +1,19 @@
 CMS::Application.routes.draw do
-  # root :to => 'content/content#index'
-
 
   scope '/cart' do
     post controller: :cart, action: :buy, as: :cart_buy
-    delete controller: :cart, action: :remove, as: :cart_remove
+    post 'order' => 'cart#order', as: :cart_order
+
+    delete controller: :cart, action: :remove_good, as: :cart_remove
     get controller: :cart, action: :show, as: :cart
     get 'info' => 'cart#info', as: :cart_info
+    get 'done' => 'cart#done', as: :cart_ordered
+    
   end
 
   get '/admin' => 'admin/welcome#index'
 
   namespace :admin do
-    # root :to => 'welcome#index', as: 'admin_root'
     get '' => 'welcome#index', as: 'root'
 
     resources :menus
@@ -65,28 +66,4 @@ CMS::Application.routes.draw do
     get r.except(:page)
   end
 
-
-
-
-  #   def self.content_routes
-  #     if _content_routes.nil?
-  #       _content_routes = []
-        
-  #     end
-
-  #     _content_routes
-  #   end
-
-  #   private 
-  #     _content_routes = nil
-
-  # CMS::Application.content_routes.each do |r|
-  #   get r
-  # end
-
-  # Page.routes(':_locale').each do |r|
-  #   get r[:route] => 'content#show',
-  #       as: 'locale_' + r[:name].to_s,
-  #       constraints: lambda{|req| Language.all.map{|a| a.slug}.include?(req.params[:_locale])}
-  # end
 end

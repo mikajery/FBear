@@ -1,9 +1,9 @@
 <div class="container cart">
   <h1>
-    Доставка и оплата
+    Предзаказ
   </h1>
 
-  <%= simple_form_for @cart do |f| %>
+  <%= simple_form_for @cart, url: cart_order_path, method: :post, html: {novalidate: false} do |f| %>
     <div class="form-block">
       <h2>Персональные данные</h2>
 
@@ -57,7 +57,18 @@
           </div>
         </div>
       </div>
+
+      <div class="row">
+        <div class="pull-right">
+          <button class="btn">
+            Оформить
+          </button>
+        </div>
+      </div>
+
     </div>
+  
+  <% if false %>
 
     <div class="form-block">
       <h2>Адрес доставки</h2>
@@ -260,5 +271,6 @@
         </div>
       </div>
     </div>
+    <% end %>
   <% end %>
 </div>

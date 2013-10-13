@@ -93,12 +93,15 @@ body {
 		z-index: 20;
 		/* display: none; */
 
-		ul > li {
+		ul {
 			background: #fafafa;
-			margin-bottom: 1px;
 			border-radius: 6px;
 			color: #222;
-			padding: 0 15px;
+			padding: 10px 0;
+			& > li {
+				padding: 0 15px;
+				line-height: 30px;
+			}
 		}
 	}
 

@@ -146,6 +146,10 @@
         height: 100%;
       }
     }
+
+    .info {
+      display: none;
+    }
   }
 
   position: absolute;
@@ -381,8 +385,8 @@
       display: inline-block;
 
       &.icon-360 {
-        margin-right: 3px;
-        margin-bottom: -4px;
+        margin-right: 1px;
+        margin-bottom: -3px;
       }
 
       &.icon-pan {

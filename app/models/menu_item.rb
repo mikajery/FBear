@@ -26,6 +26,6 @@ class MenuItem < ActiveRecord::Base
   end
 
   def path
-    '/' + url
+    '/' + url.to_s
   end
 end

@@ -1,15 +1,15 @@
 <li class="order-item">
 	<div class="order-item-info">
 		<div class="order-item-pic">
-			<img src="<%= image_url(item[:pic]) %>" />
+			<%= image_tag item.good.thumb.url(:preview) %>
 		</div>
 
 		<div class="order-item-title">
-			<%= item[:title] %>
+			<%= item.good.title %>
 		</div>
 
 		<div class="order-item-desc">
-			<%= item[:desc] %>
+			<%= raw (strip_tags item.good.announce.html_safe) %>
 		</div>
 	</div>
 </li>
