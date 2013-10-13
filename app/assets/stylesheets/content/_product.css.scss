@@ -394,6 +394,27 @@
                 margin-bottom: 20px;
               }
 
+              .b-thumbs.sizes {
+                padding: 10px 10px 10px;
+                
+                table {
+                  width: auto;
+                  td {
+                    padding: 0;
+                  }
+                }
+              }
+
+              table {
+                width: 100%;
+                td {
+                  padding: 5px 10px;
+                  p:last-of-type {
+                    margin-bottom: 0;
+                  }
+                }
+              }
+
               a {
                 color: inherit;
               }
