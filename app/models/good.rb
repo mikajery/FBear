@@ -134,11 +134,15 @@ class Good < ActiveRecord::Base
 
   def pictures 
     {
-      desktop: picture,
-      retina_portrait: portrait,
-      retina_landscape: landscape,
-      portrait: portrait.url(:normal),
-      landscape: landscape.url(:normal)
+      preload: {
+        desktop: picture  
+      },
+      images: {
+        retina_portrait: portrait,
+        retina_landscape: landscape,
+        portrait: portrait.url(:normal),
+        landscape: landscape.url(:normal)
+      }
     }
   end
 

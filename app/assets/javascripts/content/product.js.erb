@@ -13,11 +13,37 @@ var Product = function(el) {
       isDark       = $('body').hasClass('dark')
   ;
 
-  var imagesLoaded = {};
-  var covers = JSON.parse(cover.attr('data-product-cover'));
+  var imagesLoaded = {},
+      covers = {},
+      covers_data = JSON.parse(cover.attr('data-product-cover'));
 
-  $.each(covers, function(k, v) {
+  var showContent = function() {
+    var stop = false;
+
+    $.each(imagesLoaded, function(k, v) {
+      stop = stop || !v;
+    });
+
+    if (stop) return;
+
+    cover.find('[data-cover]').each(function() {
+      if (covers[$(this).data('cover')])
+        $(this).css({
+          backgroundImage: 'url(' + covers[$(this).data('cover')] + ')'
+        });
+    });
+
+    loading.fadeOut();
+    
+    el.addClass('loaded');
+    content.fadeIn(function() {
+      _descInitH = description.find('.short').height();
+    });
+  }  
+
+  $.each(covers_data.preload, function(k, v) {
     imagesLoaded[k] = false;
+    covers[k] = v;
 
     var img = new Image();
     img.onload = function() {
@@ -28,29 +54,13 @@ var Product = function(el) {
     img.src = v;
   });
 
+  $.each(covers_data.images, function(k, v) {
+    cover.find('[data-cover=' + k + ']').css({
+      backgroundImage: 'url(' + v + ')'
+    });
+  });
+
   content.hide();
-
-  var showContent = function() {
-    var stop = false;
-    $.each(imagesLoaded, function(k, v) {
-      stop = stop || !v;
-    });
-
-    if (stop) return;
-
-    cover.find('[data-cover]').each(function() {
-      $(this).css({
-        backgroundImage: 'url(' + covers[$(this).data('cover')] + ')'
-      });
-    });  
-
-    loading.fadeOut();
-    
-    el.addClass('loaded');
-    content.fadeIn(function() {
-      _descInitH = description.find('.short').height();
-    });
-  }  
 
   var toggleDescription = function(show) {
     if (show)
