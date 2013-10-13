@@ -12,6 +12,9 @@
         <div class="span2">
           <a href="<%= designers_item_path d %>" class="designers-item">  
             <img src="<%= image_url d.avatar.url(:preview) %>" />
+            <div class="title">
+              <%= d.name %>
+            </div>
           </a>
         </div>
       <% end %>
