@@ -11,7 +11,7 @@
       <% @designers.each do |d, index| %>
         <div class="span2">
           <a href="<%= designers_item_path d %>" class="designers-item">  
-            <img src="<%= image_url(d.avatar.url(:preview) %>" />
+            <img src="<%= image_url d.avatar.url(:preview) %>" />
           </a>
         </div>
       <% end %>
