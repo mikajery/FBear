@@ -6,9 +6,11 @@
 					<ul class="languages">
 						<% languages.each do |lang| %>
 							<li>
-								<a href="<%= locale_set_path lang.slug %>">
-									<%= lang.native %>
-								</a>
+								<% if lang.is_default  %>
+									<%= link_to lang.native, locale_set_path(lang.slug) %>
+								<% else %>
+									<%= content_tag :div, lang.native %>
+								<% end %>
 							</li>
 						<% end %>
 					</ul>

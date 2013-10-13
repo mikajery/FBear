@@ -4,6 +4,8 @@ class Language < ActiveRecord::Base
   include SluggableModel
   include AutotitleableModel
 
+  default_scope { order('is_default DESC') }
+
   translates :title
   validates :name, presence: true
 

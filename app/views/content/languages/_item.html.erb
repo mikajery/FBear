@@ -1,5 +1,7 @@
 <li>
-	<a href="<%= locale_set_path item.slug %>">
-		<%= item.native %>
-	</a>
+  <% if item.is_default  %>
+    <%= link_to item.native, locale_set_path(item.slug) %>
+  <% else %>
+    <%= content_tag :div, item.native %>
+  <% end %>
 </li>
