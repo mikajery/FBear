@@ -261,8 +261,27 @@
         z-index: 3;
 
         @include row('.b-thumbs');
-        .b-thumbs > li {
-          float: left;
+        .b-thumbs { 
+          & > li {
+            float: left;
+            a {
+              color: inherit;
+              &:hover {
+                text-decoration: none;
+              }
+            }
+          }
+
+          &.sizes {
+            & > li {
+              padding-right: 40px;
+              .title {
+                font-size: 12px !important;
+                color: #fff;
+              }
+            }
+          }
+
         }
 
         .logo {
@@ -492,3 +511,11 @@
 
 @include block_list('.b-thumbs');
 @include inline_list('.three60-thumbs');
+
+.pdf-icon {
+  background: image-url('content/pdf-icon.png') no-repeat;
+  margin-right: 3px;
+  width: 24px;
+  height: 24px;
+  display: block;
+}

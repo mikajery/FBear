@@ -112,6 +112,12 @@ body {
 	}
 }
 
+table.vertical {
+	td {
+		vertical-align: middle;
+	}
+}
+
 @import 'header';
 @import 'footer';
 @import 'navigation';
