@@ -1,6 +1,10 @@
 CMS::Application.routes.draw do
 
+  get "search/search"
   get "materials/show"
+
+  get "search" => 'search#search', as: :search
+
   scope '/cart' do
     post controller: :cart, action: :buy, as: :cart_buy
     post 'order' => 'cart#order', as: :cart_order
@@ -9,7 +13,6 @@ CMS::Application.routes.draw do
     get controller: :cart, action: :show, as: :cart
     get 'info' => 'cart#info', as: :cart_info
     get 'done' => 'cart#done', as: :cart_ordered
-    
   end
 
   get '/admin' => 'admin/welcome#index'

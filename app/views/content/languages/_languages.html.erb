@@ -1,14 +1,6 @@
 <table class="b-menu">
 	<tr>
 		<td>
-			<div>
-				<% if @language.is_default %>
-					<a href="<%= cart_path %>" class="b-cart-link">Корзина</a>
-				<% end %>
-			</div>
-		</td>
-
-		<td>
 			<div class="b-dropdown">
 				<div class="current">
 					<%= @language.native %>

@@ -29,15 +29,40 @@
 			<td class="space"></td>
 
 			<td width="1px">
+				<table class="b-menu">
+					<tr>
+						<td>
+							<div>
+								<% if @language.is_default %>
+									<a href="<%= cart_path %>" class="b-cart-link">Корзина</a>
+								<% end %>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</td>
+
+			<td class="space small"></td>
+
+			<td width="1px">
 				<%= render 'content/languages/languages' %>
 			</td>
 
-			<td class="space"></td>
+			<td class="space small"></td>
 
 			<td width="60px">
-				<a href="#" class="b-search-link">
+				<a href="#" class="b-search-link" data-action="toggle" data-toggle="search-form">
 					<i class="icon icon-search"></i>
 				</a>
+
+				<ul class="b-search" data-toggle-item="search-form">			
+					<form action="<%= search_path %>">
+						<input type="text" name="search" />
+						<button>
+							<i class="icon icon-search"></i>
+						</button>
+					</form>
+				</ul>
 			</td>
 
 			<td class="show-on-smaller" width="60px">

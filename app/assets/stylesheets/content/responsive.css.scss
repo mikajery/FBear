@@ -33,7 +33,7 @@
 
 		&.can-order {
 			.info .info-block > .description {
-				width: 490px;
+				width: 482px;
 			}
 		}
 		.info {
@@ -42,7 +42,7 @@
 				margin-right: 0;
 
 				& > .description {
-					width: 590px;
+					width: 582px;
 				}
 			}
 		}
@@ -96,11 +96,12 @@
 	@include block_list('.b-submenu');
 
 	.b-submenu {
-		padding-left: 0;
+		padding-left: 10px;
 		line-height: 30px;
+		font-size: 88%;
 		font-weight: normal;
 		margin-top: -20px;
-		padding-bottom: 20px
+		padding-bottom: 10px
 	}
 
 	.b-content-menu {

@@ -11,11 +11,14 @@ var Toggler = function(el) {
 	el.click(function(e) {
 		toggle();
 		e.preventDefault();
+		return false;
 	});
 
 	$('body').click(function(e) {
-		if (opened && !$(e.target).closest(el).size())
+		if (opened && !$(e.target).closest(item).size() )
+		{
 			toggle();
+		}
 	})
 }
 
