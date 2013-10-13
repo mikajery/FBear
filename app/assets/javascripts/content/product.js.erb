@@ -95,28 +95,34 @@ var Product = function(el) {
 
     $('body')
       .on('mousedown', function(e) {
-        _x  = e.pageX;
-        _l = pan.scrollLeft();
+        if (e.button != 2) {
+          _x  = e.pageX;
+          _l = pan.scrollLeft();
 
-        clearTimeout(timeout);
+          clearTimeout(timeout);
 
-        $('body').on('mousemove', function(e) {
-          var _dX = _x - e.pageX;
-          pan.scrollLeft(_l + _dX);
-        });
+          $('body').on('mousemove', function(e) {
+            if (e.button != 2) {
+              var _dX = _x - e.pageX;
+              pan.scrollLeft(_l + _dX);
+            }
+          });
 
-        e.preventDefault();
+          e.preventDefault();
+        }
         return false;
       })
       .on('mouseup', function(e) {
-        var _dX = _x - e.pageX;
-        _l = _l + _dX;
+        if (e.button != 2) {
+          var _dX = _x - e.pageX;
+          _l = _l + _dX;
 
-        if (_dX < 0) _d = -1;
-        else _d = 1;
-
+          if (_dX < 0) _d = -1;
+          else _d = 1;
+          
+          scrollPan();
+        }
         $('body').off('mousemove');
-        scrollPan();
       });
 
       scrollPan();

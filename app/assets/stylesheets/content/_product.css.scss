@@ -260,6 +260,11 @@
         position: relative;
         z-index: 3;
 
+        @include row('.b-thumbs');
+        .b-thumbs > li {
+          float: left;
+        }
+
         .logo {
           height: 20px;
           margin-bottom: 15px;
