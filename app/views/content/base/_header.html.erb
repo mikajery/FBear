@@ -20,8 +20,12 @@
 							<i class="icon icon-phone"></i>
 						</td>
 						<td>
-							<div>8&nbsp;800&nbsp;123&nbsp;4567</div>
-							<div>8&nbsp;800&nbsp;123&nbsp;4567</div>
+							<% if phones %>
+								<% phones.each do |phone| %>
+									<%= content_tag :div, phone %>
+								<% end %>
+							<% end %>
+							
 						</td>
 				</table>
 			</td>
@@ -41,7 +45,7 @@
 
 				<ul class="b-search" data-toggle-item="search-form">			
 					<form action="<%= search_path %>">
-						<input type="text" name="search" />
+						<input type="text" name="search" data-focus />
 						<button>
 							<i class="icon icon-search"></i>
 						</button>

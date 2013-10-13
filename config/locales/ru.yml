@@ -198,3 +198,7 @@ ru:
       good_option:
         name: Опция
         price: Цена
+
+      translation:
+        key: Ключ
+        value: Перевод

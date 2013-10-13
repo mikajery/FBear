@@ -36,8 +36,8 @@ class Content::BlogsController < Content::BaseController
       items << { active: (true unless @category), href: blogs_path, title: 'Все записи' }
 
       @navigation = {
-        helper: t('navigation.blogs.helper'),
-        title: t('navigation.blogs.title'),
+        helper: T("Тэги"),
+        title: T("Выберите категорию блога"),
         items: items
       }
     end

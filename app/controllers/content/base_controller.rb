@@ -1,6 +1,7 @@
 class Content::BaseController < ApplicationController
   layout 'content'
   helper Content::ContentHelper
+  include TranslateHelper
 
   @@check_locale = true
 

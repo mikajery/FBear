@@ -33,11 +33,11 @@ class Content::CatalogsController < Content::BaseController
         links << { active: (true if @category == i), href: catalog_item_path(i.slug), title: i.title }
       end
 
-      links << { active: (true unless @category), href: catalog_path, title: 'Все товары' }
+      links << { active: (true unless @category), href: catalog_path, title: T('Все товары') }
       
       @navigation = {
-        helper: t('navigation.catalog.helper'),
-        title: t('navigation.catalog.title'),
+        helper: T("Категории"),
+        title: T("Выберите категорию товара"),
         items: links
       }
     end  

@@ -6,6 +6,8 @@ var Toggler = function(el) {
 	var toggle = function() {
 		opened = !opened;
 		item.toggleClass('active', opened);
+		if (opened)
+			item.find('input[data-focus]').focus();
 	};
 
 	el.click(function(e) {
