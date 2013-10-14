@@ -1,4 +1,5 @@
 class Good < ActiveRecord::Base
+  include ActionView::Helpers::NumberHelper
   include MultilingualModel
   include SluggableModel
   include AutotitleableModel
@@ -107,6 +108,15 @@ class Good < ActiveRecord::Base
 
   def categories
     good_category
+  end
+
+  def best_price
+    best_price = price
+    unless variants.empty?
+      best_price = variants.min_by {|v| v.price}.price
+    end
+    # <%= number_to_currency(@good.best_price, precision: 0, unit: 'р.') %>
+    ('от ' unless variants.empty?) + number_to_currency(best_price, precision: 0, unit: 'р.')
   end
 
   def options
