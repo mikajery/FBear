@@ -7,7 +7,6 @@ class CartGood < ActiveRecord::Base
   def self.from_good good
     self.new({
       good: good,
-      price: good.price,
       quantity: 1
     })
   end

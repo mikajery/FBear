@@ -67,7 +67,7 @@ class CartController < Content::BaseController
       @cart = Cart.find_by_key_and_order_status_id @token, nil
 
       unless @cart
-        @cart = Cart.create key: Cart.token
+        @cart = Cart.create({key: Cart.token, language: @language})
       end
     end
 

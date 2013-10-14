@@ -14,6 +14,8 @@ class OrderController < Content::BaseController
     params[:order_status] = OrderStatus.find_by_name "Новый"
     respond_to do |format|
       if @cart.update(params)
+        OrderMailer.order(@cart).deliver
+        OrderMailer.notice(@cart).deliver
         format.html { redirect_to order_done_url, notice: '_order_updated_successfully' }
       end
     end

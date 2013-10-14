@@ -1,17 +1,17 @@
 <div class="container cart">
   <h1>
-    Предзаказ
+    <%= T "Предзаказ" %>
   </h1>
 
   <%= simple_form_for @cart, url: order_finish_path, method: :post, html: {novalidate: false} do |f| %>
     <div class="form-block">
-      <h2>Персональные данные</h2>
+      <h2><%= T "Персональные данные" %></h2>
 
       <div class="row">
         <div class="span2">
           <div class="form-row">
             <label for="name">
-              Имя<sup>*</sup>:
+              <%= T "Имя" %><sup>*</sup>:
             </label>
 
             <div class="input-wrap">
@@ -23,11 +23,11 @@
         <div class="span2">
           <div class="form-row">
             <label for="surname">
-              Фамилия<sup>*</sup>:
+              <%= T "Фамилия" %><sup>*</sup>:
             </label>
 
             <div class="input-wrap">
-              <%= f.input_field :surname, placeholder: "Введите Вашу фамилию", required: true %>
+              <%= f.input_field :surname, placeholder: T("Введите Вашу фамилию"), required: true %>
             </div>
           </div>
         </div>
@@ -37,11 +37,11 @@
         <div class="span2">
           <div class="form-row">
             <label for="email">
-              Email<sup>*</sup>:
+              <%= T "Email" %><sup>*</sup>:
             </label>
 
             <div class="input-wrap">
-              <%= f.input_field :email, as: :email, placeholder: "Введите Ваш Email", required: true %>
+              <%= f.input_field :email, as: :email, placeholder: T("Введите Ваш Email"), required: true %>
             </div>
           </div>
         </div>
@@ -49,10 +49,10 @@
         <div class="span2">
           <div class="form-row">
             <label for="phone">
-              Телефон:
+              <%= T("Телефон:") %>
             </label>
             <div class="input-wrap">
-              <%= f.input_field :phone, placeholder: "Введите Ваш телефон" %>
+              <%= f.input_field :phone, placeholder: T("Введите Ваш телефон") %>
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@
       <div class="row">
         <div class="pull-right">
           <button class="btn">
-            Оформить
+            <%= T "Оформить" %>
           </button>
         </div>
       </div>

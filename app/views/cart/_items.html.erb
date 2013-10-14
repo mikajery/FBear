@@ -1,5 +1,5 @@
 <% if cart.items.empty? %>
-    Ваша корзина пуста
+    <%= T "Ваша корзина пуста" %>
 <% else %>
   <ul class="cart-items" data-type="cart-items">
     <% cart.items.each do |item| %>
@@ -21,7 +21,7 @@
           <% end %>
 
           <button type="submit" class="btn">
-            Продолжить оформление
+            <%= T "Продолжить оформление" %>
           </button>
         <% end %>
       </div>

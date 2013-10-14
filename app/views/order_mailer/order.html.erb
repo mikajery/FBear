@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>
+      <%= T("Здавствуйте, ") %><%= order.full_name %>!
+    </h1>
+    <p>
+      <%= T("Вы оставили предзаказ на сайте <a href=\"http://www.lllooch.ru\">www.lllooch.ru</a>")
+    </p>
+    <p>
+      <ol>
+        <% @order.items.each do |i| %>
+          <li>
+            <% link_to i.good.title, goods_item_path(i.good.slug) %>
+          </li>
+        <% end %>
+      </ol>
+    </p>
+
+    <p>
+      <%= T "На сумму: " %><%= @order.full_price %>
+    </p>
+  </body>
+</html>
