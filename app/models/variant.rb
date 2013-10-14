@@ -24,7 +24,7 @@ class Variant < ActiveRecord::Base
     end
 
     unless self.name
-      update name: variant_name.join("/") 
+      update name: variant_name.join(", ") 
     end
   end
 end
