@@ -6,7 +6,7 @@
 
     <ul class="search-results-items">
       <% @results.each do |r| %>
-        <%= render :partial => 'content/search/result_item', :locals => { :item => r } %>
+        <%= render :partial => 'result_item', :locals => { :item => r } %>
       <% end %>
     </ul>
   </div>
