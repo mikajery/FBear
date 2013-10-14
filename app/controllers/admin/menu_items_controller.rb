@@ -3,7 +3,7 @@ class Admin::MenuItemsController < Admin::BaseController
   
   before_action :set_menu_item, only: [:show, :edit, :update, :destroy]
   before_action :set_menu, except: [:order]
-  before_action :order_params, only: [:order]
+  # before_action :order_params, only: [:order]
 
   # GET /menu_items
   # GET /menu_items.json

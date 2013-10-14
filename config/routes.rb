@@ -46,22 +46,17 @@ CMS::Application.routes.draw do
       resources :menu_items
     end
 
-    resources :designers, :properties, :variants, :languages, :pages, :posts, :tags, :settings, :materials, :pdfs, :three60s, :translations do
+    resources :designers, :properties, :languages, :pages, :posts, :tags, :settings, :materials, :translations do
       get ':locale', on: :member, action: :edit, as: 'languaged'
     end
 
-    resources :menu_items do
+    resources :menu_items, :three60s, :pdfs, :variants do
       get ':locale', on: :member, action: :edit, as: 'languaged'
       post 'order', on: :collection, as: 'order'
     end
 
-    # resources :variants do
-    #   # post 'order', on: :collection, as: 'order'
-    # end
-
     resources :goods do
       resources :pdfs, only: [:new, :create]
-      resources :good_options, only: [:new, :create]
       resources :three60s, only: [:new, :create]
       resources :variants, only: [:new, :create]
 

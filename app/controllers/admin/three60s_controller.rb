@@ -53,8 +53,29 @@ class Admin::Three60sController < Admin::BaseController
         format.json { render json: @three60.errors, status: :unprocessable_entity }
       end
     end
+  end
 
-    # 
+  def order
+    errors = []
+
+    if order_params
+      order_params.each_with_index do |id, weight|
+        item = Three60.find id
+        item.weight = weight
+
+        unless item.save
+          errors << item.errors
+        end
+      end
+    end
+
+    respond_to do |format|
+      if errors.empty?
+        format.json { head :no_content }
+      else
+        format.json { render json: errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /three60s/1
@@ -98,5 +119,9 @@ class Admin::Three60sController < Admin::BaseController
     # Never trust parameters from the scary internet, only allow the white list through.
     def three60_params
       params.require(:three60).permit(:name, :src, :zip, :good_id, :is_reverted)
-    end    
+    end
+
+    def order_params
+      params.require(:order)
+    end
 end

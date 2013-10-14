@@ -43,6 +43,29 @@ class Admin::PdfsController < Admin::BaseController
     end
   end
 
+  def order
+    errors = []
+
+    if order_params
+      order_params.each_with_index do |id, weight|
+        item = Pdf.find id
+        item.weight = weight
+
+        unless item.save
+          errors << item.errors
+        end
+      end
+    end
+
+    respond_to do |format|
+      if errors.empty?
+        format.json { head :no_content }
+      else
+        format.json { render json: errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # PATCH/PUT /pdfs/1
   # PATCH/PUT /pdfs/1.json
   def update
@@ -90,5 +113,9 @@ class Admin::PdfsController < Admin::BaseController
     # Never trust parameters from the scary internet, only allow the white list through.
     def pdf_params
       permit_params
+    end
+
+    def order_params
+      params.require(:order)
     end
 end

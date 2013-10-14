@@ -5,7 +5,7 @@ class Three60 < MediaFile
   before_destroy :cleanup
   attr_accessor :src
 
-  default_scope { order('src_file_name ASC') }
+  default_scope { order('weight ASC') }
   default_scope { where('is_uploaded is not null') }
 
 

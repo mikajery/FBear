@@ -2,6 +2,8 @@ class Variant < ActiveRecord::Base
   include MultilingualModel
   translates :price, :name
 
+  default_scope { order('weight ASC') }
+
   belongs_to :good
   has_many :variant_properties, dependent: :destroy
 

@@ -1,6 +1,8 @@
 class Pdf < ActiveRecord::Base  
   include MultilingualModel
 
+  default_scope { order('weight ASC') }
+
   translates :name
 
   before_save :set_size

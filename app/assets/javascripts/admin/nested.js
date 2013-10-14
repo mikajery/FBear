@@ -3,26 +3,37 @@
 // }).disableSelection();
 
 var Nested = function(el) {
-  el.find('> [data-nested=item] td').each(function() {
-    $(this).width($(this).width());
-  });
+  var items_query = [
+    '> tbody[data-nested=item]',
+    '> tbody > tr[data-nested=item]'
+  ];
 
-  console.log(el)
+  var fixHelper = function(e, ui) {
+    ui.children().each(function() {
+      $(this).width($(this).width());
+    });
+    return ui;
+  };
 
   el.sortable({
-    items: "> [data-nested=item]",
+    items: items_query.join(','),
     axis: 'y',
     placeholder: "placeholder",
     // connectWith: '[data-type=nested]',
-    helper: 'clone',
+    helper: fixHelper,
     forcePlaceholderSize: true,
     update: function(e, ui) {
       var items = [];
-      el.find("> [data-nested=item]").each(function() {
+      el.find(items_query.join(',')).each(function() {
         items.push($(this).data('nested-id'));
       });
 
       $.post(el.data('nested-url'), {order: items});
+    },
+    start: function(e, ui) {
+      ui.item.find('> td, > tr > td').each(function() {
+        $(this).width($(this).width());
+      });
     },
     stop: function(e, ui) {
       ui.item.children('tr:first-child').children('td').effect('highlight', {}, 1000)

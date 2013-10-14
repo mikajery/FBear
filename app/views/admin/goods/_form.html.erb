@@ -63,7 +63,7 @@
           Опаньки.. Ни одного PDF-файла не найдено..
         </div>
       <% else %>
-        <table class="table table-hover">
+        <table class="table table-hover" data-type="nested" data-nested-url="<%= order_admin_pdfs_path %>">
           <thead>
             <tr>
               <th>
@@ -78,7 +78,7 @@
           </thead>
           <tbody>
             <% @good.pdfs.each do |pdf| %>
-              <tr>
+              <tr data-nested="item" data-nested-id="<%= pdf.id %>">
                 <td>
                   <% Globalize.with_locale(@locale.slug) do %>
                     <i class="icon icon-file"></i> <%= pdf.name %>
@@ -115,7 +115,7 @@
           Опаньки.. Ни одного варианта не найдено..
         </div>
       <% else %>
-        <table class="table table-hover">
+        <table class="table table-hover" data-type="nested" data-nested-url="<%= order_admin_variants_path %>">
           <thead>
             <tr>
               <th>
@@ -134,7 +134,7 @@
           </thead>
           <tbody>
             <% @good.variants.each do |variant| %>
-              <tr>
+              <tr data-nested="item" data-nested-id="<%= variant.id %>">
                 <td>
                   <% Globalize.with_locale(@locale.slug) do %>
                     <%= variant.name %>
@@ -180,7 +180,7 @@
           Опаньки.. Ни одного 3D-просмотра не найдено..
         </div>
       <% else %>
-        <table class="table table-hover">
+        <table class="table table-hover" data-type="nested" data-nested-url="<%= order_admin_three60s_path %>">
           <thead>
             <tr>
               <th>
@@ -195,7 +195,7 @@
           </thead>
           <tbody>
             <% @good.three60s.each do |three60| %>
-              <tr>
+              <tr data-nested="item" data-nested-id="<%= three60.id %>">
                 <% if three60.is_uploaded %>
                   <td>
                     <%= with_pic three60, three60.src, :thumb %>

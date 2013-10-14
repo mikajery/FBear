@@ -42,6 +42,29 @@ class Admin::VariantsController < Admin::BaseController
     end
   end
 
+  def order
+    errors = []
+
+    if order_params
+      order_params.each_with_index do |id, weight|
+        item = Variant.find id
+        item.weight = weight
+
+        unless item.save
+          errors << item.errors
+        end
+      end
+    end
+
+    respond_to do |format|
+      if errors.empty?
+        format.json { head :no_content }
+      else
+        format.json { render json: errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # PATCH/PUT /variants/1
   # PATCH/PUT /variants/1.json
   def update
@@ -96,5 +119,9 @@ class Admin::VariantsController < Admin::BaseController
       params = permit_params
       params[:property_types] = property_types
       params
+    end
+
+    def order_params
+      params.require(:order)
     end
 end
