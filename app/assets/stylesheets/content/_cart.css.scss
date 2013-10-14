@@ -6,6 +6,7 @@
 		padding: 20px;
 		text-align: right;
 		font-size: 16px;
+		border-bottom: 0;
 		font-weight: bold;
 		.upper {
 			text-transform: uppercase;
@@ -52,17 +53,16 @@
 		border-top: 1px solid #d7d7d7;
 	}	
 
-	.cart-item-price {
-		font-size: 16px;
-		line-height: 37px;
-	}
-
 	.cart-item {
 		padding: 40px 30px 40px 0;
 		position: relative;
 
 		&.cart-item-btn {
 			padding-top: 20px;
+			&.no-border {
+				border-top: none;
+				padding-top: 0;
+			}
 		}
 	}
 

@@ -114,7 +114,7 @@ class Admin::VariantsController < Admin::BaseController
     # Never trust parameters from the scary internet, only allow the white list through.
     def variant_params
       property_types = {}
-      params[:variant][:property_types].permit!.each{|k, p| property_types[k] = p[:property_ids]}
+      params[:variant][:property_types].permit!.each{|k, p| property_types[k] = p[:property_id]}
 
       params = permit_params
       params[:property_types] = property_types

@@ -10,7 +10,7 @@
       <span class="upper"><%= T "Итого" %>:</span> <span data-cart="total"><%= number_to_currency(cart.full_price, precision: 0, unit: 'р.') %></span>
     </li>
 
-    <li class="cart-item cart-item-btn">
+    <li class="cart-item cart-item-btn no-border">
       <div class="cart-btn left">
         <a href="<%= catalog_path %>" class="btn">
           <%= T "Вернуться к покупкам" %>
