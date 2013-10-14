@@ -1,0 +1,19 @@
+<div class="cart-options" data-type="cart-variants">
+  <div class="cart-options-price" data-cart-variants="price">
+    <%= number_to_currency(variants.first.price, precision: 0, unit: 'р.') %>
+  </div>
+
+  <div class="title">
+    Опции
+  </div>
+
+  <ul class="cart-options-items">
+    <li>
+      <select data-cart-variants="items">
+        <% variants.each do |i| %>
+          <option value="<%= i.id %>" data-price="<%= number_to_currency(i.price, precision: 0, unit: 'р.') %>"><%= i.name %></option>
+        <% end %>
+      </select>
+    </li>
+  </ul>
+</div>
