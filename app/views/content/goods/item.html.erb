@@ -1,4 +1,4 @@
-<div class="b-product<%= ' can-order' if @language.is_default %><%= ' no-shadow' unless @good.no_shadow %>" data-action="product">
+<div class="b-product<%= ' can-order' if @language.is_default %>" data-action="product"<%= ' data-no-shadow=true' unless @good.no_shadow %><%= ' data-dark=true' if @good.bg == 'dark' %>>
   <div class="shadow"></div>
 
   <div class="media-dismiss" data-product-dismiss="media">

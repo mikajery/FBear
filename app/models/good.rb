@@ -16,10 +16,10 @@ class Good < ActiveRecord::Base
   has_and_belongs_to_many :goods, foreign_key: 'parent_id'
 
   has_one :video
-  has_many :pdfs
-  has_many :good_options
+  has_many :pdfs, dependent: :destroy
+  has_many :good_options, dependent: :destroy
 
-  has_many :three60s, -> { where media_file_id: nil}
+  has_many :three60s, -> { where media_file_id: nil}, dependent: :destroy
 
   validates :name, presence: true
   # validates :designer, presence: true

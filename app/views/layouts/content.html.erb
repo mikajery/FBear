@@ -18,7 +18,7 @@
 		<%= tag(:meta, name: 'description', content: meta[:description]) if meta[:description] %>
 
 	</head>
-	<body class="<%= 'navigated' if @navigation %><%= ' dark' if @body_dark %><%= ' no-shadow' if @body_no_shadow %>">
+	<body class="<%= 'navigated' if @navigation %>" data-classes="<%= ' dark' if @body_dark %><%= ' no-shadow' if @body_no_shadow %>">
 		<% if @navigation %>
 			<div class="slide" data-action="navigation">
 				<%= render 'content/navigation/navigation' %>

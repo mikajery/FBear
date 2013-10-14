@@ -10,8 +10,9 @@ var Product = function(el) {
       cover        = el.find('[data-product-cover]'),
       content      = el.find('[data-product=content]'),
       loading      = el.find('[data-product=loading]'),
-      isDark       = $('body').hasClass('dark'),
-      noShadow     = el.data('no-shadow')
+      isDark       = el.data('dark'),
+      noShadow     = el.data('no-shadow'),
+      bodyClasses  = $('body').data('classes')
   ;
 
   var imagesLoaded = {},
@@ -34,9 +35,23 @@ var Product = function(el) {
         });
     });
 
-    loading.fadeOut();
-    
+    if (!isDark)
+      $('body header').fadeOut(100, function() {
+        $(this).fadeIn(100);
+      })
+
+    loading.fadeOut(function() {
+      $('body').toggleClass('dark', isDark);
+    });
+
     el.addClass('loaded');
+
+    if (noShadow) {
+      el.find('.shadow').fadeOut(function() {
+        el.addClass('no-shadow')  
+      })
+    }
+    
     content.fadeIn(function() {
       _descInitH = description.find('.short').height();
     });
@@ -171,8 +186,6 @@ var Product = function(el) {
 
     if (0 == items.filter('.active').size())
       items.first().trigger('click');
-
-    if (noShadow) el.addClass('no-shadow')
 
     wrap.data('_threesixty', this);
   };
