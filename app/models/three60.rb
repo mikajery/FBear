@@ -2,6 +2,7 @@ require 'rubygems'
 require 'zip'
 
 class Three60 < MediaFile
+  before_destroy :cleanup
   attr_accessor :src
 
   default_scope { order('src_file_name ASC') }
@@ -72,5 +73,11 @@ class Three60 < MediaFile
 
     item.media_file = parent
     item.save
+  end
+
+  def cleanup
+    if src.file?
+      FileUtils.rm_rf (File.dirname(src.path) + '/../')
+    end
   end
 end
