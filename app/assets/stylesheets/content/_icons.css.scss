@@ -74,16 +74,18 @@
 	height: 15px;
 	width: 19px;
 	float: left;
-	margin-right: 10px;
+	margin-right: 8px;
 	background: image-url('content/product-icons.png') no-repeat;
 
 	&.icon-360 {	
-		width: 28px;
-		background-position: -20px 0;
+		width: 20px;
+		margin-right: 6px;
+		background-position: -24px 0;
 	}
 
 	&.icon-pan {
-		width: 27px;
+		width: 29px;
+		margin-right: 6px;
 		background-position: -49px 0;
 	}
 }
@@ -92,11 +94,10 @@
 	background-position: 0 -15px;
 	
 	&.icon-360 {	
-		background-position: -20px -15px;
+		background-position: -24px -15px;
 	}
 
 	&.icon-pan {
-		width: 27px;
 		background-position: -49px -15px;
 	}
 }

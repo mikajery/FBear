@@ -6,6 +6,8 @@ var CartVariants = function(el) {
   items.on('change', function() {
     price.html(items.find('option[value=' + $(this).val() + ']').data('price'));
   });
+
+  items.trigger('change');
 }
 
 $('[data-type=cart-variants]').each(function() {

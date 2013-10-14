@@ -5,7 +5,7 @@
   </div>
 
   <div class="title">
-    Опции
+    <%= T "Стоимость" %>
   </div>
 
   <ul class="cart-options-items">
@@ -14,7 +14,7 @@
         <% variants.each do |v| %>
           <%= content_tag :option, v.name, 
               value: v.id, 
-              data: {price: number_to_currency(v.price, precision: 0, unit: 'р.')}, 
+              data: {raw_price: v.price, price: number_to_currency(v.price, precision: 0, unit: 'р.')}, 
               selected: (true if v == cart_item.variant) %>
         <% end %>
       </select>

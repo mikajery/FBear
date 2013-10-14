@@ -6,10 +6,19 @@
       <%= render 'item', :item => item %>
     <% end %>
 
+    <li class="cart-total">
+      <span class="upper"><%= T "Итого" %>:</span> <span data-cart="total"><%= number_to_currency(cart.full_price, precision: 0, unit: 'р.') %></span>
+    </li>
+
     <li class="cart-item cart-item-btn">
+      <div class="cart-btn left">
+        <a href="<%= catalog_path %>" class="btn">
+          <%= T "Вернуться к покупкам" %>
+        </a>
+      </div>
+      
       <div class="cart-btn">
         <%= simple_form_for cart, url: cart_update_path, method: :post, html: {"data-cart-items" => "form"} do |f| %>
-
           <%= f.simple_fields_for :items, cart.items do |c| %>
             <% cart.items.each do |item| %>
               <% unless item.good.variants.empty? %>
