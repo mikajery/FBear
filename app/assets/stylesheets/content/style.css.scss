@@ -131,6 +131,12 @@ table.vertical {
 	font-weight: 900;
 }
 
+button {
+  &:focus {
+    outline: none;
+  }
+}
+
 @import 'header';
 @import 'footer';
 @import 'navigation';
