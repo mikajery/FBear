@@ -2,7 +2,7 @@ class SearchController < Content::BaseController
   include ActionView::Helpers::TextHelper
 
   def search
-    @query = params[:search].downcase
+    @query = params[:q].downcase
     @results = []
 
     Good.with_translations.where('lower(title) like ?', "%#{@query}%").each do |good|
