@@ -11,13 +11,10 @@ CMS::Application.routes.draw do
 
     delete controller: :cart, action: :remove_good, as: :cart_remove
     get controller: :cart, action: :show, as: :cart
-    # get 'order' => 'cart#order', as: :cart_order
-    # get 'info' => 'cart#info', as: :cart_info
-    # get 'done' => 'cart#done', as: :cart_ordered
   end
 
   scope '/order' do
-    get '' => 'order#show', as: :order
+    get '' => 'order#show', as: :order_show
     post 'finish' => 'order#finish', as: :order_finish
     get 'done' => 'order#done', as: :order_done
     

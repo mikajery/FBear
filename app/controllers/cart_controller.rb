@@ -38,7 +38,7 @@ class CartController < Content::BaseController
     end
 
     respond_to do |format|
-      format.html { redirect_to order_url, notice: '_cart_goods_updated' }
+      format.html { redirect_to order_show_url, notice: '_cart_goods_updated' }
     end
   end
 
