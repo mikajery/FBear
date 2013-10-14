@@ -131,6 +131,11 @@ namespace :deploy do
 end
 
 namespace :deploy do
+  desk "cleanup"
+  task :cleanup, :roles => :app do
+    run "cd #{deploy_to}current; RAILS_ENV=production bundle exec rake lllooch:cleanup"
+  end
+
   namespace :paperclip do
     desc "build missing paperclip styles"
     task :missing, :roles => :app do
