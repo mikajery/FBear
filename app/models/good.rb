@@ -115,8 +115,9 @@ class Good < ActiveRecord::Base
     unless variants.empty?
       best_price = variants.min_by {|v| v.price}.price
       ('от ' unless variants.empty?) + number_to_currency(best_price, precision: 0, unit: 'р.')
+    else 
+      number_to_currency(best_price, precision: 0, unit: 'р.')
     end
-    best_price
   end
 
   def options
