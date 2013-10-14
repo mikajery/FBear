@@ -1,0 +1,45 @@
+<%= language_prompt %>
+
+<%= simple_form_for [:admin, @variant], :html => { :class => 'form-horizontal' } do |f| %>
+  <%= form_errors f %>
+
+
+  <% Globalize.with_locale(@locale.slug) do %>
+    <%= f.input :name, as: :string %>
+  <% end if @variant.id %>
+
+  <% Globalize.with_locale(@locale.slug) do %>
+    <%= f.input :price, as: :string %>
+  <% end %>
+
+  <%= f.simple_fields_for :property_types, @variant do |t| %>
+    <% @variant.good.property_type.each do |type| %>
+      <%= t.simple_fields_for type.id.to_s, type do |p| %>
+        <%= p.association :properties, collection: type.properties, selected: lambda {|a| false}, label: type.name, input_html: {multiple: false} %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% if false %>
+    <% @variant.good.property_type.each do |type| %>
+      <%= f.simple_fields_for type.id.to_s, type do |t| %>
+        <%= t.association :properties %>
+        <%#, collection: type.properties, include_blank: 'Выберите ' + type.name %>
+      <% end %>
+    <% end %>
+    <%= f.simple_fields_for :property_type, @variant.good.property_type do |t| %>
+      <%= t.simple_fields_for :property_type, t.object do |p| %>
+        <%= p.association :properties %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= f.input :good_id, as: :hidden %>
+  <%= language_input f %>
+
+  <div class="form-actions">
+    <%= f.button :submit, save_or_update(@variant), :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+        edit_admin_good_path(@good, anchor: :variants), :class => 'btn' %>
+  </div>
+<% end %>

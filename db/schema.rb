@@ -579,11 +579,12 @@ ActiveRecord::Schema.define(version: 20131014024222) do
   add_index "variant_properties", ["variant_id"], name: "index_variant_properties_on_variant_id", using: :btree
 
   create_table "variant_translations", force: true do |t|
-    t.integer  "variant_id", null: false
-    t.string   "locale",     null: false
+    t.integer  "variant_id",               null: false
+    t.string   "locale",                   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "price",      null: false
+    t.string   "name"
+    t.decimal  "price",      default: 0.0, null: false
   end
 
   add_index "variant_translations", ["locale"], name: "index_variant_translations_on_locale", using: :btree

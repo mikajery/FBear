@@ -3,5 +3,5 @@ class PropertyType < ActiveRecord::Base
   translates :name
   validates :name, presence: true
 
-  has_many :properties
+  has_many :properties, dependent: :destroy
 end

@@ -119,9 +119,14 @@
           <thead>
             <tr>
               <th>
-                Файл
+                Вариант
               </th>
-              <th>
+              <% @good.property_type.each do |t| %>
+                <th class="center">
+                  <%= t.name %>
+                </th>
+              <% end %>
+              <th width="120px" class="center">
                 Цена
               </th>
               <th width="60px"></th>
@@ -136,7 +141,13 @@
                   <% end %>
                 </td>
 
-                <td>
+                <% variant.properties.each do |p| %>
+                  <td class="center">
+                    <%= p.property.name %>
+                  </td>
+                <% end %>
+
+                <td class="center">
                   <% Globalize.with_locale(@locale.slug) do %>
                     <%= variant.price %>
                   <% end %>
@@ -144,9 +155,9 @@
 
                 <td>
                   <%= link_to pencil_icon,
-                      edit_admin_good_variant_path(option), :class => 'btn btn-mini' %>
+                      edit_admin_variant_path(variant), :class => 'btn btn-mini' %>
                   <%= link_to trash_icon(true),
-                      admin_good_variant_path(option),
+                      admin_variant_path(variant),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
@@ -158,7 +169,7 @@
       <% end %>
 
       <%= link_to (content_tag :i, '', class: 'icon icon-file') + ' Добавить вариант',
-          new_admin_good_good_variant_path(@good),
+          new_admin_good_variant_path(@good),
           :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Произойдет переход на другую страницу. Вы действительно хотите продолжить?')) }, :class => 'btn' %>
 
     <% end %>

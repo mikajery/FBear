@@ -18,7 +18,7 @@ class Good < ActiveRecord::Base
 
   has_one :video
   has_many :pdfs, dependent: :destroy
-  has_many :good_options, dependent: :destroy
+  has_many :variants, dependent: :destroy
 
   has_many :three60s, -> { where media_file_id: nil}, dependent: :destroy
 

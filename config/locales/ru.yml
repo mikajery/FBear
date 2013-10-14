@@ -210,3 +210,7 @@ ru:
 
       property:
         name: "Свойство"
+
+      variant:
+        name: Название
+        price: Цена варианта
