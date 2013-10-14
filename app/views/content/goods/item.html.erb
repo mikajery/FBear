@@ -117,11 +117,11 @@
 
               <div class="short" data-product-toggle="description">
                 <div class="logo">
-                  <% if @good.logo_desc %>
-                    <%= image_tag @good.logo_desc.url(:preview) %>
-                  <% else %>
-                    <%= @good.title %>
-                  <% end %>
+                    <% if @good.logo_desc %>
+                      <%= image_tag @good.logo_desc.url(:preview) %>
+                    <% else %>
+                      <%= @good.title %>
+                    <% end %>
                 </div>
 
                 <%= @good.announce.html_safe if @good.announce %>
@@ -147,7 +147,7 @@
                     <div class="title smaller">
                       <%= T (@good.material.size == 1 ? "Материал" : "Материалы") %>
                     </div>
-                    <%= (@good.material.map{|m| link_to m.title, materials_path(anchor: m.id)}.join ", ").html_safe %>
+                    <%= (@good.material.map{|m| link_to(m.title, materials_path(anchor: m.id))}.join ", ").html_safe %>
                   </div>
                 <% end %>
 
@@ -250,7 +250,6 @@
               <i class="product-icon icon-pan"></i><span><%= T "Панорама" %></span>
             </li>
           <% end %>
-
         </ul>
       </div>
     </div>

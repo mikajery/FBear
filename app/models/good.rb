@@ -116,7 +116,7 @@ class Good < ActiveRecord::Base
       prices = variants.map{|v| v.price }
 
       best_price = variants.min_by {|v| v.price}.price
-      ('от ' unless (prices.uniq.size == 1)).to_s + number_to_currency(best_price, precision: 0, unit: 'р.')
+      ('от ' unless (prices.uniq.size == 1)).to_s + number_to_currency(best_price, precision: 0, unit: 'р.').to_s
     else 
       number_to_currency(best_price, precision: 0, unit: 'р.')
     end

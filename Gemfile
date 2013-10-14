@@ -52,7 +52,7 @@ group :development do
 end
 
 gem 'rvm-capistrano'
-gem 'globalize3', github: 'svenfuchs/globalize3', branch: 'rails4'
+gem 'globalize'
 gem 'paper_trail', github: 'airblade/paper_trail', branch: 'master'
 gem "paperclip", github: 'thoughtbot/paperclip', branch: 'rails-4'
 gem 'jasny_bootstrap_extension_rails'

@@ -7,16 +7,6 @@ GIT
       activerecord (>= 3.0, < 5.0)
 
 GIT
-  remote: git://github.com/svenfuchs/globalize3.git
-  revision: 82b3b36308677745b261bd147dda00ed4560a25d
-  branch: rails4
-  specs:
-    globalize3 (0.3.0)
-      activemodel (>= 4.0.0)
-      activerecord (>= 4.0.0)
-      paper_trail (~> 3.0.0.beta)
-
-GIT
   remote: git://github.com/thoughtbot/paperclip.git
   revision: 455b87e0df49e4ed81deedd9d6e0c7aeb8cee5c5
   branch: rails-4
@@ -113,6 +103,10 @@ GEM
     foreigner (1.4.2)
       activerecord (>= 3.0.0)
     formatador (0.2.4)
+    globalize (4.0.0.alpha.1)
+      activemodel (>= 4.0.0)
+      activerecord (>= 4.0.0)
+      paper_trail (~> 3.0.0.beta)
     guard (1.8.2)
       formatador (>= 0.2.4)
       listen (>= 1.0.0)
@@ -294,7 +288,7 @@ DEPENDENCIES
   date_validator
   devise (~> 3.0.0.rc)
   foreigner
-  globalize3!
+  globalize
   guard-livereload (= 1.4.0)
   guard-rspec
   hirb (= 0.7.1)
