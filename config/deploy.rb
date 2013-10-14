@@ -131,7 +131,7 @@ namespace :deploy do
 end
 
 namespace :deploy do
-  desk "cleanup"
+  desc "cleanup"
   task :cleanup, :roles => :app do
     run "cd #{deploy_to}current; RAILS_ENV=production bundle exec rake lllooch:cleanup"
   end
