@@ -1,5 +1,5 @@
 var CartVariants = function(el) {
-  var price = el.find('[data-cart-variants=price]'),
+  var price = el.closest('[data-cart-items=item]').find('[data-cart-item=price]'),
       items = el.find('[data-cart-variants=items]')
   ;
 

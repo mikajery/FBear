@@ -14,20 +14,13 @@
     </div>
 
     <div class="cart-item-title">
+      <div class="pull-right cart-item-price" data-cart-item="price"<%= (' data-cart-item-price=' + good.price) if good.variants.empty? %>>
+        <%= number_to_currency(good.price, precision: 0, unit: 'р.') if good.variants.empty? %>
+      </div>
       <%= good.title %>
     </div>
 
-    <% if good.variants.empty? %>
-      <div class="cart-options" data-type="cart-variants">
-        <div class="cart-options-price" data-cart-item-price="<%= good.price %>">
-          <%= number_to_currency(good.price, precision: 0, unit: 'р.') %>
-        </div>
-
-        <div class="title">
-          <%= T "Стоимость" %>
-        </div>
-      </div>
-    <% else %>
+    <% unless good.variants.empty? %>
       <%= (render 'variants', :good => good, :cart_item => item, :variants => good.variants) %>
     <% end %>
     <%= render 'additionals', :item => good.goods.sample unless good.goods.empty? %>

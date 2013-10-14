@@ -17,11 +17,20 @@
 		&.left {
 			float: left;
 		}
+
 		.btn {
-			margin-top: 20px
+			text-align: center;
+			width: 320px;
 		}
+
+		a.btn {
+			padding: 0;
+		}
+
+		padding-top: 10px;
 	 	float: right;
 	 	margin-right: -30px;
+	 	
 	 	form {
 	 		padding: 0;
 	 	}
@@ -43,6 +52,11 @@
 		border-top: 1px solid #d7d7d7;
 	}	
 
+	.cart-item-price {
+		font-size: 16px;
+		line-height: 37px;
+	}
+
 	.cart-item {
 		padding: 40px 30px 40px 0;
 		position: relative;
@@ -54,8 +68,8 @@
 
 	.cart-item-remove {
 		position: absolute;
-		top: 50px;
-		right: 30px;
+		top: 40px;
+		right: 20px;
 		cursor: pointer;
 		form {
 			margin: 0;

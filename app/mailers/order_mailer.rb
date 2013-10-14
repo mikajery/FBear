@@ -11,6 +11,6 @@ class OrderMailer < ActionMailer::Base
 
   def notice order
     @order = order
-    mail(to: order.email, subject: "Поступил заказ!")
+    mail(to: 'ilya.doroshin@gmail.com', subject: "Поступил заказ!")
   end
 end

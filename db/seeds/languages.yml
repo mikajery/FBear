@@ -6,3 +6,11 @@
 - name: Английский
   native: English
   slug: en
+
+- name: Французский
+  native: Français
+  slug: fr
+
+- name: Немецкий
+  native: Deutsch
+  slug: de

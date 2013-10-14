@@ -1,17 +1,12 @@
 <div class="cart-options" data-type="cart-variants">
-  <div class="cart-options-price" data-cart-variants="price">
-    <% price = variants.empty? ? good.price : variants.first.price %>
-    <%= number_to_currency(price, precision: 0, unit: 'р.') %>
-  </div>
-
   <div class="title">
-    <%= T "Стоимость" %>
+    <%= T "Варианты" %>
   </div>
 
   <ul class="cart-options-items">
     <li>
       <select data-cart-variants="items" data-cart-item="variant">
-        <% variants.each do |v| %>
+        <% variants.sort_by{|v| v.price}.each do |v| %>
           <%= content_tag :option, v.name, 
               value: v.id, 
               data: {raw_price: v.price, price: number_to_currency(v.price, precision: 0, unit: 'р.')}, 

@@ -6,9 +6,11 @@
 	background: #121212;
 	color: #fff;
 	cursor: pointer;
+  font-family: inherit;
 	text-transform: uppercase;
 }
 
 a.btn {
+  text-decoration: none;
 	display: block;
 }
