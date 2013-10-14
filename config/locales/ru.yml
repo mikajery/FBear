@@ -152,7 +152,7 @@ ru:
         panorama: Панорама
         panorama_ipad: Панорама для iPad
         picture_alignment: Выравнивание
-
+        property_type: Свойства товара
 
       good_lang:
         name: "Наименование"
@@ -204,3 +204,9 @@ ru:
       translation:
         key: Ключ
         value: Перевод
+
+      property_type:
+        name: "Тип"
+
+      property:
+        name: "Свойство"

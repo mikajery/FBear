@@ -27,6 +27,11 @@ CMS::Application.routes.draw do
       get ':locale', on: :member, action: :edit, as: 'languaged'
     end
 
+    resources :property_types do
+      get 'items', on: :member, action: :index, as: :items
+      get ':locale', on: :member, action: :edit, as: 'languaged'
+    end
+
     resources :post_categories, path: 'blogs' do
       get 'items', on: :member, action: :index, as: :items
       get ':locale', on: :member, action: :edit, as: 'languaged'
@@ -36,7 +41,7 @@ CMS::Application.routes.draw do
       resources :menu_items
     end
 
-    resources :designers, :languages, :pages, :posts, :tags, :settings, :materials, :pdfs, :three60s, :translations do
+    resources :designers, :properties, :languages, :pages, :posts, :tags, :settings, :materials, :pdfs, :three60s, :translations do
       get ':locale', on: :member, action: :edit, as: 'languaged'
     end
 

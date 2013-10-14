@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131013160917) do
+ActiveRecord::Schema.define(version: 20131014024222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -262,6 +262,14 @@ ActiveRecord::Schema.define(version: 20131013160917) do
     t.integer "material_id"
   end
 
+  create_table "goods_property_types", force: true do |t|
+    t.integer "good_id"
+    t.integer "property_type_id"
+  end
+
+  add_index "goods_property_types", ["good_id"], name: "index_goods_property_types_on_good_id", using: :btree
+  add_index "goods_property_types", ["property_type_id"], name: "index_goods_property_types_on_property_type_id", using: :btree
+
   create_table "goods_tags", force: true do |t|
     t.integer "good_id"
     t.integer "tag_id"
@@ -474,6 +482,41 @@ ActiveRecord::Schema.define(version: 20131013160917) do
 
   add_index "posts", ["post_category_id"], name: "index_posts_on_post_category_id", using: :btree
 
+  create_table "properties", force: true do |t|
+    t.integer  "property_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "properties", ["property_type_id"], name: "index_properties_on_property_type_id", using: :btree
+
+  create_table "property_translations", force: true do |t|
+    t.integer  "property_id", null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
+
+  add_index "property_translations", ["locale"], name: "index_property_translations_on_locale", using: :btree
+  add_index "property_translations", ["property_id"], name: "index_property_translations_on_property_id", using: :btree
+
+  create_table "property_type_translations", force: true do |t|
+    t.integer  "property_type_id", null: false
+    t.string   "locale",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
+
+  add_index "property_type_translations", ["locale"], name: "index_property_type_translations_on_locale", using: :btree
+  add_index "property_type_translations", ["property_type_id"], name: "index_property_type_translations_on_property_type_id", using: :btree
+
+  create_table "property_types", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "setting_translations", force: true do |t|
     t.integer  "setting_id", null: false
     t.string   "locale",     null: false
@@ -524,5 +567,34 @@ ActiveRecord::Schema.define(version: 20131013160917) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "variant_properties", force: true do |t|
+    t.integer  "variant_id"
+    t.integer  "property_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "variant_properties", ["property_id"], name: "index_variant_properties_on_property_id", using: :btree
+  add_index "variant_properties", ["variant_id"], name: "index_variant_properties_on_variant_id", using: :btree
+
+  create_table "variant_translations", force: true do |t|
+    t.integer  "variant_id", null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "price",      null: false
+  end
+
+  add_index "variant_translations", ["locale"], name: "index_variant_translations_on_locale", using: :btree
+  add_index "variant_translations", ["variant_id"], name: "index_variant_translations_on_variant_id", using: :btree
+
+  create_table "variants", force: true do |t|
+    t.integer  "good_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "variants", ["good_id"], name: "index_variants_on_good_id", using: :btree
 
 end

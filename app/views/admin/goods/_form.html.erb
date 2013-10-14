@@ -25,16 +25,17 @@
 
       <%= f.input :no_shadow %>
       <%= f.input :on_main %>
-
-      <%= f.association :good_category %>
-      <%= f.association :designer %>
-      <%= f.association :material %>
-
       <%= f.input :bg, collection: {'темный' => 'dark', 'светлый' => 'light'}, include_blank: false %>
-      <%= f.association :goods, collection: Good.all.select{|g| g != @good} %>
+
+      <%= f.association :good_category, input_html: {class: 'span6'} %>
+      <%= f.association :designer, input_html: {class: 'span6'} %>
+      <%= f.association :material, input_html: {class: 'span6'} %>
+      <%= f.association :property_type, input_html: {class: 'span6'} %>
+
+      <%= f.association :goods, input_html: {class: 'span6'}, collection: Good.all.select{|g| g != @good} %>
 
       <% Globalize.with_locale(@locale.slug) do %>
-        <%= f.association :tags %>
+        <%= f.association :tags, input_html: {class: 'span6'} %>
       <% end %>
     <% end %>
 

@@ -2,6 +2,12 @@ body {
 	padding-top: 65px;
 }
 
+.select2-container {
+  &[class*=span] {
+    margin-left: 0;
+  }
+}
+
 .nav {
   & > li {
     &:hover {
@@ -26,6 +32,17 @@ body {
   td, th {
     &.center {
       text-align: center;
+    }
+  }
+}
+
+.table {
+  .unstyled {
+    padding: 0;
+    border: none;
+
+    table {
+      margin-bottom: 0;
     }
   }
 }
