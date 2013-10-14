@@ -2,7 +2,7 @@ class OrderMailer < ActionMailer::Base
   include TranslateHelper
   add_template_helper(TranslateHelper)
 
-  default from: "orders@lllooch.ru"
+  default from: "order@lllooch.ru"
 
   def order order
     @order = order
@@ -11,6 +11,6 @@ class OrderMailer < ActionMailer::Base
 
   def notice order
     @order = order
-    mail(to: 'ilya.doroshin@gmail.com', subject: "Поступил заказ!")
+    mail(to: 'preorder@lllooch.ru', subject: "Поступил заказ!")
   end
 end
