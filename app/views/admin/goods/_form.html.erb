@@ -5,7 +5,7 @@
 
   <%= tabs [[:main, 'Основное'], 
       [:pictures, 'Картинки'], 
-      [:options, 'Варианты'], 
+      [:variants, 'Варианты'], 
       [:tech, 'Характеристики'], 
       [:descriptions, 'Описания'], 
       [:pdfs, 'PDF', {disabled: (true unless @good.id)}], 
@@ -109,10 +109,10 @@
 
     <% end %>
 
-    <%= tab_pane :options do %>
-      <% if @good.options.empty? %>
+    <%= tab_pane :variants do %>
+      <% if @good.variants.empty? %>
         <div class="well">
-          Опаньки.. Ни одной опции не найдено..
+          Опаньки.. Ни одного варианта не найдено..
         </div>
       <% else %>
         <table class="table table-hover">
@@ -128,25 +128,25 @@
             </tr>
           </thead>
           <tbody>
-            <% @good.options.each do |option| %>
+            <% @good.variants.each do |variant| %>
               <tr>
                 <td>
                   <% Globalize.with_locale(@locale.slug) do %>
-                    <%= option.name %>
+                    <%= variant.name %>
                   <% end %>
                 </td>
 
                 <td>
                   <% Globalize.with_locale(@locale.slug) do %>
-                    <%= option.price %>
+                    <%= variant.price %>
                   <% end %>
                 </td>
 
                 <td>
                   <%= link_to pencil_icon,
-                      edit_admin_good_option_path(option), :class => 'btn btn-mini' %>
+                      edit_admin_good_variant_path(option), :class => 'btn btn-mini' %>
                   <%= link_to trash_icon(true),
-                      admin_good_option_path(option),
+                      admin_good_variant_path(option),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
@@ -157,8 +157,8 @@
         </table>
       <% end %>
 
-      <%= link_to (content_tag :i, '', class: 'icon icon-file') + ' Добавить файл',
-          new_admin_good_good_option_path(@good),
+      <%= link_to (content_tag :i, '', class: 'icon icon-file') + ' Добавить вариант',
+          new_admin_good_good_variant_path(@good),
           :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Произойдет переход на другую страницу. Вы действительно хотите продолжить?')) }, :class => 'btn' %>
 
     <% end %>
