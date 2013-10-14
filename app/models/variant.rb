@@ -21,7 +21,7 @@ class Variant < ActiveRecord::Base
       VariantProperty.create property: property, variant: self
     end
 
-    unless name
+    unless self.name
       update name: variant_name.join("/") 
     end
   end

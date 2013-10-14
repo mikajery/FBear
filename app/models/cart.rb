@@ -1,5 +1,5 @@
 class Cart < ActiveRecord::Base
-  belongs_to :status
+  belongs_to :order_status
   belongs_to :payment
 
   has_many :cart_goods, autosave: true

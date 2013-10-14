@@ -6,13 +6,21 @@ CMS::Application.routes.draw do
   get "search" => 'search#search', as: :search
 
   scope '/cart' do
-    post controller: :cart, action: :buy, as: :cart_buy
-    post 'order' => 'cart#order', as: :cart_order
+    post 'buy' => 'cart#buy', as: :cart_buy
+    post 'update' => 'cart#update', as: :cart_update
 
     delete controller: :cart, action: :remove_good, as: :cart_remove
     get controller: :cart, action: :show, as: :cart
-    get 'info' => 'cart#info', as: :cart_info
-    get 'done' => 'cart#done', as: :cart_ordered
+    # get 'order' => 'cart#order', as: :cart_order
+    # get 'info' => 'cart#info', as: :cart_info
+    # get 'done' => 'cart#done', as: :cart_ordered
+  end
+
+  scope '/order' do
+    get '' => 'order#show', as: :order
+    post 'finish' => 'order#finish', as: :order_finish
+    get 'done' => 'order#done', as: :order_done
+    
   end
 
   get '/admin' => 'admin/welcome#index'

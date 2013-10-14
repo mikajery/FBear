@@ -1,6 +1,6 @@
 <% good = item.good if item.good %>
 
-<li class="cart-item">
+<li class="cart-item" data-cart-items="item" data-id="<%= item.id %>">
   <div class="cart-item-remove">
     <%= simple_form_for item, url: cart_remove_path, method: :delete do |f| %>
       <%= f.input :id, as: :hidden %>
@@ -17,7 +17,7 @@
       <%= good.title %>
     </div>
 
-    <%= render 'variants', :variants => good.variants if good.variants %>
+    <%= (render 'variants', :good => good, :cart_item => item, :variants => good.variants) unless good.variants.empty? %>
     <%= render 'additionals', :item => good.goods.sample unless good.goods.empty? %>
   </div>
 </li>

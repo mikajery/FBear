@@ -3,7 +3,7 @@
     Предзаказ
   </h1>
 
-  <%= simple_form_for @cart, url: cart_order_path, method: :post, html: {novalidate: false} do |f| %>
+  <%= simple_form_for @cart, url: order_finish_path, method: :post, html: {novalidate: false} do |f| %>
     <div class="form-block">
       <h2>Персональные данные</h2>
 

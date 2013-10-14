@@ -1,16 +1,29 @@
 <% if cart.items.empty? %>
     Ваша корзина пуста
 <% else %>
-  <ul class="cart-items">
+  <ul class="cart-items" data-type="cart-items">
     <% cart.items.each do |item| %>
       <%= render 'item', :item => item %>
     <% end %>
 
     <li class="cart-item cart-item-btn">
       <div class="cart-btn">
-        <a class="btn" href="<%= cart_info_path %>">
-          Продолжить оформление
-        </a>
+        <%= simple_form_for cart, url: cart_update_path, method: :post, html: {"data-cart-items" => "form"} do |f| %>
+
+          <%= f.simple_fields_for :items, cart.items do |c| %>
+            <% cart.items.each do |item| %>
+              <% unless item.good.variants.empty? %>
+                <%= c.simple_fields_for "#{item.id}", item do |i| %>
+                  <%= i.input :variant, as: :hidden, input_html: {"data-cart-item-field" => item.id} %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+
+          <button type="submit" class="btn">
+            Продолжить оформление
+          </button>
+        <% end %>
       </div>
     </li>
   </ul>

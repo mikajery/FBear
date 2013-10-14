@@ -1,6 +1,7 @@
 <div class="cart-options" data-type="cart-variants">
   <div class="cart-options-price" data-cart-variants="price">
-    <%= number_to_currency(variants.first.price, precision: 0, unit: 'р.') %>
+    <% price = variants.empty? ? good.price : variants.first.price %>
+    <%= number_to_currency(price, precision: 0, unit: 'р.') %>
   </div>
 
   <div class="title">
@@ -9,9 +10,12 @@
 
   <ul class="cart-options-items">
     <li>
-      <select data-cart-variants="items">
-        <% variants.each do |i| %>
-          <option value="<%= i.id %>" data-price="<%= number_to_currency(i.price, precision: 0, unit: 'р.') %>"><%= i.name %></option>
+      <select data-cart-variants="items" data-cart-item="variant">
+        <% variants.each do |v| %>
+          <%= content_tag :option, v.name, 
+              value: v.id, 
+              data: {price: number_to_currency(v.price, precision: 0, unit: 'р.')}, 
+              selected: (true if v == cart_item.variant) %>
         <% end %>
       </select>
     </li>

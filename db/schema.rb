@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131014024222) do
+ActiveRecord::Schema.define(version: 20131014111110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,15 +31,16 @@ ActiveRecord::Schema.define(version: 20131014024222) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "good_id"
+    t.integer  "variant_id"
   end
 
   add_index "cart_goods", ["cart_id"], name: "index_cart_goods_on_cart_id", using: :btree
   add_index "cart_goods", ["good_id"], name: "index_cart_goods_on_good_id", using: :btree
   add_index "cart_goods", ["good_option_id"], name: "index_cart_goods_on_good_option_id", using: :btree
+  add_index "cart_goods", ["variant_id"], name: "index_cart_goods_on_variant_id", using: :btree
 
   create_table "carts", force: true do |t|
     t.string   "key"
-    t.integer  "status_id"
     t.integer  "payment_type_id"
     t.integer  "delivery_type_id"
     t.string   "name"
@@ -52,10 +53,10 @@ ActiveRecord::Schema.define(version: 20131014024222) do
     t.datetime "updated_at"
     t.string   "email"
     t.string   "phone"
+    t.integer  "order_status_id"
   end
 
   add_index "carts", ["payment_type_id"], name: "index_carts_on_payment_type_id", using: :btree
-  add_index "carts", ["status_id"], name: "index_carts_on_status_id", using: :btree
 
   create_table "categories", force: true do |t|
     t.integer  "parent_id"

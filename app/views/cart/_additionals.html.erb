@@ -19,7 +19,7 @@
         </div>
 
         <div class="buy">
-          <%= simple_form_for item, url: cart_buy_path, method: :delete do |f| %>
+          <%= simple_form_for item, url: cart_buy_path, method: :post do |f| %>
             <%= f.input :id, as: :hidden %>
             <%= content_tag :button, 'Добавить в корзину', type: :submit %>
           <% end %>
