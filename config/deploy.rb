@@ -42,7 +42,7 @@ before 'deploy:finalize_update', :copy_database_config#, :copy_email_config
 
 task :copy_database_config, roles => :app do
   db_config = "#{shared_path}/database.yml"
-  run "cp #{db_config} #{deploy_to}current/config/database.yml"
+  run "cp #{db_config} #{release_path}/config/database.yml"
 end
 
 #task :copy_email_config, roles => :app do
