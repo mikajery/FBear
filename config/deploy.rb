@@ -66,17 +66,17 @@ namespace :deploy do
 
   desc "reload the database with seed data"
   task :seed do
-    run "cd #{current_path}; bundle exec rake db:seed RAILS_ENV=#{rails_env}"
+    run "cd #{current_path}; RAILS_ENV=#{rails_env} bundle exec rake db:seed"
   end
 
   desc "drop the database"
   task :db_drop do
-    run "cd #{current_path}; bundle exec rake db:drop RAILS_ENV=#{rails_env}"
+    run "cd #{current_path}; RAILS_ENV=#{rails_env} bundle exec rake db:drop"
   end
 
   desc "create the database"
   task :db_create do
-    run "cd #{current_path}; bundle exec rake db:create RAILS_ENV=#{rails_env}"
+    run "cd #{current_path}; RAILS_ENV=#{rails_env} bundle exec rake db:create"
   end
 
   desc "create symlink to uploads"
@@ -133,23 +133,23 @@ end
 namespace :deploy do
   desc "cleanup"
   task :cleanup, :roles => :app do
-    run "cd #{deploy_to}current; RAILS_ENV=production bundle exec rake lllooch:cleanup"
+    run "cd #{deploy_to}current; RAILS_ENV=#{rails_env} bundle exec rake lllooch:cleanup"
   end
 
   namespace :paperclip do
     desc "build missing paperclip styles"
     task :missing, :roles => :app do
-      run "cd #{deploy_to}current; RAILS_ENV=production bundle exec rake paperclip:refresh:missing_styles"
+      run "cd #{deploy_to}current; RAILS_ENV=#{rails_env} bundle exec rake paperclip:refresh:missing_styles"
     end
 
     desc "regenerate 3d-previews"
     task :three60, :roles => :app do
-      run "cd #{deploy_to}current; RAILS_ENV=production bundle exec rake paperclip:refresh:thumbnails CLASS=Three60"
+      run "cd #{deploy_to}current; RAILS_ENV=#{rails_env} bundle exec rake paperclip:refresh:thumbnails CLASS=Three60"
     end
 
     desc "regenerate goods images"
     task :goods, :roles => :app do
-      run "cd #{deploy_to}current; RAILS_ENV=production bundle exec rake paperclip:refresh:thumbnails CLASS=Good"
+      run "cd #{deploy_to}current; RAILS_ENV=#{rails_env} bundle exec rake paperclip:refresh:thumbnails CLASS=Good"
     end
   end
 end

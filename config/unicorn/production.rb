@@ -1,5 +1,5 @@
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
-timeout 15
+timeout 600
 
 app_folder = "/var/www/lll/production/current"
 working_directory app_folder
