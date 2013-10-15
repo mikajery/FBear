@@ -3,8 +3,6 @@ class Content::BaseController < ApplicationController
   helper Content::ContentHelper
   include TranslateHelper
 
-  @@check_locale = true
-
   before_action :get_locale
   before_action :get_path
 
@@ -85,10 +83,8 @@ class Content::BaseController < ApplicationController
     end
 
     def get_locale  
-      if @@check_locale
-        if cookies['_locale'].nil?
-          redirect_to language_select_path
-        end
+      unless cookies['_locale']
+        redirect_to language_select_path
       end
 
       if params[:_locale] or cookies['_locale']

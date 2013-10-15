@@ -1,6 +1,7 @@
 class Content::LanguageSelectController < Content::BaseController
-  layout 'map'  
-  @@check_locale = false
+  layout 'map' 
+
+  before_action :get_locale, except: [:index] 
   
   def index
     render 'content/index'
