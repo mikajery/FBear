@@ -1,4 +1,5 @@
-worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
+rails_env = ENV['RAILS_ENV'] || 'production'
+worker_processes (rails_env == 'production' ? 16 : 4)
 timeout 600
 
 app_folder = "/var/www/lll/production/current"

@@ -12,6 +12,8 @@ set :default_stage, 'development'
 
 require 'capistrano/ext/multistage'
 
+set(:unicorn_env) { rails_env }
+
 set :application, 'cms'
 set :repository, 'git@bitbucket.org:cslstudio/lll.git'
 set :deploy_via, :remote_cache

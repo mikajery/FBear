@@ -5,4 +5,5 @@ role :db,  'dev.lllooch.ru', :primary => true        # This is where Rails migra
 set :branch, 			'master'
 set :repository_branch, 'master'
 set :stage_name, 		'development'
+set :unicorn_env,   'development'
 set :rails_env, 		'production'

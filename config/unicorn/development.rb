@@ -1,3 +1,4 @@
+rails_env = ENV['RAILS_ENV'] || 'production'
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
 timeout 600
 
