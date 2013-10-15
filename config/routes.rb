@@ -65,7 +65,7 @@ CMS::Application.routes.draw do
   end
 
   LanguageRouter.reload
-  unless LanguageRouter.empty?
+  unless LanguageRouter.routes.empty?
     LanguageRouter.routes.each do |r|
       get r
     end
