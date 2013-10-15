@@ -1,5 +1,6 @@
 class Good < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
+  include ActionView::Helpers::TagHelper
   include MultilingualModel
   include SluggableModel
   include AutotitleableModel
@@ -116,7 +117,7 @@ class Good < ActiveRecord::Base
       prices = variants.map{|v| v.price }
 
       best_price = variants.min_by {|v| v.price}.price
-      ('от ' unless (prices.uniq.size == 1)).to_s + number_to_currency(best_price, precision: 0, unit: 'р.').to_s
+      ((content_tag(:small, 'от') + ' ') unless (prices.uniq.size == 1)).to_s + number_to_currency(best_price, precision: 0, unit: 'р.').to_s
     else 
       number_to_currency(best_price, precision: 0, unit: 'р.')
     end

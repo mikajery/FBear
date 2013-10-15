@@ -10,7 +10,7 @@ class SearchController < Content::BaseController
                     title: good.title, 
                     location: 'Каталог', 
                     url: goods_item_path(good.slug), 
-                    content: truncate(strip_tags(good.announce), length: 300)
+                    content: good.announce
                   }
     end
   end

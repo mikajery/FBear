@@ -15,7 +15,7 @@
   <%= f.simple_fields_for :property_types, @variant do |t| %>
     <% @variant.good.property_type.each do |type| %>
       <% variant_type = @variant.properties.select{|p| type == p.property.property_type}.first %>
-
+      <% (variant_type = VariantProperty.new) if variant_type.nil? %>
       <%= t.simple_fields_for type.id.to_s, variant_type do |p| %>
         <%= p.association :property, collection: type.properties, label: type.name.to_s, include_blank: 'Выберите ' + type.name.to_s %>
       <% end %>
