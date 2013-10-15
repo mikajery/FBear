@@ -1,4 +1,4 @@
-class CategoryGood < ActiveRecord::Migration
+class CreateCategoryGood < ActiveRecord::Migration
   def change
     create_table :categories_goods do |t|
       t.belongs_to :good_category

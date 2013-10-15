@@ -65,14 +65,14 @@ CMS::Application.routes.draw do
   end
 
   LanguageRouter.reload
-  unless LanguageRouter.routes.nil? and LanguageRouter.routes.empty?
+  unless LanguageRouter.routes.nil?
     LanguageRouter.routes.each do |r|
       get r
     end
   end
 
   ContentRouter.reload
-  unless ContentRouter.routes.nil? and ContentRouter.routes.empty?
+  unless ContentRouter.routes.nil?
     ContentRouter.routes.each do |r|
       get r.except(:page)
     end
