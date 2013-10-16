@@ -191,7 +191,7 @@ var Threesixty = function(threesixty) {
   });
 
   var spin = function(reverse, speed) {
-    var dir = reverse ? -1 : 1,
+    var dir = reverse ? 1 : -1,
         speed = speed/1 ? speed/1 : 100
       ;
 
