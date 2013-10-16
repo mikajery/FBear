@@ -123,3 +123,36 @@
   line-height:0.6em;
   margin-top:-0.3em;
 }
+
+.threesixty-controls {
+  position: absolute;
+  z-index: 10;
+  left: 300px;
+  right: 300px;
+  height: 100%;
+}
+
+.threesixty-control {
+  position: absolute;
+  width: 35px;
+  height: 100px;
+  right: 100%;
+  top: 50%;
+  margin-top: -50px;
+  cursor: pointer;
+  background: image-url("content/threesixty-controls.png") 0 0 no-repeat;
+}
+
+.threesixty-control:hover {
+  background-position: 0 -100px;
+}
+
+.threesixty-control-right:hover {
+  background-position: -35px -100px;
+}
+
+.threesixty-control-right {
+  background-position: -35px 0;
+  right: auto;
+  left: 100%;
+}

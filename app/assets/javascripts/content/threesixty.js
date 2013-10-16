@@ -17,8 +17,31 @@ var Threesixty = function(threesixty) {
       spinner           = threesixty.find('[data-threesixty=spinner]'),
       spinner_id        = threesixty.data('threesixty-spinner'),
       images            = threesixty.find('[data-threesixty=images]'),
+      controls          = threesixty.find('[data-threesixty-control]'),
+      controlClicked    = false,
       interval
   ;
+
+  controls.bind('mousedown touchstart', function(e) {
+    clearInterval(interval);
+    spin($(this).data('threesixty-control') == 'right', 30);
+    controlClicked = true;
+
+    e.preventDefault();
+    e.stopPropagation();
+    return;
+  });
+
+  $('body').bind('mouseup touchend', function(e) {
+    if (controlClicked)
+    {
+      controlClicked = false;
+      clearInterval(interval)
+      e.preventDefault();
+      e.stopPropagation();
+      return;
+    }
+  });
 
   var addSpinner = function () {
     var _spinner = new CanvasLoader(spinner_id);
@@ -167,10 +190,14 @@ var Threesixty = function(threesixty) {
     dragging = false;
   });
 
-  var spin = function() {
+  var spin = function(reverse, speed) {
+    var dir = reverse ? -1 : 1,
+        speed = speed/1 ? speed/1 : 100
+      ;
+
     interval = setInterval(function() {
-      endFrame--;
+      endFrame = endFrame - 1 * dir;
       refresh();
-    }, 100)
+    }, speed)
   }
 };

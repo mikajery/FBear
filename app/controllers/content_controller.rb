@@ -3,8 +3,7 @@ class ContentController < Content::BaseController
 
   before_action :get_locale, only: [:show]
 
-	class UnknownLocaleException < StandardError
-  end
+	class UnknownLocaleException < StandardError; end
 
   rescue_from UnknownLocaleException, :with => :not_found
 
