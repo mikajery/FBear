@@ -26,6 +26,8 @@ class MenuItem < ActiveRecord::Base
   end
 
   def path
-    '/' + url.to_s
+    unless page.nil?
+      page.routes.first[:as] + '_path'      
+    end
   end
 end

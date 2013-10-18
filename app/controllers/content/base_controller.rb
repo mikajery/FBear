@@ -82,20 +82,18 @@ class Content::BaseController < ApplicationController
       end
     end
 
-    def get_locale  
-      unless cookies['_locale']
-        redirect_to language_select_path
-      end
+    def get_locale
+      @language = Language.find_by_slug params[:locale]
 
-      if params[:_locale] or cookies['_locale']
-        @language = Language.find_by_slug(params[:_locale] || cookies['_locale'])
-      else
+      unless @language
         @language = Language.find_by_is_default(true)
       end
 
-      raise UnknownLocaleException unless @language
+      I18n.locale = @language.slug || I18n.default_locale
+    end
 
-      I18n.locale = @language.slug
+    def default_url_options
+      { locale: I18n.locale }
     end
 
     def render_error(status, exception)

@@ -7,7 +7,7 @@
 						<% languages.each do |lang| %>
 							<li>
 								<% if lang.is_default  %>
-									<%= link_to lang.native, locale_set_path(lang.slug) %>
+									<%= link_to lang.native, catalog_path %>
 								<% else %>
 									<%= content_tag :div, lang.native %>
 								<% end %>

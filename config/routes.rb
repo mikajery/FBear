@@ -1,11 +1,14 @@
 CMS::Application.routes.draw do
 
-  get "search/search"
-  get "materials/show"
+  scope "(:locale)", locale: ContentRouter.locales do
+    get "search/search"
+  end
 
-  get "search" => 'search#search', as: :search
+  scope "(:locale)", locale: ContentRouter.locales do
+    get "search" => 'search#search', as: :search
+  end
 
-  scope '/cart' do
+  scope '(:locale)/cart', locale: ContentRouter.locales do
     post 'buy' => 'cart#buy', as: :cart_buy
     post 'update' => 'cart#update', as: :cart_update
 
@@ -73,8 +76,10 @@ CMS::Application.routes.draw do
 
   ContentRouter.reload
   unless ContentRouter.routes.nil?
-    ContentRouter.routes.each do |r|
-      get r.except(:page)
+    scope "(:locale)", locale: ContentRouter.locales do
+      ContentRouter.routes.each do |r|
+        get r.except(:page)
+      end
     end
   end
 end

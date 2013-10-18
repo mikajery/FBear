@@ -1,8 +1,6 @@
 class ContentController < Content::BaseController
 	layout 'content'
 
-  before_action :get_locale, only: [:show]
-
 	class UnknownLocaleException < StandardError; end
 
   rescue_from UnknownLocaleException, :with => :not_found
@@ -18,14 +16,8 @@ class ContentController < Content::BaseController
   def show
   end
 
-  private 
-    def get_locale
-      if params[:_locale]
-        @language = Language.find_by_slug params[:_locale]
-      else
-        @language = Language.find_by_is_default(true)
-      end
-
-      raise UnknownLocaleException unless @language
-    end
+  def route
+    I18n.locale = params[:locale]
+    render :controller => :content, :action => :index
+  end
 end

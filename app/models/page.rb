@@ -7,8 +7,8 @@ class Page < ActiveRecord::Base
   belongs_to :page_type
 
   validates :name,      presence: true
-  validates :url,       uniqueness: true
   validates :page_type, presence: true
+  validates_uniqueness_of :url, :scope => :page_type_id
 
   def type
     page_type
