@@ -7,6 +7,8 @@ class Designer < ActiveRecord::Base
   has_and_belongs_to_many :goods
   validates :name, presence: true
 
+  default_scope { order(:weight) }
+
   attr_accessor :avatar
 
   validates :avatar, :attachment_presence => true

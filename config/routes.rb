@@ -45,11 +45,11 @@ CMS::Application.routes.draw do
       resources :menu_items
     end
 
-    resources :designers, :properties, :languages, :pages, :posts, :tags, :settings, :materials, :translations do
+    resources :properties, :languages, :pages, :posts, :tags, :settings, :translations do
       get ':locale', on: :member, action: :edit, as: 'languaged'
     end
 
-    resources :menu_items, :three60s, :pdfs, :variants do
+    resources :menu_items, :three60s, :pdfs, :variants, :materials, :designers do
       get ':locale', on: :member, action: :edit, as: 'languaged'
       post 'order', on: :collection, as: 'order'
     end

@@ -39,6 +39,29 @@ class Admin::MaterialsController < Admin::BaseController
     end
   end
 
+  def order
+    errors = []
+
+    if order_params
+      order_params.each_with_index do |id, weight|
+        good = Material.find id
+        good.weight = weight
+
+        unless good.save :validate => false
+          errors << good.errors
+        end
+      end
+    end
+
+    respond_to do |format|
+      if errors.empty?
+        format.json { head :no_content }
+      else
+        format.json { render json: errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # PATCH/PUT /materials/1
   # PATCH/PUT /materials/1.json
   def update
@@ -76,5 +99,9 @@ class Admin::MaterialsController < Admin::BaseController
     # Never trust parameters from the scary internet, only allow the white list through.
     def material_params
       permit_params
+    end
+
+    def order_params
+      params.require(:order)
     end
 end

@@ -2,6 +2,8 @@ class Material < ActiveRecord::Base
   include SortedByName  
   include MultilingualModel
 
+  default_scope { order(:weight) }
+
   translates :title, :description
 
   validates :picture, :attachment_presence => true
