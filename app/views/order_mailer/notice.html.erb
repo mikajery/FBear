@@ -21,7 +21,7 @@
       <ol>
         <% @order.items.each do |i| %>
           <li>
-            <%= link_to i.good.title, goods_item_path(i.good.slug) %>, <%= i.price %>
+            <%= link_to i.good.title, goods_item_path({locale: @order.language.slug, slug: i.good.slug}) %>, <%= i.price %>
           </li>
         <% end %>
       </ol>
