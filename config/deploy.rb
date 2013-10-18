@@ -146,12 +146,12 @@ namespace :deploy do
 
     desc "regenerate 3d-previews"
     task :three60, :roles => :app do
-      run "cd #{deploy_to}current; RAILS_ENV=#{rails_env} bundle exec rake paperclip:refresh:thumbnails CLASS=Three60"
+      run "cd #{deploy_to}current; RAILS_ENV=#{rails_env} bundle exec rake paperclip:refresh CLASS=Three60"
     end
 
     desc "regenerate goods images"
     task :goods, :roles => :app do
-      run "cd #{deploy_to}current; RAILS_ENV=#{rails_env} bundle exec rake paperclip:refresh:thumbnails CLASS=Good"
+      run "cd #{deploy_to}current; RAILS_ENV=#{rails_env} bundle exec rake paperclip:refresh CLASS=Good"
     end
   end
 end

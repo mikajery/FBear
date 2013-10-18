@@ -75,7 +75,7 @@
           <div class="hide-on-tablets show-on-desktop">
         <% end %>
 
-          <%= image_tag @good.panorama %>
+          <%= image_tag @good.panorama.url(:picture) %>
 
         <% if @good.panorama_ipad.file? %>
           </div>

@@ -25,7 +25,8 @@ class Three60 < MediaFile
     styles: {preview: "800x800>", thumb: "120x80>"},
     default_url: "/images/:style/missing.png",
     url: "/uploads/three60/:id/:style/:basename.:extension",
-    path: ":rails_root/public/uploads/three60/:id/:style/:basename.:extension"
+    path: ":rails_root/public/uploads/three60/:id/:style/:basename.:extension",
+    convert_options: { preview: "-quality 80" }
 
   def unpack path
     unless path.empty?

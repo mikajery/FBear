@@ -77,34 +77,58 @@ class Good < ActiveRecord::Base
     path: ":rails_root/public/uploads/goods/:id/thumb/:style/:basename.:extension"
 
   has_attached_file :portrait, 
-    styles: {normal: "768x1024#", admin: "30x30#", preview: '100x100#'},
+    styles: {
+      picture: "3000x3000>",
+      normal: "768x1024#", 
+      admin: "30x30#", 
+      preview: '100x100#'
+    },
     default_url: "/images/:style/missing.png",
     url: "/uploads/goods/:id/portrait/:style/:basename.:extension",
-    path: ":rails_root/public/uploads/goods/:id/portrait/:style/:basename.:extension"    
+    path: ":rails_root/public/uploads/goods/:id/portrait/:style/:basename.:extension",
+    convert_options: { picture: "-quality 60" }
 
   has_attached_file :landscape, 
-    styles: {normal: "1024x768#", admin: "30x30#", preview: '100x100#'},
+    styles: {
+      picture: "3000x3000>",
+      normal: "1024x768#", 
+      admin: "30x30#", 
+      preview: '100x100#'
+    },
     default_url: "/images/:style/missing.png",
     url: "/uploads/goods/:id/landscape/:style/:basename.:extension",
-    path: ":rails_root/public/uploads/goods/:id/landscape/:style/:basename.:extension"        
+    path: ":rails_root/public/uploads/goods/:id/landscape/:style/:basename.:extension",
+    convert_options: { picture: "-quality 60" }
 
   has_attached_file :picture, 
-    styles: {preview: "300x300#"},
+    styles: {
+      picture: "3000x3000>",
+      preview: "300x300#"
+    },
     default_url: "/images/:style/missing.png",
     url: "/uploads/goods/:id/picture/:style/:basename.:extension",
-    path: ":rails_root/public/uploads/goods/:id/picture/:style/:basename.:extension"
+    path: ":rails_root/public/uploads/goods/:id/picture/:style/:basename.:extension",
+    convert_options: { picture: "-quality 60" }
 
   has_attached_file :panorama, 
-    styles: {preview: "300x300#"},
+    styles: {
+      picture: "3000x3000>",
+      preview: "300x300#"
+    },
     default_url: "/images/:style/missing.png",
     url: "/uploads/goods/:id/panorama/:style/:basename.:extension",
-    path: ":rails_root/public/uploads/goods/:id/panorama/:style/:basename.:extension"
+    path: ":rails_root/public/uploads/goods/:id/panorama/:style/:basename.:extension",
+    convert_options: { picture: "-quality 60" }
 
   has_attached_file :panorama_ipad, 
-    styles: {preview: "300x300#"},
+    styles: {
+      picture: "3000x3000>",
+      preview: "300x300#"
+    },
     default_url: "/images/:style/missing.png",
     url: "/uploads/goods/:id/panorama/ipad/:style/:basename.:extension",
-    path: ":rails_root/public/uploads/goods/:id/panorama/ipad/:style/:basename.:extension"
+    path: ":rails_root/public/uploads/goods/:id/panorama/ipad/:style/:basename.:extension",
+    convert_options: { picture: "-quality 60" }
 
   def categories
     good_category
@@ -150,11 +174,11 @@ class Good < ActiveRecord::Base
   def pictures 
     {
       preload: {
-        desktop: picture  
+        desktop: picture.url(:picture)
       },
       images: {
-        retina_portrait: portrait,
-        retina_landscape: landscape,
+        retina_portrait: portrait.url(:picture),
+        retina_landscape: landscape.url(:picture),
         portrait: portrait.url(:normal),
         landscape: landscape.url(:normal)
       }
