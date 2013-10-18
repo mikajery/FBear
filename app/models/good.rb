@@ -86,7 +86,7 @@ class Good < ActiveRecord::Base
     default_url: "/images/:style/missing.png",
     url: "/uploads/goods/:id/portrait/:style/:basename.:extension",
     path: ":rails_root/public/uploads/goods/:id/portrait/:style/:basename.:extension",
-    convert_options: { picture: "-quality 60" }
+    convert_options: { picture: "-quality 69" }
 
   has_attached_file :landscape, 
     styles: {
@@ -98,7 +98,7 @@ class Good < ActiveRecord::Base
     default_url: "/images/:style/missing.png",
     url: "/uploads/goods/:id/landscape/:style/:basename.:extension",
     path: ":rails_root/public/uploads/goods/:id/landscape/:style/:basename.:extension",
-    convert_options: { picture: "-quality 60" }
+    convert_options: { picture: "-quality 69" }
 
   has_attached_file :picture, 
     styles: {
@@ -108,7 +108,7 @@ class Good < ActiveRecord::Base
     default_url: "/images/:style/missing.png",
     url: "/uploads/goods/:id/picture/:style/:basename.:extension",
     path: ":rails_root/public/uploads/goods/:id/picture/:style/:basename.:extension",
-    convert_options: { picture: "-quality 60" }
+    convert_options: { picture: "-quality 69" }
 
   has_attached_file :panorama, 
     styles: {
@@ -118,7 +118,7 @@ class Good < ActiveRecord::Base
     default_url: "/images/:style/missing.png",
     url: "/uploads/goods/:id/panorama/:style/:basename.:extension",
     path: ":rails_root/public/uploads/goods/:id/panorama/:style/:basename.:extension",
-    convert_options: { picture: "-quality 60" }
+    convert_options: { picture: "-quality 69" }
 
   has_attached_file :panorama_ipad, 
     styles: {
@@ -128,7 +128,7 @@ class Good < ActiveRecord::Base
     default_url: "/images/:style/missing.png",
     url: "/uploads/goods/:id/panorama/ipad/:style/:basename.:extension",
     path: ":rails_root/public/uploads/goods/:id/panorama/ipad/:style/:basename.:extension",
-    convert_options: { picture: "-quality 60" }
+    convert_options: { picture: "-quality 69" }
 
   def categories
     good_category
