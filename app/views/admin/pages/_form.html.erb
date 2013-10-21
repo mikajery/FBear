@@ -25,7 +25,9 @@
     <% end %>
 
     <%= tab_pane :content do %>
-      <%= f.input :content, as: :html %>
+      <% Globalize.with_locale(@locale.slug) do %>
+        <%= f.input :content, as: :html %>
+      <% end %>
     <% end %>
   <% end %>
 

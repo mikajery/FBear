@@ -11,6 +11,10 @@ module TranslateHelper
     end
 
     if translation
+      unless translation.source
+        translation.update source: @current_page.name, url: request.path
+      end
+
       Globalize.with_locale language.slug do
         value = translation.value || key
       end

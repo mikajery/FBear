@@ -7,9 +7,9 @@
 						<% languages.each do |lang| %>
 							<li>
 								<% if lang.is_default  %>
-									<%= link_to lang.native, catalog_path %>
+									<%= link_to lang.native.mb_chars.downcase, catalog_path %>
 								<% else %>
-									<%= content_tag :div, lang.native %>
+									<%= content_tag :div, lang.native.mb_chars.downcase %>
 								<% end %>
 							</li>
 						<% end %>

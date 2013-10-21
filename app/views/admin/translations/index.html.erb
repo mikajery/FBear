@@ -1,19 +1,27 @@
 <div class="page-header">
+  <div class="pull-right">
+    <%= link_to plus_icon + " Добавить",
+        new_admin_translation_path,
+        :class => 'btn' %>
+  </div>
   <h1>Переводы</h1>
 </div>
 
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Ключ</th>
-      <th>Переводы</th>
+      <th width="150px">Ключ</th>
+      <th>Перевод</th>
       <th width="60px"></th>
     </tr>
   </thead>
   <tbody>
     <% @translations.each do |translation| %>
       <tr>
-        <td><%= translation.key %></td>
+        <td>
+          <%= translation.key %>
+          <%= content_tag :div, link_to(content_tag(:small, translation.source), translation.url), class: "muted" %>
+        </td>
         <td>
           <% Language.all.each do |l| %>
             <% if translation.locale_exists l.slug %>
@@ -36,7 +44,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-    new_admin_translation_path,
-    :class => 'btn btn-primary' %>
