@@ -26,8 +26,10 @@
     <% end %>    
 
     <%= tab_pane :about do %>
-      <%= f.input :motto %>
-      <%= f.input :content, as: :html %>
+      <% Globalize.with_locale(@locale.slug) do %>
+        <%= f.input :motto %>
+        <%= f.input :content, as: :html %>
+      <% end %>
     <% end %>
   <% end %>
 
