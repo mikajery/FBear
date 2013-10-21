@@ -10,11 +10,11 @@
 
   <div class="cart-item-info">
     <div class="cart-item-pic">
-      <%= image_tag(good.thumb.url(:carts)) %>
+      <%= image_tag(good.thumb.url(:cart)) %>
     </div>
 
     <div class="cart-item-title">
-      <div class="pull-right cart-item-price" data-cart-item="price"<%= (' data-carts-item-price=' + good.price) if good.variants.empty? %>>
+      <div class="pull-right cart-item-price" data-cart-item="price"<%= (' data-cart-item-price=' + good.price) if good.variants.empty? %>>
         <%= number_to_currency(good.price, precision: 0, unit: 'р.') if good.variants.empty? %>
       </div>
       <%= good.title %>
