@@ -31,11 +31,12 @@
 	  left: 60px;
 	  right: 60px;
 	}
+
 	.hide-on-smaller {
 		display: none;
 	}
 
-	.b-product {
+    .b-product {
 		& > .media-dismiss {
 			right: 40px;
 		}
@@ -58,15 +59,15 @@
 
 		.features {
 			padding-top: 0;
-			width: 180px;
-			.product-icon {
-			}
+            height: 150px;
+            background: image-url("content/product-info-bg.png");
 
-			& > li {
+          & > li {
 				float: none;
 				border-radius: 0;
 				height: 49px;
 				line-height: 49px;
+              margin-right: 0;
 				border-bottom: 1px solid #222222;
 			}
 		}
