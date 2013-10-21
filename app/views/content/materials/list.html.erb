@@ -1,5 +1,11 @@
 <div class="container">
   <h1><%= @current_page.heading %></h1>
+  <% if @current_page.content %>
+    <div class="content">
+      <%= @current_page.content.html_safe %>
+    </div>
+  <% end %>
+
   <div class="content">
     <ul class="materials">
       <% @materials.each do |m| %>
