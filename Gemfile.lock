@@ -99,6 +99,8 @@ GEM
     eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    fancybox2-rails (0.2.5)
+      railties (>= 3.1.0)
     ffi (1.9.0)
     foreigner (1.4.2)
       activerecord (>= 3.0.0)
@@ -287,6 +289,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   date_validator
   devise (~> 3.0.0.rc)
+  fancybox2-rails (~> 0.2.4)
   foreigner
   globalize
   guard-livereload (= 1.4.0)

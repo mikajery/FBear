@@ -6,7 +6,9 @@
         <li>
           <a name="<%= m.id %>">
           <div class="pic">
-            <%= image_tag m.picture.url(:preview) %>
+            <a href="<%= m.picture.url %>" data-action="previewer" data-fancybox-group="materials">
+              <%= image_tag m.picture.url(:preview) %>
+            </a>
           </div>
 
           <div class="title">

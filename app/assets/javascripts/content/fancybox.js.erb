@@ -1,0 +1,9 @@
+var Previewer = function(el) {
+    el.fancybox();
+}
+
+$(function() {
+    $('[data-action=previewer]').each(function() {
+      new Previewer($(this));
+    });
+})

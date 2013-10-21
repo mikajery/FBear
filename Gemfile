@@ -60,3 +60,4 @@ gem "select2-rails"
 gem 'carrierwave'
 gem 'rubyzip'
 gem 'sidekiq'
+gem 'fancybox2-rails', '~> 0.2.4'
