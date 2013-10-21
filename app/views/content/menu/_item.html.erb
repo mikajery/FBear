@@ -1,5 +1,5 @@
 <td>
-	<div<%= ' class=active' if current_url?(item.path) %>>
+	<div<%= ' class=active' if current_url?(send(item.path)) %>>
     <% unless item.items.empty? %>
       <div class="b-dropdown">
         <div class="current">
@@ -11,7 +11,7 @@
             <div class="inner">
               <ul>
                 <% item.items.each do |subitem| %>
-                  <li>
+                  <li<%= ' class=active' if current_url?(send(subitem.path)) %>>
                     <a href="<%= send subitem.path %>">
                       <%= subitem.title %>
                     </a>

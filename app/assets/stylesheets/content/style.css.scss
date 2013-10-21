@@ -108,8 +108,12 @@ body {
 			color: #222;
 			padding: 10px 0;
 			& > li {
-				padding: 0 15px;
-				line-height: 30px;
+			  padding: 0 15px;
+			  line-height: 30px;
+
+              &.active {
+                color: #1b979d;
+              }
 			}
 		}
 	}
