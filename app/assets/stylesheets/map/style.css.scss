@@ -66,9 +66,8 @@ html, body {
 		width: 190px;
 		top: 50%;
 		padding: 10px;
-		background: #111;
-		color: #fff;
-		font-size: 11px;
+		color: #111;
+		font-size: 13px;
 		height: 196px;
 	}
 
@@ -81,6 +80,7 @@ html, body {
 
 	.languages-table {
 		width: 100%;
+        text-align: center;
 		border-collapse: collapse;
 
 		td {
@@ -112,9 +112,8 @@ html, body {
 		font-size: 120%;
 
 		& > li {
-			border-bottom: 1px solid #222;
 			padding: 0 10px;
-			line-height: 39px;
+			line-height: 29px;
 
 			&:last-child {
 				border-bottom: none;

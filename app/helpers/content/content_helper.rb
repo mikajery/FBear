@@ -7,6 +7,16 @@ module Content::ContentHelper
     Menu.find_by_key key
   end
 
+  def S key
+    setting = Setting.find_by_key key
+
+    if setting
+      setting.value
+    else
+      nil
+    end
+  end
+
   def phones
     phones = Setting.find_by_key('phones')
 
