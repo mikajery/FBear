@@ -1,0 +1,14 @@
+<div class="container cart">
+  <h1>
+    Ваша корзина
+  </h1>
+
+  <% if @current_page.content %>
+    <div class="content">
+      <%= @current_page.content.html_safe %>
+    </div>
+  <% end %>
+
+  <h2><%= T "Текст в корзине" %></h2>
+  <%= render 'items', :cart => @cart %>
+</div>

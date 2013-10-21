@@ -1,9 +1,13 @@
-class OrderController < Content::BaseController
+class Content::OrderController < Content::BaseController
   layout 'content'
 
   before_action :check
   before_action :set_token
   before_action :set_cart, only: [:show, :finish, :done]
+
+  def show
+
+  end
 
   def done
     @items = @cart.items
@@ -12,6 +16,7 @@ class OrderController < Content::BaseController
   def finish
     params = order_params
     params[:order_status] = OrderStatus.find_by_name "Новый"
+
     respond_to do |format|
       if @cart.update(params)
         OrderMailer.order(@cart).deliver

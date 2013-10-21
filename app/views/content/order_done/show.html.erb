@@ -1,0 +1,11 @@
+<div class="container order">
+  <h1>
+    <%= T "Спасибо за покупку!" %>
+  </h1>
+
+  <% unless @current_page.content.empty? %>
+    <div class="content">
+      <%= @current_page.content.html_safe %>
+    </div>
+  <% end %>
+</div>

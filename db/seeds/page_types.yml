@@ -12,3 +12,12 @@
 
 - name: Выбор языка
   method: languages_select
+
+- name: Корзина
+  method: cart
+
+- name: Предзаказ
+  method: order
+
+- name: Спасибо за заказ
+  method: order_done

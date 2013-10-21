@@ -3,6 +3,12 @@
     <%= T "Предзаказ" %>
   </h1>
 
+  <% unless @current_page.content.empty? %>
+    <div class="content">
+      <%= @current_page.content.html_safe %>
+    </div>
+  <% end %>
+
   <%= simple_form_for @cart, url: order_finish_path, method: :post, html: {novalidate: false} do |f| %>
     <div class="form-block">
       <h2><%= T "Персональные данные" %></h2>
@@ -65,7 +71,6 @@
           </button>
         </div>
       </div>
-
     </div>
   
   <% if false %>

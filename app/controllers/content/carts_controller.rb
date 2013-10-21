@@ -1,10 +1,13 @@
-class CartController < Content::BaseController
+class Content::CartsController < Content::BaseController
   layout 'content'
 
   before_action :check
   before_action :set_token
-  before_action :set_cart, only: [:buy, :show, :info, :order, :done]
+  before_action :set_cart, only: [:buy, :index, :info, :order, :done]
   before_action :set_good, only: [:buy]
+
+  def index
+  end
 
   def buy
     @cart.items << CartGood.from_good(@good)
