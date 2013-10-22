@@ -58,6 +58,11 @@ form {
 			padding: 3px 10px;
 			height: 31px;
 			color: #888;
+
+          &.invalid {
+            border-color: #ff6767;
+            color: #ff6767;
+          }
 		}
 	}
 

@@ -12,7 +12,19 @@ module TranslateHelper
 
     if translation
       unless translation.source
-        translation.update source: @current_page.name, url: request.path
+        params = {}
+
+        if @current_page[:name]
+          params[:source] = @current_page[:name]
+        elsif @current_page.name
+          params[:source] = @current_page.name
+        end
+
+        if !request.nil? and request.path
+          params[:url] = request.path
+        end
+
+        translation.update params
       end
 
       Globalize.with_locale language.slug do

@@ -14,9 +14,9 @@ CMS::Application.routes.draw do
 
     delete controller: 'content/carts', action: :remove_good, as: :cart_remove
 
-    scope '/order' do
+    scope '/preorder' do
       #get '' => 'order#show', as: :order_show
-      post 'finish' => 'content/order#finish', as: :order_finish
+      patch '' => 'content/order#finish', as: :order_finish
       #get 'done' => 'order#done', as: :order_done
     end
   end
@@ -77,7 +77,7 @@ CMS::Application.routes.draw do
   unless ContentRouter.routes.nil?
     scope "(:locale)", locale: ContentRouter.locales do
       ContentRouter.routes.each do |r|
-        get r.except(:page)
+        get r.except(:page, :applies_to)
       end
     end
   end

@@ -23,7 +23,7 @@ class PageType < ActiveRecord::Base
   private
     def order_routes url
       [
-        {route: '', action: 'show', controller: 'order', as: 'order_show'},
+        {route: '', action: 'show', controller: 'order', as: 'order_show', applies_to: ['order_finish']},
       ]
     end
 

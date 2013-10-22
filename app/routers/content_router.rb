@@ -27,6 +27,7 @@ class ContentRouter < Object
             }
             
             options[:as] = r[:as].underscore if r[:as]
+            options[:applies_to] = r[:applies_to] if r[:applies_to]
             options[:page] = page
 
             if page.url == ''

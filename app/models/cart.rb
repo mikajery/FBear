@@ -9,6 +9,7 @@ class Cart < ActiveRecord::Base
   belongs_to :payment_type
 
   validates :key, presence: true, uniqueness: true
+  validates :email, email: true
 
   def items
     cart_goods
