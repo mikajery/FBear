@@ -40,6 +40,18 @@
 
 .designers {
 	margin-top: 50px;
+    padding-bottom: 50px;
+
+    h1 {
+      margin: 0;
+      padding: 20px 0;
+      text-transform: uppercase;
+
+      font: {
+        weight: 900;
+        size: 48px;
+      }
+    }
 
 	p {
 		padding-right: 50px;
