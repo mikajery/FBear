@@ -91,6 +91,7 @@ class Content::BaseController < ApplicationController
         page = ContentRouter.routes.each do |r|
           if r[:as] == route.name or (r[:applies_to] and r[:applies_to].include?(route.name))
             @current_page = r[:page]
+            @current_menu_item = r[:active]
             break 
           end
         end

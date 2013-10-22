@@ -77,7 +77,7 @@ CMS::Application.routes.draw do
   unless ContentRouter.routes.nil?
     scope "(:locale)", locale: ContentRouter.locales do
       ContentRouter.routes.each do |r|
-        get r.except(:page, :applies_to)
+        get r.except(:page, :applies_to, :active)
       end
     end
   end

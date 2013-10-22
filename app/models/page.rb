@@ -22,7 +22,7 @@ class Page < ActiveRecord::Base
         _url = route.to_s
       end
 
-      type.routes(_url).map do |route|
+      routes = type.routes(_url).map do |route|
         unless route[:controller]
           route.merge({controller: _url.underscore.pluralize}) 
         else 

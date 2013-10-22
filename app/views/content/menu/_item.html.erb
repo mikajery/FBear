@@ -1,5 +1,5 @@
 <td>
-	<div<%= ' class=active' if current_url?(send(item.path)) %>>
+	<div<%= ' class=active' if @current_menu_item == item.path or current_url?(send(item.path)) or (!item.items.empty? and item.items.select{|a| current_url?(send(a.path))}.size > 0) %>>
     <% unless item.items.empty? %>
       <div class="b-dropdown">
         <div class="current">

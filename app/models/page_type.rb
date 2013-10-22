@@ -46,19 +46,18 @@ class PageType < ActiveRecord::Base
     end
 
     def list_with_items_routes url
-      [
-        {route: '',      action: 'list', as: url},
-        {route: ':slug', action: 'item', as: url + '_item'}
-      ]
+      list_routes(url) + item_routes(url)
     end
 
     def list_routes url
-      [{route: '', action: 'list', as: url}]
+      [
+        {route: '', action: 'list', as: url}
+      ]
     end
 
     def item_routes url
       [
-        {route: ':slug', action: 'item', as: url + '_item'}
+        {route: ':slug', action: 'item', as: url + '_item', active: (url == 'goods' ? 'catalog' : url) + '_path'}
       ]
     end
 end
