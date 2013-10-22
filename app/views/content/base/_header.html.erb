@@ -2,7 +2,7 @@
 	<table class="b-header">
 		<tr>
 			<td width="150px">
-				<a href="/" class="b-logo"></a>
+				<a href="<%= (defined? catalog_path) ? catalog_path() : '/' %>" class="b-logo"></a>
 			</td>
 
 			<td class="space"></td>
