@@ -20,7 +20,7 @@
 
 	.map {
 		background-image: image-url('map/bg-1024.jpg');
-		background-position: 30px center;
+        background-position: 15% center;
 		.languages-wrap {
 			position: absolute;
 			right: 30px;
@@ -36,13 +36,12 @@
 	}
 
 	.motto {
-		margin-top: -259px;
-		margin-left: 6px;
-		background-image: image-url('map/motto-ipad.png');
+      margin-top: -278px;
+      margin-left: 0;
 	}
 
 	.map {
-		margin-top: -20px;
+		//margin-top: -20px;
 
 		.languages-wrap {
 			margin-top: -88px;
@@ -57,15 +56,16 @@
 
 	.map {
 		background-image: image-url('map/bg-768.jpg');
-		background-position: 0 center;
+        background-position: 15% center;
 		.languages-wrap {
 			position: absolute;
 			right: 30px;
 		}
 
 		.motto {
-			margin-left: 20px;
-			margin-top: -200px;
+          font-size: 11px;
+          margin-left: 20px;
+          margin-top: -221px;
 		}
 	}
 

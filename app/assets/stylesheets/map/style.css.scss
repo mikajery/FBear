@@ -21,17 +21,17 @@ html, body {
 	background: image-url('map/logo.png') no-repeat;
 	width: 191px;
 	height: 46px;
-	margin: -370px 0 0 -250px;
+	margin: -350px 0 0 -250px;
 	top: 50%;
 	left: 25%;
 	position: absolute;
 }
 
 .motto {
-	background: image-url('map/motto.png') no-repeat;
+    font-size: 12px;
 	width: 186px;
 	height: 22px;
-	margin: -333px 0 0 -15px;
+	margin: -313px 0 0 -15px;
 	top: 50%;
 	left: 25%;
 	display: block;
@@ -52,9 +52,10 @@ html, body {
 
 .map {
 	height: 100%;
-	background: image-url('map/bg.jpg') 25% center no-repeat #fafafa;
+	background: image-url('map/bg.jpg') 45% center no-repeat #fafafa;
 	max-width: 1200px;
-	margin: 70px auto 0;
+    //padding-top: 70px;
+	margin: 0 auto;
 	position: relative;
 
 	.languages-wrap {
