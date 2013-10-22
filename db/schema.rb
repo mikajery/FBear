@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131022132917) do
+ActiveRecord::Schema.define(version: 20131022222213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20131022132917) do
 
   create_table "carts", force: true do |t|
     t.string   "key"
-    t.integer  "payment_type_id"
+    t.integer  "paymentr_type_id"
     t.integer  "delivery_type_id"
     t.string   "name"
     t.string   "surname"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20131022132917) do
   end
 
   add_index "carts", ["language_id"], name: "index_carts_on_language_id", using: :btree
-  add_index "carts", ["payment_type_id"], name: "index_carts_on_payment_type_id", using: :btree
+  add_index "carts", ["paymentr_type_id"], name: "index_carts_on_paymentr_type_id", using: :btree
 
   create_table "categories", force: true do |t|
     t.integer  "parent_id"
@@ -142,6 +142,7 @@ ActiveRecord::Schema.define(version: 20131022132917) do
     t.text     "description"
     t.text     "content"
     t.string   "motto"
+    t.string   "name"
   end
 
   add_index "designer_translations", ["designer_id"], name: "index_designer_translations_on_designer_id", using: :btree
@@ -154,7 +155,6 @@ ActiveRecord::Schema.define(version: 20131022132917) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "name"
     t.integer  "weight",              default: 0, null: false
   end
 

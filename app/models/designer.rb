@@ -2,7 +2,7 @@ class Designer < ActiveRecord::Base
   include MultilingualModel
   include AutotitleableModel
 
-  translates :title, :heading, :keywords, :description, :content, :motto
+  translates :name, :title, :heading, :keywords, :description, :content, :motto
 
   has_and_belongs_to_many :goods
   validates :name, presence: true
