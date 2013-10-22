@@ -10,7 +10,7 @@
 
   <div class="cart-item-info">
     <div class="cart-item-pic">
-      <%= image_tag(good.thumb.url(:cart)) %>
+      <%= image_tag(good.thumb.url(:cart), data: { 'cart-item' => "picture"}) %>
     </div>
 
     <div class="cart-item-title">

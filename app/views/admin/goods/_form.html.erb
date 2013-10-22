@@ -137,7 +137,7 @@
               <tr data-nested="item" data-nested-id="<%= variant.id %>">
                 <td>
                   <% Globalize.with_locale(@locale.slug) do %>
-                    <%= variant.name %>
+                    <%= with_pic variant, variant.picture %>
                   <% end %>
                 </td>
 

@@ -9,6 +9,15 @@ class Variant < ActiveRecord::Base
 
   validates :price, presence: true
 
+  validates :picture, :attachment_presence => true
+  validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/png','image/gif']
+
+  has_attached_file :picture,
+    styles: {preview: "300x300#", cart: "400x400#", additional: "90x90#", admin: "30x30#"},
+    default_url: "/images/:style/missing.png",
+    url: "/uploads/goods/variants/:id/:style/:basename.:extension",
+    path: ":rails_root/public/uploads/goods/variants/:id/:style/:basename.:extension"
+
   def properties
     variant_properties
   end

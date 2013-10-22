@@ -12,6 +12,10 @@
     <%= f.input :price, as: :string %>
   <% end %>
 
+  <%= tab_pane :avatar do %>
+    <%= image_field @variant, :picture, f, [300, 300] %>
+  <% end %>
+
   <%= f.simple_fields_for :property_types, @variant do |t| %>
     <% @variant.good.property_type.each do |type| %>
       <% variant_type = @variant.properties.select{|p| type == p.property.property_type}.first %>
