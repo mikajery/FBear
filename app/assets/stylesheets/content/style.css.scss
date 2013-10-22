@@ -30,7 +30,7 @@ body {
 		&.no-shadow {
 			background-image: none;
 		}
-		
+
 		background-image: image-url('content/bg-black.png');
 		background-repeat: repeat-x;
 	}
@@ -53,11 +53,11 @@ body {
 
 .container {
 	width: 800px;
-	margin: 20px auto 0;	
+	margin: 20px auto 0;
 
 	h1 {
 		margin: 0;
-		padding: 20px 0; 
+		padding: 20px 0;
 		text-transform: uppercase;
 
 		font: {

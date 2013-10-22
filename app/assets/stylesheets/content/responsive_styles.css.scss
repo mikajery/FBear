@@ -21,7 +21,10 @@
 	}
 }
 
-@media (max-width: 1024px) {
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape) {
 	.b-search {
 		right: 103px;
 		top: 20px;
@@ -143,11 +146,11 @@
 			}
 
 			.dark & {
-				font-size: 14px; 
+				font-size: 14px;
 				color: #fff;
 				border-bottom: 1px solid #292929 !important;
 				background: #121212;
-				
+
 			}
 		}
 	}
@@ -157,10 +160,10 @@
 	.b-logo {
 		margin-right: 30px;
 	}
-	
+
 	.b-header .right-on-smaller {
 		float: right;
-	}	
+	}
 
 	.b-header-phone {
 		margin-top: 0;
@@ -190,61 +193,69 @@
 }
 
 @media (max-width: 768px) {
-	.show-on-landscape {
-		display: none !important;
-	}
-	.show-on-portrait {
-		display: block !important;
-	}
-
-	/*body {
-		padding-bottom: 24px;
-	}*/
-
-	.container {
-		width: 708px;
-	}
-
-	footer {
-		display: none;
-	}
-
-	.container h1 {
-		padding-left: 0;
-	}
-
-	.b-product {
-		.features {
-			width: 78px;
-			& > li {
-				width: auto;
-				padding-top: 18px;
-				height: 31px;
-				.product-icon {
-					float: none;
-					display: block;
-					margin: 0 auto !important;
-				}
-				margin-right: 0;
-				span {
-					display: none;
-				}
-			}
-		}
-	}
-
-	.blogs {
-		width: 708px;
-		& > li {
-			height: 308px;
-			width: 708px;
-			.blog-img {
-				height: 308px;
-				width: 308px;
-			}	
-			.blog-info {
-				height: 308px;
-			}
-		}
-	}	
+  body {
+    width: 1200px;
+    min-height: 600px;
+    position: relative;
+  }
 }
+
+//@media (max-width: 768px) {
+//	.show-on-landscape {
+//		display: none !important;
+//	}
+//	.show-on-portrait {
+//		display: block !important;
+//	}
+//
+//	/*body {
+//		padding-bottom: 24px;
+//	}*/
+//
+//	.container {
+//		width: 708px;
+//	}
+//
+//	footer {
+//		display: none;
+//	}
+//
+//	.container h1 {
+//		padding-left: 0;
+//	}
+//
+//	.b-product {
+//		.features {
+//			width: 78px;
+//			& > li {
+//				width: auto;
+//				padding-top: 18px;
+//				height: 31px;
+//				.product-icon {
+//					float: none;
+//					display: block;
+//					margin: 0 auto !important;
+//				}
+//				margin-right: 0;
+//				span {
+//					display: none;
+//				}
+//			}
+//		}
+//	}
+//
+//	.blogs {
+//		width: 708px;
+//		& > li {
+//			height: 308px;
+//			width: 708px;
+//			.blog-img {
+//				height: 308px;
+//				width: 308px;
+//			}
+//			.blog-info {
+//				height: 308px;
+//			}
+//		}
+//	}
+//}
