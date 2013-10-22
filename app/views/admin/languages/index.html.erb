@@ -12,7 +12,9 @@
   <thead>
     <tr>
       <th>Язык</th>
-      <th width="30%" class="center">По-умолчанию</th>
+      <th width="15%" class="center">По-умолчанию</th>
+      <th width="15%" class="center">Показывать</th>
+      <th width="5%"></th>
       <th width="60px"></th>
     </tr>
   </thead>
@@ -24,7 +26,15 @@
           <%= tag(:br) + content_tag(:small, language.native, class: 'muted') if language.native %>
         </td>
 
-        <td class="center"><%= content_tag :i, '', class: 'icon icon-check' if language.is_default %></td>
+        <td class="center">
+          <%= content_tag :i, '', class: 'icon icon-check' if language.is_default %>
+        </td>
+
+        <td class="center">
+          <%= content_tag :i, '', class: 'icon icon-check' if language.is_active %>
+        </td>
+
+        <td></td>
 
         <td>
           <%= link_to pencil_icon,

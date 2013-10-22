@@ -3,6 +3,11 @@ module Content::ContentHelper
     controller.meta
   end
 
+  def switch_locale locale
+    params["locale"] = locale
+    url_for params
+  end
+
   def menu key
     Menu.find_by_key key
   end
@@ -30,6 +35,6 @@ module Content::ContentHelper
   end
 
   def languages
-    Language.all
+    Language.active
   end
 end

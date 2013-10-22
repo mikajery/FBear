@@ -5,6 +5,7 @@ class Language < ActiveRecord::Base
   include AutotitleableModel
 
   default_scope { order('is_default DESC') }
+  scope :active, -> { where(is_active: true) }
 
   translates :title
   validates :name, presence: true

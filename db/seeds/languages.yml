@@ -1,10 +1,12 @@
 - name: Русский
   native: Русский
   is_default: true
+  is_active: true
   slug: ru
 
 - name: Английский
   native: English
+  is_active: true
   slug: en
 
 - name: Французский
