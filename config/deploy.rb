@@ -41,6 +41,8 @@ require 'bundler/capistrano'
 #require "whenever/capistrano"
 
 before 'deploy:finalize_update', :copy_database_config#, :copy_email_config
+before 'deploy:stop', :lock
+after 'deploy:start', :unlock
 
 task :copy_database_config, roles => :app do
   db_config = "#{shared_path}/database.yml"
@@ -61,6 +63,16 @@ set :bundle_cmd, 'rvm use 2.0.0 do bundle'
 
 # - for unicorn - #
 namespace :deploy do
+  desc "Locks working copy"
+  task :lock do
+    run "cd #{deploy_to}current; echo '' > .lock"
+  end
+
+  desc "Unlocks working copy"
+  task :unlock do
+    run "cd #{deploy_to}current; rm .lock"
+  end
+
   desc 'Start application'
   task :start, :roles => :app do
     run unicorn_start_cmd
