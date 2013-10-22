@@ -1,10 +1,13 @@
 class Content::BaseController < ApplicationController
   layout 'content'
   helper Content::ContentHelper
+  helper Content::CartHelper
   include TranslateHelper
 
   before_action :get_locale
   before_action :get_path
+  before_action :set_token
+  before_action :set_cart
 
   class UnknownLocaleException < StandardError; end
   class PageNotFound < StandardError; end
@@ -33,7 +36,19 @@ class Content::BaseController < ApplicationController
     get_meta
   end
 
-  protected 
+  protected
+    def set_token
+      @token = cookies['_token'] ? cookies['_token'] : Cart.token
+    end
+
+    def set_cart
+      @cart = Cart.find_by_key_and_order_status_id @token, nil
+
+      unless @cart
+        @cart = Cart.create({key: Cart.token, language: @language})
+      end
+    end
+
     def get_item
       @current_page
     end
