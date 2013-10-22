@@ -41,8 +41,8 @@ require 'bundler/capistrano'
 #require "whenever/capistrano"
 
 before 'deploy:finalize_update', :copy_database_config#, :copy_email_config
-before 'deploy:stop', :lock
-after 'deploy:start', :unlock
+before 'deploy:stop', 'deploy:lock'
+after 'deploy:start', 'deploy:unlock'
 
 task :copy_database_config, roles => :app do
   db_config = "#{shared_path}/database.yml"
