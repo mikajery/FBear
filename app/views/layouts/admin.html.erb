@@ -21,7 +21,6 @@
                 <% end %>
 
                 <%= drop_down "Контент" do %>
-                  <%= menu_item "Блоги", admin_post_categories_path %>
                   <%= menu_item "Каталог", admin_good_categories_path %>
                   <%= menu_item "Дизайнеры", admin_designers_path %>
                   <%= menu_item "Тэги", admin_tags_path %>
@@ -37,9 +36,7 @@
             <% end %>
 
             <%= menu_group pull: :right do %>
-                <%= menu_item do %>
-                  Выход
-                <% end %>
+                <%= menu_item "Выход", '/' %>
             <% end %>
         <% end %>
 

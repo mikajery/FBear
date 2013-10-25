@@ -7,6 +7,7 @@ class Post < ActiveRecord::Base
   translates :announce, :title, :heading, :keywords, :description, :content
 
   has_many :post_comments
+  has_many :post_blocks
 
   belongs_to :post_category
   belongs_to :blog_color
@@ -24,6 +25,10 @@ class Post < ActiveRecord::Base
     default_url: "/images/:style/missing.png",
     url: "/uploads/blogs/:id/:style/:basename.:extension",
     path: ":rails_root/public/uploads/blogs/:id/:style/:basename.:extension"
+
+  def blocks
+    post_blocks
+  end
 
   def category
     post_category

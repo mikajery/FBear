@@ -22,6 +22,22 @@ CMS::Application.routes.draw do
   end
 
   get '/admin' => 'admin/welcome#index'
+  get '/cm' => 'cm/welcome#index', as: :cm_root
+
+  namespace :cm do
+    resources :post_categories, path: 'blogs' do
+      get 'items', on: :member, action: :index, as: :items
+      get ':locale', on: :member, action: :edit, as: 'languaged'
+    end
+
+    resources :posts do
+      resources :blocks, controller: 'post_blocks' do
+        get ':locale', on: :member, action: :edit, as: :languaged
+      end
+
+      get ':locale', on: :member, action: :edit, as: :languaged
+    end
+  end
 
   namespace :admin do
     get '' => 'welcome#index', as: 'root'
@@ -38,17 +54,16 @@ CMS::Application.routes.draw do
       get ':locale', on: :member, action: :edit, as: 'languaged'
     end
 
-    resources :post_categories, path: 'blogs' do
-      get 'items', on: :member, action: :index, as: :items
-      get ':locale', on: :member, action: :edit, as: 'languaged'
-    end
-
     resources :menus do
       resources :menu_items
     end
 
-    resources :properties, :languages, :pages, :posts, :tags, :settings, :translations do
+    resources :properties, :languages, :pages,  :tags, :settings, :translations do
       get ':locale', on: :member, action: :edit, as: 'languaged'
+    end
+
+    resources :post_blocks do
+      post 'order', on: :collection, as: 'order'
     end
 
     resources :menu_items, :three60s, :pdfs, :variants, :materials, :designers do

@@ -1,9 +1,12 @@
-<%= language_prompt %>  
+<%= language_prompt %>
 
-<%= simple_form_for [:admin, @post], :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for [:cm, @post], :html => { :class => 'form-horizontal' } do |f| %>
   <%= form_errors f %>
+    <% options = {} %>
+    <% options[:path] = cm_post_blocks_path(@post) if @post.id %>
+    <% options[:disabled] = true unless @post.id %>
 
-  <%= tabs [[:main, 'Основное'], [:picture, 'Обложка'], [:meta, 'META'], [:content, 'HTML']] %>
+  <%= tabs [[:main, 'Основное'], [:picture, 'Обложка'], [:meta, 'META'], [:content, 'Контент', options]] %>
 
   <%= tab_contents do %>
     <%= tab_pane :main, {active: true} do %>
@@ -11,6 +14,10 @@
       <%= f.input :slug if @post.id %>
       <%= f.association :blog_color, include_blank: false %>
       <%= f.association :post_category, include_blank: false %>
+
+      <% Globalize.with_locale(@locale.slug) do %>
+        <%= f.input :announce, as: :html %>
+      <% end %>
     <% end %>
 
     <%= tab_pane :picture do %>
@@ -25,13 +32,6 @@
         <%= f.input :description %>
       <% end %>
     <% end %>
-
-    <%= tab_pane :content do %>
-      <% Globalize.with_locale(@locale.slug) do %>
-        <%= f.input :announce, as: :html %>
-        <%= f.input :content, as: :html %>
-      <% end %>
-    <% end %>
   <% end %>
 
   <%= language_input f %>
@@ -39,6 +39,6 @@
   <div class="form-actions">
     <%= f.button :submit, save_or_update(@post), :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                admin_post_categories_url, :class => 'btn' %>
+                cm_post_categories_url, :class => 'btn' %>
   </div>
 <% end %>

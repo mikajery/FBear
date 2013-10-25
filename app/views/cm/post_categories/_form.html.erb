@@ -1,6 +1,6 @@
 <%= language_prompt %>
 
-<%= simple_form_for [:admin, @category], :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for [:cm, @category], :html => { :class => 'form-horizontal' } do |f| %>
   <%= form_errors f %>
 
   <%= tabs [[:main, 'Основное'], [:meta, 'META']] %>

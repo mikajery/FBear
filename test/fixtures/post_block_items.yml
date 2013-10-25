@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  post_block_id: 
+  weight: 1
+
+two:
+  post_block_id: 
+  weight: 1

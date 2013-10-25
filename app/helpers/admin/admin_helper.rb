@@ -113,7 +113,7 @@ module Admin::AdminHelper
   end 
 
   def language_select
-    render partial: 'admin/parts/language_select', locals: {route: 'languaged_admin_' + get_item_name(true) + '_path', item: get_item}
+    render partial: 'admin/parts/language_select', locals: {route: 'languaged_' + controller.class.name.split('::').first.downcase + '_' + get_item_name(true) + '_path', item: get_item}
   end 
 
   def form_errors form

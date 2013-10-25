@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131022230051) do
+ActiveRecord::Schema.define(version: 20131025050538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -445,6 +445,42 @@ ActiveRecord::Schema.define(version: 20131022230051) do
   end
 
   add_index "pdfs", ["good_id"], name: "index_pdfs_on_good_id", using: :btree
+
+  create_table "post_block_item_translations", force: true do |t|
+    t.integer  "post_block_item_id", null: false
+    t.string   "locale",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "content"
+  end
+
+  add_index "post_block_item_translations", ["locale"], name: "index_post_block_item_translations_on_locale", using: :btree
+  add_index "post_block_item_translations", ["post_block_item_id"], name: "index_post_block_item_translations_on_post_block_item_id", using: :btree
+
+  create_table "post_block_translations", force: true do |t|
+    t.integer  "post_block_id", null: false
+    t.string   "locale",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "content"
+  end
+
+  add_index "post_block_translations", ["locale"], name: "index_post_block_translations_on_locale", using: :btree
+  add_index "post_block_translations", ["post_block_id"], name: "index_post_block_translations_on_post_block_id", using: :btree
+
+  create_table "post_blocks", force: true do |t|
+    t.integer  "post_id"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "weight",               default: 0, null: false
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+  end
+
+  add_index "post_blocks", ["post_id"], name: "index_post_blocks_on_post_id", using: :btree
 
   create_table "post_comments", force: true do |t|
     t.boolean  "is_safe"

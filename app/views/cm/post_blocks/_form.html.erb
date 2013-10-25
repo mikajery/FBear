@@ -1,0 +1,12 @@
+<%= simple_form_for [:cm, @post_block], url: url_for(controller: 'cm/post_blocks', action: :update, post_id: @post, id: @post_block) do |b| %>
+  <% simple_fields_for 'post_block', b.object do |f| %>
+      <%= f.input :type %>
+
+      <div class="form-actions">
+        <%= f.button :submit, :class => 'btn-primary' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    cm_post_blocks_path(@post, @post_block), :class => 'btn' %>
+      </div>
+
+  <% end %>
+<% end %>
