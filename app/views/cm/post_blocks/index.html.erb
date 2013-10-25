@@ -22,7 +22,7 @@
                         :class => 'btn btn-mini btn-danger' %>
           </div>
 
-          <div style="margin: -10px -10px 7px"><span class="label label-info"><%= b.block_type %></span></div>
+          <div style="margin: -15px -13px 7px"><span class="label label-inverse"><%= b.block_type %></span></div>
 
           <div class="collapse" id="block<%= b.id %>" style="display: block; min-height: 30px">
               <% if 'picture' == b.block_type %>
@@ -57,7 +57,7 @@
           <%= f.input :type, as: :hidden %>
           <%= f.association :post, as: :hidden %>
 
-          <%= f.button :button, (content_tag(:i, '', class: 'icon icon-picture') + ' Галерея').html_safe, :class => 'btn' %>&nbsp;
+          <%= f.button :button, (content_tag(:i, '', class: 'icon icon-picture') + ' Фото').html_safe, :class => 'btn' %>&nbsp;
       <% end %>
   <% end %>
 

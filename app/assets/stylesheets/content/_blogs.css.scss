@@ -115,12 +115,40 @@
 
 .blog {
 	width: 800px;
+    padding-bottom: 100px;
 	font-size: 14px;
+
+    .blog-block {
+      padding: 20px 30px;
+
+      &.embed {
+        iframe {
+          display: block;
+          width: 100%;
+        }
+      }
+    }
+
+    @include row('.blog-gallery');
+
+    .blog-gallery {
+      margin:  0 0 -30px -20px;
+      & > a {
+        width: 360px;
+        img {
+          display: block;
+          width: 100%;
+        }
+        margin: 0 0 20px 20px;
+        display: block;
+        float: left;
+      }
+    }
 
 	h1 {
 		line-height: 1;
 		margin: 0;
-		padding: 30px 30px 0;
+		padding: 30px 0 30px 30px;
 		text-transform: none;
 
 		font: {
@@ -143,7 +171,6 @@
 	@include inline_list(".img-list");
 
 	p {
-		padding: 30px;
 		line-height: 1.8;
 	}
 }

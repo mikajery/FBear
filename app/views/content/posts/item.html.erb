@@ -5,7 +5,24 @@
     </h1>
 
     <div class="blog-info">
-      <%= @post.content.html_safe if @post.content %>
+      <% @post.grouped_blocks.each_with_index do |b, i| %>
+
+          <% if b.kind_of?(Array) %>
+            <div class="blog-block">
+                <div class="blog-gallery">
+                  <% b.each do |p|%>
+                    <a rel="gal-<%= i %>" href="<%= p[:block].picture.url %>" data-action="previewer" class="blog-gallery-item">
+                      <%= image_tag p[:block].picture.url(:blog) %>
+                    </a>
+                  <% end %>
+                </div>
+            </div>
+          <% else %>
+            <div class="blog-block <%= b[:type] %>">
+                <%= b[:block].content.html_safe if b[:block].content %>
+            </div>
+          <% end %>
+      <% end %>
     </div>
   </div>
 

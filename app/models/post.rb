@@ -26,6 +26,26 @@ class Post < ActiveRecord::Base
     url: "/uploads/blogs/:id/:style/:basename.:extension",
     path: ":rails_root/public/uploads/blogs/:id/:style/:basename.:extension"
 
+  def grouped_blocks
+    grouped = []
+
+    blocks.each do |b|
+      block = {block: b, type: b.block_type}
+
+      if 'picture' == b.block_type
+        unless grouped.last.kind_of?(Array)
+          grouped << []
+        end
+
+        grouped.last << block
+      else
+        grouped << block
+      end
+    end
+
+    grouped
+  end
+
   def blocks
     post_blocks
   end
