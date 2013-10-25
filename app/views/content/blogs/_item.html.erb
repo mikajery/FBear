@@ -1,8 +1,8 @@
 <li>
 	<div class="blog-wrap blog-<%= blog.color.color %>">
-		<div class="blog-border">
+		<a href="<%= post_item_path blog.slug %>" class="blog-border">
 			<div class="shadow"></div>
-		</div>
+		</a>
 
 		<div class="blog-img">
 			<img src="<%= image_url blog.picture.url(:preview) %>" />
@@ -31,5 +31,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</a>
 </li>
