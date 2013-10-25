@@ -7,9 +7,14 @@
           [:meta, 'META', {active: false, path: edit_cm_post_path(@post, anchor: :meta)}], [:content, 'Контент', {active: true}]] %>
 
 <% if @post.blocks.present? %>
+  <div data-type="nested" data-nested-url="<%= order_cm_post_blocks_path(@post) %>">
     <% @post.blocks.each do |b| %>
-        <div class="well">
+        <div class="well" data-nested="item" data-nested-id="<%= b.id %>" data-toggle="collapse" data-target="#block<%= b.id %>">
           <div class="pull-right">
+            <%= link_to pencil_icon,
+                        edit_cm_post_block_path(@post, b.id),
+                        :class => 'btn btn-mini' %>
+
             <%= link_to trash_icon(true),
                         cm_post_block_path(@post, b.id),
                         :method => :delete,
@@ -17,9 +22,18 @@
                         :class => 'btn btn-mini btn-danger' %>
           </div>
 
-          <%= b.class.name %>
+          <div style="margin: -10px -10px 7px"><span class="label label-info"><%= b.block_type %></span></div>
+
+          <div class="collapse" id="block<%= b.id %>" style="display: block; min-height: 30px">
+              <% if 'picture' == b.block_type %>
+                <%= image_tag b.picture.url(:preview) %>
+              <% else %>
+                  <%= b.content.html_safe if b.content %>
+              <% end %>
+          </div>
         </div>
     <% end %>
+  </div>
 <% else %>
     <div class="well">
       Пусто..

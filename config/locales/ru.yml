@@ -215,3 +215,12 @@ ru:
         name: Название
         price: Цена варианта
         picture: Картинка
+
+      post_block/picture:
+        picture: Картинка
+
+      post_block/html:
+        content: Конент
+
+      post_block/embed:
+        content: Код видео

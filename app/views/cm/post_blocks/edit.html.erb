@@ -1,5 +1,5 @@
-<%- model_class = PostBlock -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+  <%= language_select unless @post_block.block_type == 'picture' %>
+  <h1>Правка блока: <%= @post_block.block_type %></h1>
 </div>
 <%= render :partial => 'form' %>

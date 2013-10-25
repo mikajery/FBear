@@ -33,6 +33,7 @@ CMS::Application.routes.draw do
     resources :posts do
       resources :blocks, controller: 'post_blocks' do
         get ':locale', on: :member, action: :edit, as: :languaged
+        post 'order', on: :collection, as: 'order'
       end
 
       get ':locale', on: :member, action: :edit, as: :languaged
@@ -60,10 +61,6 @@ CMS::Application.routes.draw do
 
     resources :properties, :languages, :pages,  :tags, :settings, :translations do
       get ':locale', on: :member, action: :edit, as: 'languaged'
-    end
-
-    resources :post_blocks do
-      post 'order', on: :collection, as: 'order'
     end
 
     resources :menu_items, :three60s, :pdfs, :variants, :materials, :designers do

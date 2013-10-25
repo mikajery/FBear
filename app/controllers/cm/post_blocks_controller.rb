@@ -1,4 +1,6 @@
 class Cm::PostBlocksController < Cm::BaseController
+  include MultilingualController
+
   before_action :set_post_block, only: [:show, :edit, :update, :destroy]
   before_action :set_post, except: [:show, :order, :destroy]
 
@@ -27,12 +29,15 @@ class Cm::PostBlocksController < Cm::BaseController
   # POST /post_blocks.json
   def create
     @post_block = PostBlock.new(post_block_params)
+    @post_block.weight = @post.blocks.size
 
     respond_to do |format|
       if @post_block.save
         format.html { redirect_to edit_cm_post_block_url(@post, @post_block), notice: 'Post block was successfully created.' }
         format.json { render action: 'show', status: :created, location: @post_block }
       else
+        @errors = @post_block.errors
+        abort @errors.to_s
         format.html { render action: 'new' }
         format.json { render json: @post_block.errors, status: :unprocessable_entity }
       end
@@ -49,6 +54,29 @@ class Cm::PostBlocksController < Cm::BaseController
       else
         format.html { render action: 'edit' }
         format.json { render json: @post_block.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def order
+    errors = []
+
+    if order_params
+      order_params.each_with_index do |id, weight|
+        post_block = PostBlock.find id
+        post_block.weight = weight
+
+        unless post_block.save :validate => false
+          errors << post_block.errors
+        end
+      end
+    end
+
+    respond_to do |format|
+      if errors.empty?
+        format.json { head :no_content }
+      else
+        format.json { render json: errors, status: :unprocessable_entity }
       end
     end
   end
@@ -73,8 +101,16 @@ class Cm::PostBlocksController < Cm::BaseController
       @post = Post.find(params[:post_id])
     end
 
+    def safe_params
+      [:type, :post_id, :picture, :content]
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_block_params
-      params.require(:post_block).permit([:type, :post_id])
+      permit_params
+    end
+
+    def order_params
+      params.require(:order)
     end
 end

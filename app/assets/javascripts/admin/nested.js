@@ -5,7 +5,8 @@
 var Nested = function(el) {
   var items_query = [
     '> tbody[data-nested=item]',
-    '> tbody > tr[data-nested=item]'
+    '> tbody > tr[data-nested=item]',
+    '> [data-nested=item]'
   ];
 
   var fixHelper = function(e, ui) {
