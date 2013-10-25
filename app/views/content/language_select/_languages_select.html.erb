@@ -6,7 +6,7 @@
 					<ul class="languages">
 						<% languages.each do |lang| %>
 							<li>
-                              <%= link_to lang.native.mb_chars.downcase, catalog_path %>
+                              <%= link_to lang.native.mb_chars.downcase, catalog_path(lang.slug) %>
 							</li>
 						<% end %>
 					</ul>
