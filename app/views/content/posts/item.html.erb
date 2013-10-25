@@ -6,28 +6,23 @@
 
     <div class="blog-info">
       <% @post.grouped_blocks.each_with_index do |b, i| %>
-
-          <% if b.kind_of?(Hash) %>
-            <div class="blog-block">
-              <% if b[:type] == 'picture' %>
-                <div class="blog-gallery">
-                  <% b[:items].each do |p|%>
-                    <a rel="gal-<%= i %>" href="<%= p[:block].picture.url %>" data-action="previewer" class="blog-gallery-item">
-                      <%= image_tag p[:block].picture.url(:blog) %>
-                    </a>
-                  <% end %>
-                </div>
-              <% elsif b[:type] == 'html' %>
-                  <% b[:items].each do |p|%>
-                      <%= p[:block].content.html_safe if p[:block].content %>
-                  <% end %>
+        <div class="blog-block <%= b[:type] %>">
+          <% if b[:type] == 'picture' %>
+            <div class="blog-gallery">
+              <% b[:items].each do |p|%>
+                <a rel="gal-<%= i %>" href="<%= p[:block].picture.url %>" data-action="previewer" class="blog-gallery-item">
+                  <%= image_tag p[:block].picture.url(:blog) %>
+                </a>
               <% end %>
             </div>
+          <% elsif b[:type] == 'html' %>
+              <% b[:items].each do |p|%>
+                  <%= p[:block].content.html_safe if p[:block].content %>
+              <% end %>
           <% else %>
-            <div class="blog-block <%= b[:type] %>">
-                <%= b[:block].content.html_safe if b[:block].content %>
-            </div>
+            <%= b[:block].content.html_safe if b[:block].content %>
           <% end %>
+        </div>
       <% end %>
     </div>
   </div>
