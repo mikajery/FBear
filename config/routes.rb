@@ -28,6 +28,7 @@ CMS::Application.routes.draw do
     resources :post_categories, path: 'blogs' do
       get 'items', on: :member, action: :index, as: :items
       get ':locale', on: :member, action: :edit, as: 'languaged'
+      post 'order', on: :collection, as: 'order'
     end
 
     resources :posts do
@@ -36,6 +37,7 @@ CMS::Application.routes.draw do
         post 'order', on: :collection, as: 'order'
       end
 
+      post 'order', on: :collection, as: 'order'
       get ':locale', on: :member, action: :edit, as: :languaged
     end
   end

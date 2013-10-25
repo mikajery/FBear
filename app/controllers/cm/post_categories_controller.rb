@@ -59,6 +59,29 @@ class Cm::PostCategoriesController < Cm::BaseController
     end
   end
 
+  def order
+    errors = []
+
+    if order_params
+      order_params.each_with_index do |id, weight|
+        item = PostCategory.find id
+        item.weight = weight
+
+        unless item.save :validate => false
+          errors << item.errors
+        end
+      end
+    end
+
+    respond_to do |format|
+      if errors.empty?
+        format.json { head :no_content }
+      else
+        format.json { render json: errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
@@ -86,5 +109,9 @@ class Cm::PostCategoriesController < Cm::BaseController
 
     def category_params
       permit_params
+    end
+
+    def order_params
+      params.require(:order)
     end
 end

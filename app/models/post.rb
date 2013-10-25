@@ -6,6 +6,8 @@ class Post < ActiveRecord::Base
   
   translates :announce, :title, :heading, :keywords, :description, :content
 
+  default_scope { order(:weight) }
+
   has_many :post_comments
   has_many :post_blocks
 
@@ -33,11 +35,19 @@ class Post < ActiveRecord::Base
       block = {block: b, type: b.block_type}
 
       if 'picture' == b.block_type
-        unless grouped.last.kind_of?(Array)
-          grouped << []
+        if grouped.last.kind_of?(Hash) and grouped.last[:type] == 'picture'
+        else
+          grouped << {type: 'picture', items: []}
         end
 
-        grouped.last << block
+        grouped.last[:items] << block
+      elsif 'html' == b.block_type
+        if grouped.last.kind_of?(Hash) and grouped.last[:type] == 'html'
+        else
+          grouped << {type: 'html', items: []}
+        end
+
+        grouped.last[:items] << block
       else
         grouped << block
       end

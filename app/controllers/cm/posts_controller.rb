@@ -27,6 +27,7 @@ class Cm::PostsController < Cm::BaseController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.weight = Post.all.size
 
     respond_to do |format|
       if @post.save
@@ -49,6 +50,29 @@ class Cm::PostsController < Cm::BaseController
       else
         format.html { render action: 'edit' }
         format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def order
+    errors = []
+
+    if order_params
+      order_params.each_with_index do |id, weight|
+        post = Post.find id
+        post.weight = weight
+
+        unless post.save :validate => false
+          errors << post.errors
+        end
+      end
+    end
+
+    respond_to do |format|
+      if errors.empty?
+        format.json { head :no_content }
+      else
+        format.json { render json: errors, status: :unprocessable_entity }
       end
     end
   end
@@ -76,5 +100,9 @@ class Cm::PostsController < Cm::BaseController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       permit_params
+    end
+
+    def order_params
+      params.require(:order)
     end
 end

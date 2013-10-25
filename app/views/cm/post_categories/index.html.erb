@@ -17,7 +17,7 @@
         Опаньки.. А постов-то и нету :(
       </div>
     <% else %>
-      <table class="table table-striped">
+      <table class="table table-striped" data-type="nested" data-nested-url="<%= order_cm_posts_path %>">
         <thead>
           <tr>
             <th>Пост</th>
@@ -27,7 +27,7 @@
         </thead>
         <tbody>        
           <% @items.each do |post| %>
-            <tr>
+            <tr data-nested="item" data-nested-id="<%= post.id %>">
               <td>
                 <%= with_pic post, post.picture %>
               </td>
@@ -52,12 +52,12 @@
   </div>
 
   <div class="span3">
-    <ul class="nav nav-tabs nav-stacked">
+    <ul class="nav nav-tabs nav-stacked" data-type="nested" data-nested-url="<%= order_cm_post_categories_path %>">
       <li<%= ' class=active' if !@collection %>>
         <%= link_to('Все посты', cm_post_categories_path) %>
       </li>
       <% @collections.each do |collection| %>
-        <li<%= ' class=active' if @collection && @collection == collection %>>
+        <li<%= ' class=active' if @collection && @collection == collection %> data-nested="item" data-nested-id="<%= collection.id %>">
           <div class="controls">
             <%= link_to(pencil_icon,
                 edit_cm_post_category_path(collection), :class => 'btn btn-link') %>
