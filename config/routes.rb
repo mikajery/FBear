@@ -2,6 +2,7 @@ CMS::Application.routes.draw do
 
   scope "(:locale)", locale: ContentRouter.locales do
     get "search/search"
+    post "catalog/fetch" => "content/catalogs#fetch", as: :catalog_fetch
   end
 
   scope "(:locale)", locale: ContentRouter.locales do

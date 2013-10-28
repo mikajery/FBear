@@ -1,16 +1,23 @@
 var Showroom = function(el) {
-	var items    = function() { return el.find('[data-showroom=item-col]') },
+	var items    = function() { return el.find('.showroom-col') },
 		controls = el.find('[data-showroom=control]'),
 		step     = 0,
-		slider   = el.find('[data-showroom=slide]')
+        oldStep  = 0,
+		slider   = el.find('[data-showroom=slide]'),
+        wrap  = function() { return $(el.find('[data-showroom=wrap]').get(0)) }
 	;
 
+    var stepWidth = function() {
+        return items().first().width();
+    };
+
 	var total = function() {
-		return items().size();
+        var t = items().size() - Math.floor(el.width()/stepWidth()) + 1;
+        return t > 0 ? t : 0;
 	};
 
 	var check = function(step) {
-		var _total = total() - 1;
+		var _total = total();
 
 		if (step < 0) step = 0;
 		if (step > _total) step = _total;
@@ -19,14 +26,19 @@ var Showroom = function(el) {
 	};
 
 	var updateSlider = function(instant) {
-		var toLeft = $(items().get(step)).data('showroom-left');
+        toLeft = step * stepWidth()
 
-		if (step == 0) toLeft = -60;
+        if (step != oldStep)
+        {
+            if (step == 0) toLeft = -60;
 
-		if (step && toLeft || !step)
-			slider[instant ? 'css' : 'animate']({
-				marginLeft: -1 * toLeft
-			});
+            if (step && toLeft || !step)
+                slider[instant ? 'css' : 'animate']({
+                    marginLeft: -1 * toLeft
+                });
+            oldStep = step;
+            console.log('STEP!');
+        }
 	};
 
 	var slide = function(toLeft) {
@@ -35,21 +47,34 @@ var Showroom = function(el) {
 	};
 
 	var resize = function() {
-		var width = el.height()/2;
+        var int, width = 0;
 
-		items().not('.promo').each(function() {
-			$(this).css({
-				'width': width
-			});
-		});
+        int = setInterval(function() {
+            wrap().height(slider.height());
 
-		var currentWidth = 0;
 
-		items().each(function() {
-			$(this).data('showroom-left', currentWidth);
-			currentWidth += $(this).width();
-		});
-	};	
+            if (wrap().height())
+            {
+                width = wrap().height()/ 2
+
+                items().not('.promo').each(function() {
+                    $(this).css({
+                        'width': width
+                    });
+
+                    $(this).addClass('ready');
+                });
+
+                console.log('WIDTH!');
+
+                clearInterval(int);
+            }
+        }, 50);
+
+	};
+
+    el.on( "swipeleft", slide());
+    el.on( "swiperight", slide(true));
 
 	controls.click(function() {
 		slide($(this).data('showroom-control') == 'right');
@@ -66,10 +91,11 @@ var Showroom = function(el) {
 		});
 
 	resize();
-};
 
-$(function() {
-	$('[data-action=showroom]').each(function() {
-		new Showroom($(this));
-	});	
-});
+    this.refresh = function() {
+        resize();
+    };
+
+    el.data('showroom', this);
+
+};

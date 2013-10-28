@@ -41,6 +41,11 @@
 			float: left;
 			height: 100%;
 			position: relative;
+            visibility: hidden;
+
+            &.ready {
+              visibility: visible;
+            }
 
 			.showroom-item {
 				display: block;

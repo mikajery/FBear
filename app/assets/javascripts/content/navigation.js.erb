@@ -1,58 +1,78 @@
-var Navigation = function(el) {
-	var nav    = el.find('[data-navigation=nav]'),
-		helper = el.find('[data-navigation=helper]'),
-		slide  = el.find('[data-navigation=slide]'),
-		opened = false,
-		self   = this
-	;
+var Navigation = function (el) {
+    var nav = el.find('[data-navigation=nav]'),
+            helper = el.find('[data-navigation=helper]'),
+            slide = el.find('[data-navigation=slide]'),
+            items = el.find('[data-navigation=item]'),
+            opened = false,
+            self = this
+            ;
 
-	this.close = function() {
-		nav
-			.removeClass('opened')
-			.animate({
-				marginLeft: -1 * nav.width()
-			})
-		;
+    this.close = function () {
+        nav
+                .removeClass('opened')
+                .animate({
+                    marginLeft: -1 * nav.width()
+                })
+        ;
 
-		slide.animate({
-			marginLeft: 0
-		}, function() {
-			slide.css({
-				width: ''
-			});
-		});
-	}
+        slide.animate({
+            marginLeft: 0
+        }, function () {
+            slide.css({
+                width: ''
+            });
+        });
+    }
 
-	this.open = function() {
-		nav
-			.addClass('opened')
-			.animate({
-				marginLeft: 0
-			})
-		;
-		
-		slide.css({
-			width: slide.width()
-		});
+    this.open = function () {
+        nav
+                .addClass('opened')
+                .animate({
+                    marginLeft: 0
+                })
+        ;
 
-		slide.animate({
-			marginLeft: nav.width()
-		});
-	}
+        slide.css({
+            width: slide.width()
+        });
 
-	var toggle = function() {
-		self[opened ? 'close' : 'open']();
-		opened = !opened;
-	};
+        slide.animate({
+            marginLeft: nav.width()
+        });
+    }
 
-	helper.click(function(e) {
-		toggle();
-		e.preventDefault();
-	});
+    var toggle = function () {
+        self[opened ? 'close' : 'open']();
+        opened = !opened;
+    };
+
+    helper.click(function (e) {
+        toggle();
+        e.preventDefault();
+    });
+
+    var toggleItem = function(item) {
+        items.removeClass('active');
+        item.addClass('active')
+    }
+
+    items.on('click', function (e) {
+        toggleItem($(this));
+    });
+
+    if (window.location.hash)
+    {
+        items.each(function() {
+          var item = $(this);
+          if ($(this).find('a[href=' + window.location.hash + ']').size())
+              item.addClass('active');
+
+        })
+    }
 };
 
-$(function() {
-	$('[data-action=navigation]').each(function() {
-		new Navigation($(this));
-	});
+$(function () {
+    $('[data-action=navigation]').each(function () {
+        new Navigation($(this));
+    });
 });

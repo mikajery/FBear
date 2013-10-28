@@ -11,10 +11,6 @@
   text-transform: uppercase;
 
   &.btn-width2 {
-    a.& {
-      padding: 0;
-    }
-
     width: 150px;
     margin-top: 20px;
   }
@@ -22,5 +18,8 @@
 
 a.btn {
   text-decoration: none;
-	display: block;
+  display: block;
+  &.btn-width2 {
+    padding: 0;
+  }
 }

@@ -1,3 +1,8 @@
+<%= render partial: 'views' %>
+<script type="text/javascript">
+  var fetchUrl = "<%= catalog_fetch_path %>";
+</script>
+
 <div class="showroom" data-action="showroom">
   <% if !defined? controls or (defined? controls and controls != false) %>
     <ul class="showroom-controls" data-action="middle">
@@ -14,10 +19,10 @@
     </ul>
   <% end %>
 
-  <div class="showroom-slide" data-showroom="slide" style="margin-left:60px">
+  <div class="showroom-slide" data-showroom="slide" style="margin-left:60px" data-region="goods">
     <%= render 'promo', :promo => promo if defined? promo %>
 
-    <% if @items %>
+    <% if false && @items %>
       <div class="showroom-items">
         <% @items.each_with_index do |item, i| %>
 
