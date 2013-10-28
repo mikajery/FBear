@@ -96,6 +96,11 @@ var Showroom = function(el) {
         resize();
     };
 
+    this.setStep = function(i) {
+        step = i;
+        updateSlider(true);
+    }
+
     el.data('showroom', this);
 
 };

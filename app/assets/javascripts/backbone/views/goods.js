@@ -25,6 +25,7 @@ GoodsView = Backbone.Marionette.CompositeView.extend({
             if ($(this).data('showroom'))
             {
                 $(this).data('showroom').refresh();
+                $(this).data('showroom').setStep(0);
             }
             else
             {
