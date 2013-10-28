@@ -55,6 +55,9 @@ Catalog.addInitializer(function (options) {
 });
 
 $(function() {
-    Catalog.start();
-    Backbone.history.start();
+    if ($('[data-action=showroom]').size()) {
+        Catalog.start();
+        Backbone.history.start();
+    }
+
 })
