@@ -21,14 +21,12 @@ goodsView = new GoodsView({
 var columize = function(collection) {
     var wrap = $('<div>').addClass('showroom-col');
     $('[data-region=goods]').append(collection.wrap(wrap));
-
-//    $('[data-region=goods]').append();
 }
 
 var fetch = function(collection) {
     goodsCollection.fetch({
         data: {
-            collection: collection
+            collection: collection ? collection : 'main'
         },
         type: "POST",
         remove: true,

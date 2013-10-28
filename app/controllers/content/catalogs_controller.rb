@@ -15,6 +15,8 @@ class Content::CatalogsController < Content::BaseController
   def fetch
     if fetch_params == 'all'
       @goods = Good.all
+    elsif fetch_params == 'main'
+      @goods = Good.all.where('on_main is true')
     else
       category = Category.find_by_slug fetch_params
       @goods = category.goods if category.present?
