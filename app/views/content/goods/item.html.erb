@@ -1,3 +1,21 @@
+<% content_for :goods_dropdown do %>
+    <ul>
+      <li>
+        <a href="<%= url_for(controller: 'content/catalogs', action: 'list', anchor: 'all') %>">
+          <%= T('Все товары') %>
+        </a>
+      </li>
+
+      <% GoodCategory.all.each do |category| %>
+          <li>
+            <a href="<%= url_for(controller: 'content/catalogs', action: 'list', anchor: category.slug) %>">
+              <%= category.title %>
+            </a>
+          </li>
+      <% end %>
+    </ul>
+<% end %>
+
 <div class="b-product<%= ' can-order' if @language.is_default %>" data-action="product"<%= ' data-no-shadow=true' unless @good.no_shadow %><%= ' data-dark=true' if @good.bg == 'dark' %>>
 <div class="shadow"></div>
 

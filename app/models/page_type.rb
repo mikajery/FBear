@@ -57,7 +57,7 @@ class PageType < ActiveRecord::Base
 
     def item_routes url
       [
-        {route: ':slug', action: 'item', as: url + '_item', active: (url == 'goods' ? 'catalog' : url) + '_path'}
+        {route: ':slug', action: 'item', as: url + '_item', active: (url == 'goods' ? 'catalog' : url) + '_path', dropdown: true}
       ]
     end
 end
