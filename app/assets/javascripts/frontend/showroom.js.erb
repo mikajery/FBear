@@ -1,6 +1,6 @@
 var Showroom = function(el) {
 	var items    = function() { return el.find('.showroom-col') },
-		controls = el.find('[data-showroom=control]').hide(),
+		controls = el.find('[data-showroom=control]'),
 		step     = 0,
         oldStep  = 0,
 		slider   = el.find('[data-showroom=slide]'),
@@ -102,5 +102,8 @@ var Showroom = function(el) {
     }
 
     el.data('showroom', this);
+    controls.css({
+        'visibility': ''
+    })
 
 };

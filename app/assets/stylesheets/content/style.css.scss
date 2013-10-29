@@ -13,6 +13,13 @@ html {
 	white-space: nowrap;
 }
 
+[data-action=middle] {
+  &.centered {
+    visibility: visible;
+  }
+  visibility: hidden;
+}
+
 body {
 	&.navigated {
 		overflow-x: hidden;

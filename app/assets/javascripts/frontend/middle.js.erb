@@ -6,6 +6,7 @@ var Middle = function(el) {
 			top: '50%',
 			marginTop: height ? height : (-1 * el.height()/2)
 		});
+        el.addClass('centered').hide().fadeIn();
 	};
 
 	el.on('middle', function () {
