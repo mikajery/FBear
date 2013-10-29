@@ -1,1 +1,0 @@
-var BlogModel = Backbone.Model.extend({});

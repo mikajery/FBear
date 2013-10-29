@@ -1,6 +1,62 @@
 @include inline_list(".blogs");
 @include row(".blog-wrap");
 
+.blogs-wrap {
+  &.loading {
+    .loading-wrap {
+      display: block;
+    }
+  }
+
+  .loading-wrap {
+    z-index: 100;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .loading {
+    & > .wrap {
+      margin: 26px 0;
+    }
+    position: absolute;
+    margin: -40px 0 0 -155px;
+    top: 50%;
+    left: 50%;
+    width: 310px;
+    height: 130px;
+    background: image-url('content/product-loader-bg.png') #111;
+
+    color: #fff;
+    text-align: center;
+
+    line-height: 80px;
+    text-transform: uppercase;
+
+    .loader {
+      height: 80px;
+      width: 110px;
+      border-right: 1px solid #2a2a2a;
+      float: left;
+
+      & > img {
+        display: block;
+        height: 30px;
+        width: 30px;
+        margin: 25px auto 0;
+      }
+    }
+
+    font: {
+      weight: bold;
+      size: 14px;
+    }
+  }
+}
+
 .blogs {
 	margin: 0 auto;
 	padding-bottom: 24px;

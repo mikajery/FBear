@@ -53,14 +53,10 @@ class Content::CatalogsController < Content::BaseController
     def navigation
       links = []
 
-      links << { active: (true if all_items), href: '#all', title: T('Все товары') }
-
-      if !all_items
-        @category = GoodCategory.find_by_slug(params[:slug])
-      end
+      links << { href: '#all', title: T('Все товары') }
 
       GoodCategory.all.each do |i|
-        links << { active: (true if @category == i), href: "##{i.slug}", title: i.title }
+        links << { href: "##{i.slug}", title: i.title }
       end
 
       @navigation = {

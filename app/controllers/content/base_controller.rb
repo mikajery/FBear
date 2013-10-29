@@ -1,5 +1,6 @@
 class Content::BaseController < ApplicationController
   layout 'content'
+
   helper Content::ContentHelper
   helper Content::CartHelper
   include TranslateHelper

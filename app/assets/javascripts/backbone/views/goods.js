@@ -12,9 +12,13 @@ GoodsView = Backbone.Marionette.CompositeView.extend({
     itemViewContainer: "[data-type=goods]",
     onRender: function() {
         var cols = this.$('.showroom-col');
+        loadingOut();
 
         this.$('.showroom-item').each(function(i) {
             $(cols.get(Math.floor(i/2))).append($(this));
+            $(this).css({
+                visibility: 'hidden'
+            })
         });
 
         cols.each(function() {
@@ -32,6 +36,12 @@ GoodsView = Backbone.Marionette.CompositeView.extend({
                 new Showroom($(this));
             }
         });
+
+        this.$('.showroom-item').each(function(i) {
+            $(this).hide().css({
+                visibility: 'visible'
+            }).fadeIn();
+        })
     }
 });
 

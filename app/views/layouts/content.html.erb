@@ -37,7 +37,8 @@
 			</div>
 		<% end %>
 
-		<%= javascript_include_tag "content", "data-turbolinks-track" => true %>
+		<%= javascript_include_tag "frontend", "data-turbolinks-track" => true %>
+        <%= yield :footer_scripts %>
         <% if S "counters" %>
             <%= S("counters").html_safe %>
         <% end %>

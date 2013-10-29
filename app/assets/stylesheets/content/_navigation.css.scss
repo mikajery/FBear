@@ -13,6 +13,7 @@
 .navigation {
 	margin-left: -500px;
 	z-index: 9;
+
 	.navigation-wrap {
 		position: relative;
 		height: 100%;
@@ -69,6 +70,10 @@
 	width: 500px;
 
 	background: image-url('content/noise.png');
+
+    &.fixed {
+      position: fixed;
+    }
 
 	.navigation-block {
 		margin: 0 20px;

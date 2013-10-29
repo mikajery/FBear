@@ -1,5 +1,25 @@
-<ul class="blogs">
-  <% @items.each do |i| %>
-    <%= render 'item', :blog => i %>
-  <% end %>
-</ul>
+<%= render partial: 'views' %>
+
+<script type="text/javascript">
+    var fetchUrl = "<%= blog_fetch_path %>";
+</script>
+
+<div class="blogs-wrap loading" data-type="blogs">
+  <div class="loading-wrap" data-blog="loading">
+    <div class="loading">
+      <div class="wrap">
+        <div class="loader">
+          <%= image_tag "content/product-loader.gif" %>
+        </div>
+
+        <%= T "Загружается..." %>
+      </div>
+    </div>
+  </div>
+
+  <div data-region="posts"></div>
+</div>
+
+<% content_for :footer_scripts do %>
+    <%= javascript_include_tag "backbone/blog", "data-turbolinks-track" => true %>
+<% end %>

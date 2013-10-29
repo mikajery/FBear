@@ -1,6 +1,7 @@
 class Content::BlogsController < Content::BaseController
   before_action :get_locale
   before_action :navigation, only: [:list, :item]
+  protect_from_forgery except: [:fetch]
 
   def list
     @items = Post.all
@@ -9,6 +10,23 @@ class Content::BlogsController < Content::BaseController
   def item
     @items = @category.posts
     render 'list'
+  end
+
+  def fetch
+    if fetch_params == 'all'
+      @posts = Post.all
+    else
+      category = Category.find_by_slug fetch_params
+      @posts = category.posts if category.present?
+    end
+
+    respond_to do |format|
+      if @posts
+        format.json { render action: 'fetch' }
+      else
+        format.json { head :no_content }
+      end
+    end
   end
 
   def get_item
@@ -22,20 +40,21 @@ class Content::BlogsController < Content::BaseController
   end
 
   private
+    def fetch_params
+      params.require(:collection)
+    end
+
     def navigation
       items = []
 
-      if params[:slug]
-        @category = PostCategory.find_by_slug(params[:slug])
-      end
+      items << { href: '#all', title: 'Все записи' }
 
       PostCategory.all.each do |i|
-        items << { active: (true if @category == i), href: blogs_item_path(i.slug), title: i.title }
+        items << { href: "##{i.slug}", title: i.title }
       end
 
-      items << { active: (true unless @category), href: blogs_path, title: 'Все записи' }
-
       @navigation = {
+        fixed: true,
         helper: T("Тэги"),
         title: T("Выберите категорию блога"),
         items: items
