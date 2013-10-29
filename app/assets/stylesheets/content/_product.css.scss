@@ -119,6 +119,7 @@
 
     &.pan {
       overflow: hidden;
+      cursor: ew-resize;
       & > div {
         position: relative;
         height: 100%;
