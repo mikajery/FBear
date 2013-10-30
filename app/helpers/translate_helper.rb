@@ -20,7 +20,7 @@ module TranslateHelper
           params[:source] = @current_page.name
         end
 
-        if !request.nil? and request.path
+        if defined? request and !request.nil? and request.path
           params[:url] = request.path
         end
 
