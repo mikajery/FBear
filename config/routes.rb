@@ -1,6 +1,6 @@
 CMS::Application.routes.draw do
 
-  mount RedactorRails::Engine => '/redactor_rails'
+  #mount RedactorRails::Engine => '/redactor_rails'
   scope "(:locale)", locale: ContentRouter.locales do
     get "search/search"
     post "catalog/fetch" => "content/catalogs#fetch", as: :catalog_fetch
