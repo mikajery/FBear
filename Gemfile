@@ -51,7 +51,7 @@ group :development do
   gem "binding_of_caller"
 end
 
-#gem 'mini_magick'
+gem 'mini_magick'
 #gem 'redactor-rails'
 gem 'rvm-capistrano'
 gem 'globalize'
