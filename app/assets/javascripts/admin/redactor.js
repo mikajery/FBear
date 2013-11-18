@@ -11,6 +11,7 @@ var Redactor = function (el) {
 
     options = {
         wym: true,
+        lang: 'ru',
         buttonsAdd: buttons,
         imageUpload: "/redactor_rails/pictures?" + params,
         imageGetJson: "/redactor_rails/pictures",

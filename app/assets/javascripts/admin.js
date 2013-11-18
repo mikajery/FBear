@@ -7,4 +7,5 @@
 //= require select2
 //= require select2_locale_ru
 //= require redactor-rails
+//= require redactor-rails/langs/ru
 //= require_tree ./admin
