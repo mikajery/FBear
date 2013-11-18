@@ -23,7 +23,6 @@
             <th>Товар</th>
             <th class="center">Категории</th>
             <th width="18%" class="center">Дизайнеры</th>
-            <th width="18%" class="center">Размеры</th>
             <th width="60px" class="center">Цена</th>
             <th width="60px"></th>
           </tr>
@@ -40,10 +39,6 @@
               </td>
               <td class="center">
                 <%= link_list(good.designer) %>
-              </td>
-              <td class="center">
-                <%= good.size %>
-                <%= (content_tag :div, content_tag(:small, good.box_size, class: 'muted')) if good.box_size %>
               </td>
               <td class="center"><%= good.price %></td>
               <td>

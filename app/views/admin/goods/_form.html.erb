@@ -252,14 +252,7 @@
     <% end %>
 
     <%= tab_pane :tech do %>
-      <%= f.input :width %>
-      <%= f.input :height %>
-      <%= f.input :depth %>
-      <%= f.input :box_width %>
-      <%= f.input :box_height %>
-      <%= f.input :box_depth %>
-
-      <%= f.input :is_electrical %>
+      <%= f.input :parameters, as: :html %>
     <% end %>
 
     <%= tab_pane :descriptions do %>

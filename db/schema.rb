@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131025161959) do
+ActiveRecord::Schema.define(version: 20131118061538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -214,13 +214,6 @@ ActiveRecord::Schema.define(version: 20131025161959) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.decimal  "width"
-    t.decimal  "height"
-    t.decimal  "depth"
-    t.decimal  "box_width"
-    t.decimal  "box_height"
-    t.decimal  "box_depth"
-    t.boolean  "is_electrical"
     t.text     "vimeo"
     t.string   "panorama_file_name"
     t.string   "panorama_content_type"
@@ -251,6 +244,7 @@ ActiveRecord::Schema.define(version: 20131025161959) do
     t.datetime "logo_desc_updated_at"
     t.boolean  "on_main"
     t.boolean  "no_shadow"
+    t.text     "parameters"
   end
 
   create_table "goods_goods", force: true do |t|

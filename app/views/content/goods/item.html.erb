@@ -169,29 +169,13 @@
               </div>
           <% end %>
 
-          <div class="block">
-            <div class="title"><%= T "Размеры" %></div>
-          </div>
-
-          <div class="block">
-            <ul class="b-thumbs sizes">
-              <li>
-                <div class="title">Габариты</div>
-                <%= content_tag :div, 'H ' + @good.height.to_i.to_s if @good.height %>
-                <%= content_tag :div, 'W ' + @good.width.to_i.to_s if @good.width %>
-                <%= content_tag :div, 'D ' + @good.depth.to_i.to_s if @good.depth %>
-              </li>
-
-              <li>
-                <div class="title">Упаковка</div>
-                <%= content_tag :div, 'H ' + @good.box_height.to_i.to_s if @good.box_height %>
-                <%= content_tag :div, 'W ' + @good.box_width.to_i.to_s if @good.box_width %>
-                <%= content_tag :div, 'D ' + @good.box_depth.to_i.to_s if @good.box_depth %>
-              </li>
-            </ul>
-          </div>
-
-
+          <% if @good.parameters.present? %>
+              <div class="block">
+                <div class="html-safe">
+                  <%= @good.parameters.html_safe %>
+                </div>
+              </div>
+          <% end %>
 
           <% unless @good.pdfs.empty? %>
               <div class="block">
