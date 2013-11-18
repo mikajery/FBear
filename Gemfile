@@ -52,7 +52,7 @@ group :development do
 end
 
 gem 'mini_magick'
-#gem 'redactor-rails'
+gem 'redactor-rails'
 gem 'rvm-capistrano'
 gem 'globalize'
 gem 'paper_trail', github: 'airblade/paper_trail', branch: 'master'
