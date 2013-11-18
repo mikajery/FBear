@@ -1,5 +1,6 @@
 CMS::Application.routes.draw do
 
+  mount RedactorRails::Engine => '/redactor_rails'
   scope "(:locale)", locale: ContentRouter.locales do
     get "search/search"
     post "catalog/fetch" => "content/catalogs#fetch", as: :catalog_fetch
@@ -80,6 +81,7 @@ CMS::Application.routes.draw do
       post 'order', on: :collection, as: 'order'
       get ':locale', on: :member, action: :edit, as: 'languaged'
     end
+
   end
 
   LanguageRouter.reload
