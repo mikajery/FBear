@@ -130,6 +130,10 @@
             <% end %>
           </div>
 
+          <div class="article">
+            <%= T "art" %>: <%= @good.article %>
+          </div>
+
           <%= @good.announce.html_safe if @good.announce %>
 
           <div class="b-farrow">
@@ -213,12 +217,6 @@
     </div>
     <div class="info-block">
       <ul class="features">
-        <% unless @good.vimeo.empty? %>
-            <li data-product-media="video">
-              <i class="product-icon icon-video"></i><span><%= T "Видео" %></span>
-            </li>
-        <% end %>
-
         <% unless @good.three60s.empty? %>
             <li data-product-media="360">
               <i class="product-icon icon-360"></i><span><%= T "просмотр" %></span>
@@ -228,6 +226,12 @@
         <% if @good.panorama.file? %>
             <li data-product-media="pan">
               <i class="product-icon icon-pan"></i><span><%= T "Панорама" %></span>
+            </li>
+        <% end %>
+
+        <% unless @good.vimeo.empty? %>
+            <li data-product-media="video">
+              <i class="product-icon icon-video"></i><span><%= T "Видео" %></span>
             </li>
         <% end %>
       </ul>

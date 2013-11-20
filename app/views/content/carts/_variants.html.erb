@@ -7,7 +7,7 @@
     <li>
       <select data-cart-variants="items" data-cart-item="variant">
         <% variants.sort_by{|v| v.price}.each do |v| %>
-          <%= content_tag :option, v.name, 
+          <%= content_tag :option, ("#{v.full_article} " if v.suffix.present?).to_s + v.name,
               value: v.id, 
               data: {raw_price: v.price, price: number_to_currency(v.price, precision: 0, unit: 'р.'), picture: (v.picture.url(:cart) if v.picture and v.picture.file?)},
               selected: (true if v == cart_item.variant) %>

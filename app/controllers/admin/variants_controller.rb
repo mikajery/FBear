@@ -108,7 +108,8 @@ class Admin::VariantsController < Admin::BaseController
           :good_id, 
           :price,
           :name,
-          :picture
+          :picture,
+          :suffix
       ]
     end
 

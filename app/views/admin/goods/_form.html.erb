@@ -16,6 +16,7 @@
   <%= tab_contents do %>
     <%= tab_pane :main, {active: true} do %>
       <%= f.input :name %>
+      <%= f.input :article %>
 
       <%= f.input :slug if @good.id? %>
 
@@ -121,6 +122,11 @@
               <th>
                 Вариант
               </th>
+
+              <th>
+                Артикул
+              </th>
+
               <% @good.property_type.each do |t| %>
                 <th class="center">
                   <%= t.name %>
@@ -140,6 +146,11 @@
                     <%= with_pic variant, variant.picture %>
                   <% end %>
                 </td>
+
+                <td>
+                  <%= variant.full_article %>
+                </td>
+
 
                 <% variant.properties.each do |p| %>
                   <td class="center">

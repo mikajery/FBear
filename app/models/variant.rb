@@ -18,6 +18,10 @@ class Variant < ActiveRecord::Base
     url: "/uploads/goods/variants/:id/:style/:basename.:extension",
     path: ":rails_root/public/uploads/goods/variants/:id/:style/:basename.:extension"
 
+  def full_article
+    [good.article, self.suffix].join "." if self.suffix.present?
+  end
+
   def properties
     variant_properties
   end

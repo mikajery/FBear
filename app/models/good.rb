@@ -24,6 +24,7 @@ class Good < ActiveRecord::Base
 
   has_many :three60s, -> { where media_file_id: nil}, dependent: :destroy
   validates :name, presence: true
+  validates :article, presence: true
   # validates :designer, presence: true
 
   attr_accessor :thumb

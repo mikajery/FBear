@@ -120,6 +120,7 @@ ru:
       good:
         bg: Вид страницы
         name: "Товар"
+        article: Артикул
         tags: "Теги"
         no_shadow: "Градиент"
         designer: "Дизайнер"
@@ -207,6 +208,7 @@ ru:
 
       variant:
         name: Название
+        suffix: Артикул (суффикс)
         price: Цена варианта
         picture: Картинка
 

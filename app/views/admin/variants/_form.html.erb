@@ -8,6 +8,8 @@
     <%= f.input :name, as: :string %>
   <% end if @variant.id %>
 
+    <%= f.input :suffix %>
+
   <% Globalize.with_locale(@locale.slug) do %>
     <%= f.input :price, as: :string %>
   <% end %>
