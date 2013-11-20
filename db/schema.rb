@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120135427) do
+ActiveRecord::Schema.define(version: 20131120142638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -161,6 +161,26 @@ ActiveRecord::Schema.define(version: 20131120135427) do
   create_table "designers_goods", force: true do |t|
     t.integer "designer_id"
     t.integer "good_id"
+  end
+
+  create_table "dwg_translations", force: true do |t|
+    t.integer  "dwg_id",     null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
+
+  add_index "dwg_translations", ["dwg_id"], name: "index_dwg_translations_on_dwg_id", using: :btree
+  add_index "dwg_translations", ["locale"], name: "index_dwg_translations_on_locale", using: :btree
+
+  create_table "dwgs", force: true do |t|
+    t.integer  "good_id"
+    t.string   "src"
+    t.integer  "size"
+    t.integer  "weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "good_option_translations", force: true do |t|

@@ -8,7 +8,8 @@
       [:variants, 'Варианты'], 
       [:tech, 'Характеристики'], 
       [:descriptions, 'Описания'], 
-      [:pdfs, 'PDF', {disabled: (true unless @good.id)}], 
+      [:pdfs, 'PDF', {disabled: (true unless @good.id)}],
+      [:dwgs, 'DWG', {disabled: (true unless @good.id)}],
       [:three60, '360-просмотр', {disabled: (true unless @good.id)}], 
       [:video, 'Видео'], 
       [:meta, 'META']] %>
@@ -109,6 +110,58 @@
           :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Произойдет переход на другую страницу. Вы действительно хотите продолжить?')) }, :class => 'btn' %>
 
     <% end %>
+
+        <%= tab_pane :dwgs do %>
+            <% if @good.dwgs.empty? %>
+                <div class="well">
+                  Опаньки.. Ни одного DWG-файла не найдено..
+                </div>
+            <% else %>
+                <table class="table table-hover" data-type="nested" data-nested-url="<%= order_admin_dwgs_path %>">
+                  <thead>
+                  <tr>
+                    <th>
+                      Файл
+                    </th>
+                    <th width="30%" class="center">
+                      Размер
+                    </th>
+                    <th width="60px">
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% @good.dwgs.each do |dwg| %>
+                      <tr data-nested="item" data-nested-id="<%= dwg.id %>">
+                        <td>
+                          <% Globalize.with_locale(@locale.slug) do %>
+                              <i class="icon icon-file"></i> <%= dwg.name %>
+                              <%= content_tag :div, content_tag(:small, dwg.filename), class: 'muted' if dwg.src %>
+                          <% end %>
+                        </td>
+                        <td class="center">
+                          <%= number_to_human_size dwg.size %>
+                        </td>
+                        <td>
+                          <%= link_to pencil_icon,
+                                      edit_admin_dwg_path(dwg), :class => 'btn btn-mini' %>
+                          <%= link_to trash_icon(true),
+                                      admin_dwg_path(dwg),
+                                      :method => :delete,
+                                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                                      :class => 'btn btn-mini btn-danger' %>
+                        </td>
+                      </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+            <% end %>
+
+            <%= link_to (content_tag :i, '', class: 'icon icon-file') + ' Добавить файл',
+                        new_admin_good_dwg_path(@good),
+                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Произойдет переход на другую страницу. Вы действительно хотите продолжить?')) }, :class => 'btn' %>
+
+        <% end %>
 
     <%= tab_pane :variants do %>
       <% if @good.variants.empty? %>
