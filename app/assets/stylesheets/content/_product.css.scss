@@ -235,6 +235,10 @@
       position: relative;
       margin-right: 50px;
 
+      &.info-block-features {
+        margin-right: 0;
+      }
+
       & > .controls {
         display: none;
         overflow: hidden;
@@ -523,6 +527,7 @@
 
   .features {
     padding-top: 70px;
+    margin-left: -18px;
 
     .product-icon {
       margin-bottom: -3px;
@@ -543,7 +548,7 @@
       cursor: pointer;
 
       float: left;
-      margin-right: 18px;
+      margin-left: 18px;
       height: 50px;
       width:105px;
       text-align:center;
