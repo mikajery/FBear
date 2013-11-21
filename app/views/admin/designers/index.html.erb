@@ -17,6 +17,8 @@
     <thead>
       <tr>
         <th>Дизайнер</th>
+        <th>Проектов</th>
+        <th>Coming soon</th>
         <th width="60px"></th>
       </tr>
     </thead>
@@ -27,6 +29,15 @@
           <td>
             <%= with_pic designer, designer.avatar %>
           </td>
+
+          <td>
+            <%= designer.goods.size %>
+          </td>
+
+          <td>
+            <%= designer.design_items.size %>
+          </td>
+
           <td>
             <%= link_to pencil_icon,
                 edit_admin_designer_path(designer), :class => 'btn btn-mini' %>

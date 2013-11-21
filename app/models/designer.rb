@@ -5,6 +5,8 @@ class Designer < ActiveRecord::Base
   translates :name, :title, :heading, :keywords, :description, :content, :motto
 
   has_and_belongs_to_many :goods
+  has_many :design_items
+
   validates :name, presence: true
 
   default_scope { order(:weight) }
@@ -19,4 +21,10 @@ class Designer < ActiveRecord::Base
     default_url: "/images/:style/missing.png",
     url: "/uploads/designers/:id/logo/:style/:basename.:extension",
     path: ":rails_root/public/uploads/designers/:id/logo/:style/:basename.:extension"
+
+  def all_projects
+    projects = []
+
+    projects += self.goods + self.design_items
+  end
 end

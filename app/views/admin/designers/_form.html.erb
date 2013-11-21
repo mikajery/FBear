@@ -3,7 +3,7 @@
 <%= simple_form_for [:admin, @designer], :html => { :class => 'form-horizontal' } do |f| %>
   <%= form_errors f %>
 
-  <%= tabs [[:main, 'Основное'], [:avatar, 'Фотография'], [:about, 'О дизайнере'], [:meta, 'META']] %>
+  <%= tabs [[:main, 'Основное'], [:avatar, 'Фотография'], [:about, 'О дизайнере'], [:meta, 'META'], [:design_items, 'Coming soon']] %>
 
   <%= tab_contents do %>
     <%= tab_pane :main, {active: true} do %>
@@ -31,6 +31,14 @@
         <%= f.input :content, as: :html %>
       <% end %>
     <% end %>
+
+    <%= tab_pane :design_items do %>
+        <%= render 'admin/design_items/list', items: @designer.design_items %>
+        <%= link_to (content_tag :i, '', class: 'icon icon-plus') + ' Добавить проект',
+                    new_admin_designer_design_item_path(@designer),
+                    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Произойдет переход на другую страницу. Вы действительно хотите продолжить?')) }, :class => 'btn' %>
+
+        <% end %>
   <% end %>
 
   <%= language_input f %>

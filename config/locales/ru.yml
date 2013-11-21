@@ -90,6 +90,10 @@ ru:
         description: "Описание"
         content: "Содержание"
 
+      design_item:
+        name: Проект
+        icon: Ярлык
+        picture: Картинка
 
       language:
         name: "Язык"

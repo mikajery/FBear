@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131121103740) do
+ActiveRecord::Schema.define(version: 20131121110650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,31 @@ ActiveRecord::Schema.define(version: 20131121103740) do
     t.string   "key"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "design_item_translations", force: true do |t|
+    t.integer  "design_item_id", null: false
+    t.string   "locale",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
+
+  add_index "design_item_translations", ["design_item_id"], name: "index_design_item_translations_on_design_item_id", using: :btree
+  add_index "design_item_translations", ["locale"], name: "index_design_item_translations_on_locale", using: :btree
+
+  create_table "design_items", force: true do |t|
+    t.integer  "designer_id",          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   create_table "designer_goods", force: true do |t|

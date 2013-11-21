@@ -68,10 +68,21 @@ CMS::Application.routes.draw do
       get ':locale', on: :member, action: :edit, as: 'languaged'
     end
 
-    resources :menu_items, :three60s, :files, :variants, :materials, :designers do
+    resources :menu_items, :three60s, :files, :variants, :materials do
       get ':locale', on: :member, action: :edit, as: 'languaged'
       post 'order', on: :collection, as: 'order'
     end
+
+
+    resources :designers do
+      resources :design_items do
+        get ':locale', on: :member, action: :edit, as: 'languaged'
+      end
+
+      get ':locale', on: :member, action: :edit, as: 'languaged'
+      post 'order', on: :collection, as: 'order'
+    end
+
 
     resources :goods do
       resources :files, only: [:new, :create]

@@ -1,8 +1,8 @@
 module Admin::AdminHelper
   delegate :url_helpers, to: 'Rails.application.routes'
-  
+
   def empty_list
-  	content_tag :div, 'Пусто', class: 'well'
+    content_tag :div, 'Пусто', class: 'well'
   end
 
   def get_languages
@@ -17,20 +17,24 @@ module Admin::AdminHelper
 
   def get_alignments
     {
-      'center center' => 'По центру',
-      'left center' => 'По левому краю',
-      'right center' => 'По правому краю',
-      'center top' => 'По центру и верхнему краю',
-      'left top' => 'По левому верхнему краю',
-      'right top' => 'По правому вехнему краю',
-      'center bottom' => 'По нижнему краю по центру',
-      'left bottom' => 'По левому нижнему краю',
-      'right bottom' => 'По правому нижнему краю'
+        'center center' => 'По центру',
+        'left center' => 'По левому краю',
+        'right center' => 'По правому краю',
+        'center top' => 'По центру и верхнему краю',
+        'left top' => 'По левому верхнему краю',
+        'right top' => 'По правому вехнему краю',
+        'center bottom' => 'По нижнему краю по центру',
+        'left bottom' => 'По левому нижнему краю',
+        'right bottom' => 'По правому нижнему краю'
     }
   end
 
   def save_or_update item
-    if item.id then 'Сохранить' else 'Добавить' end
+    if item.id then
+      'Сохранить'
+    else
+      'Добавить'
+    end
   end
 
   def link_list items
@@ -43,13 +47,13 @@ module Admin::AdminHelper
 
   def image_field item, property, form, size=[], options={}
     render partial: 'admin/parts/form_avatar', locals: {
-      image: item.send(property), 
-      item: item,
-      property: property, 
-      form: form, 
-      field: form.file_field(property), 
-      size: size, 
-      options: options
+        image: item.send(property),
+        item: item,
+        property: property,
+        form: form,
+        field: form.file_field(property),
+        size: size,
+        options: options
     }
   end
 
@@ -57,7 +61,7 @@ module Admin::AdminHelper
   def locale_icon locale
     result = []
     result << content_tag(:i, '', class: ('icon icon-' + (get_item.locale_exists(locale.slug) ? 'pencil' : 'plus')))
-    result << ' ' 
+    result << ' '
     result << locale.name
     result.join.html_safe
   end
@@ -110,11 +114,12 @@ module Admin::AdminHelper
 
   def language_prompt
     render partial: 'admin/parts/language_prompt', locals: {item: get_item}
-  end 
+  end
 
-  def language_select
-    render partial: 'admin/parts/language_select', locals: {route: 'languaged_' + controller.class.name.split('::').first.downcase + '_' + get_item_name(true) + '_path', item: get_item}
-  end 
+  def language_select(route=nil)
+    route ||= 'languaged_' + controller.class.name.split('::').first.downcase + '_' + get_item_name(true)
+    render partial: 'admin/parts/language_select', locals: {route: route + '_path', item: get_item}
+  end
 
   def form_errors form
     render partial: 'admin/parts/form_errors', locals: {object: form.object}
@@ -124,13 +129,19 @@ module Admin::AdminHelper
     render partial: 'admin/parts/form_language_input', locals: {form: form}
   end
 
-  def category_types 
+  def category_types
     ['goods', 'blogs']
   end
 
   def tab_pane name, options={}, &block
     content = capture(&block)
     render partial: 'admin/parts/tab_pane', locals: {content: content, name: name, options: options}
+  end
+
+  def current_route
+    Rails.application.routes.router.recognize(request) do |route, _|
+      return route.name
+    end
   end
 
   def tab_contents &block
