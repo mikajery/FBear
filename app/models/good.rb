@@ -169,4 +169,12 @@ class Good < ActiveRecord::Base
     }
   end
 
+  def material_types
+    self.variants.select{|v| v.material.present?}
+  end
+
+  def has_any_material_type?
+    self.material_types.size > 0
+  end
+
 end

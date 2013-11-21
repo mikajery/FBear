@@ -109,6 +109,7 @@ class Admin::VariantsController < Admin::BaseController
           :price,
           :name,
           :picture,
+          :material,
           :suffix
       ]
     end

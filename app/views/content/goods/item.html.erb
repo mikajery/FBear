@@ -144,6 +144,20 @@
         </div>
 
         <div class="long" data-action="scrollbar">
+          <% if @good.has_any_material_type? %>
+              <div class="block">
+                <div class="title smaller">
+                  <%= T "Типы материалов" %>
+                </div>
+                <ul class="b-thumbs">
+                  <% @good.material_types.each do |t| %>
+                      <li>
+                        <%= image_tag t.material.url(:additional), data: {zoomify: t.material.url(:material), price: number_to_currency(t.price, precision: 0, unit: T("руб."))} %>
+                      </li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
           <% if @good.content %>
               <div class="block">
                 <div class="html-safe">

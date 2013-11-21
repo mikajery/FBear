@@ -18,6 +18,14 @@ class Variant < ActiveRecord::Base
     url: "/uploads/goods/variants/:id/:style/:basename.:extension",
     path: ":rails_root/public/uploads/goods/variants/:id/:style/:basename.:extension"
 
+  validates_attachment_content_type :material, :content_type => ['image/jpeg', 'image/png','image/gif']
+
+  has_attached_file :material,
+                    styles: {preview: "300x300#", cart: "400x400#", additional: "90x90#", admin: "30x30#", material: "450x450#"},
+                    default_url: "/images/:style/missing.png",
+                    url: "/uploads/goods/variants/:id/:style/:basename.:extension",
+                    path: ":rails_root/public/uploads/goods/variants/:id/:style/:basename.:extension"
+
   def full_article
     [good.article, self.suffix].join "." if self.suffix.present?
   end

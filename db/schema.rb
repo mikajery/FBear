@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131121110650) do
+ActiveRecord::Schema.define(version: 20131121133319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -684,7 +684,11 @@ ActiveRecord::Schema.define(version: 20131121110650) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.string   "suffix",               default: "", null: false
+    t.string   "suffix",                default: "", null: false
+    t.string   "material_file_name"
+    t.string   "material_content_type"
+    t.integer  "material_file_size"
+    t.datetime "material_updated_at"
   end
 
   add_index "variants", ["good_id"], name: "index_variants_on_good_id", using: :btree
