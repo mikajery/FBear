@@ -19,8 +19,10 @@ class Good < ActiveRecord::Base
   has_and_belongs_to_many :goods, foreign_key: 'parent_id'
 
   has_one :video
-  has_many :pdfs, dependent: :destroy
-  has_many :dwgs, dependent: :destroy
+  has_many :files, dependent: :destroy, class_name: 'GoodFile'
+  has_many :dwgs, dependent: :destroy, class_name: 'GoodFile::Dwg'
+  has_many :pdfs, dependent: :destroy, class_name: 'GoodFile::Pdf'
+
   has_many :variants, dependent: :destroy
 
   has_many :three60s, -> { where media_file_id: nil}, dependent: :destroy

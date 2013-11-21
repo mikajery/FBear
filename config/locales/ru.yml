@@ -113,14 +113,15 @@ ru:
         title: "Название"
         url: "Ссылка"
 
-      pdf:
+      good_file:
         name: "Название"
-        src: "PDF"
+        type: "Тип"
+        src: "Файл"
 
-      dwg:
-        name: "Название"
-        src: "DWG"
-
+      good_file/pdf:
+          name: "Название"
+          type: "Тип"
+          src: "Файл"
 
       good:
         bg: Вид страницы

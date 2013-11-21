@@ -181,20 +181,20 @@
               </div>
           <% end %>
 
-          <% unless @good.pdfs.empty? %>
+          <% unless @good.files.empty? %>
               <div class="block">
                 <div class="b-thumbs sizes">
                   <div>
                     <div class="title"><%= T "Файлы для скачивания" %></div>
-                    <% @good.pdfs.each do |pdf| %>
+                    <% @good.files.each do |file| %>
                         <li>
                           <table class="vertical">
                             <tr>
                               <td>
-                                <i class="pdf-icon"></i>
+                                <i class="<%= file.file_type %>-icon"></i>
                               </td>
                               <td>
-                                <%= link_to pdf.name, pdf.src.url %>
+                                <%= link_to file.name, file.src.url %>
                               </td>
                             </tr>
                           </table>

@@ -8,7 +8,7 @@ class PdfsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:pdfs)
+    assert_not_nil assigns(:files)
   end
 
   test "should get new" do

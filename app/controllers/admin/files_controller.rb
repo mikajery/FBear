@@ -1,14 +1,14 @@
-class Admin::PdfsController < Admin::BaseController
+class Admin::FilesController < Admin::BaseController
   include MultilingualController
 
-  before_action :set_pdf, only: [:show, :edit, :update, :destroy]
+  before_action :set_file, only: [:show, :edit, :update, :destroy]
   before_action :set_good, only: [:new, :edit, :create, :update, :destroy]
   
 
   # GET /pdfs
   # GET /pdfs.json
   def index
-    @pdfs = Pdf.all
+    @files = GoodFile.all
   end
 
   # GET /pdfs/1
@@ -18,8 +18,8 @@ class Admin::PdfsController < Admin::BaseController
 
   # GET /pdfs/new
   def new
-    @pdf = Pdf.new
-    @pdf.good = @good
+    @file = GoodFile.new
+    @file.good = @good
   end
 
   # GET /pdfs/1/edit
@@ -29,16 +29,16 @@ class Admin::PdfsController < Admin::BaseController
   # POST /pdfs
   # POST /pdfs.json
   def create
-    @pdf = Pdf.new(pdf_params)
-    @pdf.good = @good
+    @file = GoodFile.new(file_params)
+    @file.good = @good
 
     respond_to do |format|
-      if @pdf.save
-        format.html { redirect_to edit_admin_good_url(@good, anchor: "pdfs"), notice: 'Pdf was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @pdf }
+      if @file.save
+        format.html { redirect_to edit_admin_good_url(@good, anchor: "files"), notice: 'File was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @file }
       else
         format.html { render action: 'new' }
-        format.json { render json: @pdf.errors, status: :unprocessable_entity }
+        format.json { render json: @file.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -46,12 +46,15 @@ class Admin::PdfsController < Admin::BaseController
   def order
     errors = []
 
+    #abort order_params.to_s
+
     if order_params
       order_params.each_with_index do |id, weight|
-        item = Pdf.find id
+        item = GoodFile.find id
         item.weight = weight
 
         unless item.save
+          #abort item.id.to_s
           errors << item.errors
         end
       end
@@ -70,12 +73,12 @@ class Admin::PdfsController < Admin::BaseController
   # PATCH/PUT /pdfs/1.json
   def update
     respond_to do |format|
-      if @pdf.update(pdf_params)
-        format.html { redirect_to edit_admin_good_url(@good, anchor: "pdfs"), notice: 'Pdf was successfully updated.' }
+      if @file.update(file_params)
+        format.html { redirect_to edit_admin_good_url(@good, anchor: "files"), notice: 'File was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @pdf.errors, status: :unprocessable_entity }
+        format.json { render json: @file.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -83,35 +86,35 @@ class Admin::PdfsController < Admin::BaseController
   # DELETE /pdfs/1
   # DELETE /pdfs/1.json
   def destroy
-    @good = @pdf.good
-    
-    @pdf.destroy
+    @good = @file.good
+
+    @file.destroy
     respond_to do |format|
-      format.html { redirect_to edit_admin_good_url(@good, anchor: "pdfs") }
+      format.html { redirect_to edit_admin_good_url(@good, anchor: "files") }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_pdf
-      @pdf = Pdf.find(params[:id])
+    def set_file
+      @file = GoodFile.find(params[:id])
     end
 
     def set_good
-      if @pdf.nil?
-        @good = Good.find(params[:good_id] || pdf_params[:good_id])
+      if @file.nil?
+        @good = Good.find(params[:good_id] || file_params[:good_id])
       else
-        @good = @pdf.good
+        @good = @file.good
       end
     end
 
     def safe_params
-      [:name, :src, :good_id]
+      [:name, :src, :good_id, :type]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def pdf_params
+    def file_params
       permit_params
     end
 

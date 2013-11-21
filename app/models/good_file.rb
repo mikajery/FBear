@@ -1,17 +1,20 @@
-class Pdf < ActiveRecord::Base  
+class GoodFile < ActiveRecord::Base
   include MultilingualModel
 
-  default_scope { order('weight ASC') }
+  self.table_name = 'files'
+  mount_uploader :src, FileUploader
 
+  default_scope { order('weight ASC') }
   translates :name
 
   before_save :set_size
-
   belongs_to :good
-  mount_uploader :src, PdfUploader
 
-  validates_presence_of :src
+  validates_presence_of :type
   validates_presence_of :name
+
+  validates_integrity_of :src
+  validates_processing_of :src
 
   def set_size
     self.size = src.file.size.to_s unless src.file.nil?

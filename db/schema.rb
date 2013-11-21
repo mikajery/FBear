@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120142638) do
+ActiveRecord::Schema.define(version: 20131121094554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -163,25 +163,28 @@ ActiveRecord::Schema.define(version: 20131120142638) do
     t.integer "good_id"
   end
 
-  create_table "dwg_translations", force: true do |t|
-    t.integer  "dwg_id",     null: false
+  create_table "file_translations", force: true do |t|
+    t.integer  "file_id",    null: false
     t.string   "locale",     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
   end
 
-  add_index "dwg_translations", ["dwg_id"], name: "index_dwg_translations_on_dwg_id", using: :btree
-  add_index "dwg_translations", ["locale"], name: "index_dwg_translations_on_locale", using: :btree
+  add_index "file_translations", ["file_id"], name: "index_file_translations_on_file_id", using: :btree
+  add_index "file_translations", ["locale"], name: "index_file_translations_on_locale", using: :btree
 
-  create_table "dwgs", force: true do |t|
+  create_table "files", force: true do |t|
     t.integer  "good_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "src"
     t.integer  "size"
     t.integer  "weight"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "type",       default: "GoodFile::Pdf", null: false
   end
+
+  add_index "files", ["good_id"], name: "index_files_on_good_id", using: :btree
 
   create_table "good_option_translations", force: true do |t|
     t.integer  "good_option_id", null: false
@@ -438,28 +441,6 @@ ActiveRecord::Schema.define(version: 20131120142638) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "pdf_translations", force: true do |t|
-    t.integer  "pdf_id",     null: false
-    t.string   "locale",     null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-  end
-
-  add_index "pdf_translations", ["locale"], name: "index_pdf_translations_on_locale", using: :btree
-  add_index "pdf_translations", ["pdf_id"], name: "index_pdf_translations_on_pdf_id", using: :btree
-
-  create_table "pdfs", force: true do |t|
-    t.integer  "good_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "src"
-    t.integer  "size"
-    t.integer  "weight"
-  end
-
-  add_index "pdfs", ["good_id"], name: "index_pdfs_on_good_id", using: :btree
 
   create_table "post_block_item_translations", force: true do |t|
     t.integer  "post_block_item_id", null: false
