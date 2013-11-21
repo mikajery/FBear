@@ -58,6 +58,7 @@ gem 'globalize'
 gem 'paper_trail', github: 'airblade/paper_trail', branch: 'master'
 gem "paperclip", github: 'thoughtbot/paperclip', branch: 'rails-4'
 gem 'jasny_bootstrap_extension_rails'
+gem 'bootstrap-datepicker-rails'
 gem "select2-rails"
 gem 'carrierwave'
 gem 'rubyzip'

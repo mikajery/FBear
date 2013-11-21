@@ -11,6 +11,7 @@
   <%= tab_contents do %>
     <%= tab_pane :main, {active: true} do %>
       <%= f.input :name %>
+      <%= f.input :publish, as: :date_picker %>
       <%= f.input :slug if @post.id %>
       <%= f.association :blog_color, include_blank: false %>
       <%= f.association :post_category, include_blank: false %>

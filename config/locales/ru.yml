@@ -80,7 +80,9 @@ ru:
       post:
         name: "Пост"
         announce: "Вкратце"
+        blog_color: "Цвет фона"
         post_category: "Категория"
+        publish: "Дата публикации"
         slug: "Путь"
         title: "Название"
         heading: "Заголовок"

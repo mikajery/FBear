@@ -6,5 +6,7 @@
 //= require jasny-bootstrap
 //= require select2
 //= require select2_locale_ru
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.ru.js
 //= require redactor-rails
 //= require_tree ./admin
