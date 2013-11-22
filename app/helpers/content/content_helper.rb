@@ -1,4 +1,8 @@
 module Content::ContentHelper
+  def language_alternate
+    render 'content/parts/language_alternate', languages: Language.active
+  end
+
   def meta
     controller.meta
   end

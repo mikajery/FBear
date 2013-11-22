@@ -16,6 +16,8 @@
 		<%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Roboto:400,500&subset=latin,cyrillic" %>
 		<%= csrf_meta_tags %>
 
+        <%= language_alternate %>
+
 		<%= tag(:meta, name: 'keywords', content: meta[:keywords]) if meta[:keywords] %>
 		<%= tag(:meta, name: 'description', content: meta[:description]) if meta[:description] %>
 

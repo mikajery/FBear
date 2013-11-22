@@ -1,46 +1,52 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title><%= meta[:title] %></title>
-		<meta name="viewport" content="width=device-width,maximum-scale=1">
-        <link rel="shortcut icon" href="<%= image_url("content/favicon.ico") %>">
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title><%= meta[:title] %></title>
+  <meta name="viewport" content="width=device-width,maximum-scale=1">
+  <link rel="shortcut icon" href="<%= image_url("content/favicon.ico") %>">
 
-		<%= stylesheet_link_tag    "content", media: "all", "data-turbolinks-track" => true %>
-		<%= javascript_include_tag "shared/modernizr.min",  "data-turbolinks-track" => true %>
-		<%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Roboto:400,500,700,900&subset=latin,cyrillic" %>
-		<%= csrf_meta_tags %>
+  <%= stylesheet_link_tag "content", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "shared/modernizr.min", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Roboto:400,500,700,900&subset=latin,cyrillic" %>
+  <%= csrf_meta_tags %>
 
-		<%= tag(:meta, name: 'keywords', content: meta[:keywords]) if meta[:keywords] %>
-		<%= tag(:meta, name: 'description', content: meta[:description]) if meta[:description] %>
+  <%= language_alternate %>
 
-	</head>
-	<body class="<%= 'navigated' if @navigation %>" data-classes="<%= ' dark' if @body_dark %><%= ' no-shadow' if @body_no_shadow %>">
-		<% if @navigation %>
-			<div class="slide" data-action="navigation">
-				<%= render 'content/navigation/navigation' %>
+  <%= tag(:meta, name: 'keywords', content: meta[:keywords]) if meta[:keywords] %>
+  <%= tag(:meta, name: 'description', content: meta[:description]) if meta[:description] %>
 
-				<div class="slide-wrap" data-navigation="slide">
-		<% end %>
-		
-		<%= render 'header' %>
-		<%= yield %>
+</head>
+<body class="<%= 'navigated' if @navigation %>" data-classes="<%= ' dark' if @body_dark %><%= ' no-shadow' if @body_no_shadow %>">
+<% if @navigation %>
+    <div class="slide" data-action="navigation">
+      <%= render 'content/navigation/navigation' %>
 
-		<%#= render 'footer', :absolute => (true if @absolute_footer) %>
+      <div class="slide-wrap" data-navigation="slide">
+<% end %>
 
-		<% if @navigation %>		
-				</div>
-			</div>
-		<% end %>
+<%= render 'header' %>
+<%= yield %>
 
-		<%= javascript_include_tag "frontend", "data-turbolinks-track" => true %>
-        <%= yield :footer_scripts %>
-        <% if S "counters" %>
-            <%= S("counters").html_safe %>
-        <% end %>
-	</body>
+<%#= render 'footer', :absolute => (true if @absolute_footer) %>
+
+<% if @navigation %>
+    </div>
+    </div>
+<% end %>
+
+<%= javascript_include_tag "frontend", "data-turbolinks-track" => true %>
+<%= yield :footer_scripts %>
+<% if S "counters" %>
+    <%= S("counters").html_safe %>
+<% end %>
+</body>
 </html>
