@@ -108,6 +108,11 @@ CMS::Application.routes.draw do
       ContentRouter.routes.each do |r|
         get r.except(:page, :applies_to, :active)
       end
+
+      GoodsRouter.routes.each do |r|
+        get r[:route] => redirect(r[:redirect_to])
+      end
+
     end
   end
 end
