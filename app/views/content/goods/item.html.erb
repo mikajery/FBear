@@ -65,7 +65,9 @@
 
 <% unless @good.vimeo.empty? %>
     <div class="media video" data-product-media="video">
-      <%= @good.vimeo.html_safe %>
+      <div class="media-video-container">
+        <%= @good.vimeo.html_safe %>
+      </div>
     </div>
 <% end %>
 
