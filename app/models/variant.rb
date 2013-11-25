@@ -9,7 +9,6 @@ class Variant < ActiveRecord::Base
 
   validates :price, presence: true
 
-  validates :picture, :attachment_presence => true
   validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/png','image/gif']
 
   has_attached_file :picture,
