@@ -11,7 +11,10 @@ var Zoomify = function(el) {
 
     el.on('mouseenter', function() {
        zoomed = create();
-       zoomed.css({left: el.offset().left + el.width() + 14, top: el.offset().top})
+       var last = el.closest('.material-types').children('li:last-child');
+        console.log(last);
+
+       zoomed.css({left: last.offset().left + el.width() + 14, top: last.offset().top})
        $('body').append(zoomed);
     });
 
