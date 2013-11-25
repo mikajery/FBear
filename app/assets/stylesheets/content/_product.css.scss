@@ -291,6 +291,16 @@
             }
           }
 
+          &.material-types {
+            & > li {
+              width: 90px;
+              margin-right: 15px;
+              img {
+                margin: 0 0 10px 0;
+              }
+            }
+          }
+
           &.material-thumbs {
             & > li {
               width: 120px;

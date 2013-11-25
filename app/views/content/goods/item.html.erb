@@ -151,10 +151,11 @@
                 <div class="title smaller">
                   <%= T "Типы материалов" %>
                 </div>
-                <ul class="b-thumbs">
+                <ul class="b-thumbs material-types">
                   <% @good.material_types.each do |t| %>
                       <li>
                         <%= image_tag t.material.url(:additional), data: {zoomify: t.material.url(:material), price: number_to_currency(t.price, precision: 0, unit: T("руб."))} %>
+                        <%= t.material_name %>
                       </li>
                   <% end %>
                 </ul>
