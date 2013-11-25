@@ -110,7 +110,8 @@ class Admin::VariantsController < Admin::BaseController
           :name,
           :picture,
           :material,
-          :suffix
+          :suffix,
+          :material_name
       ]
     end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131121133319) do
+ActiveRecord::Schema.define(version: 20131125100953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -664,12 +664,13 @@ ActiveRecord::Schema.define(version: 20131121133319) do
   add_index "variant_properties", ["variant_id"], name: "index_variant_properties_on_variant_id", using: :btree
 
   create_table "variant_translations", force: true do |t|
-    t.integer  "variant_id",               null: false
-    t.string   "locale",                   null: false
+    t.integer  "variant_id",                  null: false
+    t.string   "locale",                      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.decimal  "price",      default: 0.0, null: false
+    t.decimal  "price",         default: 0.0, null: false
+    t.string   "material_name"
   end
 
   add_index "variant_translations", ["locale"], name: "index_variant_translations_on_locale", using: :btree

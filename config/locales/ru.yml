@@ -223,6 +223,8 @@ ru:
         suffix: Артикул (суффикс)
         price: Цена варианта
         picture: Картинка
+        material: Материал
+        material_name: Тип материала
 
       post_block/picture:
         picture: Картинка

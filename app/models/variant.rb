@@ -1,6 +1,6 @@
 class Variant < ActiveRecord::Base
   include MultilingualModel
-  translates :price, :name
+  translates :price, :name, :material_name
 
   default_scope { order('weight ASC') }
 
