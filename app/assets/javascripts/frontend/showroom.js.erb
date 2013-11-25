@@ -65,20 +65,35 @@ var Showroom = function(el) {
                     $(this).addClass('ready');
                 });
 
-                console.log('WIDTH!');
-
                 clearInterval(int);
             }
         }, 50);
 
 	};
 
-    el.on( "swipeleft", slide());
-    el.on( "swiperight", slide(true));
+    if ($('html').hasClass('touch'))
+    {
+        var _x, dx = false;
 
-	controls.click(function() {
-		slide($(this).data('showroom-control') == 'right');
-	});
+        slider.on('touchstart', function(e) {
+            _x = e.originalEvent.touches[0].pageX;
+
+            slider.on('touchend', function(e) {
+                dx = _x - e.originalEvent.changedTouches[0].pageX;
+
+                if (Math.abs(dx) > 50) {
+                    slide(dx <= 0);
+                    slider.off('touchend');
+                }
+            })
+        });
+
+
+    }
+
+    controls.click(function() {
+        slide($(this).data('showroom-control') == 'right');
+    });
 
 	$('body')
 		.on('resize:height', function() {
@@ -102,8 +117,8 @@ var Showroom = function(el) {
     }
 
     el.data('showroom', this);
-    controls.css({
-        'visibility': ''
-    })
 
+    controls.css({
+        visibility: ''
+    })
 };

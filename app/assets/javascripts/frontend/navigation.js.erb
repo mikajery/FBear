@@ -46,6 +46,23 @@ var Navigation = function (el) {
         opened = !opened;
     };
 
+    if ($('html').hasClass('touch'))
+    {
+        helper.swipe({
+            swipe:function(event, direction, distance, duration, fingerCount) {
+                if (opened && direction == 'left')
+                {
+                    toggle();
+                }
+                else if (!opened && direction == 'right')
+                {
+                    toggle();
+                }
+            },
+            threshold:0
+        });
+    }
+
     helper.click(function (e) {
         toggle();
         e.preventDefault();
