@@ -5,10 +5,10 @@ class Three60Worker
   def perform(id, path)
     three60 = Three60.find id
     if three60
-      logger.info "Unpacking to " + id.to_s + " from " + File.exist?(path).to_s
+      logger.info 'Unpacking to ' + id.to_s + " from #{path}{" + File.exist?(path).to_s + '}'
       three60.unpack path 
     else
-      logger.warn "Three60 is not found: " + id.to_s
+      logger.warn 'Three60 is not found: ' + id.to_s
     end
   end
 end
