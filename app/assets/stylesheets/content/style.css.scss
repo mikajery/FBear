@@ -45,6 +45,10 @@ body {
 		overflow-x: hidden;
 	}
 
+    &.overflowed {
+      overflow: hidden;
+    }
+
 	min-height: 100%;
 	background: #fafafa;
 

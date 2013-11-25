@@ -26,6 +26,9 @@ var Showroom = function(el) {
 	};
 
 	var updateSlider = function(instant) {
+        if (!instant && slider.is(':animated'))
+            return;
+
         toLeft = step * stepWidth()
 
         if (step != oldStep)
@@ -33,11 +36,23 @@ var Showroom = function(el) {
             if (step == 0) toLeft = -60;
 
             if (step && toLeft || !step)
-                slider[instant ? 'css' : 'animate']({
-                    marginLeft: -1 * toLeft
-                });
+            {
+                if (instant)
+                {
+                    slider.css({
+                        marginLeft: -1 * toLeft
+                    })
+                }
+                else
+                {
+                    slider.animate({
+                        marginLeft: -1 * toLeft
+                    }, 150);
+                }
+
+            }
+
             oldStep = step;
-            console.log('STEP!');
         }
 	};
 
@@ -71,6 +86,26 @@ var Showroom = function(el) {
 
 	};
 
+
+    var scrollRight = true;
+
+    var updatePosition = function() {
+        el.off('mousewheel');
+        slide(scrollRight);
+        setTimeout(function() {
+           scrollIt();
+        }, 200);
+    }
+
+    var scrollIt = function() {
+        var throttled = _.throttle(updatePosition, 200, {leading: false, trailing: false});
+
+        el.on('mousewheel', function(e) {
+            scrollRight = e.deltaY <= 0;
+            throttled();
+        });
+    };
+
     if ($('html').hasClass('touch'))
     {
         var _x, dx = false;
@@ -87,8 +122,10 @@ var Showroom = function(el) {
                 }
             })
         });
-
-
+    }
+    else
+    {
+        scrollIt();
     }
 
     controls.click(function() {

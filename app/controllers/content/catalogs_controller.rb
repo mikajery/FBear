@@ -62,6 +62,7 @@ class Content::CatalogsController < Content::BaseController
       @navigation = {
         helper: T("Категории"),
         title: T("Выберите категорию товара"),
+        overflowed: true,
         items: links
       }
     end  
