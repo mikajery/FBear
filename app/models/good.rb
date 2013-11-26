@@ -7,7 +7,7 @@ class Good < ActiveRecord::Base
 
   default_scope { order('weight, name') }
 
-  translates :price, :title, :heading, :keywords, :description, :announce, :content, :additional
+  translates :price, :title, :heading, :keywords, :description, :announce, :content, :additional, :material_type_text
 
   has_and_belongs_to_many :good_category
   has_and_belongs_to_many :designer

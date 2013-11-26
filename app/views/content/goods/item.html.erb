@@ -149,7 +149,7 @@
           <% if @good.has_any_material_type? %>
               <div class="block">
                 <div class="title smaller">
-                  <%= T "Типы материалов" %>
+                  <%= @good.material_type_text.present? ? @good.material_type_text : T('Типы материалов') %>
                 </div>
                 <ul class="b-thumbs material-types">
                   <% @good.material_types.each do |t| %>

@@ -22,21 +22,21 @@ html {
 
 .zoomified {
   position: absolute;
-  margin-top: -287px;
+  margin-top: -301px;
   z-index: 1000;
   box-shadow: 0 0 100px rgba(0,0,0,.5);
 
   .zoomified-price {
     position: absolute;
-    background: #000;
-    height: 63px;
+    background: image-url('content/product-info-bg.png');
+    height: 49px;
     left: 0;
     right: 0;
     bottom: 0;
     text-align: center;
-    font-size: 38px;
-    line-height: 63px;
-    color: #999;
+    font-size: 16px;
+    line-height: 49px;
+    color: #fff;
   }
 }
 

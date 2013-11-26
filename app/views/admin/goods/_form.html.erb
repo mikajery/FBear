@@ -22,6 +22,7 @@
 
       <% Globalize.with_locale(@locale.slug) do %>
         <%= f.input :price %>
+        <%= f.input :material_type_text %>
       <% end %>
 
       <%= f.input :no_shadow %>

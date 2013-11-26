@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131125100953) do
+ActiveRecord::Schema.define(version: 20131126075559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -232,8 +232,8 @@ ActiveRecord::Schema.define(version: 20131125100953) do
   add_index "good_options", ["good_id"], name: "index_good_options_on_good_id", using: :btree
 
   create_table "good_translations", force: true do |t|
-    t.integer  "good_id",     null: false
-    t.string   "locale",      null: false
+    t.integer  "good_id",            null: false
+    t.string   "locale",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "price"
@@ -244,6 +244,7 @@ ActiveRecord::Schema.define(version: 20131125100953) do
     t.text     "announce"
     t.text     "content"
     t.text     "additional"
+    t.string   "material_type_text"
   end
 
   add_index "good_translations", ["good_id"], name: "index_good_translations_on_good_id", using: :btree
