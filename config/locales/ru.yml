@@ -95,6 +95,22 @@ ru:
         icon: Ярлык
         picture: Картинка
 
+      delivery_type:
+        name: Название
+        type: Тип
+        is_active: Доступен
+        price: Стоимость
+        conditions: Условия доставки
+
+      order_status:
+        name: Название
+        type: Тип
+
+      payment_type:
+        name: Название
+        type: Тип
+        is_active: Доступен
+
       language:
         name: "Язык"
         slug: "Путь"

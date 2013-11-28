@@ -2,19 +2,17 @@ class Content::CartsController < Content::BaseController
   layout 'content'
 
   before_action :check
-  before_action :set_token
-  before_action :set_cart, only: [:buy, :index, :info, :order, :done]
   before_action :set_good, only: [:buy]
 
   def index
   end
 
   def buy
-    @cart.items << CartGood.from_good(@good)
+    @cart.items << OrderGood.from_good(@good)
 
     respond_to do |format|
       if @cart.save
-        cookies['_token'] = @cart.key
+        cookies['_token'] = @cart.token
         format.html { redirect_to cart_url, notice: '_cart_good_added' }
       else
         abort @cart.errors.to_json
@@ -34,7 +32,7 @@ class Content::CartsController < Content::BaseController
 
   def update
     update_cart_params.each do |item|
-      cart_item = CartGood.find item[:cart_good]
+      cart_item = OrderGood.find item[:order_good]
       cart_item.variant = Variant.find item[:variant]
       cart_item.price = cart_item.variant.price
       cart_item.save
@@ -47,7 +45,7 @@ class Content::CartsController < Content::BaseController
 
   def remove_good
     respond_to do |format|
-      if CartGood.delete cart_good_params[:id]
+      if OrderGood.delete cart_good_params[:id]
         format.html { redirect_to cart_url, notice: '_cart_good_removed' }
       end
     end
@@ -58,20 +56,8 @@ class Content::CartsController < Content::BaseController
       raise PageNotFound unless @language.is_default
     end
 
-    def set_token
-      @token = cookies['_token'] ? cookies['_token'] : Cart.token
-    end
-
     def set_good
       @good = Good.find good_params[:id]
-    end
-
-    def set_cart
-      @cart = Cart.find_by_key_and_order_status_id @token, nil
-
-      unless @cart
-        @cart = Cart.create({key: Cart.token, language: @language})
-      end
     end
 
     def good_params
@@ -79,14 +65,13 @@ class Content::CartsController < Content::BaseController
     end
 
     def cart_good_params
-      params.require(:cart_good).permit([:id])
+      params.require(:order_good).permit([:id])
     end
 
     def update_cart_params
-
      if params[:cart]
         params.require(:cart)[:items].map do |item|
-          { cart_good: item[0].to_i, variant: item[1]["variant"].to_i }
+          { order_good: item[0].to_i, variant: item[1]['variant'].to_i }
         end
       else
         []

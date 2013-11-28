@@ -151,11 +151,7 @@ class Good < ActiveRecord::Base
     end
   end
 
-  def options
-    good_options
-  end
-
-  def pictures 
+  def pictures
     {
       preload: {
         desktop: picture.url(:picture)

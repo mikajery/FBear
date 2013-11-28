@@ -20,6 +20,15 @@
                   <%= menu_item "Страницы", admin_pages_path %>
                 <% end %>
 
+                <%= drop_down "Магазин" do %>
+                  <%= menu_item "Заказы", admin_orders_path %>
+                  <%= menu_item "Предзаказы", admin_preorders_path %>
+
+                  <%= menu_item "Типы доставки", admin_delivery_types_path %>
+                  <%= menu_item "Типы оплаты", admin_payment_types_path %>
+                  <%= menu_item "Статусы заказов", admin_order_statuses_path %>
+                <% end %>
+
                 <%= drop_down "Контент" do %>
                   <%= menu_item "Каталог", admin_good_categories_path %>
                   <%= menu_item "Дизайнеры", admin_designers_path %>

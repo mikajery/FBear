@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>
+      Поступил предзаказ!
+    </h1>
+    <p>
+      <div>
+        Клиент: <%= @order.full_name %>
+      </div>
+      <div>
+        Email:  <%= @order.email %>
+      </div>
+      <div>
+        Телефон:  <%= @order.phone %>
+      </div>
+
+      <ol>
+        <% @order.items.each do |i| %>
+          <li>
+            <%= link_to i.good.title, goods_item_path({locale: @order.language.slug, slug: i.good.slug}) %>, <%= i.price %>
+          </li>
+        <% end %>
+      </ol>
+    </p>
+
+    <p>
+      На сумму: <%= number_to_currency(@order.full_price, precision: 0, unit: 'р.') %>
+    </p>
+  </body>
+</html>

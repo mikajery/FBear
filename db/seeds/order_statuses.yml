@@ -1,4 +1,11 @@
 - name: Новый
-- name: Оформлен
-- name: Закрыт
+  proirity: 1
+  type: OrderStatus::New
 
+- name: Закрыт
+  proirity: 2
+  type: OrderStatus::Done
+
+- name: Отменен
+  proirity: 999
+  type: OrderStatus::Canceled

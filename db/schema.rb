@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131126075559) do
+ActiveRecord::Schema.define(version: 20131128033420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,43 +22,6 @@ ActiveRecord::Schema.define(version: 20131126075559) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "cart_goods", force: true do |t|
-    t.integer  "cart_id"
-    t.integer  "good_option_id"
-    t.integer  "price"
-    t.integer  "quantity"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "good_id"
-    t.integer  "variant_id"
-  end
-
-  add_index "cart_goods", ["cart_id"], name: "index_cart_goods_on_cart_id", using: :btree
-  add_index "cart_goods", ["good_id"], name: "index_cart_goods_on_good_id", using: :btree
-  add_index "cart_goods", ["good_option_id"], name: "index_cart_goods_on_good_option_id", using: :btree
-  add_index "cart_goods", ["variant_id"], name: "index_cart_goods_on_variant_id", using: :btree
-
-  create_table "carts", force: true do |t|
-    t.string   "key"
-    t.integer  "paymentr_type_id"
-    t.integer  "delivery_type_id"
-    t.string   "name"
-    t.string   "surname"
-    t.string   "city"
-    t.string   "region"
-    t.string   "address"
-    t.string   "zip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "email"
-    t.string   "phone"
-    t.integer  "order_status_id"
-    t.integer  "language_id"
-  end
-
-  add_index "carts", ["language_id"], name: "index_carts_on_language_id", using: :btree
-  add_index "carts", ["paymentr_type_id"], name: "index_carts_on_paymentr_type_id", using: :btree
 
   create_table "categories", force: true do |t|
     t.integer  "parent_id"
@@ -101,6 +64,13 @@ ActiveRecord::Schema.define(version: 20131126075559) do
   add_index "category_translations", ["category_id"], name: "index_category_translations_on_category_id", using: :btree
   add_index "category_translations", ["locale"], name: "index_category_translations_on_locale", using: :btree
 
+  create_table "clients", force: true do |t|
+    t.string "first_name", null: false
+    t.string "last_name"
+    t.string "email",      null: false
+    t.string "phone"
+  end
+
   create_table "comments", force: true do |t|
     t.integer  "post_id",    null: false
     t.integer  "comment_id"
@@ -114,11 +84,24 @@ ActiveRecord::Schema.define(version: 20131126075559) do
   add_index "comments", ["comment_id"], name: "index_comments_on_comment_id", using: :btree
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
 
-  create_table "delivery_types", force: true do |t|
-    t.string   "name"
-    t.string   "key"
+  create_table "delivery_type_translations", force: true do |t|
+    t.integer  "delivery_type_id", null: false
+    t.string   "locale",           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.text     "conditions"
+  end
+
+  add_index "delivery_type_translations", ["delivery_type_id"], name: "index_delivery_type_translations_on_delivery_type_id", using: :btree
+  add_index "delivery_type_translations", ["locale"], name: "index_delivery_type_translations_on_locale", using: :btree
+
+  create_table "delivery_types", force: true do |t|
+    t.string  "type",                       null: false
+    t.integer "price",      default: 0,     null: false
+    t.text    "conditions"
+    t.boolean "is_active",  default: false, null: false
+    t.integer "weight",     default: 9999,  null: false
   end
 
   create_table "design_item_translations", force: true do |t|
@@ -422,11 +405,56 @@ ActiveRecord::Schema.define(version: 20131126075559) do
     t.datetime "updated_at"
   end
 
-  create_table "order_statuses", force: true do |t|
-    t.string   "name"
+  create_table "order_goods", force: true do |t|
+    t.integer "order_id",               null: false
+    t.integer "good_id",                null: false
+    t.integer "variant_id"
+    t.integer "price",                  null: false
+    t.integer "quantity",   default: 0, null: false
+  end
+
+  add_index "order_goods", ["good_id"], name: "index_order_goods_on_good_id", using: :btree
+  add_index "order_goods", ["order_id"], name: "index_order_goods_on_order_id", using: :btree
+  add_index "order_goods", ["variant_id"], name: "index_order_goods_on_variant_id", using: :btree
+
+  create_table "order_status_translations", force: true do |t|
+    t.integer  "order_status_id", null: false
+    t.string   "locale",          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
+
+  add_index "order_status_translations", ["locale"], name: "index_order_status_translations_on_locale", using: :btree
+  add_index "order_status_translations", ["order_status_id"], name: "index_order_status_translations_on_order_status_id", using: :btree
+
+  create_table "order_statuses", force: true do |t|
+    t.string  "type",                   null: false
+    t.integer "priority", default: 999, null: false
+  end
+
+  create_table "orders", force: true do |t|
+    t.integer  "client_id"
+    t.integer  "order_status_id"
+    t.integer  "delivery_type_id"
+    t.integer  "payment_type_id"
+    t.string   "token",                                    null: false
+    t.string   "city"
+    t.string   "region"
+    t.string   "address"
+    t.string   "zip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "language_id"
+    t.string   "type",             default: "Order::Cart", null: false
+    t.string   "country",          default: "RU",          null: false
+  end
+
+  add_index "orders", ["client_id"], name: "index_orders_on_client_id", using: :btree
+  add_index "orders", ["delivery_type_id"], name: "index_orders_on_delivery_type_id", using: :btree
+  add_index "orders", ["language_id"], name: "index_orders_on_language_id", using: :btree
+  add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id", using: :btree
+  add_index "orders", ["payment_type_id"], name: "index_orders_on_payment_type_id", using: :btree
 
   create_table "page_translations", force: true do |t|
     t.integer  "page_id",     null: false
@@ -461,11 +489,21 @@ ActiveRecord::Schema.define(version: 20131126075559) do
 
   add_index "pages", ["page_type_id"], name: "index_pages_on_page_type_id", using: :btree
 
-  create_table "payment_types", force: true do |t|
-    t.string   "name"
-    t.string   "key"
+  create_table "payment_type_translations", force: true do |t|
+    t.integer  "payment_type_id", null: false
+    t.string   "locale",          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+  end
+
+  add_index "payment_type_translations", ["locale"], name: "index_payment_type_translations_on_locale", using: :btree
+  add_index "payment_type_translations", ["payment_type_id"], name: "index_payment_type_translations_on_payment_type_id", using: :btree
+
+  create_table "payment_types", force: true do |t|
+    t.string  "type",                     null: false
+    t.boolean "is_active"
+    t.integer "weight",    default: 9999, null: false
   end
 
   create_table "post_block_item_translations", force: true do |t|

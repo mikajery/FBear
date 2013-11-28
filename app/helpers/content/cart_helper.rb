@@ -2,7 +2,7 @@ module Content::CartHelper
   def cart_items
     if @cart.nil?
       token = cookies['_token']
-      cart = Cart.find_by_key_and_order_status_id token, nil
+      cart = Order::Cart.find_by_token_and_order_status_id token, nil
     else
       cart = @cart
     end

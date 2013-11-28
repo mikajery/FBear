@@ -64,3 +64,6 @@ gem 'carrierwave'
 gem 'rubyzip'
 gem 'sidekiq'
 gem 'fancybox2-rails', '~> 0.2.4'
+
+gem 'countries'
+gem 'country_select'

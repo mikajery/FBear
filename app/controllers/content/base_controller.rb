@@ -39,15 +39,20 @@ class Content::BaseController < ApplicationController
 
   protected
     def set_token
-      @token = cookies['_token'] ? cookies['_token'] : Cart.token
+      @token = cookies['_token'].present? ? cookies['_token'] : Order::Cart.token
     end
 
     def set_cart
-      @cart = Cart.find_by_key_and_order_status_id @token, nil
+      @cart = Order::Cart.find_by_token_and_order_status_id @token, nil
 
       unless @cart
-        @cart = Cart.create({key: Cart.token, language: @language})
+        @token = Order::Cart.token
+        @cart = Order::Cart.create({token: @token, language: @language})
       end
+
+      @cart.language = @language
+
+      cookies['_token'] = @token
     end
 
     def get_item

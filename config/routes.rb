@@ -14,13 +14,14 @@ CMS::Application.routes.draw do
   scope '(:locale)/cart', locale: ContentRouter.locales do
     post 'buy' => 'content/carts#buy', as: :cart_buy
     post 'update' => 'content/carts#update', as: :cart_update
-
     delete controller: 'content/carts', action: :remove_good, as: :cart_remove
 
-    scope '/preorder' do
-      #get '' => 'order#show', as: :order_show
-      patch '' => 'content/order#finish', as: :order_finish
-      #get 'done' => 'order#done', as: :order_done
+    scope :preorder, controller: 'content/preorder' do
+      patch '', action: :finish, as: :preorder_finish
+    end
+
+    scope :order, controller: 'content/order' do
+      patch '', action: :finish, as: :order_finish
     end
   end
 
@@ -49,6 +50,16 @@ CMS::Application.routes.draw do
     get '' => 'welcome#index', as: 'root'
 
     resources :menus
+    resources :orders, :preorders, except: [:create, :edit, :update]
+
+    resources :order_statuses do
+      get ':locale', on: :member, action: :edit, as: 'languaged'
+    end
+
+    resources :delivery_types, :payment_types do
+      post 'order', on: :collection, as: 'order'
+      get ':locale', on: :member, action: :edit, as: 'languaged'
+    end
 
     resources :good_categories, path: 'catalog' do
       get 'items', on: :member, action: :index, as: :items

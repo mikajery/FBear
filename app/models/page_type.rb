@@ -5,10 +5,13 @@ class PageType < ActiveRecord::Base
       content_routes url
     elsif method == 'order'
       order_routes url
+    elsif method == 'preorder'
+      preorder_routes url
     elsif method == 'order_done'
       order_done_routes url
     elsif method == 'cart'
       cart_routes url
+
     elsif method == 'languages_select'
       languages_select_routes url
     elsif method == 'list_with_items'
@@ -24,6 +27,12 @@ class PageType < ActiveRecord::Base
     def order_routes url
       [
         {route: '', action: 'show', controller: 'order', as: 'order_show', applies_to: ['order_finish']},
+      ]
+    end
+
+    def preorder_routes url
+      [
+          {route: '', action: 'show', controller: 'preorder', as: 'preorder_show', applies_to: ['preorder_finish']},
       ]
     end
 
