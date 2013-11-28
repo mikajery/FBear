@@ -9,7 +9,7 @@
     </div>
 <% end %>
 
-<%= simple_form_for @cart, url: preorder_show_path, method: :patch, html: {novalidate: false} do |form| %>
+<%= simple_form_for @cart, url: preorder_finish_path, method: :patch, html: {novalidate: false} do |form| %>
     <%= simple_fields_for 'cart' do |f| %>
 
         <div class="form-block">
