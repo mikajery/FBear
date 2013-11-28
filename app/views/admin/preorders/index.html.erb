@@ -40,7 +40,7 @@
           <%#= link_to pencil_icon,
                       edit_admin_order_path(order), :class => 'btn btn-mini' %>
           <%= link_to trash_icon(true),
-                      admin_order_path(order),
+                      admin_preorder_path(order),
                       :method => :delete,
                       :data => {:confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?'))},
                       :class => 'btn btn-mini btn-danger' %>
