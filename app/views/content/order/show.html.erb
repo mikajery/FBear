@@ -81,11 +81,11 @@
 
               <ul class="radio-group">
                 <li class="text">
-                  Вариант доставки:
+                  Способ доставки:
                 </li>
 
                 <li>
-                  <%= f.input_field :delivery_type, as: :radio_buttons, collection: DeliveryType.all %>
+                  <%= f.input_field :delivery_type, as: :radio_buttons, collection: DeliveryType.active %>
                 </li>
               </ul>
             </div>
@@ -140,6 +140,24 @@
                   <%= f.input_field :zip, placeholder: "Введите Ваш индекс", required: true, class: ('invalid' if form.object.errors['zip'].present?) %>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-block">
+          <h2>Оплата</h2>
+
+          <div class="row">
+            <div class="span2">
+              <ul class="radio-group">
+                <li class="text">
+                  Способ оплаты:
+                </li>
+
+                <li>
+                  <%= f.input_field :payment_type, as: :radio_buttons, collection: PaymentType.active %>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
