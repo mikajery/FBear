@@ -99,7 +99,7 @@
                 </label>
 
                 <div class="input-wrap">
-                  <%= f.input_field :city, placeholder: "Введите Ваш город", required: true %>
+                  <%= f.input_field :city, placeholder: "Введите Ваш город", required: true, class: ('invalid' if form.object.errors['city'].present?) %>
                 </div>
               </div>
             </div>
@@ -111,7 +111,7 @@
                 </label>
 
                 <div class="input-wrap">
-                  <%= f.input_field :region, placeholder: "Enter your State / Province / Region", required: true %>
+                  <%= f.input_field :region, placeholder: "Enter your State / Province / Region", required: true, class: ('invalid' if form.object.errors['region'].present?) %>
                 </div>
               </div>
             </div>
@@ -125,7 +125,7 @@
                 </label>
 
                 <div class="input-wrap">
-                  <%= f.input_field :address, placeholder: "Введите Ваш адрес", required: true %>
+                  <%= f.input_field :address, placeholder: "Введите Ваш адрес", required: true, class: ('invalid' if form.object.errors['address'].present?) %>
                 </div>
               </div>
             </div>
@@ -137,7 +137,7 @@
                 </label>
 
                 <div class="input-wrap">
-                  <%= f.input_field :zip, placeholder: "Введите Ваш индекс", required: true %>
+                  <%= f.input_field :zip, placeholder: "Введите Ваш индекс", required: true, class: ('invalid' if form.object.errors['zip'].present?) %>
                 </div>
               </div>
             </div>
