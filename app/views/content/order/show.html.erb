@@ -111,7 +111,7 @@
                 </label>
 
                 <div class="input-wrap">
-                  <%= f.input_field :region, placeholder: "Enter your State / Province / Region", required: true, class: ('invalid' if form.object.errors['region'].present?) %>
+                  <%= f.input_field :region, placeholder: "Введите Ваш регион/область", required: true, class: ('invalid' if form.object.errors['region'].present?) %>
                 </div>
               </div>
             </div>
@@ -283,6 +283,12 @@
               </div>
             </div>
         <% end %>
+
+        <ul class="cart-items">
+            <li class="cart-total">
+              <span class="upper"><%= T "Итого" %>:</span> <span data-order="total">100<%#= number_to_currency(cart.full_price, precision: 0, unit: 'р.') %></span>
+            </li>
+        </ul>
 
         <div class="form-block">
           <div class="row">

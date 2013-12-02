@@ -10,6 +10,8 @@ class DeliveryType < ActiveRecord::Base
 
   validates :type, presence: true, uniqueness: true
   validates :name, presence: true
+  validates :layout, presence: true
+
 
   def self.types
     {
@@ -17,6 +19,13 @@ class DeliveryType < ActiveRecord::Base
         'DeliveryType::Pickup' => 'Самовывоз',
         'DeliveryType::Showroom' => 'Шоурум',
         'DeliveryType::Dpd' => 'DPD'
+    }
+  end
+
+  def self.layouts
+    {
+        'address' => 'Форма с адресом',
+        'no_address' => 'Форма без адреса'
     }
   end
 end

@@ -101,6 +101,7 @@ ru:
         is_active: Доступен
         price: Стоимость
         payment_types: Типы оплаты
+        layout: Шаблон
         conditions: Условия доставки
 
       order_status:
