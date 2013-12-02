@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131128033420) do
+ActiveRecord::Schema.define(version: 20131202104708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,13 @@ ActiveRecord::Schema.define(version: 20131128033420) do
     t.boolean "is_active",  default: false, null: false
     t.integer "weight",     default: 9999,  null: false
   end
+
+  create_table "delivery_types_payment_types", force: true do |t|
+    t.integer "delivery_type_id"
+    t.integer "payment_type_id"
+  end
+
+  add_index "delivery_types_payment_types", ["delivery_type_id", "payment_type_id"], name: "delivery_type_payment_type", using: :btree
 
   create_table "design_item_translations", force: true do |t|
     t.integer  "design_item_id", null: false

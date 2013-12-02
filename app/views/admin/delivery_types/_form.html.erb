@@ -13,6 +13,8 @@
         <%= f.input :type, collection: DeliveryType.types.invert %>
         <%= f.input :is_active %>
 
+        <%= f.association :payment_types %>
+
         <% Globalize.with_locale(@locale.slug) do %>
             <%= f.input :conditions, as: :html %>
         <% end %>
