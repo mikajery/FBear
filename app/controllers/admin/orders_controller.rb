@@ -10,11 +10,13 @@ class Admin::OrdersController < Admin::BaseController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
-    if @order.update(order_status: OrderStatus::Canceled.first)
+    if @order.update!(order_status: OrderStatus::Canceled.first)
       respond_to do |format|
         format.html { redirect_to admin_orders_url }
         format.json { head :no_content }
       end
+    else
+      redirect_to admin_orders_url
     end
   end
 

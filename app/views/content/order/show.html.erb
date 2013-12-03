@@ -1,4 +1,4 @@
-<div class="container cart">
+<div class="container cart" data-type="order">
 <h1>
   <%= T "Заказ" %>
 </h1>
@@ -69,15 +69,10 @@
         <% end %>
 
         <div class="form-block">
-          <h2>Адрес доставки</h2>
+          <h2>Доставка</h2>
 
           <div class="row">
             <div class="span2">
-              <div class="form-row">
-                <div class="select-wrap">
-                  <%= f.select :country, Country.all %>
-                </div>
-              </div>
 
               <ul class="radio-group">
                 <li class="text">
@@ -85,209 +80,123 @@
                 </li>
 
                 <li>
-                  <%= f.input_field :delivery_type, as: :radio_buttons, collection: DeliveryType.active %>
+                  <% DeliveryType.active.each do |delivery_type| %>
+                      <label>
+                        <input type="radio" name="cart[delivery_type]" value="<%= delivery_type.id %>" data-delivery-type required /> <%= delivery_type.name %><% if delivery_type.conditions.present? %> <sup data-order="popover">?</sup><% end %>
+                      </label>
+                  <% end %>
                 </li>
               </ul>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="span2">
-              <div class="form-row">
-                <label for="city">
-                  Город<sup>*</sup>:
-                </label>
-
-                <div class="input-wrap">
-                  <%= f.input_field :city, placeholder: "Введите Ваш город", required: true, class: ('invalid' if form.object.errors['city'].present?) %>
-                </div>
-              </div>
-            </div>
-
-            <div class="span2">
-              <div class="form-row">
-                <label for="region">
-                  Регион / Область<sup>*</sup>:
-                </label>
-
-                <div class="input-wrap">
-                  <%= f.input_field :region, placeholder: "Введите Ваш регион/область", required: true, class: ('invalid' if form.object.errors['region'].present?) %>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="span2">
-              <div class="form-row">
-                <label for="address">
-                  Адрес<sup>*</sup>:
-                </label>
-
-                <div class="input-wrap">
-                  <%= f.input_field :address, placeholder: "Введите Ваш адрес", required: true, class: ('invalid' if form.object.errors['address'].present?) %>
-                </div>
-              </div>
-            </div>
-
-            <div class="span2">
-              <div class="form-row">
-                <label for="zip">
-                  Индекс<sup>*</sup>:
-                </label>
-
-                <div class="input-wrap">
-                  <%= f.input_field :zip, placeholder: "Введите Ваш индекс", required: true, class: ('invalid' if form.object.errors['zip'].present?) %>
-                </div>
-              </div>
+              <% if form.object.errors['delivery_type'].present? %>
+                  <p class="error">
+                    <%= form.object.errors['delivery_type'][0] %>
+                  </p>
+              <% end %>
             </div>
           </div>
         </div>
 
-        <div class="form-block">
-          <h2>Оплата</h2>
+        <div data-layout="address"></div>
 
-          <div class="row">
-            <div class="span2">
-              <ul class="radio-group">
-                <li class="text">
-                  Способ оплаты:
-                </li>
+        <div data-layout="payment"></div>
 
-                <li>
-                  <%= f.input_field :payment_type, as: :radio_buttons, collection: PaymentType.active %>
-                </li>
-              </ul>
+        <script type="text/html" data-view="address">
+          <div class="form-block">
+            <h2>Адрес доставки</h2>
+
+            <div class="row">
+              <div class="span2">
+                <div class="form-row">
+                  <div class="select-wrap">
+                    <%= f.select :country, Country.all %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="span2">
+                <div class="form-row">
+                  <label for="city">
+                    Город<sup>*</sup>:
+                  </label>
+
+                  <div class="input-wrap">
+                    <%= f.input_field :city, placeholder: "Введите Ваш город", required: true, class: ('invalid' if form.object.errors['city'].present?) %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="span2">
+                <div class="form-row">
+                  <label for="region">
+                    Регион / Область<sup>*</sup>:
+                  </label>
+
+                  <div class="input-wrap">
+                    <%= f.input_field :region, placeholder: "Введите Ваш регион/область", required: true, class: ('invalid' if form.object.errors['region'].present?) %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="span2">
+                <div class="form-row">
+                  <label for="address">
+                    Адрес<sup>*</sup>:
+                  </label>
+
+                  <div class="input-wrap">
+                    <%= f.input_field :address, placeholder: "Введите Ваш адрес", required: true, class: ('invalid' if form.object.errors['address'].present?) %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="span2">
+                <div class="form-row">
+                  <label for="zip">
+                    Индекс<sup>*</sup>:
+                  </label>
+
+                  <div class="input-wrap">
+                    <%= f.input_field :zip, placeholder: "Введите Ваш индекс", required: true, class: ('invalid' if form.object.errors['zip'].present?) %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </script>
+
+        <script type="text/html" data-view="payment">
+          <div class="form-block">
+            <h2>Оплата</h2>
+
+            <div class="row">
+              <div class="span2">
+                <ul class="radio-group">
+                  <li class="text">
+                    Способ оплаты:
+                  </li>
+
+                  <li>
+                    <% PaymentType.active.each do |payment_type| %>
+                        <label data-payment-type="<%= payment_type.id %>">
+                          <input type="radio" name="cart[payment_type]" value="<%= payment_type.id %>" required /> <%= payment_type.name %>
+                        </label>
+                    <% end %>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
-
-        <% if false %>
-            <div class="form-block">
-              <h2>Способ оплаты</h2>
-
-              <div class="row">
-                <div class="span2">
-                  <ul class="radio-group">
-                    <li>
-                      <%= f.input_field :payment_type, as: :radio_buttons, collection: PaymentType.all %>
-                    </li>
-                  </ul>
-
-                  <div class="form-row">
-                    <div class="select-wrap">
-                      <select name="">
-                        <option>MasterCard</option>
-                        <option>Visa</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="row">
-                <div class="span2">
-                  <div class="form-row">
-                    <label>
-                      Номер карты:
-                    </label>
-
-                    <ul class="text-group size-1">
-                      <li>
-                        <div class="input-wrap">
-                          <%#= f.input_field :cart_number_1, placeholder: "XXXX", required: true %>
-                        </div>
-                      </li>
-
-                      <li>
-                        <div class="input-wrap">
-                          <%#= f.input_field :cart_number_2, placeholder: "XXXX", required: true %>
-                        </div>
-                      </li>
-
-                      <li>
-                        <div class="input-wrap">
-                          <%#= f.input_field :cart_number_3, placeholder: "XXXX", required: true %>
-                        </div>
-                      </li>
-
-                      <li>
-                        <div class="input-wrap">
-                          <%#= f.input_field :cart_number_4, placeholder: "XXXX", required: true %>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="span2">
-                  <div class="form-row">
-                    <div class="input-wrap">
-                      <%#= f.input_field :cardholder, placeholder: "Имя на карте", required: true %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="span2">
-                  <div class="form-row">
-                    <label>
-                      Дата активности карты:
-                    </label>
-                    <ul class="text-group select-group size-2">
-                      <li>
-                        <div class="select-wrap">
-                          <select placeholder="Месяц">
-
-                          </select>
-                        </div>
-                      </li>
-
-                      <li>
-                        <div class="select-wrap">
-                          <select placeholder="Год">
-
-                          </select>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="span2">
-                  <div class="form-row">
-                    <label>
-                      Код защиты:
-                    </label>
-
-                    <ul class="text-group size-1">
-                      <li>
-                        <div class="input-wrap">
-                          <%#= f.input_field :cardholder, placeholder: "Имя на карте", required: true %>
-                          <input type="text" placeholder="XXX"/>
-                        </div>
-                      </li>
-
-                      <li>
-                        <a href="#">Что это такое?</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-        <% end %>
+        </script>
 
         <ul class="cart-items">
-            <li class="cart-total">
-              <span class="upper"><%= T "Итого" %>:</span> <span data-order="total">100<%#= number_to_currency(cart.full_price, precision: 0, unit: 'р.') %></span>
-            </li>
+          <li class="cart-total">
+            <span class="upper"><%= T "Итого" %>:</span>
+            <span data-order="total"></span>
+          </li>
         </ul>
 
         <div class="form-block">
@@ -308,3 +217,7 @@
     <% end %>
 <% end %>
 </div>
+
+<script type="text/javascript">
+    var order_options = <%= raw @cart.options.to_json %>
+</script>

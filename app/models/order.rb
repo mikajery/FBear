@@ -12,10 +12,15 @@ class Order < ActiveRecord::Base
   delegate :first_name, :last_name, :email, :phone, to: :client, allow_nil: true
 
   validates :token, presence: true, uniqueness: true
+  validates_with OrderValidator
 
   # товары заказа
   def items
     self.order_goods
+  end
+
+  def skip_validations?
+    true if self.order_status == OrderStatus::Canceled.first
   end
 
   # имя клиента
@@ -37,6 +42,14 @@ class Order < ActiveRecord::Base
 
   def payment_price
     0
+  end
+
+  def options
+    {
+        delivery_types: DeliveryType.active.index_by(&:id).each_with_object({}) {|(key, value), hash| hash[key] = value.options },
+        payment_types: PaymentType.active.index_by(&:id).each_with_object({}) { |(key, value), hash| hash[key] = value.options },
+        items_price: self.items_price
+    }
   end
 
   # полная стоимость заказа

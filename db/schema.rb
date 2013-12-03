@@ -97,12 +97,12 @@ ActiveRecord::Schema.define(version: 20131202135426) do
   add_index "delivery_type_translations", ["locale"], name: "index_delivery_type_translations_on_locale", using: :btree
 
   create_table "delivery_types", force: true do |t|
-    t.string  "type",                              null: false
-    t.integer "price",      default: 0,            null: false
+    t.string  "type",                           null: false
+    t.integer "price",      default: 0,         null: false
     t.text    "conditions"
-    t.boolean "is_active",  default: false,        null: false
-    t.integer "weight",     default: 9999,         null: false
-    t.string  "layout",     default: "no_address", null: false
+    t.boolean "is_active",  default: false,     null: false
+    t.integer "weight",     default: 9999,      null: false
+    t.string  "layout",     default: "payment", null: false
   end
 
   create_table "delivery_types_payment_types", force: true do |t|

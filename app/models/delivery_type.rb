@@ -12,6 +12,15 @@ class DeliveryType < ActiveRecord::Base
   validates :name, presence: true
   validates :layout, presence: true
 
+  def options
+    {
+        name: self.name,
+        conditions: self.conditions,
+        price: self.price,
+        layout: self.layout,
+        payment_types: self.payment_types.map(&:id)
+    }
+  end
 
   def self.types
     {
@@ -24,8 +33,8 @@ class DeliveryType < ActiveRecord::Base
 
   def self.layouts
     {
-        'address' => 'Форма с адресом',
-        'no_address' => 'Форма без адреса'
+        'address_and_payment' => 'Адрес/Оплата',
+        'payment' => 'Оплата'
     }
   end
 end

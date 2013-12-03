@@ -9,6 +9,12 @@ class PaymentType < ActiveRecord::Base
   validates :type, presence: true, uniqueness: true
   validates :name, presence: true
 
+  def options
+    {
+        name: self.name
+    }
+  end
+
   def self.types
     {
         'PaymentType::Cash' => 'Наличные',

@@ -2,13 +2,5 @@
 class Order::Robust < Order
   include OrderConcern
 
-  validates :country, presence: true
-  validates :city, presence: true
-  validates :region, presence: true
-  validates :address, presence: true
-  validates :zip, presence: true
-
-  validates :payment_type, presence: true
-  validates :delivery_type, presence: true
-
+  validates :country, :city, :region, :address, :zip, :payment_type, :delivery_type, presence: true, unless: -> { self.skip_validations? }
 end
