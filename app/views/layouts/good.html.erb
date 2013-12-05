@@ -27,7 +27,7 @@
     <%= render 'header' %>
     <%= yield %>
 
-    <%#= render 'footer', :absolute => (true if @absolute_footer) %>
+    <%= render 'footer', :absolute => (true if @absolute_footer) %>
 
     <%= javascript_include_tag "frontend", "data-turbolinks-track" => true %>
   </body>
