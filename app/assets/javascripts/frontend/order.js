@@ -1,5 +1,5 @@
 var Order = function(el) {
-    var delivery_types = function() { return el.find('[data-delivery-type]') },
+    var delivery_types = el.find('input[data-delivery-type]'),
         payment_types = function() { return el.find('[data-payment-type]')},
         address_view = $('[data-view=address]'),
         payment_view = $('[data-view=payment]'),
@@ -12,6 +12,10 @@ var Order = function(el) {
     var showPayment = function() {
         var template = _.template(payment_view.html());
         payment_region.html(template());
+
+        payment_region.find('input[type=radio]').each(function() {
+            new iRadio($(this));
+        })
     };
 
     var showAddress = function() {
@@ -50,12 +54,11 @@ var Order = function(el) {
         el.find('[data-toggle=tooltip]')
     };
 
-    delivery_types().on('click', function() {
+    delivery_types.click(function() {
         selectDeliveryType($(this));
     });
 
-    delivery_types().each(function() {
-        console.log($(this).find('[data-order=popover]'));
+    delivery_types.each(function() {
         $(this).closest('li').find('[data-order=popover]').popover({
             html: true,
             title: 'Условия доставки',

@@ -81,9 +81,12 @@
 
                 <li>
                   <% DeliveryType.active.each do |delivery_type| %>
-                      <label>
-                        <input type="radio" name="cart[delivery_type]" value="<%= delivery_type.id %>" data-delivery-type required /> <%= delivery_type.name %><% if delivery_type.conditions.present? %> <sup data-order="popover">?</sup><% end %>
-                      </label>
+                      <div class="radio-label">
+                          <input type="radio" id="delivery_type<%= delivery_type.id %>" name="cart[delivery_type]" value="<%= delivery_type.id %>" data-delivery-type required />
+                          <label for="delivery_type<%= delivery_type.id %>">
+                            <%= delivery_type.name %><% if delivery_type.conditions.present? %> <sup data-order="popover">?</sup><% end %>
+                          </label>
+                      </div>
                   <% end %>
                 </li>
               </ul>
@@ -181,9 +184,12 @@
 
                   <li>
                     <% PaymentType.active.each do |payment_type| %>
-                        <label data-payment-type="<%= payment_type.id %>">
-                          <input type="radio" name="cart[payment_type]" value="<%= payment_type.id %>" required /> <%= payment_type.name %>
-                        </label>
+                        <div class="radio-label">
+                            <input type="radio" name="cart[payment_type]" id="payment_type<%= payment_type.id %>" value="<%= payment_type.id %>" required />
+                            <label for="payment_type<%= payment_type.id %>" data-payment-type="<%= payment_type.id %>">
+                              <%= payment_type.name %>
+                            </label>
+                        </div>
                     <% end %>
                   </li>
                 </ul>

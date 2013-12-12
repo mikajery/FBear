@@ -41,6 +41,23 @@ form {
 		margin-bottom: 7px;
 	}
 
+  .iradio_minimal {
+    margin: 1px 4px 0 0;
+    background-image: image-url('content/icheck-minimal.png');
+  }
+
+  .radio-label {
+    label {
+      display: inline;
+    }
+
+    .iradio_minimal {
+      float: left;
+    }
+
+    margin-bottom: 7px;
+  }
+
 	.select-wrap {
 		select {
 			width: 100%;

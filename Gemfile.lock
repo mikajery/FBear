@@ -133,6 +133,9 @@ GEM
     hirb (0.7.1)
     http_parser.rb (0.5.3)
     i18n (0.6.5)
+    icheck-rails (0.9.0.2)
+      jquery-rails
+      rails (>= 3.1.0)
     jasny_bootstrap_extension_rails (0.0.1)
     jbuilder (1.5.0)
       activesupport (>= 3.0.0)
@@ -311,6 +314,7 @@ DEPENDENCIES
   guard-livereload (= 1.4.0)
   guard-rspec
   hirb (= 0.7.1)
+  icheck-rails
   jasny_bootstrap_extension_rails
   jbuilder (~> 1.2)
   jquery-rails
