@@ -15,6 +15,11 @@ var Order = function(el) {
 
         payment_region.find('input[type=radio]').each(function() {
             new iRadio($(this));
+        });
+
+        payment_types().each(function() {
+            if ($.inArray($(this).data('payment-type'), order_options.delivery_types[delivery_type].payment_types) < 0)
+                $(this).remove();
         })
     };
 
@@ -59,7 +64,7 @@ var Order = function(el) {
     });
 
     delivery_types.each(function() {
-        $(this).closest('li').find('[data-order=popover]').popover({
+        $(this).closest('div.radio-label').find('[data-order=popover]').popover({
             html: true,
             title: 'Условия доставки',
             trigger: 'hover',

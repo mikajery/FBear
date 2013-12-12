@@ -3,7 +3,7 @@ var iRadio = function(el) {
         checkboxClass: 'icheckbox_minimal',
         radioClass: 'iradio_minimal',
         increaseArea: '20%' // optional
-    }).on('ifClicked', function() {
+    }).on('ifChanged', function() {
         el.trigger('click');
     });
 }
