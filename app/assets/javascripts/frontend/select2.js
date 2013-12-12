@@ -3,7 +3,7 @@ var FancySelect = function(el) {
 };
 
 $(function() {
-    $('select[multiple]').each(function() {
+    $('select').each(function() {
         FancySelect($(this));
     });
 });
