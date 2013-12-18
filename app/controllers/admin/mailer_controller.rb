@@ -1,4 +1,4 @@
-class Admin::MailerController < Admin::ApplicationController
+class Admin::MailerController < Admin::BaseController
   def order()
     @order = Order.find(params[:id])
 
