@@ -11,7 +11,7 @@ class DeliveryType < ActiveRecord::Base
   validates :type, presence: true, uniqueness: true
   validates :name, presence: true
   validates :layout, presence: true
-  validates :payment_types, :length => { :minimum => 1 }
+  validates :payment_types, :length => {:minimum => 1}
 
   def options
     {

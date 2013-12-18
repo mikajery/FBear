@@ -1,8 +1,10 @@
 class OrderMailer < ActionMailer::Base
+  include SettingsHelper
+
   include TranslateHelper
   add_template_helper(TranslateHelper)
 
-  default from: "order@lllooch.ru"
+  default from: S('mail_from', 'order@lllooch.ru')
 
   def order order
     @order = order

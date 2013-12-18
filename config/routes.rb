@@ -49,6 +49,8 @@ CMS::Application.routes.draw do
   namespace :admin do
     get '' => 'welcome#index', as: 'root'
 
+    match 'mailer(/:action(/:id(.:format)))' => 'mailer#:action', via: :get
+
     resources :menus
     resources :orders, :preorders, except: [:create, :edit, :update]
 
