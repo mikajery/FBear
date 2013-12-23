@@ -1,21 +1,26 @@
-var Ga = function(el) {
+var Ga = function (el) {
     var data = el.data('ga-data'),
         category = el.data('ga-category'),
-        label = el.data('da-label')
+        label = el.data('da-label') || false,
+        action = el.data('ga-action') || 'click'
+        ;
 
-    el.on('click', function() {
-        ga('send', {
-            'hitType': 'event',          // Required.
-            'eventCategory': category,   // Required.
-            'eventAction': 'click',      // Required.
-            'eventLabel': label,
-            'eventValue': data
-        });
+    var variables = {
+        'hitType': 'event',          // Required.
+        'eventCategory': category,   // Required.
+        'eventAction': action,      // Required.
+        'eventValue': data
+    };
+
+    if (label) variables['eventLabel'] = label;
+
+    el.on('click', function () {
+        ga('send', variables);
     });
 };
 
-$(function() {
-    $('[data-ga-cat]').each(function() {
+$(function () {
+    $('[data-ga-category]').each(function () {
         new Ga($(this));
     });
 })
