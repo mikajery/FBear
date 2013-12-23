@@ -32,7 +32,7 @@
                 <%= with_pic post, post.picture %>
               </td>
               <td>
-                <%= post.category.name if post.category %>
+                <%= post.categories.map(&:name).join(', ') if post.categories %>
               </td>
               <td>
                 <%= link_to pencil_icon,

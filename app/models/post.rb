@@ -11,11 +11,10 @@ class Post < ActiveRecord::Base
   has_many :post_comments
   has_many :post_blocks
 
-  belongs_to :post_category
+  has_and_belongs_to_many :post_categories, join_table: :post_categories_posts
   belongs_to :blog_color
 
   validates :name, presence: true
-  validates :post_category, presence: true
 
   attr_accessor :picture
 
@@ -60,8 +59,8 @@ class Post < ActiveRecord::Base
     post_blocks
   end
 
-  def category
-    post_category
+  def categories
+    post_categories
   end
 
   def color

@@ -94,7 +94,7 @@ class Cm::PostsController < Cm::BaseController
     end
 
     def safe_params
-      [:announce, :post_category_id, :blog_color_id, :publish, :name, :title, :heading, :keywords, :description, :content, :picture]
+      [:announce, :blog_color_id, :publish, :name, :title, :heading, :keywords, :description, :content, :picture, :post_category_ids => []]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131202135426) do
+ActiveRecord::Schema.define(version: 20131223060537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -550,6 +550,13 @@ ActiveRecord::Schema.define(version: 20131202135426) do
 
   add_index "post_blocks", ["post_id"], name: "index_post_blocks_on_post_id", using: :btree
 
+  create_table "post_categories_posts", force: true do |t|
+    t.integer "post_category_id"
+    t.integer "post_id"
+  end
+
+  add_index "post_categories_posts", ["post_category_id", "post_id"], name: "post_categories_posts_mn", using: :btree
+
   create_table "post_comments", force: true do |t|
     t.boolean  "is_safe"
     t.string   "author"
@@ -580,7 +587,6 @@ ActiveRecord::Schema.define(version: 20131202135426) do
   add_index "post_translations", ["post_id"], name: "index_post_translations_on_post_id", using: :btree
 
   create_table "posts", force: true do |t|
-    t.integer  "post_category_id",     null: false
     t.string   "name",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -593,8 +599,6 @@ ActiveRecord::Schema.define(version: 20131202135426) do
     t.integer  "weight"
     t.date     "publish"
   end
-
-  add_index "posts", ["post_category_id"], name: "index_posts_on_post_category_id", using: :btree
 
   create_table "properties", force: true do |t|
     t.integer  "property_type_id"

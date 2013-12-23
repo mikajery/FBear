@@ -22,7 +22,11 @@ class MenuItem < ActiveRecord::Base
   end
 
   def url
-    page.url unless page.nil?
+    unless page.nil?
+      page.url
+    else
+      self[:url]
+    end
   end
 
   def path

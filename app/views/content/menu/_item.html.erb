@@ -41,9 +41,15 @@
               </div>
             </div>
         <% else %>
-            <a href="<%= send item.path unless item.path.nil? %>">
-              <%= item.title %>
-            </a>
+            <% if item.page.present? %>
+                <a href="<%= send item.path unless item.path.nil? %>">
+                  <%= item.title %>
+                </a>
+            <% else %>
+                <a href="<%= item.url %>">
+                  <%= item.title %>
+                </a>
+            <% end %>
         <% end %>
       </div>
   <% end %>
