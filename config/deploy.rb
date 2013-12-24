@@ -1,3 +1,4 @@
+# todo надо подробно описать
 require "rvm/capistrano"
 require 'sidekiq/capistrano'
 

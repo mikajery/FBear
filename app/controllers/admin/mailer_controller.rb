@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Admin::MailerController < Admin::BaseController
   def order()
     @order = Order.find(params[:id])

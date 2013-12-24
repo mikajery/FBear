@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Tag < ActiveRecord::Base
   include MultilingualModel
   translates :title

@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Content::BlogsController < Content::BaseController
   before_action :get_locale
   before_action :navigation, only: [:list, :item]
@@ -34,6 +35,7 @@ class Content::BlogsController < Content::BaseController
   end
 
   def page_title_prefix
+    # hardcode?
     if @category
       'Блоги:'
     end

@@ -1,4 +1,6 @@
+# todo краткое описание класса
 class Admin::DeliveryTypesController < Admin::BaseController
+  # todo зачем везде включается?
   include MultilingualController
   before_action :set_delivery_type, only: [:show, :edit, :update, :destroy]
 

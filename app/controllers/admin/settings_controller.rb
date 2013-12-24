@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Admin::SettingsController < Admin::BaseController
   include MultilingualController
 

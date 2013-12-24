@@ -1,3 +1,5 @@
+# todo краткое описание класса
+# todo как происходит процесс покупки? тут надо подробно расписать.
 class Content::OrderController < Content::BaseController
   layout 'content'
 
@@ -17,6 +19,7 @@ class Content::OrderController < Content::BaseController
 
     params = order_params
     params[:client] = Client.from_params params[:client]
+    # что за type?
     params[:type] = 'Order::Robust'
 
     params[:delivery_type] = DeliveryType.find(params[:delivery_type]) if params[:delivery_type].present?

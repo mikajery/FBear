@@ -1,3 +1,4 @@
+# todo подробное описание модуля 
 module Content::ContentHelper
   def language_alternate
     render 'content/parts/language_alternate', languages: Language.active

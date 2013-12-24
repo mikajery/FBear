@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Admin::Three60sController < Admin::BaseController
   before_action :set_three60, only: [:show, :edit, :update, :destroy]
   before_action :set_good, only: [:new, :edit, :create, :update, :destroy]
@@ -26,6 +27,7 @@ class Admin::Three60sController < Admin::BaseController
   # POST /three60s
   # POST /three60s.json
   def create
+    # todo что тут происходит?
     params = three60_params
     zip = params.slice("zip")[:zip]
 
@@ -109,6 +111,7 @@ class Admin::Three60sController < Admin::BaseController
     end
 
     def set_good
+      # todo что имеется ввиду?
       if @three60.nil?
         @good = Good.find(params[:good_id] || three60_params[:good_id])
       else

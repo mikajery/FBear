@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class PropertyType < ActiveRecord::Base
   include MultilingualModel
   translates :name

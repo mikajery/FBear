@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Admin::MaterialsController < Admin::BaseController
   include MultilingualController
 

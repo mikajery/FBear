@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Variant < ActiveRecord::Base
   include MultilingualModel
   translates :price, :name, :material_name

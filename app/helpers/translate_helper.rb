@@ -1,3 +1,4 @@
+# todo подробное описание модуля 
 module TranslateHelper
   def T key, language = false
     translation = Translation.find_by_key key

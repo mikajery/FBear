@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class PaymentType < ActiveRecord::Base
   include MultilingualModel
   translates :name

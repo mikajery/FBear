@@ -1,3 +1,4 @@
+# todo краткое описание класса
 module MultilingualController
   extend ActiveSupport::Concern
 

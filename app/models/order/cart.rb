@@ -5,6 +5,7 @@ class Order::Cart < Order
 
   private
   def check_status_change
+  	# todo что за статус и что происходит потом?
     if type_change.present?
       if ['Order::Robust', 'Order::Preorder'].include? type
         self.order_status = OrderStatus::New.first unless self.order_status.present?

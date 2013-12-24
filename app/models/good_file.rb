@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class GoodFile < ActiveRecord::Base
   include MultilingualModel
 

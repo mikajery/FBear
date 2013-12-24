@@ -1,3 +1,4 @@
+# todo краткое описание класса, что за options
 class Admin::GoodOptionsController < Admin::BaseController
   include MultilingualController
   before_action :set_good_option, only: [:show, :edit, :update, :destroy]

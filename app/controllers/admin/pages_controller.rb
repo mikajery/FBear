@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Admin::PagesController < Admin::BaseController
   include MultilingualController
   
@@ -65,6 +66,7 @@ class Admin::PagesController < Admin::BaseController
   end
 
   private
+    # todo зачем?
     def reload_routes
       ContentRouter.reload
       CMS::Application.reload_routes!

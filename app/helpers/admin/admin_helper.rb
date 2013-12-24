@@ -1,3 +1,4 @@
+# todo подробное описание модуля 
 module Admin::AdminHelper
   delegate :url_helpers, to: 'Rails.application.routes'
 

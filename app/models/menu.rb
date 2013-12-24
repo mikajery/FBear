@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Menu < ActiveRecord::Base
   include SortedByName  
   validates :name, presence: true

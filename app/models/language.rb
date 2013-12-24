@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Language < ActiveRecord::Base
   include SortedByName
   include MultilingualModel

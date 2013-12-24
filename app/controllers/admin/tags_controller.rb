@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Admin::TagsController < Admin::BaseController
   include MultilingualController
 

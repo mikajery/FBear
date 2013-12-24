@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Designer < ActiveRecord::Base
   include MultilingualModel
   include AutotitleableModel

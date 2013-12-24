@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class PreorderMailer < ActionMailer::Base
   include TranslateHelper
   add_template_helper(TranslateHelper)

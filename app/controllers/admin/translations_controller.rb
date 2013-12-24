@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Admin::TranslationsController < Admin::BaseController
   include MultilingualController
   before_action :set_translation, only: [:show, :edit, :update, :destroy]

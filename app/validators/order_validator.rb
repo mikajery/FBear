@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class OrderValidator < ActiveModel::Validator
   def validate(order)
     if order.delivery_type.present? and order.payment_type.present? and order.order_status != OrderStatus::Canceled.first

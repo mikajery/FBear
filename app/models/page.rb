@@ -1,3 +1,4 @@
+# todo подробное описание класса
 class Page < ActiveRecord::Base
   include SortedByName
   include MultilingualModel

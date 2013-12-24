@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class OrderStatus < ActiveRecord::Base
   include MultilingualModel
   translates :name

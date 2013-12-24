@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class PostBlock::Picture < PostBlock
   validates :picture, :attachment_presence => true, on: :update
   validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/png','image/gif'], on: :update

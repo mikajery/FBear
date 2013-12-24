@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Client < ActiveRecord::Base
   has_many :orders
 
@@ -14,6 +15,7 @@ class Client < ActiveRecord::Base
     full_name.join ' '
   end
 
+  # todo что?
   def self.from_params params={}
     client = self.find_or_initialize_by email: params[:email]
     client.update(params)

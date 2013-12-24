@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Admin::LanguagesController < Admin::BaseController
   include MultilingualController
   

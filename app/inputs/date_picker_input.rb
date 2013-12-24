@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class DatePickerInput < SimpleForm::Inputs::StringInput
   def input_html_options
     value = object.send(attribute_name)

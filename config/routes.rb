@@ -1,3 +1,4 @@
+# todo надо подробно описать роуты
 CMS::Application.routes.draw do
 
   mount RedactorRails::Engine => '/redactor_rails'

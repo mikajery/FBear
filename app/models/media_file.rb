@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class MediaFile < ActiveRecord::Base
   include SortedByName
     

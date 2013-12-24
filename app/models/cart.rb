@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Cart < ActiveRecord::Base
   belongs_to :order_status
   belongs_to :payment
@@ -27,6 +28,7 @@ class Cart < ActiveRecord::Base
     end
   end
 
+  # todo зачем токен?
   def self.token
     o   = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
     (0...50).map{ o[rand(o.length)] }.join

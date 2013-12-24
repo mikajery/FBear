@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class CartGood < ActiveRecord::Base
   belongs_to :cart
   belongs_to :good

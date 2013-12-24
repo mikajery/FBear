@@ -1,3 +1,4 @@
+# todo подробное описание класса
 class Good < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   include ActionView::Helpers::TagHelper

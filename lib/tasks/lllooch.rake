@@ -1,3 +1,4 @@
+# todo зачем?
 namespace :lllooch do
   desc "Cleanup files and other stuff"
   task cleanup: :environment do

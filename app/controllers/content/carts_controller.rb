@@ -1,3 +1,5 @@
+# todo краткое описание класса
+# todo как происходит процесс покупки? тут надо подробно расписать.
 class Content::CartsController < Content::BaseController
   layout 'content'
 

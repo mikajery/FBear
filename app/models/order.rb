@@ -1,3 +1,4 @@
+# todo подробное описание класса
 class Order < ActiveRecord::Base
   belongs_to :language
 

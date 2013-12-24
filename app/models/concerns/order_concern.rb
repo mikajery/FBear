@@ -1,3 +1,4 @@
+# todo краткое описание модуля
 module OrderConcern
   extend ActiveSupport::Concern
 

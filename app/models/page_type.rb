@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class PageType < ActiveRecord::Base
 
   def routes url

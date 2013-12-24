@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Admin::OrdersController < Admin::BaseController
   before_action :set_order, only: [:show, :destroy]
 

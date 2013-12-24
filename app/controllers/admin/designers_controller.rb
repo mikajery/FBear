@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Admin::DesignersController < Admin::BaseController
   include MultilingualController
   

@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Content::PostsController < Content::BaseController
   before_action :get_locale
 

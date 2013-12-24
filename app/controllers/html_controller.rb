@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class HtmlController < Content::BaseController
   layout 'content'
 

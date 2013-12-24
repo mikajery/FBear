@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Admin::FilesController < Admin::BaseController
   include MultilingualController
 

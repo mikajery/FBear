@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class DwgUploader < CarrierWave::Uploader::Base
   storage :file
 

@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Content::LanguageSelectController < Content::BaseController
   layout 'map'
   helper Content::ContentHelper

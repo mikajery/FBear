@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class PostBlock < ActiveRecord::Base
   include MultilingualModel
   belongs_to :post

@@ -1,3 +1,4 @@
+# todo краткое описание модуля
 module SortedByName
   extend ActiveSupport::Concern
 

@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class MenuItem < ActiveRecord::Base
   include MultilingualModel
   include AutotitleableModel

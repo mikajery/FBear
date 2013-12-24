@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Content::GoodsController < Content::BaseController
   before_action :get_locale
   layout 'good'

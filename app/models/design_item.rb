@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class DesignItem < ActiveRecord::Base
   include MultilingualModel
 

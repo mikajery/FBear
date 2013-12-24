@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Property < ActiveRecord::Base
   include MultilingualModel
   belongs_to :property_type

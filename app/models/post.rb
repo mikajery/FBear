@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Post < ActiveRecord::Base
   include SortedByName  
   include MultilingualModel

@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Admin::MenuItemsController < Admin::BaseController
   include MultilingualController
   
@@ -50,6 +51,7 @@ class Admin::MenuItemsController < Admin::BaseController
     errors = []
 
     if order_params
+      # todo что тут происходит?
       order_params.each_with_index do |id, weight|
         menu_item = MenuItem.find id
         menu_item.weight = weight

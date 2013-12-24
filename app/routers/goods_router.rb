@@ -1,3 +1,4 @@
+# todo подробное описание класса
 class GoodsRouter
   def self.reload
     @@routes = nil

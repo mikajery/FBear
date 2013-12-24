@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Content::PreorderController < Content::BaseController
   layout 'content'
 

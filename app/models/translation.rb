@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Translation < ActiveRecord::Base
   include MultilingualModel
   translates :value

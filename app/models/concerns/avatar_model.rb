@@ -1,3 +1,4 @@
+# todo краткое описание модуля
 module AvatarModel
   extend ActiveSupport::Concern
 

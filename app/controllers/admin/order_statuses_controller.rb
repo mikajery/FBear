@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Admin::OrderStatusesController < Admin::BaseController
   include MultilingualController
   before_action :set_order_status, only: [:show, :edit, :update, :destroy]

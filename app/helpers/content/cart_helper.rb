@@ -1,3 +1,4 @@
+# todo подробное описание модуля 
 module Content::CartHelper
   def cart_items
     if @cart.nil?

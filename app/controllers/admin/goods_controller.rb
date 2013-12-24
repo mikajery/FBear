@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Admin::GoodsController < Admin::BaseController
   include MultilingualController
   
@@ -94,6 +95,7 @@ class Admin::GoodsController < Admin::BaseController
       @good = Good.find(params[:id])
     end
 
+    # todo что за safe_params, откуда?
     def safe_params
       [ 
         :name, :logo, :slug, :logo_desc, 

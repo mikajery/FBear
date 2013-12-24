@@ -1,3 +1,4 @@
+# todo подробное описание класса
 require 'rubygems'
 require 'zip'
 

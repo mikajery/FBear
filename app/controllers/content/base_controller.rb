@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Content::BaseController < ApplicationController
   layout 'content'
 
@@ -76,6 +77,7 @@ class Content::BaseController < ApplicationController
 
       if item
         title = []
+        # todo а где сейчас преффикс и суффикс?
         title << page_title_prefix.to_s if page_title_prefix
         title << item.title.to_s if item.title
         title << page_title_suffix.to_s if page_title_suffix

@@ -1,3 +1,4 @@
+# todo краткое описание класса
 class Setting < ActiveRecord::Base
   default_scope { order('key ASC') }
   include MultilingualModel

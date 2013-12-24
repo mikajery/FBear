@@ -1,3 +1,5 @@
+# todo краткое описание класса
+# todo как происходит поиск?
 class SearchController < Content::BaseController
   include ActionView::Helpers::TextHelper
 
