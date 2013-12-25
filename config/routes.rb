@@ -15,6 +15,7 @@ CMS::Application.routes.draw do
   scope '(:locale)/cart', locale: ContentRouter.locales do
     post 'buy' => 'content/carts#buy', as: :cart_buy
     post 'update' => 'content/carts#update', as: :cart_update
+    patch 'delivery' => 'content/carts#delivery', as: :cart_delivery
     delete controller: 'content/carts', action: :remove_good, as: :cart_remove
 
     scope :preorder, controller: 'content/preorder' do

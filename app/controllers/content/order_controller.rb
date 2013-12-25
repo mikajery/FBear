@@ -16,7 +16,6 @@ class Content::OrderController < Content::BaseController
   end
 
   def finish
-
     params = order_params
     params[:client] = Client.from_params params[:client]
     # что за type?

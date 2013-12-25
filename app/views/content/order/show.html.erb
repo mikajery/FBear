@@ -1,4 +1,4 @@
-<div class="container cart" data-type="order">
+<div class="container cart" data-type="order" data-delivery-path="<%= cart_delivery_path %>">
 <h1>
   <%= T "Заказ" %>
 </h1>
@@ -82,7 +82,7 @@
                 <li>
                   <% DeliveryType.active.each do |delivery_type| %>
                       <div class="radio-label">
-                          <input type="radio" id="delivery_type<%= delivery_type.id %>" name="cart[delivery_type]" value="<%= delivery_type.id %>" data-delivery-type required />
+                          <input type="radio" id="delivery_type<%= delivery_type.id %>" name="cart[delivery_type]" value="<%= delivery_type.id %>" data-delivery-calculate="<%= delivery_type.is_cost_calc_needed? %>" data-delivery-type required />
                           <label for="delivery_type<%= delivery_type.id %>">
                             <%= delivery_type.name %><% if delivery_type.conditions.present? %> <sup data-order="popover">?</sup><% end %>
                           </label>
@@ -111,7 +111,7 @@
               <div class="span2">
                 <div class="form-row">
                   <div class="select-wrap">
-                    <%= f.select :country, Country.all %>
+                    <%= f.select :country, Country.all, data: { 'delivery-calc' => 'true'} %>
                   </div>
                 </div>
               </div>
@@ -125,7 +125,7 @@
                   </label>
 
                   <div class="input-wrap">
-                    <%= f.input_field :city, placeholder: "Введите Ваш город", required: true, class: ('invalid' if form.object.errors['city'].present?) %>
+                    <%= f.input_field :city, placeholder: "Введите Ваш город", required: true, class: ('invalid' if form.object.errors['city'].present?), data: {'delivery-calc' => 'true'} %>
                   </div>
                 </div>
               </div>
@@ -137,7 +137,7 @@
                   </label>
 
                   <div class="input-wrap">
-                    <%= f.input_field :region, placeholder: "Введите Ваш регион/область", required: true, class: ('invalid' if form.object.errors['region'].present?) %>
+                    <%= f.input_field :region, placeholder: "Введите Ваш регион/область", required: true, class: ('invalid' if form.object.errors['region'].present?), data: {'delivery-calc' => 'true'} %>
                   </div>
                 </div>
               </div>
@@ -151,7 +151,7 @@
                   </label>
 
                   <div class="input-wrap">
-                    <%= f.input_field :address, placeholder: "Введите Ваш адрес", required: true, class: ('invalid' if form.object.errors['address'].present?) %>
+                    <%= f.input_field :address, placeholder: "Введите Ваш адрес", required: true, class: ('invalid' if form.object.errors['address'].present?), data: {'delivery-calc' => 'true'} %>
                   </div>
                 </div>
               </div>
@@ -163,7 +163,7 @@
                   </label>
 
                   <div class="input-wrap">
-                    <%= f.input_field :zip, placeholder: "Введите Ваш индекс", required: true, class: ('invalid' if form.object.errors['zip'].present?) %>
+                    <%= f.input_field :zip, placeholder: "Введите Ваш индекс", required: true, class: ('invalid' if form.object.errors['zip'].present?), data: {'delivery-calc' => 'true'} %>
                   </div>
                 </div>
               </div>
@@ -200,6 +200,13 @@
 
         <ul class="cart-items">
           <li class="cart-total">
+            <span class="upper"><%= T "Доставка" %>:</span>
+            <span data-order="delivery-price">0</span>
+          </li>
+        </ul>
+
+        <ul class="cart-items">
+          <li class="cart-total">
             <span class="upper"><%= T "Итого" %>:</span>
             <span data-order="total"></span>
           </li>
@@ -214,7 +221,7 @@
             </div>
 
             <div class="pull-right">
-              <button class="btn btn-width2">
+              <button class="btn btn-width2" data-order="submit" disabled="disabled">
                 <%= T "Оформить" %>
               </button>
             </div>

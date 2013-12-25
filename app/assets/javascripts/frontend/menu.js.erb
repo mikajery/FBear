@@ -24,7 +24,7 @@ var Toggler = function(el) {
 	})
 }
 
-$(function() {
+$(document).on('ready page:load', function() {
 	$('[data-action=toggle]').each(function() {
 		new Toggler($(this));
 	});	

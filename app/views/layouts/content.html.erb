@@ -16,6 +16,7 @@
 
   <%= stylesheet_link_tag "content", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "shared/modernizr.min", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "frontend", "data-turbolinks-track" => true %>
   <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
   <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Roboto:400,500,700,900&subset=latin,cyrillic" %>
   <%= csrf_meta_tags %>
@@ -44,7 +45,6 @@
     </div>
 <% end %>
 
-<%= javascript_include_tag "frontend", "data-turbolinks-track" => true %>
 <%= yield :footer_scripts %>
 <% if S "counters" %>
     <%= S("counters").html_safe %>

@@ -15,6 +15,8 @@ var CartVariants = function(el) {
   items.trigger('change');
 }
 
-$('[data-type=cart-variants]').each(function() {
-  new CartVariants($(this));
+$(document).on('ready page:load', function() {
+    $('[data-type=cart-variants]').each(function() {
+      new CartVariants($(this));
+    });
 });

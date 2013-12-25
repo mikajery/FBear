@@ -8,7 +8,7 @@ var iRadio = function(el) {
     });
 }
 
-$(function(){
+$(document).on('ready page:load', function() {
     $('input[type=radio]').each(function() {
         new iRadio($(this));
     });

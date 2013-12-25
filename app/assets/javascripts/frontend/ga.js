@@ -19,7 +19,7 @@ var Ga = function (el) {
     });
 };
 
-$(function () {
+$(document).on('ready page:load', function() {
     $('[data-ga-category]').each(function () {
         new Ga($(this));
     });

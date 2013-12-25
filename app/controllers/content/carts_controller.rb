@@ -9,6 +9,17 @@ class Content::CartsController < Content::BaseController
   def index
   end
 
+  def delivery
+    delivery_type = DeliveryType.find(delivery_params[:delivery_type])
+    delivery = delivery_type.calculate(@cart, delivery_params)
+
+    unless delivery_type.errors.present?
+      render json: delivery.to_json
+    else
+      render json: { errors: delivery_type.errors[:calculate] }.to_json, status: :unprocessable_entity
+    end
+  end
+
   def buy
     @cart.items << OrderGood.from_good(@good)
 
@@ -53,30 +64,34 @@ class Content::CartsController < Content::BaseController
     end
   end
 
-  private 
-    def check 
-      raise PageNotFound unless @language.is_default
-    end
+  private
+  def check
+    raise PageNotFound unless @language.is_default
+  end
 
-    def set_good
-      @good = Good.find good_params[:id]
-    end
+  def set_good
+    @good = Good.find good_params[:id]
+  end
 
-    def good_params
-      params.require(:good).permit([:id])
-    end
+  def good_params
+    params.require(:good).permit([:id])
+  end
 
-    def cart_good_params
-      params.require(:order_good).permit([:id])
-    end
+  def cart_good_params
+    params.require(:order_good).permit([:id])
+  end
 
-    def update_cart_params
-     if params[:cart]
-        params.require(:cart)[:items].map do |item|
-          { order_good: item[0].to_i, variant: item[1]['variant'].to_i }
-        end
-      else
-        []
+  def delivery_params
+    params.require(:cart).permit([:country, :region, :city, :address, :zip, :delivery_type, :payment_type, :client => [:first_name, :last_name, :email, :phone]])
+  end
+
+  def update_cart_params
+    if params[:cart]
+      params.require(:cart)[:items].map do |item|
+        {order_good: item[0].to_i, variant: item[1]['variant'].to_i}
       end
+    else
+      []
     end
+  end
 end

@@ -88,7 +88,7 @@ var Navigation = function (el) {
     }
 };
 
-$(function () {
+$(document).on('ready page:load', function() {
     $('[data-action=navigation]').each(function () {
         new Navigation($(this));
     });

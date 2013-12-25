@@ -23,6 +23,23 @@ class DeliveryType < ActiveRecord::Base
     }
   end
 
+  def calculate(order, params)
+    self.calculation_error
+    false
+  end
+
+  def calculation_error(error = 'Неизвестная ошибка')
+    self.errors[:calculate] << error if error.present?
+  end
+
+  def is_cost_calc_needed?
+    self.class.is_cost_calc_needed?
+  end
+
+  def self.is_cost_calc_needed?
+    false
+  end
+
   def self.types
     {
         'DeliveryType::Courier' => 'Курьером',

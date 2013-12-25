@@ -288,7 +288,7 @@ var Product = function(el) {
   });
 };
 
-$(function() {
+$(document).on('ready page:load', function() {
   $('[data-action=product]').each(function() {
     console.log('PRODUCT');
     new Product($(this));

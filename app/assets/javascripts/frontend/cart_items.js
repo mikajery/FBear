@@ -34,7 +34,7 @@ var CartItems = function(el) {
   });
 }
 
-$(function() {
+$(document).on('ready page:load', function() {
   $('[data-type=cart-items]').each(function() {
     new CartItems($(this));
   });

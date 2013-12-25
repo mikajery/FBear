@@ -23,7 +23,7 @@ var Zoomify = function(el) {
     });
 };
 
-$(function() {
+$(document).on('ready page:load', function() {
     $('[data-zoomify]').each(function() {
         new Zoomify($(this));
     })

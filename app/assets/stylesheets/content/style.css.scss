@@ -172,6 +172,22 @@ button {
   }
 }
 
+.b-loading {
+  width: 16px;
+  height: 16px;
+  margin-bottom: -2px;
+  display: inline-block;
+  background: image-url('content/ajax-loader.gif') no-repeat;
+}
+
+.b-loading-error {
+  width: 16px;
+  height: 16px;
+  margin-bottom: -2px;
+  display: inline-block;
+  background: image-url('content/ajax-error.png') no-repeat;
+}
+
 @import 'header';
 @import 'footer';
 @import 'navigation';
