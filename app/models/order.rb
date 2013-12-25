@@ -9,6 +9,7 @@ class Order < ActiveRecord::Base
   belongs_to :client, autosave: true
 
   has_many :order_goods, autosave: true
+  has_one :delivery_request
 
   delegate :first_name, :last_name, :email, :phone, to: :client, allow_nil: true
 
@@ -27,6 +28,14 @@ class Order < ActiveRecord::Base
   # имя клиента
   def full_name
     self.client.full_name if self.client.present?
+  end
+
+  def delivery_params
+    self.attributes.select{|k, v| self.class.delivery_params.include?(k.to_sym)}
+  end
+
+  def self.delivery_params
+    [:country, :city, :region, :zip, :address]
   end
 
   def items_price

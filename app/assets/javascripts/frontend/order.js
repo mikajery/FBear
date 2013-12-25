@@ -73,7 +73,8 @@ var Order = function(el) {
     var disableForm = function() {
         submit_btn.attr('disabled', true);
 
-        delivery_fields().on('change', function() {
+        delivery_fields().off('change').on('change', function() {
+            disableForm();
             getDeliveryPrice();
         });
     };

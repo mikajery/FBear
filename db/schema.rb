@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131223060537) do
+ActiveRecord::Schema.define(version: 20131225103247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,18 @@ ActiveRecord::Schema.define(version: 20131223060537) do
 
   add_index "comments", ["comment_id"], name: "index_comments_on_comment_id", using: :btree
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
+
+  create_table "delivery_requests", force: true do |t|
+    t.integer  "order_id"
+    t.text     "params"
+    t.integer  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "delivery_type_id", null: false
+  end
+
+  add_index "delivery_requests", ["delivery_type_id"], name: "index_delivery_requests_on_delivery_type_id", using: :btree
+  add_index "delivery_requests", ["order_id"], name: "index_delivery_requests_on_order_id", using: :btree
 
   create_table "delivery_type_translations", force: true do |t|
     t.integer  "delivery_type_id", null: false
@@ -286,6 +298,8 @@ ActiveRecord::Schema.define(version: 20131223060537) do
     t.boolean  "no_shadow"
     t.text     "parameters"
     t.string   "article",                    default: "", null: false
+    t.integer  "good_weight"
+    t.integer  "good_volume"
   end
 
   create_table "goods_goods", force: true do |t|

@@ -3,6 +3,7 @@ class DeliveryType < ActiveRecord::Base
   translates :name, :conditions
 
   has_and_belongs_to_many :payment_types
+  has_one :delivery_request
 
   default_scope { order(:weight) }
 
@@ -26,6 +27,15 @@ class DeliveryType < ActiveRecord::Base
   def calculate(order, params)
     self.calculation_error
     false
+  end
+
+  def create_request(order, params, price)
+    order = order || self.order
+    request = DeliveryRequest.find_or_create_by(order: order)
+    request.delivery_type = self
+    request.params = params.to_json
+    request.price = price
+    request.save!
   end
 
   def calculation_error(error = 'Неизвестная ошибка')
