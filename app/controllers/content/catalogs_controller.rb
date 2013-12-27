@@ -1,4 +1,9 @@
-# todo краткое описание класса
+# контроллер каталога товаров контентной части сайта
+# возвращает:
+# - список постов
+# - пост
+# - json-массив с постами для текущей категории в backbone
+
 class Content::CatalogsController < Content::BaseController
   before_action :get_locale
   before_action :navigation, only: [:list, :item]

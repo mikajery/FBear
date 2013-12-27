@@ -1,4 +1,5 @@
-# todo краткое описание класса
+# CRUD статусов заказа
+# на данный момент нигде не используется
 class Admin::OrderStatusesController < Admin::BaseController
   include MultilingualController
   before_action :set_order_status, only: [:show, :edit, :update, :destroy]

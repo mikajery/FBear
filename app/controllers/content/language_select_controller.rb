@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# Контроллер стартовой страницы выбора языка
 class Content::LanguageSelectController < Content::BaseController
   layout 'map'
   helper Content::ContentHelper

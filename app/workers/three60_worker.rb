@@ -1,4 +1,5 @@
-# todo краткое описание класса
+# Sidekiq-воркер
+# запускает обработку зип-файла
 class Three60Worker
   include Sidekiq::Worker
   sidekiq_options :retry => false

@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# Запись в блоге
 class Post < ActiveRecord::Base
   include SortedByName  
   include MultilingualModel
@@ -28,6 +28,8 @@ class Post < ActiveRecord::Base
     url: "/uploads/blogs/:id/:style/:basename.:extension",
     path: ":rails_root/public/uploads/blogs/:id/:style/:basename.:extension"
 
+  # генерация блоков в необходимой последовательности
+  # - картинки группируются в галерею
   def grouped_blocks
     grouped = []
 
@@ -56,18 +58,22 @@ class Post < ActiveRecord::Base
     grouped
   end
 
+  # алиас
   def blocks
     post_blocks
   end
 
+  # алиас
   def categories
     post_categories
   end
 
+  # алиас
   def color
     blog_color
   end
 
+  # алиас
   def comments
     post_comments
   end

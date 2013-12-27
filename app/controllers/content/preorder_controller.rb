@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# Контроллер предзаказа
 class Content::PreorderController < Content::BaseController
   layout 'content'
 

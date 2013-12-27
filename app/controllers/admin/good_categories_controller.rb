@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# CRUD категорий товаров
 class Admin::GoodCategoriesController < Admin::BaseController
   include MultilingualController
   before_action :set_category, only: [:show, :edit, :update, :destroy]

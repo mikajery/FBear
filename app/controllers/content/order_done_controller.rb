@@ -1,5 +1,4 @@
-# todo краткое описание класса
-# todo как происходит процесс покупки? тут надо подробно расписать.
+# Контроллер страницы подтверждения покупки
 class Content::OrderDoneController < Content::BaseController
   layout 'content'
 

@@ -1,4 +1,5 @@
-# todo краткое описание класса
+# Версточный контроллер
+# TODO удалить за ненадобностью
 class HtmlController < Content::BaseController
   layout 'content'
 

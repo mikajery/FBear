@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# Контроллер для дебага рендера писем
 class Admin::MailerController < Admin::BaseController
   def order()
     @order = Order.find(params[:id])

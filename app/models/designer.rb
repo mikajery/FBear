@@ -1,4 +1,5 @@
-# todo краткое описание класса
+# модель дизайнера
+# сортируется по порядковому номеру (d&d в админке)
 class Designer < ActiveRecord::Base
   include MultilingualModel
   include AutotitleableModel

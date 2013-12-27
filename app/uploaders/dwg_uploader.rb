@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# загрузчик CarrierWave для dwg
 class DwgUploader < CarrierWave::Uploader::Base
   storage :file
 

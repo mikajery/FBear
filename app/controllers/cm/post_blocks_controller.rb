@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# CRUD блоков поста
 class Cm::PostBlocksController < Cm::BaseController
   include MultilingualController
 
@@ -30,7 +30,7 @@ class Cm::PostBlocksController < Cm::BaseController
   # POST /post_blocks.json
   def create
     @post_block = PostBlock.new(post_block_params)
-    # todo зачем?
+    # ставим блок в самый конец поста
     @post_block.weight = @post.blocks.size
 
     respond_to do |format|

@@ -1,5 +1,5 @@
-# todo краткое описание класса
-# todo как происходит процесс покупки? тут надо подробно расписать.
+# Контроллер корзины
+# вся логика описана в моделях, тут обычные crud-действия
 class Content::CartsController < Content::BaseController
   layout 'content'
 

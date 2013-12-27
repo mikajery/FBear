@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# Список предзаказов и удаление
 class Admin::PreordersController < Admin::BaseController
   before_action :set_order, only: [:show, :destroy]
 

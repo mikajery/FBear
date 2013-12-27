@@ -1,4 +1,9 @@
-# todo краткое описание класса
+# Базовый контроллер контентной части сайта
+# в нем происходит куча всякой всячины:
+# - отлавливание ошибок
+# - определение текущей страницы
+# - инициализация корзины (если таковая имеется)
+
 class Content::BaseController < ApplicationController
   layout 'content'
 
@@ -77,7 +82,10 @@ class Content::BaseController < ApplicationController
 
       if item
         title = []
-        # todo а где сейчас преффикс и суффикс?
+
+        # контроллер наследуется,
+        # а в дочерних можно переопределить методы
+        # page_title_prefix и page_title_suffix
         title << page_title_prefix.to_s if page_title_prefix
         title << item.title.to_s if item.title
         title << page_title_suffix.to_s if page_title_suffix

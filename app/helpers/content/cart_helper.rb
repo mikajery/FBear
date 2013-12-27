@@ -1,5 +1,7 @@
-# todo подробное описание модуля 
+# хелпер корзины
 module Content::CartHelper
+
+  # количество элементов в корзине
   def cart_items
     if @cart.nil?
       token = cookies['_token']
@@ -11,6 +13,7 @@ module Content::CartHelper
     cart.items
   end
 
+  # количество элементов в скобках
   def cart_size
     if cart_items.size > 0
       '(' + cart_items.size.to_s + ')'

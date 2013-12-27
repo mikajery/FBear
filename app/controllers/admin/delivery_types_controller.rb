@@ -1,6 +1,6 @@
-# todo краткое описание класса
+# CRUD типов доставки
 class Admin::DeliveryTypesController < Admin::BaseController
-  # todo зачем везде включается?
+  # поддержка мультиязычности
   include MultilingualController
   before_action :set_delivery_type, only: [:show, :edit, :update, :destroy]
 

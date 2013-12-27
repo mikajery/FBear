@@ -1,4 +1,5 @@
-# todo краткое описание класса
+# контроллер товаров
+# переопределяется layout для шаблонов
 class Content::GoodsController < Content::BaseController
   before_action :get_locale
   layout 'good'

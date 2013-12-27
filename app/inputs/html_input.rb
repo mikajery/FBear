@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# wysiwyg-редактор для SimpleForm
 class HtmlInput < SimpleForm::Inputs::FileInput
   def input
     # get this custom attribute from :input_html

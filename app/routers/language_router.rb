@@ -1,4 +1,4 @@
-# todo подробное описание класса
+# роутер для выбора языка
 class LanguageRouter < Object
   def self.reload
     @@routes=nil

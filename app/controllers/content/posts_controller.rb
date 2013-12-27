@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# Контроллер постов блога
 class Content::PostsController < Content::BaseController
   before_action :get_locale
 

@@ -1,4 +1,4 @@
-# todo краткое описание клвсса
+# PDF
 class GoodFile::Pdf < GoodFile
   def file_type
     'pdf'

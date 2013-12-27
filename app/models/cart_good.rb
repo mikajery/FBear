@@ -1,4 +1,5 @@
-# todo краткое описание класса
+# Более не используется
+# TODO safe_delete
 class CartGood < ActiveRecord::Base
   belongs_to :cart
   belongs_to :good

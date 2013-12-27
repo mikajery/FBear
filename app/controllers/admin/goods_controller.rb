@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# CRUD товаров
 class Admin::GoodsController < Admin::BaseController
   include MultilingualController
   
@@ -95,7 +95,10 @@ class Admin::GoodsController < Admin::BaseController
       @good = Good.find(params[:id])
     end
 
-    # todo что за safe_params, откуда?
+    # safe_params обертка стандартной функции permit_params,
+    # результат передается в модуль MultilanguageController,
+    # к нему добавляются необходимые языковые параметры (выбранный язык)
+
     def safe_params
       [ 
         :name, :logo, :slug, :logo_desc, 

@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# CRUD типов оплат
 class Admin::PaymentTypesController < Admin::BaseController
   include MultilingualController
   before_action :set_payment_type, only: [:show, :edit, :update, :destroy]
@@ -67,7 +67,7 @@ class Admin::PaymentTypesController < Admin::BaseController
     errors = []
 
     if order_params
-      # todo зачем?
+      # сортировка перетаскиванием
       order_params.each_with_index do |id, weight|
         item = PaymentType.find id
         item.weight = weight

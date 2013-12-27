@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# модель материала
 class Material < ActiveRecord::Base
   include SortedByName  
   include MultilingualModel

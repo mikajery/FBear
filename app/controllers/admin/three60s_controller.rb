@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# CRUD списка 360-вьюх товара
 class Admin::Three60sController < Admin::BaseController
   before_action :set_three60, only: [:show, :edit, :update, :destroy]
   before_action :set_good, only: [:new, :edit, :create, :update, :destroy]
@@ -27,7 +27,11 @@ class Admin::Three60sController < Admin::BaseController
   # POST /three60s
   # POST /three60s.json
   def create
-    # todo что тут происходит?
+    # принимается zip-файл, создается пустая вьюха
+    # запускается sidekiq-процесс (не браузерный),
+    # который распаковывет зип файл и обрабатывает все картинки, что внутри
+    # по завершению, ставится флаг "готов" для вьюхи
+
     params = three60_params
     zip = params.slice("zip")[:zip]
 
@@ -111,7 +115,10 @@ class Admin::Three60sController < Admin::BaseController
     end
 
     def set_good
-      # todo что имеется ввиду?
+      # пытаемся понять, что за товар прикреплен к вьюхе
+      # если не определена вьюха (при создании, например),
+      # товар тянется из параметров урла POST /goods/#{good_id}/three60s
+
       if @three60.nil?
         @good = Good.find(params[:good_id] || three60_params[:good_id])
       else

@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# контроллер дизайнеров
 class Content::DesignersController < Content::BaseController
   before_action :get_locale
   

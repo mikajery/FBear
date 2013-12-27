@@ -1,4 +1,4 @@
-# todo зачем?
+# чистим файлы 3д-вьюх, которые не загрузились
 namespace :lllooch do
   desc "Cleanup files and other stuff"
   task cleanup: :environment do

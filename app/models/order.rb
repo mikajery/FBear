@@ -1,4 +1,11 @@
-# todo подробное описание класса
+# модель заказа.
+# все лежит в одной таблице, в зависимости от текущего типа подтягиваются валидации
+# и методы для текущего типа
+#
+# STI:
+# - cart      корзина
+# - preorder  предзаказ
+# - robust    заказ
 class Order < ActiveRecord::Base
   belongs_to :language
 
@@ -21,6 +28,7 @@ class Order < ActiveRecord::Base
     self.order_goods
   end
 
+  # пропускаем ли валидации?
   def skip_validations?
     true if self.order_status == OrderStatus::Canceled.first
   end
@@ -30,30 +38,37 @@ class Order < ActiveRecord::Base
     self.client.full_name if self.client.present?
   end
 
+  # данные для расчета доставки
   def delivery_params
     self.attributes.select{|k, v| self.class.delivery_params.include?(k.to_sym)}
   end
 
+  # поля, обязательные для расчета доставки
   def self.delivery_params
     [:country, :city, :region, :zip, :address]
   end
 
+  # стоимость товаров
   def items_price
     price = 0
     price += items.map{|item| item.price.to_i}.reduce(:+) unless items.empty?
     price
   end
 
+  # стоимость доставки
   def delivery_price
     price = 0
     price += self.delivery_type.price if self.delivery_type.present?
     price
   end
 
+  # пока так
   def payment_price
     0
   end
 
+  # опции для формы заказа
+  # возвращается хэш с услугами и стоимость товаров
   def options
     {
         delivery_types: DeliveryType.active.index_by(&:id).each_with_object({}) {|(key, value), hash| hash[key] = value.options },
@@ -67,6 +82,7 @@ class Order < ActiveRecord::Base
     self.items_price + self.delivery_price + self.payment_price
   end
 
+  # адрес в одну строку через запятые
   def full_address
     address = []
 

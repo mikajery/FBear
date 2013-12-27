@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# CRUD вариантов товара
 class Admin::VariantsController < Admin::BaseController
   include MultilingualController
 
@@ -118,7 +118,10 @@ class Admin::VariantsController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def variant_params
-      # todo что тут происходит?
+      # перебираются типы свойств товара,
+      # проставляются свойства исходя из пришедших в параметрах
+      # обсуждалось, что этот функционал будет не нужен, т.к. во многом упростили схему
+
       property_types = {}
       params[:variant][:property_types].permit!.each{|k, p| property_types[k] = p[:property_id]}
 

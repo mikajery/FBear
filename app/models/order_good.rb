@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# модель элемента заказа
 class OrderGood < ActiveRecord::Base
   belongs_to :order
   belongs_to :good
@@ -7,6 +7,8 @@ class OrderGood < ActiveRecord::Base
   validates :good, presence: true
   validates :order, presence: true
 
+  # делегирование метода в товар:
+  # good_name = good.name, good.slug = good_slug
   delegate :name, :slug, to: :good, prefix: true, allow_nil: true
 
   # creates instance from good

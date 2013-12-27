@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# CRUD дизайнеров
 class Admin::DesignersController < Admin::BaseController
   include MultilingualController
   

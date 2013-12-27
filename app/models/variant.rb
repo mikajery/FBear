@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# Вариант товара
 class Variant < ActiveRecord::Base
   include MultilingualModel
   translates :price, :name, :material_name
@@ -26,14 +26,17 @@ class Variant < ActiveRecord::Base
                     url: "/uploads/goods/variants/:id/:style/:basename.:extension",
                     path: ":rails_root/public/uploads/goods/variants/:id/:style/:basename.:extension"
 
+  # полный артикул варианта
   def full_article
     [good.article, self.suffix].join "." if self.suffix.present?
   end
 
+  # алиас
   def properties
     variant_properties
   end
 
+  # сеттер групп свойств
   def property_types= types
     variant_name = []
     properties.delete_all

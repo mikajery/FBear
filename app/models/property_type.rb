@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# группа свойств товара
 class PropertyType < ActiveRecord::Base
   include MultilingualModel
   translates :name

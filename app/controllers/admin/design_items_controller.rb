@@ -1,4 +1,5 @@
-# todo краткое описание класса
+# Контроллер списка товаров дизайнера
+# /designers/#{designer_id}/items
 class Admin::DesignItemsController < Admin::BaseController
   include MultilingualController
 

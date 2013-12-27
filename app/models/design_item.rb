@@ -1,4 +1,5 @@
-# todo краткое описание класса
+# заглушка товара дизайнера
+# типа .. coming soon + фотка и название
 class DesignItem < ActiveRecord::Base
   include MultilingualModel
 

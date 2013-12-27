@@ -1,4 +1,4 @@
-# todo надо подробно описать
+# стандартный deploy для рельсового проекта
 require "rvm/capistrano"
 require 'sidekiq/capistrano'
 

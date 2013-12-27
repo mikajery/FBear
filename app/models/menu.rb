@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# модель меню
 class Menu < ActiveRecord::Base
   include SortedByName  
   validates :name, presence: true
@@ -6,6 +6,7 @@ class Menu < ActiveRecord::Base
 
   has_many :menu_items, dependent: :destroy
 
+  # рутовые элементы меню
   def items
     menu_items.where('menu_item_id is null')
   end

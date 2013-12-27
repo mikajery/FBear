@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# CRUD типов свойств товаров
 class Admin::PropertyTypesController < Admin::BaseController
   include MultilingualController
   before_action :set_property_type, only: [:show, :edit, :update, :destroy]

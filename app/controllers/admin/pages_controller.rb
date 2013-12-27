@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# CRUD Контроллер страниц сайта
 class Admin::PagesController < Admin::BaseController
   include MultilingualController
   
@@ -66,7 +66,10 @@ class Admin::PagesController < Admin::BaseController
   end
 
   private
-    # todo зачем?
+    # после каждого изменения страниц
+    # необходимо перегружать все роуты,
+    # а то новые страницы не появятся на сайте
+
     def reload_routes
       ContentRouter.reload
       CMS::Application.reload_routes!

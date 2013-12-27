@@ -1,5 +1,6 @@
 # модель корзины
-
+# представляет собой STI-класс
+# на первом этапе мы только проверяем доставку, нужен ли ее расчет/запрос
 class Order::Cart < Order
   before_update :check_status_change
   after_update :validate_delivery
@@ -15,8 +16,9 @@ class Order::Cart < Order
     end
   end
 
+
   def check_status_change
-  	# todo что за статус и что происходит потом?
+  	# если тип сменился на "предзаказ" или "заказ", проставляем статус "новый"
     if type_change.present?
       if ['Order::Robust', 'Order::Preorder'].include? type
         self.order_status = OrderStatus::New.first unless self.order_status.present?

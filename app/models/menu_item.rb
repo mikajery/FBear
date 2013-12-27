@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# модель элемента меню
 class MenuItem < ActiveRecord::Base
   include MultilingualModel
   include AutotitleableModel
@@ -14,14 +14,17 @@ class MenuItem < ActiveRecord::Base
 
   validates :name, presence: true
 
+  # алиас: вложенные элементы
   def items
     menu_items
   end
 
+  # роуты привязанной страницы
   def routes
     page.routes
   end
 
+  # урл привязанной страницы
   def url
     unless page.nil?
       page.url
@@ -30,6 +33,7 @@ class MenuItem < ActiveRecord::Base
     end
   end
 
+  # генерация метода хелпера роута по привязанной странице
   def path
     unless page.nil?
       page.routes.first[:as] + '_path'      

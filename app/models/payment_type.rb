@@ -1,4 +1,5 @@
-# todo краткое описание класса
+# Тип оплаты
+# STI цепляет необходимый функционал для выбранного типа
 class PaymentType < ActiveRecord::Base
   include MultilingualModel
   translates :name

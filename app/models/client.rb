@@ -1,4 +1,4 @@
-# todo краткое описание класса
+# Модель клиента
 class Client < ActiveRecord::Base
   has_many :orders
 
@@ -15,7 +15,8 @@ class Client < ActiveRecord::Base
     full_name.join ' '
   end
 
-  # todo что?
+  # метод класса, который находит или создает клиента по email
+  # и обновляет все остальные аттрибуты из параметров
   def self.from_params params={}
     client = self.find_or_initialize_by email: params[:email]
     client.update(params)

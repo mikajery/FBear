@@ -1,4 +1,5 @@
-# todo краткое описание модуля
+# модуль определяет выборку заказов по-умолчанию:
+# все, кроме статуса == Отменен
 module OrderConcern
   extend ActiveSupport::Concern
 

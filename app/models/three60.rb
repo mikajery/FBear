@@ -1,5 +1,7 @@
-# todo подробное описание класса
+# вьюха 360
+
 require 'rubygems'
+# zip-библиотечка пригодится, ага
 require 'zip'
 
 class Three60 < MediaFile
@@ -29,6 +31,7 @@ class Three60 < MediaFile
     path: ":rails_root/public/uploads/three60/:id/:style/:basename.:extension",
     convert_options: { preview: "-quality 80" }
 
+  # распаковываем архив и лопатим картинки
   def unpack path
     unless path.empty?
       Zip::File::open(path) do |archive|
@@ -62,10 +65,12 @@ class Three60 < MediaFile
     })
   end
 
+  # сохраняем превьюху
   def self.preview model, file
     model.src = file
   end
 
+  # создаем элемент вьюхи, вложенный в текущий
   def self.item parent, file
     item = Three60.new(
       good: parent.good,
@@ -77,6 +82,7 @@ class Three60 < MediaFile
     item.save
   end
 
+  # чистим мусор при удалении
   def cleanup
     if src.file?
       FileUtils.rm_rf (File.dirname(src.path) + '/../')

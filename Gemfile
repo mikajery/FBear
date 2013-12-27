@@ -1,4 +1,6 @@
-# todo краткое описание гемов
+# jquery, jqueryui, bootstrap, globalize, capistrano, sass
+# paperclip, sidekiq, countries, select2, mini_magic, redactor
+
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.0'

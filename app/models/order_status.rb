@@ -1,4 +1,5 @@
-# todo краткое описание класса
+# Статусы заказа
+
 class OrderStatus < ActiveRecord::Base
   include MultilingualModel
   translates :name
@@ -13,8 +14,6 @@ class OrderStatus < ActiveRecord::Base
         'OrderStatus::New' => 'Новый',
         'OrderStatus::Done' => 'Выполнен',
         'OrderStatus::Canceled' => 'Отменен'
-
-
     }
   end
 end
