@@ -67,10 +67,12 @@ class Order < ActiveRecord::Base
     0
   end
 
+  # TODO объем, единица измерения?
   def items_weight
     order_goods.sum(&:good_weight)
   end
 
+  # TODO объем, единица измерения?
   def items_volume
     order_goods.sum(&:good_volume)
   end
