@@ -10,6 +10,7 @@ class OrderGood < ActiveRecord::Base
   # делегирование метода в товар:
   # good_name = good.name, good.slug = good_slug
   delegate :name, :slug, to: :good, prefix: true, allow_nil: true
+  delegate :good_weight, :good_volume, to: :good, allow_nil: true
 
   # creates instance from good
   def self.from_good good

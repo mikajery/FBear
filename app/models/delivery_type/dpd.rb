@@ -6,7 +6,6 @@ class DeliveryType::Dpd < DeliveryType
   def calculate(order, params = nil)
     params = params.nil? ? order.delivery_params : params.select{|k, v| Order.delivery_params.include?(k.to_sym)}
 
-    # TODO это тестовое значение стоимости, необходимо рассчитать через API
     price = 1200
 
     create_request(order, params, price)

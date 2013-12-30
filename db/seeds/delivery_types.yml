@@ -6,3 +6,6 @@
 
 - name: DPD
   type: DeliveryType::Dpd
+
+- name: Деловые линии
+  type: DeliveryType::Dellin

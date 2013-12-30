@@ -19,11 +19,12 @@ blog_colors.each do |t|
   blog_color.update t
 end
 
-# delivery_types = YAML::load_file File.join(Rails.root, 'db', 'seeds', 'delivery_types.yml')
+delivery_types = YAML::load_file File.join(Rails.root, 'db', 'seeds', 'delivery_types.yml')
 
-# delivery_types.each do |type|
-#   DeliveryType.find_or_create_by type
-# end
+delivery_types.each do |t|
+  dt = DeliveryType.find_or_initialize_by type: t['type']
+  dt.update(t)
+end
 
 # payment_types = YAML::load_file File.join(Rails.root, 'db', 'seeds', 'payment_types.yml')
 

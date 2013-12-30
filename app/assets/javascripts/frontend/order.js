@@ -52,7 +52,7 @@ var Order = function(el) {
                 showDeliveryPriceError(r.errors);
             })
             .success(function(r) {
-                delivery_price = r.price;
+                delivery_price = r.price/1;
                 enableForm();
                 calculate();
             });

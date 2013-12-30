@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131225103247) do
+ActiveRecord::Schema.define(version: 20131230033810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -330,6 +330,11 @@ ActiveRecord::Schema.define(version: 20131225103247) do
 
   add_index "goods_tags", ["good_id"], name: "index_goods_tags_on_good_id", using: :btree
   add_index "goods_tags", ["tag_id"], name: "index_goods_tags_on_tag_id", using: :btree
+
+  create_table "kladrs", force: true do |t|
+    t.string "city", null: false
+    t.string "code", null: false
+  end
 
   create_table "language_translations", force: true do |t|
     t.integer  "language_id", null: false

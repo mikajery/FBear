@@ -55,6 +55,7 @@ class DeliveryType < ActiveRecord::Base
         'DeliveryType::Courier' => 'Курьером',
         'DeliveryType::Pickup' => 'Самовывоз',
         'DeliveryType::Showroom' => 'Шоурум',
+        'DeliveryType::Dellin' => 'Деловые линии',
         'DeliveryType::Dpd' => 'DPD'
     }
   end

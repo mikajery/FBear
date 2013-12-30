@@ -67,6 +67,14 @@ class Order < ActiveRecord::Base
     0
   end
 
+  def items_weight
+    order_goods.sum(&:good_weight)
+  end
+
+  def items_volume
+    order_goods.sum(&:good_volume)
+  end
+
   # опции для формы заказа
   # возвращается хэш с услугами и стоимость товаров
   def options
