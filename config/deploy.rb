@@ -151,6 +151,11 @@ namespace :deploy do
     run "cd #{deploy_to}current; RAILS_ENV=#{rails_env} bundle exec rake lllooch:cleanup"
   end
 
+  desc 'Dellin cities cache'
+  task :dellin_cities, roles: :app do
+    run "cd #{deploy_to}current; RAILS_ENV=#{rails_env} bundle exec rake dellin:cities"
+  end
+
   namespace :paperclip do
     desc "build missing paperclip styles"
     task :missing, :roles => :app do
