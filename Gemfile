@@ -69,5 +69,7 @@ gem 'sidekiq'
 gem 'fancybox2-rails', '~> 0.2.4'
 gem 'icheck-rails'
 
+gem 'savon', '~> 2.0'
+
 gem 'countries'
 gem 'country_select'

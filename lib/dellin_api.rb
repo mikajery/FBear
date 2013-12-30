@@ -45,14 +45,15 @@ class DellinApi
   end
 
   # считаем доставку
-  def get_price(city, weight, volume)
+  def get_price(request_params)
+
     params = {}
     params['request'] = 'xmlResult'
     params['derivalPoint'] = get_code('Москва')
-    params['arrivalPoint'] = get_code(city)
+    params['arrivalPoint'] = get_code(request_params['city'])
 
-    params['sizedWeight'] = weight
-    params['sizedVolume'] = volume
+    params['sizedWeight'] = request_params['weight']
+    params['sizedVolume'] = request_params['volume']
 
     res = Net::HTTP.start(@url.host, @url.port) do |http|
       req = Net::HTTP::Post.new(@url.path)

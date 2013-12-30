@@ -7,9 +7,11 @@ class DeliveryType::Dellin < DeliveryType
 
   def calculate(order, params = nil)
     params = params.nil? ? order.delivery_params : params.select{|k, v| Order.delivery_params.include?(k.to_sym)}
+    params['weight'] = order.items_weight(true)
+    params['volume'] = order.items_volume(true)
 
     dellin = DellinApi.new
-    request = dellin.get_price(params['city'], order.items_weight*100, order.items_volume/1000)
+    request = dellin.get_price(params)
     price = (request.present? and request['price'].present?) ? request['price'] : nil
 
     if price.present?

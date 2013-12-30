@@ -1,6 +1,7 @@
 CMS::Application.routes.draw do
 
-  get 'dellin' => 'dellin#show'
+  #get 'dpd' => 'dpd#show'
+  #get 'dellin' => 'dellin#show'
 
   # роуты для wysiwyg-редактора
   mount RedactorRails::Engine => '/redactor_rails'

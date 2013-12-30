@@ -67,14 +67,21 @@ class Order < ActiveRecord::Base
     0
   end
 
-  # TODO объем, единица измерения?
-  def items_weight
-    order_goods.sum(&:good_weight)
+  def items_weight(kilograms = false)
+    weight = 0
+    order_goods.each do |g|
+      weight += g.good_weight * g.quantity
+    end
+    kilograms == true ? weight.to_f / 1000 : weight
   end
 
-  # TODO объем, единица измерения?
-  def items_volume
-    order_goods.sum(&:good_volume)
+  def items_volume(cubic_meters = false)
+    volume = 0
+    order_goods.each do |g|
+      volume += g.good_volume * g.quantity
+    end
+
+    cubic_meters == true ? volume.to_f / 1000000 : volume
   end
 
   # опции для формы заказа
