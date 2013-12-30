@@ -160,8 +160,8 @@ ru:
         slug: "Путь"
         price: "Цена"
         title: "Название"
-        good_weight: Вес, кг
-        good_volume: Объем, м³
+        good_weight: Вес, г
+        good_volume: Объем, см³
         heading: "Заголовок"
         keywords: "Ключевые слова"
         description: "Описание"
