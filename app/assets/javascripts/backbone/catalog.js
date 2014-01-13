@@ -1,10 +1,7 @@
 //= require backbone/views/goods
 
 Catalog = new Backbone.Marionette.Application();
-var element = $('[data-showroom=slide]'),
-    goods = $('[data-region=goods]'),
-    loading = $('[data-showroom=loading]')
-    ;
+var element, goods, loading;
 
 Catalog.addRegions({
     mainRegion: "[data-region=goods]"
@@ -84,5 +81,11 @@ Catalog.addInitializer(function (options) {
     Catalog.mainRegion.show(goodsView);
 });
 
-Catalog.start();
-Backbone.history.start();
+$(document).on('ready page:load', function() {
+    element = $('[data-showroom=slide]');
+    goods = $('[data-region=goods]');
+    loading = $('[data-showroom=loading]');
+
+    Catalog.start();
+    Backbone.history.start();
+});

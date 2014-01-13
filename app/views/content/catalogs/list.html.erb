@@ -1,13 +1,10 @@
-<%= render partial: 'views' %>
-
 <%= content_for :extra_scripts do %>
+    <%= render partial: 'views' %>
+
     <script type="text/javascript">
         var fetchUrl = "<%= catalog_fetch_path %>";
     </script>
-<% end %>
-
-<%= content_for :footer_scripts do %>
-    <%= javascript_include_tag "backbone/catalog", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "backbone/catalog" %>
 <% end %>
 
 <div class="showroom" data-action="showroom">
