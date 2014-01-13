@@ -29,7 +29,7 @@ set (:ts) {
   d.strftime("%Y%m%d%H%M%S") 
 }
 
-set :whenever_command, 'rvm use 2.0.0 do bundle exec whenever'
+set :whenever_command, 'rvm use 2.0.0-p247 do bundle exec whenever'
 
 set :scm, :git
 set :ssh_options, { :forward_agent => true }
@@ -57,9 +57,9 @@ end
 
 set (:unicorn_conf) {"./config/unicorn/#{stage_name}.rb"}
 set (:unicorn_pid) {"#{shared_path}/pids/unicorn.pid"}
-set (:unicorn_start_cmd) {"(cd #{deploy_to}current; rvm use 2.0.0 do bundle exec unicorn_rails -Dc #{unicorn_conf} -E #{unicorn_env}) "}
+set (:unicorn_start_cmd) {"(cd #{deploy_to}current; rvm use 2.0.0-p247 do bundle exec unicorn_rails -Dc #{unicorn_conf} -E #{unicorn_env})"}
 
-set :bundle_cmd, 'rvm use 2.0.0 do bundle'
+set :bundle_cmd, 'rvm use 2.0.0-p247 do bundle'
 
 
 # - for unicorn - #
