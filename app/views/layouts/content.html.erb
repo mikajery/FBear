@@ -26,6 +26,7 @@
   <%= tag(:meta, name: 'keywords', content: meta[:keywords]) if meta[:keywords] %>
   <%= tag(:meta, name: 'description', content: meta[:description]) if meta[:description] %>
 
+  <%= yield :extra_scripts %>
 </head>
 <body class="<%= 'navigated' if @navigation %><%= ' overflowed' if @navigation && @navigation[:overflowed] %>" data-classes="<%= ' dark' if @body_dark %><%= ' no-shadow' if @body_no_shadow %>">
 <% if @navigation %>

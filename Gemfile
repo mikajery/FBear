@@ -72,4 +72,6 @@ gem 'icheck-rails'
 gem 'savon', '~> 2.0'
 
 gem 'countries'
-gem 'country_select'
+gem 'localized_country_select', '>= 0.9.7'
+
+gem 'jquery-inputmask-rails', '~> 2.0.1'

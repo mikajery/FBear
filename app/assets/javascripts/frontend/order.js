@@ -5,8 +5,11 @@ var Order = function(el) {
         payment_view = $('[data-view=payment]'),
         delivery_view = el.find('[data-order=delivery-price]'),
         total_view = el.find('[data-order=total]'),
+        map_view = el.find('[data-order=map]'),
         address_region = el.find('[data-layout=address]'),
         payment_region = el.find('[data-layout=payment]'),
+        address = el.find('[data-order=address]'),
+        address_wrap = el.find('[data-order=address-wrap]'),
         form = el.find('form'),
         submit_btn = el.find('[data-order=submit]'),
         delivery_price = false,
@@ -26,6 +29,13 @@ var Order = function(el) {
             if ($.inArray($(this).data('payment-type'), order_options.delivery_types[delivery_type].payment_types) < 0)
                 $(this).remove();
         })
+    };
+
+    var showMap = function(text) {
+        address.html(text);
+        map_view.css('top', address_wrap.outerHeight());
+        new StaticMap(map_view, text);
+        //new DynamicMap(map_view, address);
     };
 
     form.submit(function(e) {
@@ -153,6 +163,7 @@ var Order = function(el) {
     })
 
     calculate();
+    showMap('Москва, ул. Дубининская, 57');
 }
 
 $(document).on('ready page:load', function() {

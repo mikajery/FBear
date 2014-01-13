@@ -14,4 +14,5 @@
 //= require twitter/bootstrap/bootstrap-tooltip
 //= require twitter/bootstrap/bootstrap-popover
 //= require frontend/showroom
+//= require jquery.inputmask
 //= require_tree ./frontend

@@ -45,7 +45,7 @@ class Order < ActiveRecord::Base
 
   # поля, обязательные для расчета доставки
   def self.delivery_params
-    [:country, :city, :region, :zip, :address]
+    [:country, :city, :region, :zip, :street, :street_number]
   end
 
   # стоимость товаров
@@ -107,6 +107,16 @@ class Order < ActiveRecord::Base
     address << Country[self.country].name if self.country.present?
     address << self.city if self.city.present?
     address << self.address if self.city.present?
+
+    address.join ', '
+  end
+
+  def address
+    address = []
+
+    address << self.street if street.present?
+    address << self.street_number if street_number.present?
+    address << self.site if site.present?
 
     address.join ', '
   end

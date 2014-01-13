@@ -5,6 +5,8 @@
 	}
 }
 
+
+
 form {
 	font-size: 14px;
 
@@ -14,7 +16,14 @@ form {
 
 	h2 {
 		font-size: 21px;
-	}
+      .cart & {
+        font-size: 30px;
+        font-weight: normal;
+        text-transform: uppercase;
+      }
+    }
+
+
 	
 	h2.styled {
 		font: {
@@ -109,6 +118,8 @@ form {
 	}
 
 	.radio-group {
+      padding-left: 10px;
+
 		& > li.text {
 			padding-right: 10px;
 		}

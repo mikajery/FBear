@@ -90,7 +90,6 @@ GEM
     connection_pool (1.1.0)
     countries (0.9.2)
       currencies (>= 0.4.0)
-    country_select (1.2.0)
     currencies (0.4.2)
     date_validator (0.7.0)
       activemodel (>= 3)
@@ -136,6 +135,7 @@ GEM
     highline (1.6.19)
     hike (1.2.3)
     hirb (0.7.1)
+    hpricot (0.8.6)
     http_parser.rb (0.5.3)
     httpi (2.1.0)
       rack
@@ -148,6 +148,7 @@ GEM
     jbuilder (1.5.0)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
+    jquery-inputmask-rails (2.0.1)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -161,6 +162,9 @@ GEM
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
       rb-kqueue (>= 0.2)
+    localized_country_select (0.9.7)
+      actionpack (>= 3.0)
+      hpricot
     lumberjack (1.0.4)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -328,7 +332,6 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 4.0.0)
   countries
-  country_select
   date_validator
   devise (~> 3.0.0.rc)
   fancybox2-rails (~> 0.2.4)
@@ -340,8 +343,10 @@ DEPENDENCIES
   icheck-rails
   jasny_bootstrap_extension_rails
   jbuilder (~> 1.2)
+  jquery-inputmask-rails (~> 2.0.1)
   jquery-rails
   jquery-ui-rails
+  localized_country_select (>= 0.9.7)
   mini_magick
   paper_trail!
   paperclip!
