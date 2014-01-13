@@ -369,6 +369,7 @@ DEPENDENCIES
   sidekiq
   simple_enum
   simple_form (= 3.0.0.rc)
+  sprockets-rails
   stringex
   therubyracer (= 0.11.4)
   twitter-bootstrap-rails
