@@ -7,6 +7,7 @@
 //= require shared/perfect-scrollbar-with-mousewheel.min
 //= require shared/scrollbar
 //= require shared/money_format
+//= require shared/modernizr.min
 //= require select2
 //= require select2_locale_ru
 //= require fancybox
