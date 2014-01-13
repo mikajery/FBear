@@ -59,7 +59,7 @@ CMS::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  config.assets.precompile += %w(admin.js frontend.js map.js backbone/* admin.css.scss content.css.scss map.css.scss landing.css.scss)
+  config.assets.precompile += %w(admin.js frontend.js map.js backbone/* admin.css admin.css.scss content.css content.css.scss map.css map.css.scss landing.css landing.css.scss)
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
