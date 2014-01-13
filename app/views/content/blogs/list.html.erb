@@ -1,8 +1,11 @@
-<%= render partial: 'views' %>
+<% content_for :extra_scripts do %>
+    <%= render partial: 'views' %>
 
-<script type="text/javascript">
-    var fetchUrl = "<%= blog_fetch_path %>";
-</script>
+    <script type="text/javascript">
+        var fetchUrl = "<%= blog_fetch_path %>";
+    </script>
+    <%= javascript_include_tag "backbone/blog" %>
+<% end %>
 
 <div class="blogs-wrap loading" data-type="blogs">
   <div class="loading-wrap" data-blog="loading">
@@ -19,7 +22,3 @@
 
   <div data-region="posts"></div>
 </div>
-
-<% content_for :footer_scripts do %>
-    <%= javascript_include_tag "backbone/blog", "data-turbolinks-track" => true %>
-<% end %>
