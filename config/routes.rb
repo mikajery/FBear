@@ -27,6 +27,7 @@ CMS::Application.routes.draw do
   scope '(:locale)/cart', locale: ContentRouter.locales do
     # покупка товара
     post 'buy' => 'content/carts#buy', as: :cart_buy
+    get 'buy' => 'content/carts#buy', as: :cart_get_buy
 
     # сохранение данных о товарах
     post 'update' => 'content/carts#update', as: :cart_update

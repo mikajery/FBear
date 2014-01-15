@@ -1,39 +1,37 @@
 <% if cart.items.empty? %>
     <%= T "Ваша корзина пуста" %>
 <% else %>
-  <ul class="cart-items" data-type="cart-items">
-    <% cart.items.each do |item| %>
-      <%= render 'item', :item => item %>
-    <% end %>
-
-    <li class="cart-total">
-      <span class="upper"><%= T "Итого" %>:</span> <span data-cart="total"><%= number_to_currency(cart.full_price, precision: 0, unit: 'р.') %></span>
-    </li>
-
-    <li class="cart-item cart-item-btn no-border">
-      <div class="cart-btn left">
-        <a href="<%= catalog_path %>" class="btn">
+  <%= simple_form_for cart, url: cart_update_path, method: :post, html: {"data-type" => "cart"} do |f| %>
+      <div class="cart-links">
+        <div class="pull-right">
+          <a href="<%= order_show_path %>">
+            <%= T('Продолжить оформление') %>
+          </a>
+        </div>
+        <a href="<%= catalog_path %>">
           <%= T "Вернуться к покупкам" %>
         </a>
       </div>
-      
-      <div class="cart-btn">
-        <%= simple_form_for cart, url: cart_update_path, method: :post, html: {"data-cart-items" => "form"} do |f| %>
-          <%= f.simple_fields_for :items, cart.items do |c| %>
+      <ul class="cart-items">
+        <%= simple_fields_for 'cart', cart do |f| %>
             <% cart.items.each do |item| %>
-              <% unless item.good.variants.empty? %>
-                <%= c.simple_fields_for "#{item.id}", item do |i| %>
-                  <%= i.input :variant, as: :hidden, input_html: {"data-cart-item-field" => item.id} %>
+              <%= f.simple_fields_for 'items' do |f| %>
+                <%= f.simple_fields_for item.id.to_s, item do |f| %>
+                    <%= render 'item', item: item, form: f %>
                 <% end %>
               <% end %>
             <% end %>
-          <% end %>
-
-          <button type="submit" class="btn">
-            <%= T "Продолжить оформление" %>
-          </button>
         <% end %>
-      </div>
-    </li>
-  </ul>
+
+        <li class="cart-total">
+          <span class="upper"><%= T "Итого" %>:</span> <span data-cart="total-price"><%= number_to_currency(cart.full_price, precision: 0, unit: 'р.') %></span>
+        </li>
+
+        <li class="cart-item cart-item-btn no-border">
+          <div class="cart-btn">
+            <%= f.button :submit, T('Продолжить оформление'), class: 'btn' %>
+          </div>
+        </li>
+      </ul>
+  <% end %>
 <% end %>

@@ -16,12 +16,19 @@ class Content::CartsController < Content::BaseController
     unless delivery_type.errors.present?
       render json: delivery.to_json
     else
-      render json: { errors: delivery_type.errors[:calculate] }.to_json, status: :unprocessable_entity
+      render json: {errors: delivery_type.errors[:calculate]}.to_json, status: :unprocessable_entity
     end
   end
 
   def buy
-    @cart.items << OrderGood.from_good(@good)
+    order_good = @cart.items.where(good_id: @good.id).first
+
+    if order_good.present?
+      order_good.quantity += 1
+      order_good.save
+    else
+      @cart.items << OrderGood.from_good(@good)
+    end
 
     respond_to do |format|
       if @cart.save
@@ -44,15 +51,26 @@ class Content::CartsController < Content::BaseController
   end
 
   def update
+    #abort update_cart_params.inspect
+    to_delete = @cart.items
+
     update_cart_params.each do |item|
       cart_item = OrderGood.find item[:order_good]
-      cart_item.variant = Variant.find item[:variant]
-      cart_item.price = cart_item.variant.price
+      if item[:variant].present?
+        cart_item.variant = Variant.find item[:variant]
+        cart_item.price = cart_item.variant.price
+      end
+      cart_item.quantity = item[:quantity]
       cart_item.save
+
+      to_delete = to_delete.select{|d| d.good_id != cart_item.good_id}
     end
+
+    to_delete.each(&:delete) if to_delete.present?
 
     respond_to do |format|
       format.html { redirect_to order_show_url, notice: '_cart_goods_updated' }
+      format.json { head :no_content }
     end
   end
 
@@ -88,7 +106,13 @@ class Content::CartsController < Content::BaseController
   def update_cart_params
     if params[:cart]
       params.require(:cart)[:items].map do |item|
-        {order_good: item[0].to_i, variant: item[1]['variant'].to_i}
+        cart_item = {
+            order_good: item[0].to_i,
+            quantity: item[1]['quantity'].to_i
+        }
+
+        cart_item[:variant] = item[1]['variant'].to_i if item[1]['variant'].present?
+        cart_item
       end
     else
       []

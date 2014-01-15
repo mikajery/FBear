@@ -51,7 +51,7 @@ class Order < ActiveRecord::Base
   # стоимость товаров
   def items_price
     price = 0
-    price += items.map{|item| item.price.to_i}.reduce(:+) unless items.empty?
+    price += items.map(&:full_price).sum unless items.empty?
     price
   end
 
@@ -65,6 +65,10 @@ class Order < ActiveRecord::Base
   # пока так
   def payment_price
     0
+  end
+
+  def items_quantity
+    order_goods.map(&:quantity).sum
   end
 
   def items_weight(kilograms = false)

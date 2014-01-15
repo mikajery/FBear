@@ -1,0 +1,30 @@
+.input-qnt {
+  padding: 0 16px;
+  position: relative;
+  input {
+    width: 34px;
+    font-size: 14px;
+    border: none;
+    text-align: center;
+    font-weight: bold;
+    background: none;
+  }
+}
+
+.input-qnt__control {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -8px;
+  background: image-url('content/control.png') no-repeat -120px -20px;
+  cursor: pointer;
+
+  &.plus {
+    background-position: -120px 0;
+    left: auto;
+    right: 0;
+  }
+
+}

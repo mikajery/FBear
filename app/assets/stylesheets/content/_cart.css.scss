@@ -1,50 +1,54 @@
 @include block_list(".cart-items");
 
 .cart {
-	padding-bottom: 100px;
-	.cart-total {
-		padding: 20px;
-		text-align: right;
-		font-size: 16px;
-		border-bottom: 0;
-		font-weight: bold;
-		.upper {
-			text-transform: uppercase;
-		}
-	}
+  padding-bottom: 100px;
 
-	.cart-btn {
-		&.left {
-			float: left;
-		}
+  h1 {
+    padding-left: 30px;
+  }
 
-		.btn {
-			text-align: center;
-			width: 320px;
-		}
+  .cart-total {
+    padding: 20px;
+    text-align: right;
+    font-size: 16px;
+    border-bottom: 0;
+    font-weight: bold;
+    .upper {
+      text-transform: uppercase;
+    }
+  }
 
-		a.btn {
-			padding: 0;
-		}
+  .cart-btn {
+    &.left {
+      float: left;
+    }
 
-		padding-top: 10px;
-	 	float: right;
-	 	margin-right: -30px;
-	 	
-	 	form {
-	 		padding: 0;
-	 	}
-	}
+    .btn {
+      text-align: center;
+      width: 320px;
+    }
 
-	@include row(".cart-item-btn");
+    a.btn {
+      padding: 0;
+    }
 
+    padding-top: 10px;
+    float: right;
+    margin-right: -30px;
 
-	form {
-		padding: 30px 0;
-		&.edit_cart {
-			padding-top: 0;
-		}
-	}
+    form {
+      padding: 0;
+    }
+  }
+
+  @include row(".cart-item-btn");
+
+  form {
+    padding: 0 0 30px;
+    &.edit_cart {
+      padding-top: 0;
+    }
+  }
 
   button[disabled=disabled] {
     background: #666;
@@ -52,130 +56,190 @@
 }
 
 .cart-items {
-	& > li {
-		border-top: 1px solid #d7d7d7;
-	}	
+  & > li {
+    border-top: 1px solid #d7d7d7;
+  }
 
-	.cart-item {
-		padding: 40px 30px 40px 0;
-		position: relative;
+  .cart-item {
+    padding: 30px 30px 30px 0;
+    position: relative;
 
-		&.cart-item-btn {
-			padding-top: 20px;
-			&.no-border {
-				border-top: none;
-				padding-top: 0;
-			}
-		}
-	}
+    &.short {
+      .cart-item-pic {
+        img {
+          width: 200px;
+          height: 200px;
+          display: block;
+          margin: 0 auto;
+        }
+      }
+    }
 
-	.cart-item-remove {
-		position: absolute;
-		top: 40px;
-		right: 20px;
-		cursor: pointer;
-		form {
-			margin: 0;
-			padding: 0;
-			button {
-				background: none;
-				border: none;
-				padding: 0;
-			}
-		}
-	}
+    .cart-additionals {
+      padding-top: 20px;
+    }
 
-	.cart-item-info {
-		padding-left: 430px;
-	}
+    &.cart-item-btn {
+      padding-top: 20px;
+      &.no-border {
+        border-top: none;
+        padding-top: 0;
+      }
+    }
+  }
 
-	.cart-item-title {
-		font-weight: 900;
-		font-size: 30px;
-		padding: 35px 0;
-	}
+  .cart-item-remove {
+    position: absolute;
+    top: 42px;
+    right: 20px;
+    cursor: pointer;
 
-	.cart-item-pic {
-		margin-left: -430px;
-		width: 400px;
-		float: left;
-	}
+    .control {
+      display: block;
+      margin-right: -29px;
+      float: right;
+    }
+  }
 
-	.title {
-		font-size: 14px;
-		padding-bottom: 15px;
-		text-transform: uppercase;
-	}
+  .cart-item-remove__btn {
+    font-size: 11px;
+    line-height: 21px;
+    padding-right: 29px;
 
-	@include row(".cart-item-info");
+    div {
+      display: none;
+    }
 
-	.cart-options {
-		.cart-options-price {
-			float: right;
-		}
+    &:hover {
+      div {
+        display: block;
+      }
+    }
+  }
 
-		@include block_list(".cart-options-items");
+  .cart-item__wrap {
+    float: left;
+    width: 340px;
+  }
 
-		.cart-options-items {
-			margin-bottom: 40px;
-			& > li {
-				margin-bottom: 9px;
+  .cart-item-title {
+    font-weight: 900;
+    font-size: 30px;
+    padding: 0 0 25px;
+  }
 
-				select {
-					width: 100%;
-				}
-			}
-		}
-	}
+  .cart-item-pic {
+    margin-right: 30px;
+    width: 400px;
+    float: left;
+  }
 
-	@include block_list(".cart-additionals-items");
+  .title {
+    font-size: 14px;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+  }
 
-	.cart-additionals-items > li.cart-additional-item {
-		margin-bottom: 30px;
-	}
+  @include row(".cart-item-info");
 
-	.cart-additional-item {
+  .cart-options {
+    .title {
+      padding-bottom: 8px;
+    }
+    .cart-options-price {
+      float: right;
+    }
 
-		@include row(".info");
-		.info {
-			padding-left: 120px;
+    @include block_list(".cart-options-items");
 
-			.title {
-				text-transform: none;
-				padding-bottom: 10px;
-				font-weight: 600;
-			}
+    .cart-options-items {
+      //margin-bottom: 40px;
+      & > li {
+        margin-bottom: 9px;
 
-			.buy {
-				
-				form {
-					padding:0;
-					button {
-						&:hover {
-							text-decoration: none;
-						}
-						text-decoration: underline;
-						float: right;
-						display: block;
-						background: none;
-						color: inherit;
-						border: none;
-						padding: 0;
-					}
-				}
-			}
+        select {
+          width: 100%;
+        }
+      }
+    }
+  }
 
-			.pic {
-				float: left;
-				margin-left: -120px;
-				width: 90px;
+  @include block_list(".cart-additionals-items");
 
-				img {
-					display: block;
-					width:90px;
-				}
-			}
-		}
+  .cart-additionals-items > li.cart-additional-item {
+    margin-bottom: 30px;
+  }
 
-	}
+  .cart-additional-item {
+
+    @include row(".info");
+    .info {
+      padding-left: 120px;
+
+      .title {
+        text-transform: none;
+        padding-bottom: 10px;
+        font-weight: 600;
+      }
+
+      .desc {
+        font-size: 11px;
+        line-height: 1.7;
+        p {
+          margin-top: 0;
+        }
+      }
+
+      .buy {
+        font-size: 11px;
+        text-align: right;
+      }
+
+      .pic {
+        float: left;
+        margin-left: -120px;
+        width: 90px;
+
+        img {
+          border: 1px solid #eee;
+          display: block;
+          width: 90px;
+        }
+      }
+    }
+
+  }
+}
+
+.cart-item-price {
+  float: right;
+}
+
+@include row('.cart-item-qnt');
+
+.cart-item-qnt {
+  @include inline_list('ul');
+  line-height: 15px;
+  padding-bottom: 30px;
+  ul {
+    font-size: 11px;
+    & > li {
+      padding-right: 8px;
+    }
+  }
+}
+
+.cart-links {
+  padding: 0 30px 30px;
+  font-size: 12px;
+
+  .pull-right {
+    float: right;
+  }
+  a {
+    text-transform: uppercase;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }

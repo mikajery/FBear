@@ -2,10 +2,10 @@
     <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
 <% end %>
 
-<div class="container cart" data-type="order" data-delivery-path="<%= cart_delivery_path %>">
-<h1>
-  <%= T "Заказ" %>
-</h1>
+<div class="container cart order-form" data-type="order" data-delivery-path="<%= cart_delivery_path %>">
+    <h1>
+      <%= T "Заказ" %>
+    </h1>
 
 <% if !@current_page.nil? and !@current_page.content.empty? %>
     <div class="content">
@@ -289,7 +289,7 @@
           </li>
         </ul>
 
-        <div class="form-block">
+        <div class="form-block wide">
           <div class="row">
             <div class="pull-left">
               <a href="<%= cart_path %>" class="btn btn-width2">

@@ -290,7 +290,6 @@ var Product = function(el) {
 
 $(document).on('ready page:load', function() {
   $('[data-action=product]').each(function() {
-    console.log('PRODUCT');
     new Product($(this));
   });
 });

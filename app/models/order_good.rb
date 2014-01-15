@@ -16,4 +16,8 @@ class OrderGood < ActiveRecord::Base
   def self.from_good good
     self.new(good: good, quantity: 1, price: good.price)
   end
+
+  def full_price
+    price * quantity
+  end
 end
