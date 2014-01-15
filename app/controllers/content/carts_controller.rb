@@ -16,7 +16,7 @@ class Content::CartsController < Content::BaseController
     unless delivery_type.errors.present?
       render json: delivery.to_json
     else
-      render json: {errors: delivery_type.errors[:calculate]}.to_json, status: :unprocessable_entity
+      render json: { errors: delivery_type.errors[:calculate] }.to_json
     end
   end
 
