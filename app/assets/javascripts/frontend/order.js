@@ -21,6 +21,7 @@ var Order = function (el) {
         form = el.find('form'),
         submit_btn = el.find('[data-order=submit]'),
         delivery_price = false,
+        delivery_hint = el.find('[data-order=delivery_price_desc]'),
         delivery_fields = function () {
             return el.find('[data-delivery-calc]')
         },
@@ -121,10 +122,10 @@ var Order = function (el) {
     var disableForm = function () {
         submit_btn.attr('disabled', true);
 
-        delivery_fields().off('change').on('change', function () {
-            disableForm();
-            getDeliveryPrice();
-        });
+//        delivery_fields().off('change').on('change', function () {
+//            disableForm();
+//            getDeliveryPrice();
+//        });
     };
 
     var enableForm = function () {
@@ -198,6 +199,7 @@ var Order = function (el) {
         }
 
         showMap(search_address.join(', '), full_address.join(', '));
+        getDeliveryPrice();
     };
 
 
@@ -264,9 +266,7 @@ var Order = function (el) {
             initKladrs();
         };
 
-
-
-        applyParams();
+//        applyParams();
         updateAddress();
     };
 
@@ -284,6 +284,8 @@ var Order = function (el) {
         saveParams();
         resetRegions();
         showPayment();
+
+        delivery_hint.html(order_options.delivery_types[delivery_type].hint);
 
         if (order_options.delivery_types[delivery_type].layout == 'address_and_payment')
             showAddress();

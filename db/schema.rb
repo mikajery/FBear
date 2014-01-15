@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140112225146) do
+ActiveRecord::Schema.define(version: 20140115110334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 20140112225146) do
     t.datetime "updated_at"
     t.string   "name"
     t.text     "conditions"
+    t.text     "hint"
   end
 
   add_index "delivery_type_translations", ["delivery_type_id"], name: "index_delivery_type_translations_on_delivery_type_id", using: :btree

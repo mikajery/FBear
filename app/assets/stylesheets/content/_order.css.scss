@@ -126,7 +126,10 @@
 }
 
 .order-delivery__desc {
-  color: #888888
+  color: #888888;
+  p {
+    margin: 0;
+  }
 }
 
 @include row('.order-delivery__row');

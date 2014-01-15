@@ -103,6 +103,7 @@ ru:
         payment_types: Типы оплаты
         layout: Шаблон
         conditions: Условия доставки
+        hint: Подсказка
 
       order_status:
         name: Название

@@ -6,7 +6,8 @@ class DeliveryType::Dellin < DeliveryType
   end
 
   def calculate(order, params = nil)
-    params = params.nil? ? order.delivery_params : params.select{|k, v| Order.delivery_params.include?(k.to_sym)}
+    params = params.present? ? params.select{|k, v| Order.delivery_params.include?(k.to_sym)} : order.delivery_params
+
     params['weight'] = order.items_weight(true)
     params['volume'] = order.items_volume(true)
 

@@ -19,6 +19,7 @@
 
         <% Globalize.with_locale(@locale.slug) do %>
             <%= f.input :conditions, as: :html %>
+            <%= f.input :hint, as: :html %>
         <% end %>
 
         <%= language_input f %>

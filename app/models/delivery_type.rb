@@ -1,6 +1,6 @@
 class DeliveryType < ActiveRecord::Base
   include MultilingualModel
-  translates :name, :conditions
+  translates :name, :conditions, :hint
 
   has_and_belongs_to_many :payment_types
   has_one :delivery_request
@@ -18,6 +18,7 @@ class DeliveryType < ActiveRecord::Base
     {
         name: self.name,
         conditions: self.conditions,
+        hint: self.hint,
         price: self.price,
         layout: self.layout,
         payment_types: self.payment_types.map(&:id)

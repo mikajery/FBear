@@ -94,7 +94,7 @@ class Admin::DeliveryTypesController < Admin::BaseController
   end
 
   def safe_params
-    [:name, :price, :conditions, :is_active, :type, :layout, :payment_type_ids => []]
+    [:name, :price, :conditions, :is_active, :type, :layout, :hint, :payment_type_ids => []]
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
