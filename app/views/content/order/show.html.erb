@@ -1,11 +1,13 @@
 <%= content_for :extra_scripts do %>
     <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+    <script src="/kladrapi/jquery.kladr.min.js"></script>
+    <link rel="stylesheet" href="/kladrapi/jquery.kladr.min.css"/>
 <% end %>
 
 <div class="container cart order-form" data-type="order" data-delivery-path="<%= cart_delivery_path %>">
-    <h1>
-      <%= T "Заказ" %>
-    </h1>
+<h1>
+  <%= T "Заказ" %>
+</h1>
 
 <% if !@current_page.nil? and !@current_page.content.empty? %>
     <div class="content">
@@ -125,139 +127,137 @@
 
         <div data-layout="payment"></div>
 
-        <%# <script type="text/html" data-view="address"> %>
-        <div class="form-block">
-          <h2>Адрес доставки</h2>
+        <script type="text/html" data-view="address">
+          <div class="form-block">
+            <h2>Адрес доставки</h2>
 
-          <div class="row">
-            <div class="span2">
-              <div class="form-row">
-                <div class="select-wrap">
-                  <%= localized_country_select(:cart, :country, [:RU]) %>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="span2">
-              <div class="form-row">
-                <label for="city">
-                  Город<sup>*</sup>:
-                </label>
-
-                <div class="input-wrap">
-                  <%= f.input_field :city, placeholder: "Введите Ваш город", required: true, class: ('invalid' if form.object.errors['city'].present?), data: {'delivery-calc' => 'true'} %>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="span1_5">
-              <div class="form-row">
-                <label for="region">
-                  Регион / Область<sup>*</sup>:
-                </label>
-
-                <div class="input-wrap">
-                  <%= f.input_field :region, placeholder: "Введите Ваш регион/область", required: true, class: ('invalid' if form.object.errors['region'].present?), data: {'delivery-calc' => 'true'} %>
-                </div>
-              </div>
-            </div>
-
-            <div class="span_5">
-              <div class="form-row">
-                <label for="zip">
-                  Индекс<sup>*</sup>:
-                </label>
-
-                <div class="input-wrap">
-                  <%= f.input_field :zip, placeholder: "Ваш индекс", required: true, class: ('invalid' if form.object.errors['zip'].present?), data: {'delivery-calc' => 'true'} %>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="row" style="position: relative">
-            <div class="span2">
-              <div class="form-row">
-                <label for="address">
-                  Улица<sup>*</sup>:
-                </label>
-
-                <div class="input-wrap">
-                  <%= f.input_field :street, placeholder: "Введите название улицы", required: true, class: ('invalid' if form.object.errors['street'].present?), data: {'delivery-calc' => 'true'} %>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="span1">
-                  <div class="form-row">
-                    <label for="street_number">
-                      Номер дома<sup>*</sup>:
-                    </label>
-
-                    <div class="input-wrap">
-                      <%= f.input_field :street_number, placeholder: "Введите номер дома", required: true, class: ('invalid' if form.object.errors['street_number'].present?), data: {'delivery-calc' => 'true'} %>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="span1">
-                  <div class="form-row">
-                    <label for="site">
-                      Корпус/строение:
-                    </label>
-
-                    <div class="input-wrap">
-                      <%= f.input_field :site, placeholder: "Введите корпус", data: {'delivery-calc' => 'true'} %>
-                    </div>
+            <div class="row">
+              <div class="span2">
+                <div class="form-row">
+                  <div class="select-wrap">
+                    <%= localized_country_select(:cart, :country, [:RU]) %>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div class="row">
-                <div class="span2">
-                  <label for="comment">
-                    Пожелания
+            <div class="row">
+              <div class="span2">
+                <div class="form-row">
+                  <label for="city">
+                    Город<sup>*</sup>:
                   </label>
 
                   <div class="input-wrap">
-                    <%= f.input_field :comment, as: :text %>
+                    <%= f.input_field :city, placeholder: "Введите Ваш город", required: true, class: ('invalid' if form.object.errors['city'].present?), data: {'delivery-calc' => 'true', 'cart-kladr' => 'city'} %>
                   </div>
                 </div>
               </div>
+
+
+              <div class="span1_5">
+                <div class="form-row">
+                  <label for="region">
+                    Регион / Область:
+                  </label>
+
+                  <div class="input-wrap">
+                    <%= f.input_field :region, placeholder: "Ваш регион/область", tabindex: -1, data: { address: 'region' }, class: ('invalid' if form.object.errors['region'].present?) %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="span_5">
+                <div class="form-row">
+                  <label for="zip">
+                    Индекс<sup>*</sup>:
+                  </label>
+
+                  <div class="input-wrap">
+                    <%= f.input_field :zip, placeholder: "Ваш индекс", required: true, tabindex: -1, data: { address: 'zip' }, class: ('invalid' if form.object.errors['zip'].present?) %>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
+            <div class="row" style="position: relative">
+              <div class="span2">
+                <div class="form-row">
+                  <label for="address">
+                    Улица<sup>*</sup>:
+                  </label>
 
-            <div class="span2">
-              <div class="order-address">
+                  <div class="input-wrap">
+                    <%= f.input_field :street, placeholder: "Введите название улицы", required: true, class: ('invalid' if form.object.errors['street'].present?), data: {'delivery-calc' => 'true', 'cart-kladr' => 'street'} %>
+                  </div>
+                </div>
+
                 <div class="row">
-                  <div class="span2">
-                    <div class="order-delivery" data-order="address-wrap">
-                      <div class="order-delivery__icon down"></div>
+                  <div class="span1">
+                    <div class="form-row">
+                      <label for="street_number">
+                        Номер дома<sup>*</sup>:
+                      </label>
 
-                      <div class="order-delivery__row">
-                        <div class="order-delivery__head">
-                          <%= T "Адрес доставки" %>
-                        </div>
-                      </div>
-
-                      <div class="order-delivery__desc" data-order="address">
-                        652517, г. Ленинск-Кузнецкий, Кемеровская обл, пер. Валдайский, д. 2, к. 2
+                      <div class="input-wrap">
+                        <%= f.input_field :street_number, placeholder: "Введите номер дома", required: true, class: ('invalid' if form.object.errors['street_number'].present?), data: {'delivery-calc' => 'true', 'cart-kladr' => 'building'} %>
                       </div>
                     </div>
+                  </div>
 
-                    <div class="order-map" data-order="map">
+                  <div class="span1">
+                    <div class="form-row">
+                      <label for="site">
+                        Корпус/строение:
+                      </label>
+
+                      <div class="input-wrap">
+                        <%= f.input_field :site, placeholder: "Введите корпус", data: {'delivery-calc' => 'true', 'cart-kladr' => 'building'} %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="span2">
+                    <label for="comment">
+                      Пожелания
+                    </label>
+
+                    <div class="input-wrap">
+                      <%= f.input_field :comment, as: :text %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="span2">
+                <div class="order-address">
+                  <div class="row">
+                    <div class="span2">
+                      <div class="order-delivery" data-order="address-wrap">
+                        <div class="order-delivery__icon down"></div>
+
+                        <div class="order-delivery__row">
+                          <div class="order-delivery__head">
+                            <%= T "Адрес доставки" %>
+                          </div>
+                        </div>
+
+                        <div class="order-delivery__desc" data-order="address"></div>
+                      </div>
+
+                      <div class="order-map" data-order="map">
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <%#</script> %>
+        </script>
 
         <script type="text/html" data-view="payment">
           <div class="form-block">

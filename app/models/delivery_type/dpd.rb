@@ -5,8 +5,8 @@ class DeliveryType::Dpd < DeliveryType
     true
   end
 
-  def calculate(order, params = nil)
-    params = params.nil? ? order.delivery_params : params.select{|k, v| Order.delivery_params.include?(k.to_sym)}
+  def calculate(order, params = {})
+    params = params.empty? ? order.delivery_params : params.select{|k, v| Order.delivery_params.include?(k.to_sym)}
 
     params['weight'] = order.items_weight(true)
     params['volume'] = order.items_volume(true)
