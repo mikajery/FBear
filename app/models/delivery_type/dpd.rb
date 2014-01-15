@@ -18,6 +18,7 @@ class DeliveryType::Dpd < DeliveryType
       create_request(order, params, price)
       { price: price, message: '' }
     else
+      order.delivery_request.delete if order.delivery_request.present?
       self.errors[:calculate] << 'Доставка по этому адресу компанией DPD не осуществляется. С Вами свяжется наш менеджер для выбора другой транспортной компании.'
     end
   end

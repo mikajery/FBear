@@ -20,7 +20,7 @@ var Order = function (el) {
         },
         form = el.find('form'),
         submit_btn = el.find('[data-order=submit]'),
-        delivery_price = false,
+        delivery_price = undefined,
         delivery_hint = el.find('[data-order=delivery_price_desc]'),
         delivery_fields = function () {
             return el.find('[data-delivery-calc]')
@@ -80,7 +80,7 @@ var Order = function (el) {
     };
 
     form.submit(function (e) {
-        if (delivery_price === false) {
+        if (delivery_price === undefined) {
             e.preventDefault();
             return false;
         }
@@ -93,7 +93,6 @@ var Order = function (el) {
     var showDeliveryPriceError = function (errors) {
         var icon = $('<div>').addClass('b-loading-error');
         delivery_view().html(icon);
-
         delivery_hint.html(errors.join(''));
     }
 
@@ -109,13 +108,16 @@ var Order = function (el) {
                 showDeliveryPriceError(['Ошибка расчета стоимости доставки.'])
             })
             .success(function (r) {
+                enableForm();
+
                 if (r.price)
                 {
                     delivery_price = r.price / 1;
-                    enableForm();
                     calculate();
                 }
                 else if (r.errors) {
+                    delivery_price = false;
+                    calculate();
                     showDeliveryPriceError(r.errors);
                 }
             });
