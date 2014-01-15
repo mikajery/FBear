@@ -161,7 +161,7 @@
                   </label>
 
                   <div class="input-wrap">
-                    <%= f.input_field :region, placeholder: "Ваш регион/область", tabindex: -1, data: { address: 'region' }, class: ('invalid' if form.object.errors['region'].present?) %>
+                    <%= f.input_field :region, placeholder: "Ваш регион/область", tabindex: -1, data: { address: 'region', 'cart-kladr' => 'region' }, class: ('invalid' if form.object.errors['region'].present?) %>
                   </div>
                 </div>
               </div>
@@ -208,7 +208,7 @@
                   <div class="span1">
                     <div class="form-row">
                       <label for="site">
-                        Корпус/строение:
+                        Квартира/Офис №:
                       </label>
 
                       <div class="input-wrap">

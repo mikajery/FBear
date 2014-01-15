@@ -5,7 +5,7 @@ var Order = function (el) {
         },
         address_view = $('[data-view=address]'),
         payment_view = $('[data-view=payment]'),
-        delivery_view = el.find('[data-order=delivery-price]'),
+        delivery_view = function() { return el.find('[data-order=delivery-price]') },
         total_view = el.find('[data-order=total]'),
         map_view = function () {
             return el.find('[data-order=map]').first()
@@ -85,12 +85,12 @@ var Order = function (el) {
     });
 
     var showDeliveryPriceLoading = function () {
-        delivery_view.html($('<div>').addClass('b-loading'));
+        delivery_view().html($('<div>').addClass('b-loading'));
     }
 
     var showDeliveryPriceError = function (errors) {
         var icon = $('<div>').addClass('b-loading-error');
-        delivery_view.html(icon);
+        delivery_view().html(icon);
     }
 
     var requestDeliveryPrice = function () {
@@ -159,8 +159,9 @@ var Order = function (el) {
             var parent = kladr.parents[0];
             var region_name = [parent.name];
 
-            if (parent.type != 'Город')
-                region_name.push(parent.typeShort)
+//            if (parent.type != 'Город')
+//                region_name.push(parent.typeShort)
+
             region().val(region_name.join(' '));
         }
 
@@ -183,6 +184,7 @@ var Order = function (el) {
             search_address.push(city().val());
             full_address.push(_city);
         }
+
         if (street().val()) {
             var _street = street().kladr('current')
                     ? street().kladr('current').typeShort + '&nbsp;' + street().kladr('current').name
@@ -199,7 +201,6 @@ var Order = function (el) {
         }
 
         showMap(search_address.join(', '), full_address.join(', '));
-        getDeliveryPrice();
     };
 
 
@@ -288,18 +289,20 @@ var Order = function (el) {
         delivery_hint.html(order_options.delivery_types[delivery_type].hint);
 
         if (order_options.delivery_types[delivery_type].layout == 'address_and_payment')
+        {
             showAddress();
+        }
 
         if (el.data('delivery-calculate')) {
             delivery_price = false;
             disableForm();
+            getDeliveryPrice();
         }
         else {
             enableForm();
             delivery_price = order_options.delivery_types[delivery_type].price;
+            calculate();
         }
-
-        calculate();
     };
 
     form.find(':input').on('change', function () {
@@ -313,11 +316,11 @@ var Order = function (el) {
 //            console.log(order_options.delivery_types[delivery_type]);
 
         if (delivery_price !== false) {
-            delivery_view.html(delivery_price.money(0, ' ', '', ' р.'));
+            delivery_view().html(delivery_price.money(0, ' ', '', ' р.'));
             total_price += delivery_price;
         }
         else
-            delivery_view.html('—');
+            delivery_view().html('—');
 
         total_view.html(total_price.money(0, ' ', '', ' р.'))
     };

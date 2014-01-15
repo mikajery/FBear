@@ -87,7 +87,6 @@ var Cart = function(form) {
             items_quantity = 0
         ;
 
-
         $.each(cart_items, function(i) {
             totalPrice += cart_items[i].price();
             items_quantity += cart_items[i].quantity();
