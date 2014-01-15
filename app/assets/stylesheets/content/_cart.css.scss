@@ -7,6 +7,30 @@
     padding-left: 30px;
   }
 
+  .select2-container {
+    .select2-choice {
+      line-height: 104px;
+      height: 104px;
+
+      .select2-arrow {
+        margin-top: 35px;
+      }
+
+      .variant-option {
+        margin: -1px 0;
+      }
+    }
+
+    .variant-option {
+
+      img {
+        display: block;
+        margin-right: 7px;
+        margin-left: -2px;
+      }
+    }
+  }
+
   .cart-total {
     padding: 20px;
     text-align: right;
