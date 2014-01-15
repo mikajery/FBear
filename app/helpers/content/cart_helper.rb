@@ -16,7 +16,7 @@ module Content::CartHelper
   # количество элементов в скобках
   def cart_size
     if cart_items.size > 0
-      '(' + @cart.items_quantity.to_s + ')'
+      '(' + content_tag(:span, @cart.items_quantity.to_s, data: {type: 'cart-helper'}).html_safe + ')'
     end
   end
 end

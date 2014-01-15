@@ -172,3 +172,39 @@
   bottom: 0;
   background: red;
 }
+
+
+body {
+  #kladr_autocomplete ul {
+    background: #fafafa;
+    border-color: #b6b6b6;
+    color: #888;
+    font-size: 13px;
+  }
+
+  #kladr_autocomplete li {
+    border: none;
+    padding-left: 12px;
+    &.active {
+      border-radius: 0;
+      border: none;
+    }
+  }
+
+  #kladr_autocomplete li .ac-s {
+    color: #52A3B6;
+  }
+
+  #kladr_autocomplete li .ac-s2 {
+    color: #333333;
+  }
+
+  #kladr_autocomplete li .ac-s,
+  #kladr_autocomplete li .ac-s2 {
+    font-weight: bold;
+  }
+
+  #kladr_autocomplete li .ac-st {
+    color: #AAAAAA;
+  }
+}

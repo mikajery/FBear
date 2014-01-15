@@ -8,6 +8,7 @@ var Cart = function(form) {
         total_price = form.find('[data-cart=total-price]'),
         picture = form.find('[data-cart=picture]'),
         cart = this,
+        cart_helper = $('[data-type=cart-helper]'),
         params = form.serialize()
     ;
 
@@ -75,16 +76,25 @@ var Cart = function(form) {
         this.price = function() {
             return itemPrice();
         };
+
+        this.quantity = function() {
+            return getQuantity();
+        };
     };
 
     var calculate = function() {
-        var totalPrice = 0;
+        var totalPrice = 0,
+            items_quantity = 0
+        ;
+
 
         $.each(cart_items, function(i) {
             totalPrice += cart_items[i].price();
+            items_quantity += cart_items[i].quantity();
         });
 
         total_price.html(humanPrice(totalPrice));
+        cart_helper.html(items_quantity);
 
         var new_params = form.serialize();
         if (params != new_params)
