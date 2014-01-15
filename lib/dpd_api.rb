@@ -52,8 +52,8 @@ class DpdApi
       }
     else
       delivery_params = {
-        cityName: request_params['city'],
-        regionName: request_params['region']
+        cityName: request_params['city']
+        #regionName: request_params['region']
       }
     end
 

@@ -16,6 +16,7 @@ class Content::CartsController < Content::BaseController
     unless delivery_type.errors.present?
       render json: delivery.to_json
     else
+      #
       render json: { errors: delivery_type.errors[:calculate] }.to_json
     end
   end
@@ -63,7 +64,7 @@ class Content::CartsController < Content::BaseController
       cart_item.quantity = item[:quantity]
       cart_item.save
 
-      to_delete = to_delete.select{|d| d.good_id != cart_item.good_id}
+      to_delete = to_delete.select { |d| d.good_id != cart_item.good_id }
     end
 
     to_delete.each(&:delete) if to_delete.present?
@@ -100,7 +101,7 @@ class Content::CartsController < Content::BaseController
   end
 
   def delivery_params
-    params.require(:cart).permit([:country, :region, :city, :address, :zip, :delivery_type, :payment_type, :client => [:first_name, :last_name, :email, :phone]])
+    params.require(:cart).permit([:country, :region, :city, :street, :street_number, :site, :comment, :zip, :delivery_type, :payment_type, :client => [:first_name, :last_name, :email, :phone]])
   end
 
   def update_cart_params

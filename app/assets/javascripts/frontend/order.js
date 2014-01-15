@@ -54,7 +54,9 @@ var Order = function (el) {
         delivery_type = false,
         params_to_save = ['country', 'city', 'region', 'zip', 'street', 'street_number', 'site', 'comment'],
         templates = {},
-        data = {}
+        data = {},
+        calculateDelivery = false,
+        old_vars = {}
         ;
 
     var showPayment = function () {
@@ -91,19 +93,31 @@ var Order = function (el) {
     var showDeliveryPriceError = function (errors) {
         var icon = $('<div>').addClass('b-loading-error');
         delivery_view().html(icon);
+
+        delivery_hint.html(errors.join(''));
     }
+
+    var clearDeliveryPrice = function () {
+        delivery_view().html('—');
+    };
 
     var requestDeliveryPrice = function () {
         showDeliveryPriceLoading();
 
         $.post(el.data('delivery-path'), form.serialize())
-            .error(function (r) {
-                showDeliveryPriceError(r.errors);
+            .error(function() {
+                showDeliveryPriceError(['Ошибка расчета стоимости доставки.'])
             })
             .success(function (r) {
-                delivery_price = r.price / 1;
-                enableForm();
-                calculate();
+                if (r.price)
+                {
+                    delivery_price = r.price / 1;
+                    enableForm();
+                    calculate();
+                }
+                else if (r.errors) {
+                    showDeliveryPriceError(r.errors);
+                }
             });
     };
 
@@ -117,6 +131,10 @@ var Order = function (el) {
 
         if (errors.length == 0)
             requestDeliveryPrice();
+        else
+        {
+            clearDeliveryPrice();
+        }
     };
 
     var disableForm = function () {
@@ -152,7 +170,7 @@ var Order = function (el) {
         });
     };
 
-    var setRegionAndZip = function (kladr) {
+    var setRegionAndZip = function (kladr, isCity) {
         if (!kladr) return;
 
         if (kladr.parents.length > 0) {
@@ -162,10 +180,15 @@ var Order = function (el) {
 //            if (parent.type != 'Город')
 //                region_name.push(parent.typeShort)
 
-            region().val(region_name.join(' '));
+
+            if (isCity && region_name != city().val())
+                region().val(region_name.join(' '));
         }
 
         if (kladr.zip) zip().val(kladr.zip);
+
+        if (calculateDelivery)
+            getDeliveryPrice();
     };
 
     var updateAddress = function () {
@@ -218,7 +241,16 @@ var Order = function (el) {
                 building().kladr('parentId', obj.id);
             }
 
-            setRegionAndZip(obj);
+            if (city().val() != old_vars['city'])
+            {
+                old_vars['city'] = city().val();
+                region().val('');
+                zip().val('');
+                street().val('');
+                building().val('');
+            }
+
+            setRegionAndZip(obj, true);
             updateAddress();
         })
 
@@ -227,6 +259,13 @@ var Order = function (el) {
 
             if (obj) {
                 building().kladr('parentId', obj.id);
+            }
+
+            if (street().val() != old_vars['street'])
+            {
+                old_vars['street'] = street().val();
+                zip().val('');
+                building().val('');
             }
 
             setRegionAndZip(obj);
@@ -294,11 +333,13 @@ var Order = function (el) {
         }
 
         if (el.data('delivery-calculate')) {
+            calculateDelivery = true;
             delivery_price = false;
             disableForm();
             getDeliveryPrice();
         }
         else {
+            calculateDelivery = false;
             enableForm();
             delivery_price = order_options.delivery_types[delivery_type].price;
             calculate();

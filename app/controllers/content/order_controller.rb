@@ -52,7 +52,7 @@ class Content::OrderController < Content::BaseController
   end
 
   def order_params
-    params.require(:cart).permit([:country, :region, :city, :address, :zip, :delivery_type, :payment_type, :client => [:first_name, :last_name, :email, :phone]])
+    params.require(:cart).permit([:country, :region, :city, :street, :street_number, :site, :comment, :zip, :delivery_type, :payment_type, :client => [:first_name, :last_name, :email, :phone]])
   end
 end
 
