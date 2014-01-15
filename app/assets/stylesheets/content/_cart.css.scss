@@ -76,7 +76,7 @@
     }
 
     .cart-additionals {
-      padding-top: 20px;
+      //padding-top: 20px;
     }
 
     &.cart-item-btn {
@@ -143,6 +143,7 @@
   @include row(".cart-item-info");
 
   .cart-options {
+    padding-bottom: 30px;
     .title {
       padding-bottom: 8px;
     }
@@ -155,7 +156,11 @@
     .cart-options-items {
       //margin-bottom: 40px;
       & > li {
-        margin-bottom: 9px;
+        //margin-bottom: 9px;
+
+        .select2-container {
+          display: block;
+        }
 
         select {
           width: 100%;
