@@ -5,9 +5,9 @@
         <%= f.input :name %>
     <% end %>
 
-    <%= image_field @design_item, :icon, f, [300, 300] %>
+    <%= image_field @design_item, :icon, f, [300, 300], sizes: ['300x300'] %>
 
-    <%= image_field @design_item, :picture, f, [300, 300] %>
+    <%= image_field @design_item, :picture, f, [300, 300], sizes: ['300x300'] %>
 
     <%= language_input f %>
 

@@ -43,20 +43,20 @@
 
         <%= tab_pane :pictures do %>
             <%= f.input :picture_alignment, collection: get_alignments.map { |k, v| [v, k] }, include_blank: false %>
-            <%= image_field @good, 'picture', f, [100, 100] %>
-            <%= image_field @good, 'portrait', f, [100, 100] %>
-            <%= image_field @good, 'landscape', f, [100, 100] %>
+            <%= image_field @good, 'picture', f, [100, 100], sizes: ['300x300'] %>
+            <%= image_field @good, 'portrait', f, [100, 100], sizes: ['768x1024', '100x100'] %>
+            <%= image_field @good, 'landscape', f, [100, 100], sizes: ['768x1024', '100x100'] %>
 
             <hr/>
 
-            <%= image_field @good, 'thumb', f, [100, 100] %>
-            <%= image_field @good, 'logo', f, [100, 100], transparent: true %>
-            <%= image_field @good, 'logo_desc', f, [100, 100], transparent: true %>
+            <%= image_field @good, 'thumb', f, [100, 100], sizes: ['300x300', '400x400'] %>
+            <%= image_field @good, 'logo', f, [100, 100], transparent: true, sizes: ['300x300'] %>
+            <%= image_field @good, 'logo_desc', f, [100, 100], transparent: true, sizes: ['400x30'] %>
 
             <hr/>
 
-            <%= image_field @good, 'panorama', f, [100, 100] %>
-            <%= image_field @good, 'panorama_ipad', f, [100, 100] %>
+            <%= image_field @good, 'panorama', f, [100, 100], sizes: ['300x300'] %>
+            <%= image_field @good, 'panorama_ipad', f, [100, 100], sizes: ['300x300'] %>
         <% end %>
 
         <%= tab_pane :files do %>
