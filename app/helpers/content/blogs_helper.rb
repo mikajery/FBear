@@ -1,2 +1,0 @@
-module Content::BlogsHelper
-end

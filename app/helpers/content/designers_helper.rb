@@ -1,2 +1,0 @@
-module Content::DesignersHelper
-end
