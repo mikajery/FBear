@@ -6,6 +6,7 @@ class Content::GoodsController < Content::BaseController
 
   def item
     @good = Good.find_by_slug params[:slug]
+    raise PageNotFound unless @good.present?
   end
 
   def get_item

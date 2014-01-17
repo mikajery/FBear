@@ -188,4 +188,6 @@ CMS::Application.routes.draw do
 
     end
   end
+
+  match '*a', :to => 'content#show404', via: [:get, :post]
 end

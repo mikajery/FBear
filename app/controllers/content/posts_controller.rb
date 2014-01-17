@@ -9,5 +9,6 @@ class Content::PostsController < Content::BaseController
   def item
     @post = Post.find_by_slug params[:slug]
     @comments = @post.comments.where( locale: I18n.locale )
+    raise PageNotFound unless @post.present?
   end
 end

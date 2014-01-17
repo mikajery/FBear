@@ -19,11 +19,11 @@ class Content::BaseController < ApplicationController
   class UnknownLocaleException < StandardError; end
   class PageNotFound < StandardError; end
 
-  rescue_from UnknownLocaleException, :with => :not_found
-  rescue_from PageNotFound, :with => :not_found
+  rescue_from UnknownLocaleException, :with => :show404
+  rescue_from PageNotFound, :with => :show404
 
-  def not_found(exception)
-    render_error 404, exception
+  def show404()
+    render 'errors/error_404', layout: 'content'
   end
 
   def index

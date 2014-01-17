@@ -189,6 +189,14 @@ button {
   background: image-url('content/ajax-error.png') no-repeat;
 }
 
+.error-block {
+  background: image-url('content/matreshka.png') no-repeat top center;
+  margin-top: 150px;
+  padding-top: 330px;
+  text-align: center;
+  font-size: 35px;
+}
+
 @import 'header';
 @import 'footer';
 @import 'navigation';
