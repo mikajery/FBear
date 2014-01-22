@@ -162,6 +162,7 @@ ru:
         price: "Цена"
         title: "Название"
         good_weight: Вес, г
+        is_preorder_only: Только предзаказ
         good_volume: Объем, см³
         heading: "Заголовок"
         keywords: "Ключевые слова"

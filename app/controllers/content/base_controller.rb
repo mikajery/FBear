@@ -104,6 +104,8 @@ class Content::BaseController < ApplicationController
     def get_path
       @current_page = nil
       Rails.application.routes.router.recognize(request) do |route, matches, param|
+        #@asd = ContentRouter.routes
+        #abort @asd.inspect
         page = ContentRouter.routes.each do |r|
           if r[:as] == route.name or (r[:applies_to] and r[:applies_to].include?(route.name))
             @current_page = r[:page]
@@ -134,5 +136,5 @@ class Content::BaseController < ApplicationController
         format.all { render nothing: true, status: status }
       end
     end
-	
+
 end

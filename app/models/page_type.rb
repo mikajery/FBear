@@ -36,7 +36,7 @@ class PageType < ActiveRecord::Base
   # предзаказ
   def preorder_routes url
     [
-        {route: '', action: 'show', controller: 'preorder', as: 'preorder_show', applies_to: ['preorder_finish']},
+        {route: '', action: 'show', controller: 'preorder', as: 'preorder_show', applies_to: ['preorder_form']},
     ]
   end
 

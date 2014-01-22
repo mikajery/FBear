@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140115202408) do
+ActiveRecord::Schema.define(version: 20140122080110) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140115202408) do
     t.integer  "good_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "weight",           default: 9999, null: false
   end
 
   add_index "category_goods", ["good_category_id"], name: "index_category_goods_on_good_category_id", using: :btree
@@ -263,10 +264,10 @@ ActiveRecord::Schema.define(version: 20140115202408) do
   add_index "good_translations", ["locale"], name: "index_good_translations_on_locale", using: :btree
 
   create_table "goods", force: true do |t|
-    t.string   "name",                                    null: false
+    t.string   "name",                                       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug",                                    null: false
+    t.string   "slug",                                       null: false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
@@ -306,9 +307,10 @@ ActiveRecord::Schema.define(version: 20140115202408) do
     t.boolean  "on_main"
     t.boolean  "no_shadow"
     t.text     "parameters"
-    t.string   "article",                    default: "", null: false
+    t.string   "article",                    default: "",    null: false
     t.integer  "good_weight"
     t.integer  "good_volume"
+    t.boolean  "is_preorder_only",           default: false, null: false
   end
 
   create_table "goods_goods", force: true do |t|

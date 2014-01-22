@@ -23,6 +23,11 @@ CMS::Application.routes.draw do
     get "search" => 'search#search', as: :search
   end
 
+  scope '(:locale)/preorder', controller: 'content/preorder', locale: ContentRouter.locales do
+    post '', action: :show, as: :preorder_form
+    patch '', action: :finish, as: :preorder_finish
+  end
+
   # корзина
   scope '(:locale)/cart', locale: ContentRouter.locales do
     # покупка товара
@@ -39,9 +44,9 @@ CMS::Application.routes.draw do
     delete controller: 'content/carts', action: :remove_good, as: :cart_remove
 
     # предзаказ подтверждение
-    scope :preorder, controller: 'content/preorder' do
-      patch '', action: :finish, as: :preorder_finish
-    end
+    #scope :preorder, controller: 'content/preorder' do
+    #  patch '', action: :finish, as: :preorder_finish
+    #end
 
     # заказ подтверждение
     scope :order, controller: 'content/order' do

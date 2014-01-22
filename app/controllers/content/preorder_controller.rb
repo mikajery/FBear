@@ -3,11 +3,11 @@ class Content::PreorderController < Content::BaseController
   layout 'content'
 
   before_action :check
-  before_action :check_cart, only: [:show]
   before_action :set_preorder, only: [:done]
 
-
   def show
+    @cart = Order::Preorder.new
+    @good = Good.find(item_params['id'])
   end
 
   def done
@@ -15,12 +15,18 @@ class Content::PreorderController < Content::BaseController
   end
 
   def finish
-    params = order_params
+    @cart = Order::Preorder.new
+    @cart.language = @language
+    @cart.token = Order.token
+
+    params = preorder_params
     params[:client] = Client.from_params params[:client]
     params[:type] = 'Order::Preorder'
 
     respond_to do |format|
-      if @cart.update(params)
+      if @cart.update!(params)
+        @cart.items << OrderGood.from_good(Good.find(preorder_good_params['id']))
+
         PreorderMailer.order(@cart).deliver
         PreorderMailer.notice(@cart).deliver
 
@@ -37,16 +43,21 @@ class Content::PreorderController < Content::BaseController
     raise PageNotFound unless @language.is_default
   end
 
-  def check_cart
-    redirect_to cart_path unless @cart.items.present?
-  end
 
   def set_preorder
     @preorder = Order::Preorder.find_by_token @token
   end
 
-  def order_params
+  def item_params
+    params.require(:good).permit(:id)
+  end
+
+  def preorder_params
     params.require(:cart).permit([:client => [:first_name, :last_name, :email, :phone]])
+  end
+
+  def preorder_good_params
+    params.require(:good).permit(:id)
   end
 end
 

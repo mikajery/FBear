@@ -11,6 +11,9 @@
 
 <%= simple_form_for @cart, url: preorder_finish_path, method: :patch, html: {novalidate: false} do |form| %>
     <%= simple_fields_for 'cart' do |f| %>
+        <%= simple_fields_for 'good', @good do |c| %>
+            <%= c.input :id, as: :hidden %>
+        <% end %>
 
         <div class="form-block">
           <h2><%= T "Персональные данные" %></h2>
