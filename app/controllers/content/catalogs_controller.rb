@@ -6,6 +6,7 @@
 
 class Content::CatalogsController < Content::BaseController
   before_action :get_locale
+  before_action :set_category
   before_action :navigation, only: [:list, :item]
   protect_from_forgery except: [:fetch]
 
@@ -14,8 +15,8 @@ class Content::CatalogsController < Content::BaseController
   end
 
   def item
-    @items = Good.all
-    render 'list'
+    @items = @category.goods
+    #render 'list'
   end
 
   def fetch
@@ -52,6 +53,10 @@ class Content::CatalogsController < Content::BaseController
       params[:slug] && params[:slug] == 'all'
     end
 
+  def set_category
+    @category = GoodCategory.find_by slug: params[:slug]
+  end
+
     def fetch_params
       params.require(:collection)
     end
@@ -59,10 +64,10 @@ class Content::CatalogsController < Content::BaseController
     def navigation
       links = []
 
-      links << { href: '#all', title: T('Все товары') }
+      links << { href: catalog_path, title: T('Все товары'), category: 'all' }
 
       GoodCategory.all.each do |i|
-        links << { href: "##{i.slug}", title: i.title }
+        links << { href: catalog_item_path(i.slug), title: i.title, category: i.slug }
       end
 
       @navigation = {

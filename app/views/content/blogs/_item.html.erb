@@ -19,9 +19,11 @@
 				</div>
 
 				<div class="blog-category">
-					<a href="<%= blogs_item_path blog.category.slug %>">
-						<%= blog.category.name unless blog.category.nil? %>
+                  <% blog.categories.each do |c| %>
+					<a href="<%= blogs_item_path c.slug %>">
+						<%= c.name if c.present? %>
 					</a>
+                  <% end %>
 				</div>
 
 				<div class="blog-more">

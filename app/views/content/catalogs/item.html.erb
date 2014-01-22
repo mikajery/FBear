@@ -1,17 +1,11 @@
 <%= content_for :extra_scripts do %>
-    <%= render partial: 'views' %>
-
-    <script type="text/javascript">
-        var fetchUrl = "<%= catalog_fetch_path %>";
-            $(document).on('page:load ready', function() {
-                $('a[data-category]').each(function() {
-                    $(this).attr('href', '#' + $(this).data('category'));
-                });
-            });
+    <script>
+      $(document).on('page:load ready', function() {
+        var showroom = new Showroom($('[data-action=showroom]'));
+      });
     </script>
-    <%= javascript_include_tag "backbone/catalog" %>
-<% end %>
 
+<% end %>
 <div class="showroom" data-action="showroom">
   <% if !defined? controls or (defined? controls and controls != false) %>
       <ul class="showroom-controls" data-action="middle">
@@ -28,7 +22,7 @@
       </ul>
   <% end %>
 
-  <div class="showroom-slide loading" data-showroom="slide" style="margin-left:60px">
+  <div class="showroom-slide" data-showroom="slide" style="margin-left:60px">
     <div class="loading-wrap" data-showroom="loading">
       <div class="loading">
         <div class="wrap">
@@ -42,14 +36,12 @@
     </div>
     <div data-region="goods"></div>
 
-    <%= render 'promo', :promo => promo if defined? promo %>
-
-    <% if false && @items %>
+    <% if @items %>
         <div class="showroom-items">
           <% @items.each_with_index do |item, i| %>
 
               <% if i % 2 == 0 %>
-                  <div class="showroom-col" data-showroom="item-col">
+                  <div class="showroom-col ready" data-showroom="item-col">
               <% end %>
 
               <%= render 'item', :item => item %>

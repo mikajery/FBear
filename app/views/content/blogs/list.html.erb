@@ -3,7 +3,13 @@
 
     <script type="text/javascript">
         var fetchUrl = "<%= blog_fetch_path %>";
+        $(document).on('page:load ready', function () {
+            $('a[data-category]').each(function () {
+                $(this).attr('href', '#' + $(this).data('category'));
+            });
+        });
     </script>
+
     <%= javascript_include_tag "backbone/blog" %>
 <% end %>
 
