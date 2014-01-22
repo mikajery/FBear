@@ -110,7 +110,7 @@
               <%= simple_form_for @good, url: preorder_form_path, method: :post do |f| %>
                   <%= f.input :id, as: :hidden %>
 
-                  <%= content_tag :button, '', type: :submit %>
+                  <%= content_tag :button, '', type: :submit, class: 'btn-preorder' %>
               <% end %>
           <% else %>
               <%= simple_form_for @good, url: cart_buy_path, method: :post do |f| %>
