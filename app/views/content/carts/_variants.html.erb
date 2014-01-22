@@ -12,7 +12,7 @@
               data: {
                       price: v.price,
                       picture: (v.picture.url(:cart) if v.picture and v.picture.file?),
-                      thumb: (v.picture.url(:additional) if v.picture and v.picture.file?)
+                      thumb: (v.material.url(:additional) if v.material and v.material.file?)
               },
               selected: (true if v == cart_item.variant) %>
         <% end %>
