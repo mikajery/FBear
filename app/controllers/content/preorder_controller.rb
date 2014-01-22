@@ -24,14 +24,14 @@ class Content::PreorderController < Content::BaseController
     params[:type] = 'Order::Preorder'
 
     respond_to do |format|
-      if @cart.update!(params)
+      if @cart.update(params)
         @cart.items << OrderGood.from_good(Good.find(preorder_good_params['id']))
 
         PreorderMailer.order(@cart).deliver
         PreorderMailer.notice(@cart).deliver
 
-        cookies['_order_done'] = @cart.token
-        format.html { redirect_to order_done_url, notice: '_order_updated_successfully' }
+        cookies['_preorder_done'] = @cart.token
+        format.html { redirect_to preorder_done_url, notice: '_order_updated_successfully' }
       else
         format.html { render action: 'show' }
       end
@@ -45,7 +45,9 @@ class Content::PreorderController < Content::BaseController
 
 
   def set_preorder
+    @token = cookies['_preorder_done']
     @preorder = Order::Preorder.find_by_token @token
+    raise PageNotFound unless @preorder.present?
   end
 
   def item_params
