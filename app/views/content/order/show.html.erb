@@ -88,8 +88,7 @@
                         <input type="radio" id="delivery_type<%= delivery_type.id %>" name="cart[delivery_type]" value="<%= delivery_type.id %>" data-delivery-calculate="<%= delivery_type.is_cost_calc_needed? %>" data-delivery-type required/>
                         <label for="delivery_type<%= delivery_type.id %>">
                           <%= delivery_type.name %>
-                          <% if delivery_type.conditions.present? %> <sup data-order="popover">?</sup>
-                          <% end %>
+                          <% if delivery_type.hint.present? %> <sup data-order="popover">?</sup><% end %>
                         </label>
                       </div>
                   <% end %>
@@ -114,6 +113,8 @@
                     <span data-order="delivery-price">0</span>
                   </div>
                 </div>
+
+                <div class="order-delivery__error" data-order="delivery_price_error"></div>
 
                 <div class="order-delivery__desc" data-order="delivery_price_desc">
                 </div>

@@ -132,6 +132,10 @@
   }
 }
 
+.order-delivery__error {
+  margin-bottom: 0.6em;
+}
+
 @include row('.order-delivery__row');
 
 .order-delivery__icon {

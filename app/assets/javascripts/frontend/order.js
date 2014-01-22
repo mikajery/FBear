@@ -22,6 +22,7 @@ var Order = function (el) {
         submit_btn = el.find('[data-order=submit]'),
         delivery_price = undefined,
         delivery_hint = el.find('[data-order=delivery_price_desc]'),
+        delivery_error = el.find('[data-order=delivery_price_error]'),
         delivery_fields = function () {
             return el.find('[data-delivery-calc]')
         },
@@ -88,16 +89,18 @@ var Order = function (el) {
 
     var showDeliveryPriceLoading = function () {
         delivery_view().html($('<div>').addClass('b-loading'));
+        delivery_error.html('');
     }
 
     var showDeliveryPriceError = function (errors) {
         var icon = $('<div>').addClass('b-loading-error');
         delivery_view().html(icon);
-        delivery_hint.html(errors.join(''));
+        delivery_error.html(errors.join(''));
     }
 
     var clearDeliveryPrice = function () {
         delivery_view().html('—');
+        delivery_error.html('');
     };
 
     var requestDeliveryPrice = function () {
@@ -327,7 +330,8 @@ var Order = function (el) {
         resetRegions();
         showPayment();
 
-        delivery_hint.html(order_options.delivery_types[delivery_type].hint);
+        delivery_hint.html(order_options.delivery_types[delivery_type].conditions);
+        delivery_error.html('');
 
         if (order_options.delivery_types[delivery_type].layout == 'address_and_payment')
         {
@@ -359,8 +363,11 @@ var Order = function (el) {
 //            console.log(order_options.delivery_types[delivery_type]);
 
         if (delivery_price !== false) {
-            delivery_view().html(delivery_price.money(0, ' ', '', ' р.'));
-            total_price += delivery_price;
+
+            if (delivery_price) {
+                delivery_view().html(delivery_price.money(0, ' ', '', ' р.'));
+                total_price += delivery_price;
+            }
         }
         else
             delivery_view().html('—');
@@ -381,7 +388,7 @@ var Order = function (el) {
             html: true,
             title: 'Условия доставки',
             trigger: 'hover',
-            content: order_options.delivery_types[$(this).val()].conditions,
+            content: order_options.delivery_types[$(this).val()].hint,
             animation: true
         })
     })
