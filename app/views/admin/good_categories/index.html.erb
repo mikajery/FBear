@@ -17,7 +17,7 @@
         Опаньки.. А товаров-то и нету :(
       </div>
     <% else %>
-      <table class="table table-striped table-nested" data-type="nested" data-nested-url="<%= order_admin_goods_path %>">
+      <table class="table table-striped table-nested" data-type="nested" data-nested-url="<%= @collection.present? ? order_admin_good_category_path(@collection) : order_admin_goods_path %>">
         <thead>
           <tr>
             <th>Товар</th>

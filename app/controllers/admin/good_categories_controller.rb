@@ -1,20 +1,20 @@
 # CRUD категорий товаров
 class Admin::GoodCategoriesController < Admin::BaseController
   include MultilingualController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:show, :edit, :update, :destroy, :order]
 
   # GET /categories
   # GET /categories.json
   def index
     @collections = GoodCategory.all
     @items = Good.all.to_a
-    
+
     if params[:id]
       if params[:id] == 'main'
-        @items.select! {|i| i.on_main}
-      else 
+        @items.select! { |i| i.on_main }
+      else
         @collection = GoodCategory.find(params[:id])
-        @items = @items.delete_if {|i| i.good_category.select {|c| c == @collection}.empty?}
+        @items = @items.delete_if { |i| i.good_category.select { |c| c == @collection }.empty? }.sort_by{|g| g.category_good_weight }
       end
     end
   end
@@ -63,6 +63,29 @@ class Admin::GoodCategoriesController < Admin::BaseController
     end
   end
 
+  def order
+    errors = []
+
+    if order_params
+      order_params.each_with_index do |id, weight|
+        category_good = CategoryGood.find_or_initialize_by good_id: id, good_category_id: @category.id
+
+
+        unless category_good.update(weight: weight)
+          errors << category_good.errors
+        end
+      end
+    end
+
+    respond_to do |format|
+      if errors.empty?
+        format.json { head :no_content }
+      else
+        format.json { render json: errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
@@ -74,22 +97,26 @@ class Admin::GoodCategoriesController < Admin::BaseController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_category
-      @category = GoodCategory.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_category
+    @category = GoodCategory.find(params[:id])
+  end
 
-    def safe_params
-      [:name, :slug, :parent_id, :title, :heading, :keywords, :description]
-    end
+  def safe_params
+    [:name, :slug, :parent_id, :title, :heading, :keywords, :description]
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+  # Never trust parameters from the scary internet, only allow the white list through.
 
-    def good_category_params
-      category_params
-    end
+  def order_params
+    params.require(:order)
+  end
 
-    def category_params
-      permit_params
-    end
+  def good_category_params
+    category_params
+  end
+
+  def category_params
+    permit_params
+  end
 end

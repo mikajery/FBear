@@ -25,7 +25,7 @@ class Content::CatalogsController < Content::BaseController
       @goods = Good.all.where('on_main is true')
     else
       category = Category.find_by_slug fetch_params
-      @goods = category.goods if category.present?
+      @goods = category.goods.sort_by{|g| g.category_good_weight } if category.present?
     end
 
     respond_to do |format|

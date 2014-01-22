@@ -111,6 +111,7 @@ CMS::Application.routes.draw do
     # категории товаров
     resources :good_categories, path: 'catalog' do
       get 'items', on: :member, action: :index, as: :items
+      post 'order', on: :member, action: :order, as: :order
       get ':locale', on: :member, action: :edit, as: 'languaged'
     end
 
