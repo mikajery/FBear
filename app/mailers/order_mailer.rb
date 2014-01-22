@@ -1,13 +1,13 @@
 # Мейлер заказа
 class OrderMailer < ActionMailer::Base
-  include SettingsHelper
-
+  #include SettingsHelper
   include TranslateHelper
   add_template_helper(TranslateHelper)
 
   # пока так, да. нужно вытаскивать в конфиг и цеплять в капистрано
   # TODO вытащить в конфиг и прописать в капистрано копирование конфига
-  default from: S('mail_from', 'order@lllooch.ru')
+  #default from: S('mail_from', 'order@lllooch.ru')
+  default from: "order@lllooch.ru"
 
   # письмо клиенту
   def order order
