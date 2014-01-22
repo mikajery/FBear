@@ -16,6 +16,7 @@ class Content::PreorderController < Content::BaseController
 
   def finish
     @cart = Order::Preorder.new
+    @cart.order_status = OrderStatus::New.first
     @cart.language = @language
     @cart.token = Order.token
 
