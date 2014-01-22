@@ -4,8 +4,7 @@ class PreorderMailer < ActionMailer::Base
   include TranslateHelper
   add_template_helper(TranslateHelper)
 
-
-
+  # хардкод тут потому, что нельзя использовать другой имейл, отличный от настроек мейлера, т.к. smtp его не пропустит
   default from: "order@lllooch.ru"
 
 
