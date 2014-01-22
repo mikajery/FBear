@@ -1,12 +1,6 @@
 @include block_list(".cart-items");
 
-.cart {
-  padding-bottom: 100px;
-
-  h1 {
-    padding-left: 30px;
-  }
-
+.big-select {
   .select2-container {
     .select2-choice {
       line-height: 104px;
@@ -29,6 +23,14 @@
         margin-left: -2px;
       }
     }
+  }
+}
+
+.cart {
+  padding-bottom: 100px;
+
+  h1 {
+    padding-left: 30px;
   }
 
   .cart-total {
