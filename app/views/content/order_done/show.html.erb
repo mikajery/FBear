@@ -1,15 +1,35 @@
+<%= content_for :footer_scripts do %>
+    <script type="text/javascript">
+        ga('require', 'ecommerce', 'ecommerce.js');
+
+        ga('ecommerce:addTransaction', {
+            'id': '<%= @order.id %>',
+            'affiliation': 'lllooch.ru',
+            'revenue': '<%= @order.total_price %>',
+            'shipping': '<%= @order.delivery_price %>'
+        });
+
+        <% @order.items.each do |i| %>
+            ga('ecommerce:addItem', {
+                'id': '<%= @order.id %>',
+                'name': '<%= i.good_name %>',
+                'price': '<%= i.price %>',
+                'quantity': '<%= i.quantity %>'
+            });
+        <% end %>
+
+        ga('ecommerce:send');
+    </script>
+<% end %>
+
 <div class="container order">
   <h1>
-    <% if @order.type == 'Order::Preorder' %>
-        <%= T "Спасибо за предзаказ!" %>
-    <% elsif @order.type == 'Order::Robust' %>
-        <%= T "Спасибо за заказ!" %>
-    <% end %>
+    <%= T "Спасибо за заказ!" %>
   </h1>
 
   <% unless @current_page.content.empty? %>
-    <div class="content">
-      <%= @current_page.content.html_safe %>
-    </div>
+      <div class="content">
+        <%= @current_page.content.html_safe %>
+      </div>
   <% end %>
 </div>

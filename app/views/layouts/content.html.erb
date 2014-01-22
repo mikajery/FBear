@@ -45,9 +45,11 @@
     </div>
 <% end %>
 
-<%= yield :footer_scripts %>
+
 <% if S "counters" %>
     <%= S("counters").html_safe %>
 <% end %>
+
+<%= yield :footer_scripts %>
 </body>
 </html>

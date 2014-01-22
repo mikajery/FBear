@@ -67,6 +67,15 @@ class Order < ActiveRecord::Base
     0
   end
 
+  def total_price
+    price = []
+    price << items_price if items_price > 0
+    price << delivery_price if delivery_price > 0
+    price << payment_type if payment_price > 0
+
+    price.sum
+  end
+
   def items_quantity
     order_goods.map(&:quantity).sum
   end
