@@ -58,7 +58,11 @@ class Order < ActiveRecord::Base
   # стоимость доставки
   def delivery_price
     price = 0
-    price += self.delivery_type.price if self.delivery_type.present?
+    if self.delivery_type.is_cost_calc_needed?
+      price += self.delivery_request.price if self.delivery_request.present?
+    else
+      price += self.delivery_type.price if self.delivery_type.present?
+    end
     price
   end
 
