@@ -5,11 +5,11 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.0'
 gem 'pg'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '2.3.2.1'
 gem 'rails_bootstrap_navbar'
 
 group :assets do
-  gem 'sass-rails', '~> 4.0.0'
+  gem 'sass-rails'
 end
 
 gem 'uglifier', '>= 1.3.0'
@@ -23,9 +23,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-gem "simple_form", "3.0.0.rc"
-gem "simple_enum"
-gem "devise", "~> 3.0.0.rc"
+gem "simple_form"
 gem "stringex"
 gem "date_validator"
 gem "russian"
@@ -37,7 +35,6 @@ group :production do
 end
 
 gem "better_errors", "0.9.0"
-gem "foreigner"
 gem "cocoon"
 gem "twitter-bootstrap-rails"
 
@@ -59,7 +56,7 @@ gem 'redactor-rails', '0.3.6'
 gem 'rvm-capistrano'
 gem 'globalize'
 gem 'paper_trail', github: 'airblade/paper_trail', branch: 'master'
-gem "paperclip", github: 'thoughtbot/paperclip', branch: 'rails-4'
+gem "paperclip"
 gem 'jasny_bootstrap_extension_rails'
 gem 'bootstrap-datepicker-rails'
 gem "select2-rails"

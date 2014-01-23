@@ -133,7 +133,7 @@ CMS::Application.routes.draw do
     end
 
     # свойства, языки, страницы, теги, параметры, переводы
-    resources :properties, :languages, :pages,  :tags, :settings, :translations do
+    resources :properties, :languages, :pages, :tags, :settings, :translations do
       get ':locale', on: :member, action: :edit, as: 'languaged'
     end
 
@@ -180,6 +180,7 @@ CMS::Application.routes.draw do
     end
   end
 
+
   # подключение контентного роутера
   ContentRouter.reload
   unless ContentRouter.routes.nil?
@@ -187,13 +188,17 @@ CMS::Application.routes.draw do
       ContentRouter.routes.each do |r|
         get r.except(:page, :applies_to, :active)
       end
-
-      GoodsRouter.routes.each do |r|
-        get r[:route] => redirect(r[:redirect_to])
-      end
-
     end
   end
+
+  # редиректы товаров
+  #GoodsRouter.reload
+  unless GoodsRouter.routes.nil?
+    GoodsRouter.routes.each do |r|
+      get r[:route] => redirect(r[:redirect_to])
+    end
+  end
+
 
   match '*a', :to => 'content#show404', via: [:get, :post]
 end

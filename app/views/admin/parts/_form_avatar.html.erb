@@ -4,7 +4,7 @@
   </label>
 
   <div class="controls">
-    <div class="fileupload fileupload-new" data-provides="fileupload">
+    <div class="fileupload <%= image.file? ? 'fileupload-exists' : 'fileupload-new' %>" data-provides="fileupload">
       <div class="fileupload-preview thumbnail" style="width: <%= defined?(size[0]) ? size[0].to_s + 'px' : '200px' %>; height: <%= defined?(size[1]) ? size[1].to_s + 'px' : '100px' %><%= if options[:transparent] then
                                                                                                                                                                                               '; background: url(' + image_url('admin/transparent.png') + ');'
                                                                                                                                                                                             end %>">

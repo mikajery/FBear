@@ -48,27 +48,6 @@ class Good < ActiveRecord::Base
   attr_accessor :panorama
   attr_accessor :panorama_ipad
 
-  validates_attachment_content_type :panorama, :content_type => ['image/jpeg', 'image/png','image/gif']
-  validates_attachment_content_type :panorama_ipad, :content_type => ['image/jpeg', 'image/png','image/gif']
-
-  validates :logo, :attachment_presence => true
-  validates_attachment_content_type :logo, :content_type => ['image/jpeg', 'image/png','image/gif']
-
-  #validates :logo_desc, :attachment_presence => true
-  validates_attachment_content_type :logo_desc, :content_type => ['image/jpeg', 'image/png','image/gif']
-
-  validates :thumb, :attachment_presence => true
-  validates_attachment_content_type :thumb, :content_type => ['image/jpeg', 'image/png','image/gif']
-
-  validates :picture, :attachment_presence => true
-  validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/png','image/gif']
-
-  # validates :portrait, :attachment_presence => true
-  validates_attachment_content_type :portrait, :content_type => ['image/jpeg', 'image/png','image/gif']
-
-  # validates :landscape, :attachment_presence => true
-  validates_attachment_content_type :landscape, :content_type => ['image/jpeg', 'image/png','image/gif']
-
   has_attached_file :logo, 
     styles: {preview: "300x300#"},
     default_url: "/images/:style/missing.png",
@@ -140,6 +119,27 @@ class Good < ActiveRecord::Base
     url: "/uploads/goods/:id/panorama/ipad/:style/:basename.:extension",
     path: ":rails_root/public/uploads/goods/:id/panorama/ipad/:style/:basename.:extension",
     convert_options: { picture: "-quality 79" }
+
+  validates_attachment_content_type :panorama, :content_type => ['image/jpeg', 'image/png','image/gif']
+  validates_attachment_content_type :panorama_ipad, :content_type => ['image/jpeg', 'image/png','image/gif']
+
+  validates :logo, :attachment_presence => true
+  validates_attachment_content_type :logo, :content_type => ['image/jpeg', 'image/png','image/gif']
+
+  #validates :logo_desc, :attachment_presence => true
+  validates_attachment_content_type :logo_desc, :content_type => ['image/jpeg', 'image/png','image/gif']
+
+  validates :thumb, :attachment_presence => true
+  validates_attachment_content_type :thumb, :content_type => ['image/jpeg', 'image/png','image/gif']
+
+  validates :picture, :attachment_presence => true
+  validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/png','image/gif']
+
+  # validates :portrait, :attachment_presence => true
+  validates_attachment_content_type :portrait, :content_type => ['image/jpeg', 'image/png','image/gif']
+
+  # validates :landscape, :attachment_presence => true
+  validates_attachment_content_type :landscape, :content_type => ['image/jpeg', 'image/png','image/gif']
 
   def categories
     good_category

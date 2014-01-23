@@ -19,14 +19,15 @@ class Post < ActiveRecord::Base
 
   attr_accessor :picture
 
-  validates :picture, :attachment_presence => true
-  validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/png','image/gif']
-
-  has_attached_file :picture, 
+  has_attached_file :picture,
     styles: {admin: "30x30#", preview: "400x400#"},
     default_url: "/images/:style/missing.png",
     url: "/uploads/blogs/:id/:style/:basename.:extension",
     path: ":rails_root/public/uploads/blogs/:id/:style/:basename.:extension"
+
+  validates :picture, :attachment_presence => true
+  validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/png','image/gif']
+
 
   # генерация блоков в необходимой последовательности
   # - картинки группируются в галерею

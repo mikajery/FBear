@@ -127,6 +127,11 @@ class Admin::VariantsController < Admin::BaseController
 
       params = permit_params
       params[:property_types] = property_types
+
+      [:picture, :material].each do |i|
+        params[i] = nil if params[i] == ''
+      end
+
       params
     end
 

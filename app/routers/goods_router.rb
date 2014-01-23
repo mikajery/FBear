@@ -1,7 +1,7 @@
 # роутер для товаров
 # редирект с короткого урла на длинный
 # /moo > 301 > /goods/moo
-class GoodsRouter
+class GoodsRouter < Object
   def self.reload
     @@routes = nil
   end
