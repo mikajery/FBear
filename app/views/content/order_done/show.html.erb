@@ -27,6 +27,11 @@
     <%= T "Спасибо за заказ!" %>
   </h1>
 
+  <p>
+    <%= T "Номера Вашего заказа:" %> <%= @order.id %>.<br />
+    <%= T "Менеджеры свяжутся с Вами в самое ближайшее время." %>
+  </p>
+
   <% unless @current_page.content.empty? %>
       <div class="content">
         <%= @current_page.content.html_safe %>
