@@ -13,6 +13,8 @@
             ga('ecommerce:addItem', {
                 'id': '<%= @order.id %>',
                 'name': '<%= i.good_name %>',
+                'sku': '<%= i.article %>',
+                'category': '<%= i.good.categories.map(&:name).join(' ') %>',
                 'price': '<%= i.price %>',
                 'quantity': '<%= i.quantity %>'
             });

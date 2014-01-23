@@ -17,6 +17,10 @@ class OrderGood < ActiveRecord::Base
     self.new(good: good, quantity: 1, price: good.price)
   end
 
+  def article
+    variant.present? ? variant.full_article : good.article
+  end
+
   def full_price
     price * quantity
   end
