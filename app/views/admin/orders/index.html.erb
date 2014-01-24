@@ -6,6 +6,7 @@
 <table class="table table-striped">
   <thead>
   <tr>
+    <th width="40px">ID</th>
     <th width="25%">Клиент</th>
     <th>Товары</th>
     <th width="15%">Доставка</th>
@@ -17,6 +18,9 @@
   <tbody>
   <% @orders.each do |order| %>
       <tr>
+        <td>
+          <%= order.id %>
+        </td>
         <td>
           <%= order.client.full_name if order.client.present? %>
           <%= content_tag :div do %>
