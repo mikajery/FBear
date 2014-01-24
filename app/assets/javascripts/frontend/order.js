@@ -3,6 +3,7 @@ var Order = function (el) {
         payment_types = function () {
             return el.find('[data-payment-type]')
         },
+        free_translation = el.data('free'),
         address_view = $('[data-view=address]'),
         payment_view = $('[data-view=payment]'),
         delivery_view = function() { return el.find('[data-order=delivery-price]') },
@@ -359,13 +360,10 @@ var Order = function (el) {
     var calculate = function () {
         var total_price = order_options.items_price;
 
-//        if (order_options.delivery_types[delivery_type])
-//            console.log(order_options.delivery_types[delivery_type]);
-
         if (delivery_price !== false) {
-
-            if (delivery_price) {
-                delivery_view().html(delivery_price.money(0, ' ', '', ' р.'));
+            if (delivery_price >= 0)
+            {
+                delivery_view().html(delivery_price == 0 ? free_translation : delivery_price.money(0, ' ', '', ' р.'));
                 total_price += delivery_price;
             }
         }

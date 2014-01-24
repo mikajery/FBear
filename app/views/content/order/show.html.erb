@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="/kladrapi/jquery.kladr.min.css"/>
 <% end %>
 
-<div class="container cart order-form" data-type="order" data-delivery-path="<%= cart_delivery_path %>">
+<div class="container cart order-form" data-type="order" data-free="<%= T('бесплатно') %>" data-delivery-path="<%= cart_delivery_path %>">
 <h1>
   <%= T "Заказ" %>
 </h1>
@@ -110,7 +110,7 @@
                   </div>
 
                   <div class="order-delivery__price">
-                    <span data-order="delivery-price">0</span>
+                    <span data-order="delivery-price">—</span>
                   </div>
                 </div>
 
