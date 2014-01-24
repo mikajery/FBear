@@ -15,6 +15,7 @@ class Content::OrderController < Content::BaseController
   end
 
   def finish
+    cookies['_ga_sent'] = nil
     params = order_params
     params[:client] = Client.from_params params[:client]
 

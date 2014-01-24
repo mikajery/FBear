@@ -1,15 +1,16 @@
-<%= content_for :footer_scripts do %>
-    <script type="text/javascript">
-        ga('require', 'ecommerce', 'ecommerce.js');
+<% if @ga %>
+    <%= content_for :footer_scripts do %>
+        <script type="text/javascript">
+            ga('require', 'ecommerce', 'ecommerce.js');
 
-        ga('ecommerce:addTransaction', {
-            'id': '<%= @order.id %>',
-            'affiliation': 'lllooch.ru',
-            'revenue': '<%= @order.total_price %>',
-            'shipping': '<%= @order.delivery_price %>'
-        });
+            ga('ecommerce:addTransaction', {
+                'id': '<%= @order.id %>',
+                'affiliation': 'lllooch.ru',
+                'revenue': '<%= @order.total_price %>',
+                'shipping': '<%= @order.delivery_price %>'
+            });
 
-        <% @order.items.each do |i| %>
+            <% @order.items.each do |i| %>
             ga('ecommerce:addItem', {
                 'id': '<%= @order.id %>',
                 'name': '<%= i.good_name %>',
@@ -18,10 +19,11 @@
                 'price': '<%= i.price %>',
                 'quantity': '<%= i.quantity %>'
             });
-        <% end %>
+            <% end %>
 
-        ga('ecommerce:send');
-    </script>
+            ga('ecommerce:send');
+        </script>
+    <% end %>
 <% end %>
 
 <div class="container order">
@@ -30,7 +32,7 @@
   </h1>
 
   <p>
-    <%= T "Номера Вашего заказа:" %> <%= @order.id %>.<br />
+    <%= T "Номера Вашего заказа:" %> <%= @order.id %>.<br/>
     <%= T "Менеджеры свяжутся с Вами в самое ближайшее время." %>
   </p>
 

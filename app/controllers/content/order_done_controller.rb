@@ -5,6 +5,10 @@ class Content::OrderDoneController < Content::BaseController
   before_action :set_order
 
   def show
+    unless cookies['_ga_sent'].present?
+      @ga = true
+      cookies['_ga_sent'] = true
+    end
   end
 
   private
