@@ -201,7 +201,7 @@
                       </label>
 
                       <div class="input-wrap">
-                        <%= f.input_field :street_number, placeholder: "Введите номер дома", required: true, class: ('invalid' if form.object.errors['street_number'].present?), data: {'delivery-calc' => 'true', 'cart-kladr' => 'building'} %>
+                        <%= f.input_field :street_number, placeholder: "Введите номер дома", required: true, class: ('invalid' if form.object.errors['street_number'].present?), data: {'cart-kladr' => 'building'} %>
                       </div>
                     </div>
                   </div>

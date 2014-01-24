@@ -6,7 +6,9 @@ var Order = function (el) {
         free_translation = el.data('free'),
         address_view = $('[data-view=address]'),
         payment_view = $('[data-view=payment]'),
-        delivery_view = function() { return el.find('[data-order=delivery-price]') },
+        delivery_view = function () {
+            return el.find('[data-order=delivery-price]')
+        },
         total_view = el.find('[data-order=total]'),
         map_view = function () {
             return el.find('[data-order=map]').first()
@@ -58,7 +60,9 @@ var Order = function (el) {
         templates = {},
         data = {},
         calculateDelivery = false,
-        old_vars = {}
+        old_vars = {},
+        delivery_request = false,
+        delivery_request_aborted = true
         ;
 
     var showPayment = function () {
@@ -107,15 +111,20 @@ var Order = function (el) {
     var requestDeliveryPrice = function () {
         showDeliveryPriceLoading();
 
-        $.post(el.data('delivery-path'), form.serialize())
-            .error(function() {
-                showDeliveryPriceError(['Ошибка расчета стоимости доставки.'])
+        if (delivery_request) {
+            delivery_request.abort();
+            delivery_request_aborted = true;
+        }
+
+        delivery_request = $.post(el.data('delivery-path'), form.serialize())
+            .error(function () {
+                if (!delivery_request_aborted) showDeliveryPriceError(['Ошибка расчета стоимости доставки.'])
             })
             .success(function (r) {
                 enableForm();
+                delivery_request_aborted = false;
 
-                if (r.price)
-                {
+                if (r.price) {
                     delivery_price = r.price / 1;
                     calculate();
                 }
@@ -137,8 +146,7 @@ var Order = function (el) {
 
         if (errors.length == 0)
             requestDeliveryPrice();
-        else
-        {
+        else {
             clearDeliveryPrice();
         }
     };
@@ -238,7 +246,7 @@ var Order = function (el) {
         new Kladr(street(), 'street');
         new Kladr(building(), 'building');
 
-        city().on('kladr_select kladr_check',function (e, obj) {
+        city().on('kladr_select kladr_check', function (e, obj) {
             street().kladr('parentType', $.kladr.type.city);
             building().kladr('parentType', $.kladr.type.city);
 
@@ -247,8 +255,7 @@ var Order = function (el) {
                 building().kladr('parentId', obj.id);
             }
 
-            if (city().val() != old_vars['city'])
-            {
+            if (city().val() != old_vars['city']) {
                 old_vars['city'] = city().val();
                 region().val('');
                 zip().val('');
@@ -257,37 +264,47 @@ var Order = function (el) {
             }
 
             setRegionAndZip(obj, true);
-            updateAddress();
-        })
+        });
 
-        street().on('kladr_select kladr_check',function (e, obj) {
+        city().on('change', function () {
+            updateAddress();
+        });
+
+        street().on('kladr_select kladr_check', function (e, obj) {
             building().kladr('parentType', $.kladr.type.street);
 
             if (obj) {
                 building().kladr('parentId', obj.id);
             }
 
-            if (street().val() != old_vars['street'])
-            {
+            if (street().val() != old_vars['street']) {
                 old_vars['street'] = street().val();
                 zip().val('');
                 building().val('');
             }
 
             setRegionAndZip(obj);
-            updateAddress();
-        })
+        });
 
-        building().on('kladr_select kladr_check change',function (e, obj) {
+        street().on('change', function () {
+            updateAddress();
+        });
+
+        building().on('kladr_select kladr_check change', function (e, obj) {
             setRegionAndZip(obj);
-            updateAddress();
-        })
+        });
 
-        site().on('kladr_select kladr_check change',function () {
+        building().on('change', function () {
             updateAddress();
-        })
+        });
 
-        region().on('change',function () {
+        site().on('kladr_select kladr_check',function () {
+
+        }).on('change', function () {
+                updateAddress();
+            });
+
+        region().on('change', function () {
             updateAddress();
         })
     };
@@ -295,10 +312,9 @@ var Order = function (el) {
     var showAddress = function () {
         var template = _.template(address_view.html()),
             _initTemplate = false
-        ;
+            ;
 
-        if (!templates['address_and_payment'])
-        {
+        if (!templates['address_and_payment']) {
             templates['address_and_payment'] = $(template());
             _initTemplate = true;
         }
@@ -310,14 +326,15 @@ var Order = function (el) {
                 new FancySelect($(this));
             });
             initKladrs();
-        };
+        }
+        ;
 
 //        applyParams();
         updateAddress();
     };
 
     var resetRegions = function () {
-        $.each(templates, function(i) {
+        $.each(templates, function (i) {
             templates[i].detach();
         });
 
@@ -334,8 +351,7 @@ var Order = function (el) {
         delivery_hint.html(order_options.delivery_types[delivery_type].conditions);
         delivery_error.html('');
 
-        if (order_options.delivery_types[delivery_type].layout == 'address_and_payment')
-        {
+        if (order_options.delivery_types[delivery_type].layout == 'address_and_payment') {
             showAddress();
         }
 
@@ -361,8 +377,7 @@ var Order = function (el) {
         var total_price = order_options.items_price;
 
         if (delivery_price !== false) {
-            if (delivery_price >= 0)
-            {
+            if (delivery_price >= 0) {
                 delivery_view().html(delivery_price == 0 ? free_translation : delivery_price.money(0, ' ', '', ' р.'));
                 total_price += delivery_price;
             }
