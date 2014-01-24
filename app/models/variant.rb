@@ -15,14 +15,14 @@ class Variant < ActiveRecord::Base
   has_attached_file :picture,
     styles: {preview: "300x300#", cart: "400x400#", additional: "90x90#", admin: "30x30#"},
     default_url: "/images/:style/missing.png",
-    url: "/uploads/goods/variants/:id/:style/:basename.:extension",
-    path: ":rails_root/public/uploads/goods/variants/:id/:style/:basename.:extension"
+    url: "/uploads/goods/variants/:id/picture/:style/:basename.:extension",
+    path: ":rails_root/public/uploads/goods/variants/:id/picture/:style/:basename.:extension"
 
   has_attached_file :material,
                     styles: {preview: "300x300#", cart: "400x400#", additional: "90x90#", admin: "30x30#", material: "450x450#"},
                     default_url: "/images/:style/missing.png",
-                    url: "/uploads/goods/variants/:id/:style/:basename.:extension",
-                    path: ":rails_root/public/uploads/goods/variants/:id/:style/:basename.:extension"
+                    url: "/uploads/goods/variants/:id/material/:style/:basename.:extension",
+                    path: ":rails_root/public/uploads/goods/variants/:id/material/:style/:basename.:extension"
 
   validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/png','image/gif']
   validates_attachment_content_type :material, :content_type => ['image/jpeg', 'image/png','image/gif']
