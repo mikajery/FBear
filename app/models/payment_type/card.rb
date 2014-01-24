@@ -1,2 +1,2 @@
-class PaymentType::Cash < PaymentType
+class PaymentType::Card < PaymentType
 end
