@@ -1,3 +1,4 @@
+# CRUD товаров
 class Admin::GoodsController < Admin::BaseController
   include MultilingualController
   
@@ -94,12 +95,18 @@ class Admin::GoodsController < Admin::BaseController
       @good = Good.find(params[:id])
     end
 
+    # safe_params обертка стандартной функции permit_params,
+    # результат передается в модуль MultilanguageController,
+    # к нему добавляются необходимые языковые параметры (выбранный язык)
+
     def safe_params
       [ 
         :name, :logo, :slug, :logo_desc, 
         :parameters,
         :announce, :content, :additional, :price, :article, :material_type_text,
+        :good_weight, :good_volume,
         :title, :heading, :keywords, :description, :bg, :no_shadow, :on_main,
+        :is_preorder_only,
         :panorama, :panorama_ipad, :vimeo, :thumb, :portrait, :landscape, :picture, :picture_alignment,
         :good_category_ids => [], :designer_ids => [], :material_ids => [], :property_type_ids => [], :tag_ids => [], :good_ids => []
       ]

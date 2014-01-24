@@ -3,7 +3,7 @@
 		<td>
 			<div<%= ' class=active' if current_page? cart_path %>>
 				<% if @language.is_default %>
-                  <a href="<%= cart_path %>" class="b-cart-link"><%= T "Корзина" %> <%= cart_size %></a>
+                  <a href="<%= cart_path %>" class="b-cart-link"><%= T "Корзина" %> <%= raw cart_size %></a>
 				<% end %>
 			</div>
 		</td>

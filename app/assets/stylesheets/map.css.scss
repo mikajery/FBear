@@ -2,6 +2,5 @@
  *= require ./shared/normalize.min
  *= require ./shared/base
  *= require ./shared/perfect-scrollbar 
- *= require ./map/style
- *= require ./map/responsive-styles
+ *= require_tree ./map/
  */

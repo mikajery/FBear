@@ -17,7 +17,13 @@
   method: cart
 
 - name: Предзаказ
+  method: preorder
+
+- name: Заказ
   method: order
 
 - name: Спасибо за заказ
   method: order_done
+
+- name: Спасибо за предзаказ
+  method: preorder_done

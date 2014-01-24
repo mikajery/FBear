@@ -1,3 +1,4 @@
+# СRUD тегов
 class Admin::TagsController < Admin::BaseController
   include MultilingualController
 

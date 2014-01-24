@@ -14,8 +14,9 @@
   <meta name="viewport" content="width=device-width,maximum-scale=1">
   <link rel="shortcut icon" href="<%= image_url("content/favicon.ico") %>">
 
-  <%= stylesheet_link_tag "content", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "shared/modernizr.min", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "content", media: "all" %>
+  <%= javascript_include_tag "frontend" %>
+  <script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
   <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Roboto:400,500,700,900&subset=latin,cyrillic" %>
   <%= csrf_meta_tags %>
 
@@ -24,6 +25,7 @@
   <%= tag(:meta, name: 'keywords', content: meta[:keywords]) if meta[:keywords] %>
   <%= tag(:meta, name: 'description', content: meta[:description]) if meta[:description] %>
 
+  <%= yield :extra_scripts %>
 </head>
 <body class="<%= 'navigated' if @navigation %><%= ' overflowed' if @navigation && @navigation[:overflowed] %>" data-classes="<%= ' dark' if @body_dark %><%= ' no-shadow' if @body_no_shadow %>">
 <% if @navigation %>
@@ -43,10 +45,11 @@
     </div>
 <% end %>
 
-<%= javascript_include_tag "frontend", "data-turbolinks-track" => true %>
-<%= yield :footer_scripts %>
+
 <% if S "counters" %>
     <%= S("counters").html_safe %>
 <% end %>
+
+<%= yield :footer_scripts %>
 </body>
 </html>

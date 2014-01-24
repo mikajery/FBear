@@ -1,3 +1,5 @@
+# модель языка
+# при установке флага "по-умолчанию", снимает этот флаг со всех остальных языков
 class Language < ActiveRecord::Base
   include SortedByName
   include MultilingualModel

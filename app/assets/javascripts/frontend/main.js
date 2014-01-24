@@ -19,7 +19,7 @@ var _document = function(_window) {
 			var _height = body.height(),
 				_width  = body.width()
 			;
-			
+
 			if (height != _height) resizedHeight(_height);
 			if (width  != _width)  resizedWidth(_width);
 		});
@@ -34,5 +34,8 @@ var _document = function(_window) {
 	});
 };
 
-var Document = new _document(this);
+$(document).on('ready page:load', function() {
+    var Document = new _document(this);
+});
+
 

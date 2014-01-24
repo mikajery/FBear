@@ -27,6 +27,7 @@
 		<%= yield %>
 
 		<%= javascript_include_tag "map", "data-turbolinks-track" => true %>
+
         <% if S "counters" %>
           <%= S("counters").html_safe %>
         <% end %>

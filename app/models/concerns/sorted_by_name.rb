@@ -1,3 +1,4 @@
+# выборка по-умолчанию отсортирована по имени
 module SortedByName
   extend ActiveSupport::Concern
 

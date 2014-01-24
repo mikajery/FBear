@@ -1,3 +1,9 @@
+# Базовый контроллер контентной части сайта
+# в нем происходит куча всякой всячины:
+# - отлавливание ошибок
+# - определение текущей страницы
+# - инициализация корзины (если таковая имеется)
+
 class Content::BaseController < ApplicationController
   layout 'content'
 
@@ -13,11 +19,11 @@ class Content::BaseController < ApplicationController
   class UnknownLocaleException < StandardError; end
   class PageNotFound < StandardError; end
 
-  rescue_from UnknownLocaleException, :with => :not_found
-  rescue_from PageNotFound, :with => :not_found
+  rescue_from UnknownLocaleException, :with => :show404
+  rescue_from PageNotFound, :with => :show404
 
-  def not_found(exception)
-    render_error 404, exception
+  def show404()
+    render 'errors/error_404', layout: 'content'
   end
 
   def index
@@ -39,15 +45,20 @@ class Content::BaseController < ApplicationController
 
   protected
     def set_token
-      @token = cookies['_token'] ? cookies['_token'] : Cart.token
+      @token = cookies['_token'].present? ? cookies['_token'] : Order::Cart.token
     end
 
     def set_cart
-      @cart = Cart.find_by_key_and_order_status_id @token, nil
+      @cart = Order::Cart.find_by_token_and_order_status_id @token, nil
 
       unless @cart
-        @cart = Cart.create({key: Cart.token, language: @language})
+        @token = Order::Cart.token
+        @cart = Order::Cart.create({token: @token, language: @language})
       end
+
+      @cart.language = @language
+
+      cookies['_token'] = @token
     end
 
     def get_item
@@ -71,6 +82,10 @@ class Content::BaseController < ApplicationController
 
       if item
         title = []
+
+        # контроллер наследуется,
+        # а в дочерних можно переопределить методы
+        # page_title_prefix и page_title_suffix
         title << page_title_prefix.to_s if page_title_prefix
         title << item.title.to_s if item.title
         title << page_title_suffix.to_s if page_title_suffix
@@ -89,6 +104,8 @@ class Content::BaseController < ApplicationController
     def get_path
       @current_page = nil
       Rails.application.routes.router.recognize(request) do |route, matches, param|
+        #@asd = ContentRouter.routes
+        #abort @asd.inspect
         page = ContentRouter.routes.each do |r|
           if r[:as] == route.name or (r[:applies_to] and r[:applies_to].include?(route.name))
             @current_page = r[:page]
@@ -119,5 +136,5 @@ class Content::BaseController < ApplicationController
         format.all { render nothing: true, status: status }
       end
     end
-	
+
 end

@@ -1,3 +1,4 @@
+# контроллер дизайнеров
 class Content::DesignersController < Content::BaseController
   before_action :get_locale
   
@@ -7,6 +8,7 @@ class Content::DesignersController < Content::BaseController
 
   def item
     @designer = Designer.find(params[:slug])
+    raise PageNotFound unless @designer.present?
   end
 
   def get_item

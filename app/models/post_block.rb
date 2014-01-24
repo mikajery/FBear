@@ -1,3 +1,4 @@
+# блок поста блога
 class PostBlock < ActiveRecord::Base
   include MultilingualModel
   belongs_to :post
@@ -6,6 +7,7 @@ class PostBlock < ActiveRecord::Base
 
   default_scope { order(:weight) }
 
+  # тип блока
   def block_type
     type.split('::').last.downcase
   end

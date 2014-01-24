@@ -1,3 +1,4 @@
+# модель страницы сайта
 class Page < ActiveRecord::Base
   include SortedByName
   include MultilingualModel
@@ -10,10 +11,13 @@ class Page < ActiveRecord::Base
   validates :page_type, presence: true
   validates_uniqueness_of :url, :scope => :page_type_id
 
+  # алиас для типа страницы
   def type
     page_type
   end
 
+
+  # генерация роутов на основе текущего типа страницы
   def routes
     unless type.nil?
       _url = url
@@ -34,6 +38,7 @@ class Page < ActiveRecord::Base
     end
   end
 
+  # генерация ссылки
   def routed_url r
     path = [url]
     path << r[:route]

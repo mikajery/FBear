@@ -1,3 +1,4 @@
+# тэг
 class Tag < ActiveRecord::Base
   include MultilingualModel
   translates :title

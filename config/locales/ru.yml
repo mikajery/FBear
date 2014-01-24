@@ -95,6 +95,25 @@ ru:
         icon: Ярлык
         picture: Картинка
 
+      delivery_type:
+        name: Название
+        type: Тип
+        is_active: Доступен
+        price: Стоимость
+        payment_types: Типы оплаты
+        layout: Шаблон
+        conditions: Условия доставки
+        hint: Подсказка
+
+      order_status:
+        name: Название
+        type: Тип
+
+      payment_type:
+        name: Название
+        type: Тип
+        is_active: Доступен
+
       language:
         name: "Язык"
         slug: "Путь"
@@ -117,7 +136,7 @@ ru:
         menu_item: "Уровень"
         name: "Элемент"
         title: "Название"
-        url: "Ссылка"
+        url: "Произвольная ссылка"
 
       good_file:
         name: "Название"
@@ -142,6 +161,9 @@ ru:
         slug: "Путь"
         price: "Цена"
         title: "Название"
+        good_weight: Вес, г
+        is_preorder_only: Только предзаказ
+        good_volume: Объем, см³
         heading: "Заголовок"
         keywords: "Ключевые слова"
         description: "Описание"

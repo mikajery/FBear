@@ -1,3 +1,4 @@
+# CRUD файлов товара
 class Admin::FilesController < Admin::BaseController
   include MultilingualController
 

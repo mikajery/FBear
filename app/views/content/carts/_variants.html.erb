@@ -5,11 +5,15 @@
 
   <ul class="cart-options-items">
     <li>
-      <select data-cart-variants="items" data-cart-item="variant">
+      <select data-cart-variants="items" data-format="thumbed" data-cart-item="variant" name="cart[items][<%= cart_item.id %>][variant]">
         <% variants.sort_by{|v| v.price}.each do |v| %>
           <%= content_tag :option, ("#{v.full_article} " if v.suffix.present?).to_s + v.name,
               value: v.id, 
-              data: {raw_price: v.price, price: number_to_currency(v.price, precision: 0, unit: 'р.'), picture: (v.picture.url(:cart) if v.picture and v.picture.file?)},
+              data: {
+                      price: v.price,
+                      picture: (v.picture.url(:cart) if v.picture and v.picture.file?),
+                      thumb: (v.material.url(:additional) if v.material and v.material.file?)
+              },
               selected: (true if v == cart_item.variant) %>
         <% end %>
       </select>

@@ -1,3 +1,6 @@
+# CRUD опций товара, по которому определялись критерии варианта (с юсб/без юсб, цвет и тд.)
+# больше не используется
+# TODO safe_delete
 class Admin::GoodOptionsController < Admin::BaseController
   include MultilingualController
   before_action :set_good_option, only: [:show, :edit, :update, :destroy]

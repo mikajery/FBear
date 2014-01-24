@@ -5,5 +5,5 @@ role :db,  'lllooch.ru', :primary => true   # This is where Rails migrations wil
 set :branch, 			      'production'
 set :repository_branch, 'production'
 set :stage_name, 		    'production'
-set :unicorn_env,       'production'
+set :unicorn_env,       'development'
 set :rails_env, 		    'production'

@@ -10,7 +10,7 @@
     <%= f.association :menu_item, collection: MenuItem.where('menu_item_id is null').select{|i| i != @menu_item}, include_blank: 'Верхний уровень' %>
   <% end %>
 
-  <%#= f.input :url, as: :string %>
+  <%= f.input :url, as: :string %>
 
   <%= f.association :page, collection: Page.with_translations('ru'), prompt: 'Выберите страницу' %>
 

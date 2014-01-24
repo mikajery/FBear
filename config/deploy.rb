@@ -1,3 +1,4 @@
+# стандартный deploy для рельсового проекта
 require "rvm/capistrano"
 require 'sidekiq/capistrano'
 
@@ -28,7 +29,7 @@ set (:ts) {
   d.strftime("%Y%m%d%H%M%S") 
 }
 
-set :whenever_command, 'rvm use 2.0.0 do bundle exec whenever'
+set :whenever_command, 'rvm use 2.0.0-p247 do bundle exec whenever'
 
 set :scm, :git
 set :ssh_options, { :forward_agent => true }
@@ -56,9 +57,9 @@ end
 
 set (:unicorn_conf) {"./config/unicorn/#{stage_name}.rb"}
 set (:unicorn_pid) {"#{shared_path}/pids/unicorn.pid"}
-set (:unicorn_start_cmd) {"(cd #{deploy_to}current; rvm use 2.0.0 do bundle exec unicorn_rails -Dc #{unicorn_conf})"}
+set (:unicorn_start_cmd) {"(cd #{deploy_to}current; rvm use 2.0.0-p247 do bundle exec unicorn_rails -Dc #{unicorn_conf} -E #{unicorn_env})"}
 
-set :bundle_cmd, 'rvm use 2.0.0 do bundle'
+set :bundle_cmd, 'rvm use 2.0.0-p247 do bundle'
 
 
 # - for unicorn - #
@@ -148,6 +149,16 @@ namespace :deploy do
   desc "cleanup"
   task :cleanup, :roles => :app do
     run "cd #{deploy_to}current; RAILS_ENV=#{rails_env} bundle exec rake lllooch:cleanup"
+  end
+
+  desc 'Dellin cities cache'
+  task :dellin_cities, roles: :app do
+    run "cd #{deploy_to}current; RAILS_ENV=#{rails_env} bundle exec rake dellin:cities"
+  end
+
+  desc 'DPD cities cache'
+  task :dpd_cities, roles: :app do
+    run "cd #{deploy_to}current; RAILS_ENV=#{rails_env} bundle exec rake dpd:cities"
   end
 
   namespace :paperclip do

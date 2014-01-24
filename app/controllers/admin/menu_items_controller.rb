@@ -1,3 +1,4 @@
+# CRUD элементов меню
 class Admin::MenuItemsController < Admin::BaseController
   include MultilingualController
   
@@ -50,6 +51,9 @@ class Admin::MenuItemsController < Admin::BaseController
     errors = []
 
     if order_params
+      # сортировка элементов меню
+      # приходит массив с айдишниками элементов вида [3, 5, 8, 10],
+      # которым потом проставляется порядковый номер
       order_params.each_with_index do |id, weight|
         menu_item = MenuItem.find id
         menu_item.weight = weight

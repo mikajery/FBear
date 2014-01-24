@@ -1,3 +1,7 @@
+# хелпер
+# по большей части используются просто обертки для бутстраповых элементов,
+# которые используются повсеместно
+
 module Admin::AdminHelper
   delegate :url_helpers, to: 'Rails.application.routes'
 
@@ -5,10 +9,12 @@ module Admin::AdminHelper
     content_tag :div, 'Пусто', class: 'well'
   end
 
+  # все языки
   def get_languages
     Language.all
   end
 
+  # вернуть все языки кроме текущей
   def get_another_locale
     get_languages.select do |l|
       l != @locale
@@ -138,6 +144,7 @@ module Admin::AdminHelper
     render partial: 'admin/parts/tab_pane', locals: {content: content, name: name, options: options}
   end
 
+  # название текущего роута
   def current_route
     Rails.application.routes.router.recognize(request) do |route, _|
       return route.name

@@ -1,3 +1,5 @@
+# модуль прописывает возможность
+# изменять данные для разных локалей модели
 module MultilingualModel
   extend ActiveSupport::Concern
 

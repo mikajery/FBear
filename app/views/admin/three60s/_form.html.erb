@@ -5,7 +5,7 @@
   <%= f.input :is_reverted %>
 
   <% if @three60.id %>
-    <%= image_field @three60, 'src', f, [300, 300] %>
+    <%= image_field @three60, 'src', f, [300, 300], sizes: ['120x80', '800x800'] %>
   <% end %>
 
   <% unless @three60.id %>

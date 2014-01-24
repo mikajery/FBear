@@ -1,3 +1,5 @@
+# модуль прикрепляет аватар к текущей модели
+# вместе с валидациями и пр.
 module AvatarModel
   extend ActiveSupport::Concern
 

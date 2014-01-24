@@ -1,3 +1,4 @@
+# CRUD для языков
 class Admin::LanguagesController < Admin::BaseController
   include MultilingualController
   

@@ -1,3 +1,4 @@
+# группа свойств товара
 class PropertyType < ActiveRecord::Base
   include MultilingualModel
   translates :name

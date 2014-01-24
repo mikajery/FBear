@@ -3,8 +3,8 @@
 <head>
   <title>Admin</title>
   <link rel="shortcut icon" href="<%= image_url("content/favicon.ico") %>">
-  <%= stylesheet_link_tag    "admin", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "admin", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "admin", media: "all" %>
+  <%= javascript_include_tag "admin" %>
   <%= csrf_meta_tags %>
 
 </head>
@@ -18,6 +18,15 @@
                 <%= drop_down "Сайт" do %>
                   <%= menu_item "Меню", admin_menus_path %>
                   <%= menu_item "Страницы", admin_pages_path %>
+                <% end %>
+
+                <%= drop_down "Магазин" do %>
+                  <%= menu_item "Заказы", admin_orders_path %>
+                  <%= menu_item "Предзаказы", admin_preorders_path %>
+
+                  <%= menu_item "Типы доставки", admin_delivery_types_path %>
+                  <%= menu_item "Типы оплаты", admin_payment_types_path %>
+                  <%= menu_item "Статусы заказов", admin_order_statuses_path %>
                 <% end %>
 
                 <%= drop_down "Контент" do %>

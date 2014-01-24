@@ -1,5 +1,12 @@
+# контроллер блогов контентной части сайта
+# возвращает:
+# - список постов
+# - пост
+# - json-массив с постами для текущей категории в backbone
+#
 class Content::BlogsController < Content::BaseController
   before_action :get_locale
+  before_action :set_category
   before_action :navigation, only: [:list, :item]
   protect_from_forgery except: [:fetch]
 
@@ -9,7 +16,6 @@ class Content::BlogsController < Content::BaseController
 
   def item
     @items = @category.posts
-    render 'list'
   end
 
   def fetch
@@ -34,12 +40,17 @@ class Content::BlogsController < Content::BaseController
   end
 
   def page_title_prefix
+    # hardcode?
     if @category
       'Блоги:'
     end
   end
 
   private
+  def set_category
+    @category = Category.find_by slug: params[:slug]
+  end
+
     def fetch_params
       params.require(:collection)
     end
@@ -47,10 +58,10 @@ class Content::BlogsController < Content::BaseController
     def navigation
       items = []
 
-      items << { href: '#all', title: 'Все записи' }
+      items << { href: blogs_path, title: 'Все записи', category: 'all' }
 
       PostCategory.all.each do |i|
-        items << { href: "##{i.slug}", title: i.title }
+        items << { href: blogs_item_path(i.slug), title: i.title, category: i.slug }
       end
 
       @navigation = {

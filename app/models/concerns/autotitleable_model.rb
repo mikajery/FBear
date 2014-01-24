@@ -1,3 +1,5 @@
+# модуль подключается к моделям
+# проставляет значение тайтл
 module AutotitleableModel
   extend ActiveSupport::Concern
 

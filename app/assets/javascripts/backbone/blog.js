@@ -1,10 +1,7 @@
 //= require backbone/views/posts
 
 Blog = new Backbone.Marionette.Application();
-var element = $('[data-type=blogs]'),
-    posts   = $('[data-region=posts]'),
-    loading = $('[data-blog=loading]')
-    ;
+var element, posts, loading;
 
 Blog.addRegions({
     mainRegion: "[data-region=posts]"
@@ -79,5 +76,11 @@ Blog.addInitializer(function (options) {
     Blog.mainRegion.show(postsView);
 });
 
-Blog.start();
-Backbone.history.start();
+$(document).on('ready page:load', function() {
+    element = $('[data-type=blogs]');
+    posts   = $('[data-region=posts]');
+    loading = $('[data-blog=loading]');
+
+    Blog.start();
+    Backbone.history.start();
+});

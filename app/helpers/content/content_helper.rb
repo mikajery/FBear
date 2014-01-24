@@ -1,3 +1,4 @@
+# контентный хелпер
 module Content::ContentHelper
   def language_alternate
     render 'content/parts/language_alternate', languages: Language.active
@@ -16,6 +17,7 @@ module Content::ContentHelper
     Menu.find_by_key key
   end
 
+  # находит свойство по ключу
   def S key
     setting = Setting.find_by_key key
 
@@ -26,6 +28,7 @@ module Content::ContentHelper
     end
   end
 
+  # телефоны массивом
   def phones
     phones = Setting.find_by_key('phones')
 
@@ -38,6 +41,7 @@ module Content::ContentHelper
     end
   end
 
+  # активные языки
   def languages
     Language.active
   end

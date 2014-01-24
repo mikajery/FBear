@@ -6,7 +6,7 @@ var Form = function(el) {
     });
 };
 
-$(function() {
+$(document).on('ready page:load', function() {
     $('form').each(function() {
         new Form($(this));
     })

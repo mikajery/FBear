@@ -1,59 +1,30 @@
 languages = YAML::load_file File.join(Rails.root, 'db', 'seeds', 'languages.yml')
 
 languages.each do |l|
-  language = Language.find_or_create_by_name l
+  language = Language.find_or_initialize_by name: l['name']
   language.update l
 end
 
 page_types = YAML::load_file File.join(Rails.root, 'db', 'seeds', 'page_types.yml')
 
 page_types.each do |t|
-  page_type = PageType.find_or_create_by_method t
+  page_type = PageType.find_or_initialize_by method: t['method']
   page_type.update t
 end
 
+blog_colors = YAML::load_file File.join(Rails.root, 'db', 'seeds', 'blog_colors.yml')
 
-colors = YAML::load_file File.join(Rails.root, 'db', 'seeds', 'blog_colors.yml')
-
-colors.each do |t|
-  color = BlogColor.find_or_create_by_name t
-  color.update t
+blog_colors.each do |t|
+  blog_color = BlogColor.find_or_initialize_by color: t['color']
+  blog_color.update t
 end
 
+delivery_types = YAML::load_file File.join(Rails.root, 'db', 'seeds', 'delivery_types.yml')
 
-# pages = YAML::load_file File.join(Rails.root, 'db', 'seeds', 'pages.yml')
-
-# pages.each do |t|
-#   t['page_type'] = PageType.find_by_name t['page_type']
-
-#   page = Page.find_or_create_by_name_and_url t
-#   page.update t
-# end
-
-# menus = YAML::load_file File.join(Rails.root, 'db', 'seeds', 'menus.yml')
-
-# menus.each do |m|
-#   items = m["items"]
-#   m.except! "items"
-  
-#   menu = Menu.find_or_create_by_key m
-#   menu.update m
-
-#   items.each do |i|
-#     i["page"]  = Page.find_by_name i['page']
-#     i["menu"]  = menu
-#     i["title"] = i["name"]
-
-#     menu_item = MenuItem.find_or_create_by_name i
-#     menu_item.update i
-#   end
-# end
-
-# delivery_types = YAML::load_file File.join(Rails.root, 'db', 'seeds', 'delivery_types.yml')
-
-# delivery_types.each do |type|
-#   DeliveryType.find_or_create_by type
-# end
+delivery_types.each do |t|
+  dt = DeliveryType.find_or_initialize_by type: t['type']
+  dt.update(t)
+end
 
 # payment_types = YAML::load_file File.join(Rails.root, 'db', 'seeds', 'payment_types.yml')
 
@@ -64,5 +35,6 @@ end
 order_statuses = YAML::load_file File.join(Rails.root, 'db', 'seeds', 'order_statuses.yml')
 
 order_statuses.each do |status|
-  OrderStatus.find_or_create_by status
+  order_status = OrderStatus.find_or_initialize_by type: status['type']
+  order_status.update(status)
 end

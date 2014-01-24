@@ -1,3 +1,7 @@
+# Контроллер поиска
+# Ищется по названию в товарах
+# логика поиска мне не была дана
+
 class SearchController < Content::BaseController
   include ActionView::Helpers::TextHelper
 

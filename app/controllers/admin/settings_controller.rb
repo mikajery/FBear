@@ -1,3 +1,4 @@
+# CRUD настроек сайта
 class Admin::SettingsController < Admin::BaseController
   include MultilingualController
 

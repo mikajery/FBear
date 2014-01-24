@@ -5,7 +5,7 @@
 
     <%= tabs [[:main, 'Основное'],
               [:avatar, 'Картинка'],
-              [:material, 'Характеристики']] %>
+              [:material, 'Материал']] %>
 
     <%= tab_contents do %>
         <%= tab_pane :main, {active: true} do %>
@@ -31,11 +31,11 @@
         <% end %>
 
         <%= tab_pane :avatar do %>
-            <%= image_field @variant, :picture, f, [300, 300] %>
+            <%= image_field @variant, :picture, f, [300, 300], sizes: ['300x300', '400x400', '90x90'] %>
         <% end %>
 
         <%= tab_pane :material do %>
-            <%= image_field @variant, :material, f, [300, 300] %>
+            <%= image_field @variant, :material, f, [300, 300], sizes: ['450x450', '300x300', '400x400', '90x90'] %>
 
             <% Globalize.with_locale(@locale.slug) do %>
                 <%= f.input :material_name %>

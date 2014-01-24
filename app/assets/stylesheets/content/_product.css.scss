@@ -92,7 +92,7 @@
 
       .b-thumbs {
         position: relative;
-        z-index: 2;
+        z-index: 11;
       }
     } 
 
@@ -103,6 +103,7 @@
           border: 1px solid #1b979d;
           margin: 0 0 30px 0;
         }
+
         width: 120px;
         height: 80px;
         margin-bottom: 20px;
@@ -542,6 +543,10 @@
       height: 54px;
       border-radius: 50%;
       background: image-url('content/buy-icon.png') no-repeat #1b979d;
+
+      &.btn-preorder {
+        background: image-url('content/preorder.png') no-repeat #737372;
+      }
     }
   }
 

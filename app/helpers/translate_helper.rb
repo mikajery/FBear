@@ -1,4 +1,7 @@
+# хелпер переводов
 module TranslateHelper
+  # ищем перевод по ключу,
+  # если такового не имеется — создаем
   def T key, language = false
     translation = Translation.find_by_key key
 

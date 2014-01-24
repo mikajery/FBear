@@ -1,3 +1,5 @@
+# модуль позволяет автоматом прописать
+# транслитерированный путь при создании экземпляра модели
 module SluggableModel
   extend ActiveSupport::Concern
 

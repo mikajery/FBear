@@ -1,3 +1,4 @@
+# CRUD свойств товара
 class Admin::PropertiesController < Admin::BaseController
   include MultilingualController
   

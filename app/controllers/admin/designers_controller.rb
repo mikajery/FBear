@@ -1,3 +1,4 @@
+# CRUD дизайнеров
 class Admin::DesignersController < Admin::BaseController
   include MultilingualController
   

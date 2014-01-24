@@ -1,8 +1,11 @@
+# Роутер контентной части сайта
 class ContentRouter < Object
+  # перегрузка роутов
   def self.reload
     @@routes=nil
   end
 
+  # локали для scope в роутере
   def self.locales
     @locales = [I18n.default_locale]
 
@@ -13,7 +16,8 @@ class ContentRouter < Object
 
     Regexp.new @locales.join("|")
   end
-  
+
+  # генерация роутов на основе имеющихся страниц
   def self.routes
     if @@routes.nil?
       if ActiveRecord::Base.connection.table_exists? 'pages'

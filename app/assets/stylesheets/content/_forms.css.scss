@@ -5,8 +5,10 @@
 	}
 }
 
+
+
 form {
-	font-size: 11px;
+	font-size: 14px;
 
 	a {
 		color: inherit;
@@ -14,7 +16,14 @@ form {
 
 	h2 {
 		font-size: 21px;
-	}
+      .cart & {
+        font-size: 30px;
+        font-weight: normal;
+        text-transform: uppercase;
+      }
+    }
+
+
 	
 	h2.styled {
 		font: {
@@ -41,6 +50,23 @@ form {
 		margin-bottom: 7px;
 	}
 
+  .iradio_minimal {
+    margin: 1px 4px 0 0;
+    background-image: image-url('content/icheck-minimal.png');
+  }
+
+  .radio-label {
+    label {
+      display: inline;
+    }
+
+    .iradio_minimal {
+      float: left;
+    }
+
+    margin-bottom: 7px;
+  }
+
 	.select-wrap {
 		select {
 			width: 100%;
@@ -51,9 +77,9 @@ form {
 		margin-right: 22px;
 
 		input {
-			border: 1px solid #d7d7d7;
+			border: 1px solid #b6b6b6;
 			background: none;
-			font-size: 14px;
+			font-size: 13px;
 			width: 100%;
 			padding: 3px 10px;
 			height: 31px;
@@ -92,6 +118,8 @@ form {
 	}
 
 	.radio-group {
+      padding-left: 10px;
+
 		& > li.text {
 			padding-right: 10px;
 		}

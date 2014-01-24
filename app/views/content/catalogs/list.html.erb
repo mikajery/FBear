@@ -1,8 +1,16 @@
-<%= render partial: 'views' %>
+<%= content_for :extra_scripts do %>
+    <%= render partial: 'views' %>
 
-<script type="text/javascript">
-    var fetchUrl = "<%= catalog_fetch_path %>";
-</script>
+    <script type="text/javascript">
+        var fetchUrl = "<%= catalog_fetch_path %>";
+            $(document).on('page:load ready', function() {
+                $('a[data-category]').each(function() {
+                    $(this).attr('href', '#' + $(this).data('category'));
+                });
+            });
+    </script>
+    <%= javascript_include_tag "backbone/catalog" %>
+<% end %>
 
 <div class="showroom" data-action="showroom">
   <% if !defined? controls or (defined? controls and controls != false) %>
@@ -54,7 +62,3 @@
     <% end %>
   </div>
 </div>
-
-<% content_for :footer_scripts do %>
-    <%= javascript_include_tag "backbone/catalog", "data-turbolinks-track" => true %>
-<% end %>

@@ -1,3 +1,8 @@
+# модель файлов товара
+# STI:
+# - dwg
+# - pdf
+
 class GoodFile < ActiveRecord::Base
   include MultilingualModel
 

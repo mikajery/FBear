@@ -1,3 +1,5 @@
+# модель DWG-файла товара
+# при создании автоматом проставляется поле размер
 class Dwg < ActiveRecord::Base
   include MultilingualModel
 

@@ -1,3 +1,4 @@
+# Запись в блоге
 class Post < ActiveRecord::Base
   include SortedByName  
   include MultilingualModel
@@ -11,23 +12,25 @@ class Post < ActiveRecord::Base
   has_many :post_comments
   has_many :post_blocks
 
-  belongs_to :post_category
+  has_and_belongs_to_many :post_categories, join_table: :post_categories_posts
   belongs_to :blog_color
 
   validates :name, presence: true
-  validates :post_category, presence: true
 
   attr_accessor :picture
 
-  validates :picture, :attachment_presence => true
-  validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/png','image/gif']
-
-  has_attached_file :picture, 
+  has_attached_file :picture,
     styles: {admin: "30x30#", preview: "400x400#"},
     default_url: "/images/:style/missing.png",
     url: "/uploads/blogs/:id/:style/:basename.:extension",
     path: ":rails_root/public/uploads/blogs/:id/:style/:basename.:extension"
 
+  validates :picture, :attachment_presence => true
+  validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/png','image/gif']
+
+
+  # генерация блоков в необходимой последовательности
+  # - картинки группируются в галерею
   def grouped_blocks
     grouped = []
 
@@ -56,18 +59,22 @@ class Post < ActiveRecord::Base
     grouped
   end
 
+  # алиас
   def blocks
     post_blocks
   end
 
-  def category
-    post_category
+  # алиас
+  def categories
+    post_categories
   end
 
+  # алиас
   def color
     blog_color
   end
 
+  # алиас
   def comments
     post_comments
   end

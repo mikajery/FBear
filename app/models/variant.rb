@@ -1,5 +1,8 @@
+# Вариант товара
 class Variant < ActiveRecord::Base
+  #include ClearAttachment
   include MultilingualModel
+
   translates :price, :name, :material_name
 
   default_scope { order('weight ASC') }
@@ -9,30 +12,32 @@ class Variant < ActiveRecord::Base
 
   validates :price, presence: true
 
-  validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/png','image/gif']
-
   has_attached_file :picture,
     styles: {preview: "300x300#", cart: "400x400#", additional: "90x90#", admin: "30x30#"},
     default_url: "/images/:style/missing.png",
-    url: "/uploads/goods/variants/:id/:style/:basename.:extension",
-    path: ":rails_root/public/uploads/goods/variants/:id/:style/:basename.:extension"
-
-  validates_attachment_content_type :material, :content_type => ['image/jpeg', 'image/png','image/gif']
+    url: "/uploads/goods/variants/:id/picture/:style/:basename.:extension",
+    path: ":rails_root/public/uploads/goods/variants/:id/picture/:style/:basename.:extension"
 
   has_attached_file :material,
                     styles: {preview: "300x300#", cart: "400x400#", additional: "90x90#", admin: "30x30#", material: "450x450#"},
                     default_url: "/images/:style/missing.png",
-                    url: "/uploads/goods/variants/:id/:style/:basename.:extension",
-                    path: ":rails_root/public/uploads/goods/variants/:id/:style/:basename.:extension"
+                    url: "/uploads/goods/variants/:id/material/:style/:basename.:extension",
+                    path: ":rails_root/public/uploads/goods/variants/:id/material/:style/:basename.:extension"
 
+  validates_attachment_content_type :picture, :content_type => ['image/jpeg', 'image/png','image/gif']
+  validates_attachment_content_type :material, :content_type => ['image/jpeg', 'image/png','image/gif']
+
+  # полный артикул варианта
   def full_article
     [good.article, self.suffix].join "." if self.suffix.present?
   end
 
+  # алиас
   def properties
     variant_properties
   end
 
+  # сеттер групп свойств
   def property_types= types
     variant_name = []
     properties.delete_all

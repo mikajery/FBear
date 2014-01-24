@@ -1,3 +1,4 @@
+# CRUD материалов
 class Admin::MaterialsController < Admin::BaseController
   include MultilingualController
 

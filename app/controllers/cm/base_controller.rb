@@ -6,7 +6,7 @@ class Cm::BaseController < ApplicationController
 
   private
     def permit_params
-      params.require(controller_name.singularize).permit get_safe_params
+      params.require(controller_name.singularize).permit(get_safe_params)
     end
 
     def forever_ru

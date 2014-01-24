@@ -1,5 +1,5 @@
 - name: Наличными
-  key: cash
+  key: PaymentType::Cash
 
-- name: Кредитной картой
-  key: credit_card
+- name: Безналичный расчет
+  key: PaymentType::Noncash

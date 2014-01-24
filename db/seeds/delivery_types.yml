@@ -1,5 +1,11 @@
-- name: DPD
-  key: dpd
+- name: Шоурум
+  type: DeliveryType::Showroom
 
 - name: Курьером
-  key: courier
+  type: DeliveryType::Courier
+
+- name: DPD
+  type: DeliveryType::Dpd
+
+- name: Деловые линии
+  type: DeliveryType::Dellin

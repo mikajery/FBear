@@ -1,4 +1,7 @@
+# вьюха 360
+
 require 'rubygems'
+# zip-библиотечка пригодится, ага
 require 'zip'
 
 class Three60 < MediaFile
@@ -17,10 +20,6 @@ class Three60 < MediaFile
     items
   end
 
-
-  # validates :src, :attachment_presence => true
-  # validates_attachment_content_type :src, :content_type => ['image/jpeg', 'image/png','image/gif']
-
   has_attached_file :src, 
     styles: {preview: "800x800>", thumb: "120x80>"},
     default_url: "/images/:style/missing.png",
@@ -28,6 +27,10 @@ class Three60 < MediaFile
     path: ":rails_root/public/uploads/three60/:id/:style/:basename.:extension",
     convert_options: { preview: "-quality 80" }
 
+# validates :src, :attachment_presence => true
+# validates_attachment_content_type :src, :content_type => ['image/jpeg', 'image/png','image/gif']
+
+  # распаковываем архив и лопатим картинки
   def unpack path
     unless path.empty?
       Zip::File::open(path) do |archive|
@@ -61,10 +64,12 @@ class Three60 < MediaFile
     })
   end
 
+  # сохраняем превьюху
   def self.preview model, file
     model.src = file
   end
 
+  # создаем элемент вьюхи, вложенный в текущий
   def self.item parent, file
     item = Three60.new(
       good: parent.good,
@@ -76,6 +81,7 @@ class Three60 < MediaFile
     item.save
   end
 
+  # чистим мусор при удалении
   def cleanup
     if src.file?
       FileUtils.rm_rf (File.dirname(src.path) + '/../')

@@ -41,7 +41,7 @@ var Middle = function(el) {
 	center();
 };
 
-$(function() {
+$(document).on('ready page:load', function() {
 	$('[data-action=middle]').each(function() {
 		new Middle($(this));
 	});
