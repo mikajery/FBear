@@ -8,7 +8,7 @@ class PaymentType < ActiveRecord::Base
 
   scope :active, -> { where(is_active: true) }
 
-  validates :type, presence: true, uniqueness: true
+  validates :type, presence: true
   validates :name, presence: true
 
   def options
@@ -19,8 +19,9 @@ class PaymentType < ActiveRecord::Base
 
   def self.types
     {
-        'PaymentType::Cash' => 'Наличные',
-        'PaymentType::Noncash' => 'Безнал'
+        'PaymentType::Cash' => 'Наличный расчет',
+        'PaymentType::Noncash' => 'Безналичный расчет',
+        'PaymentType::Card' => 'Картой'
     }
   end
 end
