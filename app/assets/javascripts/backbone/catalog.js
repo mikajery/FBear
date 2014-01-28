@@ -1,7 +1,7 @@
 //= require backbone/views/goods
 
 Catalog = new Backbone.Marionette.Application();
-var element, goods, loading;
+var element, goods, loading, goodsCollection, goodsView;
 
 Catalog.addRegions({
     mainRegion: "[data-region=goods]"
@@ -11,12 +11,6 @@ CatalogRouter = Backbone.Router.extend({
     routes: {
         "*actions": "category"
     }
-});
-
-var goodsCollection = new GoodsCollection();
-
-goodsView = new GoodsView({
-    collection: goodsCollection
 });
 
 var columize = function (collection) {
@@ -85,6 +79,11 @@ $(document).on('ready page:load', function() {
     element = $('[data-showroom=slide]');
     goods = $('[data-region=goods]');
     loading = $('[data-showroom=loading]');
+
+    goodsCollection = new GoodsCollection();
+    goodsView = new GoodsView({
+        collection: goodsCollection
+    });
 
     Catalog.start();
     Backbone.history.start();

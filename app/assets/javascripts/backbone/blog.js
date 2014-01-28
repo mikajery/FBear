@@ -1,7 +1,7 @@
 //= require backbone/views/posts
 
 Blog = new Backbone.Marionette.Application();
-var element, posts, loading;
+var element, posts, loading, postsCollection, postsView;
 
 Blog.addRegions({
     mainRegion: "[data-region=posts]"
@@ -11,12 +11,6 @@ BlogRouter = Backbone.Router.extend({
     routes: {
         "*actions": "category"
     }
-});
-
-var postsCollection = new PostsCollection();
-
-postsView = new PostsView({
-    collection: postsCollection
 });
 
 var blogLoadingIn = function (callback) {
@@ -80,6 +74,12 @@ $(document).on('ready page:load', function() {
     element = $('[data-type=blogs]');
     posts   = $('[data-region=posts]');
     loading = $('[data-blog=loading]');
+
+    postsCollection = new PostsCollection();
+
+    postsView = new PostsView({
+        collection: postsCollection
+    });
 
     Blog.start();
     Backbone.history.start();
