@@ -2,14 +2,14 @@
 //= require backbone/views/good
 
 GoodsEmptyView = Backbone.Marionette.ItemView.extend({
-    template: "[data-view=goods-empty]"
+    template: function() { return $('[data-view=goods-empty]') }
 });
 
 GoodsView = Backbone.Marionette.CompositeView.extend({
-    template: "[data-view=goods]",
+    template: '[data-view=goods]',
     itemView: GoodView,
     emptyView: GoodsEmptyView,
-    itemViewContainer: "[data-type=goods]",
+    itemViewContainer: '[data-type=goods]',
     onRender: function() {
         var cols = this.$('.showroom-col');
         loadingOut();

@@ -1,14 +1,17 @@
 <%= content_for :extra_scripts do %>
     <%= render partial: 'views' %>
+<% end %>
 
+<%= content_for :footer_scripts do %>
     <script type="text/javascript">
         var fetchUrl = "<%= catalog_fetch_path %>";
-            $(document).on('page:load ready', function() {
-                $('a[data-category]').each(function() {
-                    $(this).attr('href', '#' + $(this).data('category'));
-                });
+        $(document).on('page:load ready', function () {
+            $('a[data-category]').each(function () {
+                $(this).attr('href', '#' + $(this).data('category'));
             });
+        });
     </script>
+
     <%= javascript_include_tag "backbone/catalog" %>
 <% end %>
 
