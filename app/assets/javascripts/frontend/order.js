@@ -317,13 +317,20 @@ var Order = function (el) {
             updateAddress();
         });
 
-        $([city(), region(), street(), building(), site()]).each(function () {
+        $([city(), street(), building(), site(), region()]).each(function () {
             if (this.val())
+            {
                 this.trigger('change');
+                return false;
+            }
         });
 
         $([city(), region(), street(), building(), site()]).each(function () {
-            this.data('kladr_inited', true);
+//            this.data('kladr_inited', true);
+            if (this.hasClass('invalid'))
+                this.on('focus', function() {
+                    $(this).removeClass('invalid');
+                })
         });
     };
 
