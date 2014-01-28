@@ -12,7 +12,8 @@ class DeliveryType::Dpd < DeliveryType
     params['volume'] = order.items_volume(true)
 
     dpd = DpdApi.new
-    price = dpd.get_price(params)
+    request = dpd.get_price(params)
+    price = request.present? ? request : nil
 
     if price.present?
       create_request(order, params, price)

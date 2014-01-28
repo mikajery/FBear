@@ -88,7 +88,8 @@
                         <input type="radio" id="delivery_type<%= delivery_type.id %>" name="cart[delivery_type]" value="<%= delivery_type.id %>" data-delivery-calculate="<%= delivery_type.is_cost_calc_needed? %>" data-delivery-type required/>
                         <label for="delivery_type<%= delivery_type.id %>">
                           <%= delivery_type.name %>
-                          <% if delivery_type.hint.present? %> <sup data-order="popover">?</sup><% end %>
+                          <% if delivery_type.hint.present? %> <sup data-order="popover">?</sup>
+                          <% end %>
                         </label>
                       </div>
                   <% end %>
@@ -131,15 +132,17 @@
           <div class="form-block">
             <h2>Адрес доставки</h2>
 
-            <div class="row">
-              <div class="span2">
-                <div class="form-row">
-                  <div class="select-wrap">
-                    <%= localized_country_select(:cart, :country, [:RU]) %>
+            <% if false %>
+                <div class="row">
+                  <div class="span2">
+                    <div class="form-row">
+                      <div class="select-wrap">
+                        <%= localized_country_select(:cart, :country, [:RU]) %>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
+            <% end %>
 
             <div class="row">
               <div class="span2">
@@ -162,7 +165,7 @@
                   </label>
 
                   <div class="input-wrap">
-                    <%= f.input_field :region, placeholder: "Ваш регион/область", tabindex: -1, data: { address: 'region', 'cart-kladr' => 'region' }, class: ('invalid' if form.object.errors['region'].present?) %>
+                    <%= f.input_field :region, placeholder: "Ваш регион/область", tabindex: -1, data: {address: 'region', 'cart-kladr' => 'region'} %>
                   </div>
                 </div>
               </div>
@@ -174,7 +177,7 @@
                   </label>
 
                   <div class="input-wrap">
-                    <%= f.input_field :zip, placeholder: "Ваш индекс", required: true, tabindex: -1, data: { address: 'zip' }, class: ('invalid' if form.object.errors['zip'].present?) %>
+                    <%= f.input_field :zip, placeholder: "Ваш индекс", required: true, tabindex: -1, data: {address: 'zip'}, class: ('invalid' if form.object.errors['zip'].present?) %>
                   </div>
                 </div>
               </div>

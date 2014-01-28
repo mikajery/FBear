@@ -153,11 +153,6 @@ var Order = function (el) {
 
     var disableForm = function () {
         submit_btn.attr('disabled', true);
-
-//        delivery_fields().off('change').on('change', function () {
-//            disableForm();
-//            getDeliveryPrice();
-//        });
     };
 
     var enableForm = function () {
@@ -169,7 +164,6 @@ var Order = function (el) {
             form
                 .find('[name="' + i + '"]')
                 .val(data[i])
-//                .trigger('change')
             ;
         });
     };
@@ -209,7 +203,6 @@ var Order = function (el) {
         var full_address = [],
             search_address = [];
 
-
         if (zip().val()) full_address.push(zip().val());
         if (region().val() && region().val() != city().val()) full_address.push(region().val());
         if (city().val()) {
@@ -240,13 +233,12 @@ var Order = function (el) {
         showMap(search_address.join(', '), full_address.join(', '));
     };
 
-
     var initKladrs = function () {
         new Kladr(city(), 'city');
         new Kladr(street(), 'street');
         new Kladr(building(), 'building');
 
-        city().on('kladr_select kladr_check', function (e, obj) {
+        city().on('kladr_select kladr_check change', function (e, obj) {
             street().kladr('parentType', $.kladr.type.city);
             building().kladr('parentType', $.kladr.type.city);
 
@@ -257,18 +249,24 @@ var Order = function (el) {
 
             if (city().val() != old_vars['city']) {
                 old_vars['city'] = city().val();
-                region().val('');
-                zip().val('');
-                street().val('');
-                building().val('');
+
+                if (city().data('kladr_inited') === true)
+                {
+                    region().val('');
+                    zip().val('');
+                    street().val('');
+                    building().val('');
+                }
             }
 
             setRegionAndZip(obj, true);
+            updateAddress();
         });
 
         city().on('change', function () {
             updateAddress();
         });
+
 
         street().on('kladr_select kladr_check', function (e, obj) {
             building().kladr('parentType', $.kladr.type.street);
@@ -279,34 +277,54 @@ var Order = function (el) {
 
             if (street().val() != old_vars['street']) {
                 old_vars['street'] = street().val();
-                zip().val('');
-                building().val('');
+                if (street().data('kladr_inited') === true)
+                {
+                    zip().val('');
+                    building().val('');
+                }
             }
 
             setRegionAndZip(obj);
+            updateAddress();
         });
 
         street().on('change', function () {
             updateAddress();
         });
 
-        building().on('kladr_select kladr_check change', function (e, obj) {
+        building().on('kladr_select kladr_check', function (e, obj) {
             setRegionAndZip(obj);
+            updateAddress();
         });
 
         building().on('change', function () {
             updateAddress();
         });
 
-        site().on('kladr_select kladr_check',function () {
+        site().on('kladr_select kladr_check', function () {
+            updateAddress();
+        });
 
-        }).on('change', function () {
-                updateAddress();
-            });
+        site().on('change', function () {
+            updateAddress();
+        });
+
+        region().on('kladr_select kladr_check', function () {
+            updateAddress();
+        })
 
         region().on('change', function () {
             updateAddress();
-        })
+        });
+
+        $([city(), region(), street(), building(), site()]).each(function () {
+            if (this.val())
+                this.trigger('change');
+        });
+
+        $([city(), region(), street(), building(), site()]).each(function () {
+            this.data('kladr_inited', true);
+        });
     };
 
     var showAddress = function () {
@@ -329,7 +347,6 @@ var Order = function (el) {
         }
         ;
 
-//        applyParams();
         updateAddress();
     };
 

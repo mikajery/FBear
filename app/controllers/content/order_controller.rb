@@ -15,6 +15,8 @@ class Content::OrderController < Content::BaseController
   end
 
   def finish
+    @cart = @cart.becomes!(Order::Robust)
+
     cookies['_ga_sent'] = nil
     params = order_params
     params[:client] = Client.from_params params[:client]
@@ -22,12 +24,12 @@ class Content::OrderController < Content::BaseController
     # STI-тип заказа, см модели
     params[:type] = 'Order::Robust'
 
+
     params[:delivery_type] = DeliveryType.find(params[:delivery_type]) if params[:delivery_type].present?
     params[:payment_type] = PaymentType.find(params[:payment_type]) if params[:payment_type].present?
 
     respond_to do |format|
       if @cart.update(params)
-
         OrderMailer.order(@cart).deliver
         OrderMailer.notice(@cart).deliver
 

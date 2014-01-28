@@ -86,7 +86,9 @@ class DpdApi
 
       return response.body[:get_service_cost_response][:return][:cost]
     rescue Savon::SOAPFault => e
-      abort request_params.inspect
+      Rails.logger.error "\n\nDPD_ERROR:  " + e.inspect + "\n"
+      Rails.logger.error "REQUESTED:  " + request_params.inspect + "\n\n"
+      return nil
     end
   end
 end
