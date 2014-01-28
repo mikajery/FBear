@@ -2,7 +2,7 @@
 //= require backbone/views/post
 
 PostsEmptyView = Backbone.Marionette.ItemView.extend({
-    template: "[data-view=posts-empty]"
+    template:  function() { return $('[data-view=posts-empty]') }
 });
 
 PostsView = Backbone.Marionette.CompositeView.extend({

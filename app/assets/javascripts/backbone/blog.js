@@ -13,6 +13,12 @@ BlogRouter = Backbone.Router.extend({
     }
 });
 
+postsCollection = new PostsCollection();
+
+postsView = new PostsView({
+    collection: postsCollection
+});
+
 var blogLoadingIn = function (callback) {
     if (element.hasClass('inited') && loading.height() == 0 ) {
         loading.hide().fadeIn(function () {
@@ -74,12 +80,6 @@ $(document).on('ready page:load', function() {
     element = $('[data-type=blogs]');
     posts   = $('[data-region=posts]');
     loading = $('[data-blog=loading]');
-
-    postsCollection = new PostsCollection();
-
-    postsView = new PostsView({
-        collection: postsCollection
-    });
 
     Blog.start();
     Backbone.history.start();

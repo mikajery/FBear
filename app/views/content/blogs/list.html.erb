@@ -1,6 +1,8 @@
-<% content_for :extra_scripts do %>
+<%= content_for :extra_scripts do %>
     <%= render partial: 'views' %>
+<% end %>
 
+<%= content_for :footer_scripts do %>
     <script type="text/javascript">
         var fetchUrl = "<%= blog_fetch_path %>";
         $(document).on('page:load ready', function () {
