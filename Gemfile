@@ -73,3 +73,6 @@ gem 'localized_country_select', '>= 0.9.7'
 
 gem 'jquery-inputmask-rails', '~> 2.0.1'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
+
+# sha1
+gem 'rickshaw'

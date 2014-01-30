@@ -1,3 +1,6 @@
+require 'base64'
+require 'openssl'
+
 class Admin::AcquiringController < Admin::BaseController
 
   protect_from_forgery except: :result
@@ -6,6 +9,25 @@ class Admin::AcquiringController < Admin::BaseController
   before_action :set_test_name, except: [:index]
 
   def index
+    begin
+      @order = Order::Robust.find(params[:order]) if params[:order].present?
+    rescue
+
+    end
+
+  end
+
+  def sha
+    #@policy = ['595ccd142a89a557', '31.10','1000024','20140130165700','1','CIS0ET14'].map{|i| [i.mb_chars.length, i].join}.join
+    @policy = ''
+    #afb511f483e25d47bd5a69081807511296cef3bf
+    #@policy = Base64.strict_encode64(@policy)
+
+    key = '0732D0F58CFDDFCA492DE86A872D033E'
+
+    @signature = OpenSSL::HMAC.hexdigest('sha1', key, @policy)
+
+    abort @signature.upcase
   end
 
   def card

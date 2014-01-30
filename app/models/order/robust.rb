@@ -7,12 +7,24 @@ class Order::Robust < Order
 
   before_validation :set_country
 
+  def acquiring
+    params = {
+        AMOUNT: total_price.to_f,
+        BACKREF: id,
+        DESC: '',
+        ORDER: id,
+        EMAIL: email
+    }
+
+    AcquireApi.new(params)
+  end
+
   private
   def set_country
     write_attribute(:country, :RU)
   end
 
   def validate_delivery
-    abort self.inspect
+    #TODO wat?
   end
 end

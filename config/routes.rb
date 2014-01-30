@@ -103,8 +103,6 @@ CMS::Application.routes.draw do
       get '/cart', action: :card, as: :card
       get '/mac', action: :mac, as: :mac
       post '', action: :result, as: :result
-
-
     end
 
     # меню

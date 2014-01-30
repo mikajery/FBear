@@ -271,7 +271,10 @@
                 <ul class="radio-group">
                   <li>
                     <% PaymentType.active.each do |payment_type| %>
-                        <div class="radio-label" data-payment-type="<%= payment_type.id %>">
+                        <% if payment_type.is_a?(PaymentType::Card) %>
+                            <% @card_payment_name = payment_type.name %>
+                        <% end %>
+                        <div class="radio-label" data-payment-type="<%= payment_type.id %>"<%= ' data-card=true' if payment_type.is_a?(PaymentType::Card) %>>
                           <input type="radio" name="cart[payment_type]" id="payment_type<%= payment_type.id %>" value="<%= payment_type.id %>" required/>
                           <label for="payment_type<%= payment_type.id %>" data-payment-type="<%= payment_type.id %>">
                             <%= payment_type.name %>
@@ -281,6 +284,25 @@
                   </li>
                 </ul>
               </div>
+
+              <% if @card_payment_name.present? %>
+                  <div class="span2">
+                    <div class="order-delivery" data-payment-cart>
+                      <div class="order-delivery__icon"></div>
+
+                      <div class="order-delivery__row">
+                        <div class="order-delivery__head">
+                          <%= @card_payment_name %>
+                        </div>
+                      </div>
+
+                      <div class="order-delivery__desc" data-order="delivery_price_desc">
+                        <%= T 'Описание процесса оформления заказа с помощью карты' %>
+                        <div class="order-payment-icons"></div>
+                      </div>
+                    </div>
+                  </div>
+              <% end %>
             </div>
           </div>
         </script>

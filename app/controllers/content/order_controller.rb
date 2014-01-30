@@ -15,26 +15,28 @@ class Content::OrderController < Content::BaseController
   end
 
   def finish
-    @cart = @cart.becomes!(Order::Robust)
-
     cookies['_ga_sent'] = nil
     params = order_params
     params[:client] = Client.from_params params[:client]
 
     # STI-тип заказа, см модели
+    #@cart = @cart.becomes! Order::Robust
     params[:type] = 'Order::Robust'
-
 
     params[:delivery_type] = DeliveryType.find(params[:delivery_type]) if params[:delivery_type].present?
     params[:payment_type] = PaymentType.find(params[:payment_type]) if params[:payment_type].present?
 
     respond_to do |format|
       if @cart.update(params)
-        OrderMailer.order(@cart).deliver
-        OrderMailer.notice(@cart).deliver
+        if @cart.payment_type.is_a? PaymentType::Card
+          format.html { redirect_to order_payment_url }
+        else
+          OrderMailer.order(@cart).deliver
+          OrderMailer.notice(@cart).deliver
 
-        cookies['_order_done'] = @cart.token
-        format.html { redirect_to order_done_url, notice: '_order_updated_successfully' }
+          cookies['_order_done'] = @cart.token
+          format.html { redirect_to order_done_url, notice: '_order_updated_successfully' }
+        end
       else
         format.html { render action: 'show' }
       end
