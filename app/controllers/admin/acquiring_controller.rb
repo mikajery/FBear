@@ -1,4 +1,7 @@
 class Admin::AcquiringController < Admin::BaseController
+
+  protect_from_forgery except: :result
+
   before_action :set_config, except: [:index]
   before_action :set_test_name, except: [:index]
 
