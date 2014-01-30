@@ -96,6 +96,14 @@ CMS::Application.routes.draw do
     # дебаг шаблонов письем
     match 'mailer(/:action(/:id(.:format)))' => 'mailer#:action', via: :get
 
+    scope :acquiring, controller: :acquiring, as: :acquiring do
+      get '', action: :index
+      get ':test', action: :test, constraints: {test: /.*/}, as: :test
+      post '', action: :result, as: :result
+
+
+    end
+
     # меню
     resources :menus
 
