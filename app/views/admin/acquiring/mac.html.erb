@@ -1,11 +1,12 @@
 <div class="page-header">
-  <h1>Тестовый стенд <%= @test_name.gsub /_/, '.' %></h1>
+  <h1>Тестовый стенд MAC</h1>
 </div>
 
 <form action="<%= @config['URL'] %>" method="post">
 
   <input TYPE="hidden" NAME="CURRENCY" SIZE="50" VALUE="643"/>
   <input type="hidden" name="TRTYPE" value="<%= @config['TRTYPE'] %>"/>
+
   <input TYPE="hidden" NAME="TERMINAL" SIZE="8" VALUE="<%= @config['TERMINAL'] %>" MAXLENGTH="8"></input>
   <input TYPE="hidden" NAME="MERCH_URL" SIZE="255" VALUE="<%= @config['MERCH_URL'] %>" MAXLENGTH="255"></input>
   <input TYPE="hidden" NAME="MERCHANT" SIZE="50" VALUE="<%= @config['MERCHANT'] %>" MAXLENGTH="50"></input>
@@ -17,7 +18,7 @@
       </td>
 
       <td>
-        <input TYPE="text" NAME="AMOUNT" VALUE="<%= @test_name.gsub /_/, '.' %>"/>
+        <input TYPE="text" NAME="AMOUNT" VALUE=""/>
       </td>
     </tr>
 
@@ -27,7 +28,7 @@
       </td>
 
       <td>
-        <input TYPE="text" NAME="DESC" VALUE="Testing case #<%= @test_name.gsub /_/, '.' %>"/>
+        <input TYPE="text" NAME="DESC" VALUE="Testing mac"/>
       </td>
     </tr>
 
@@ -53,15 +54,17 @@
 
     <% if false %>
         <input TYPE="hidden" NAME="TIMESTAMP" SIZE="14" VALUE="20130320111111" MAXLENGTH="14">
-        <input TYPE="hidden" NAME="NONCE" SIZE="16" VALUE="FFFFFFFFFFFFFFFF" MAXLENGTH="32">
-        <input TYPE="hidden" NAME="P_SIGN" SIZE="00" VALUE="" MAXLENGTH="32"></input>
     <% end %>
+
+        <input TYPE="hidden" NAME="NONCE" SIZE="16" VALUE="asd" MAXLENGTH="32">
+        <input TYPE="hidden" NAME="P_SIGN" VALUE="cbf03f1d8fdb5ec6ac4997efafa8754e46151f97"></input>
 
     <tr>
       <td></td>
       <td>
         <button>Отправить</button>
       </td>
+    </tr>
 
 
   </table>

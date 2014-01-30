@@ -5,7 +5,11 @@ class Admin::AcquiringController < Admin::BaseController
   def index
   end
 
-  def test
+  def card
+  end
+
+  def mac
+
   end
 
   def result

@@ -6,6 +6,8 @@ CMS::Application.routes.draw do
   # роуты для wysiwyg-редактора
   mount RedactorRails::Engine => '/redactor_rails'
 
+  match 'payed', to: 'admin/acquiring#result', via: [:get, :post]
+
   scope "(:locale)", locale: ContentRouter.locales do
     # поиск?
     # TODO проверить
@@ -98,7 +100,8 @@ CMS::Application.routes.draw do
 
     scope :acquiring, controller: :acquiring, as: :acquiring do
       get '', action: :index
-      get ':test', action: :test, constraints: {test: /.*/}, as: :test
+      get '/cart', action: :card, as: :card
+      get '/mac', action: :mac, as: :mac
       post '', action: :result, as: :result
 
 
