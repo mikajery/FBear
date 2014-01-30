@@ -89,15 +89,16 @@ class Order < ActiveRecord::Base
   def items_weight(kilograms = false)
     weight = 0
     order_goods.each do |g|
-      weight += g.good_weight * g.quantity
+      weight += (g.good_weight.present? ? g.good_weight : 0) * (g.quantity.present? ? g.quantity : 0)
     end
+
     kilograms == true ? weight.to_f / 1000 : weight
   end
 
   def items_volume(cubic_meters = false)
     volume = 0
     order_goods.each do |g|
-      volume += g.good_volume * g.quantity
+      volume += (g.good_volume.present? ? g.good_volume : 0) * (g.quantity.present? ? g.quantity : 0)
     end
 
     cubic_meters == true ? volume.to_f / 1000000 : volume
