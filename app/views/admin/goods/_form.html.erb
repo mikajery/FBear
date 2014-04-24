@@ -147,6 +147,9 @@
                     <th width="120px" class="center">
                       Цена
                     </th>
+                    <th width="12px" class="center">
+                      Образец
+                    </th>
                     <th width="60px"></th>
                   </tr>
                   </thead>
@@ -173,6 +176,14 @@
                         <td class="center">
                           <% Globalize.with_locale(@locale.slug) do %>
                               <%= variant.price %>
+                          <% end %>
+                        </td>
+
+                        <td class="center">
+                          <% if variant.is_material %>
+                            √
+                          <% else %>
+                            ✖
                           <% end %>
                         </td>
 

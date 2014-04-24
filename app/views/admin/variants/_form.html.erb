@@ -37,6 +37,11 @@
         <%= tab_pane :material do %>
             <%= image_field @variant, :material, f, [300, 300], sizes: ['450x450', '300x300', '400x400', '90x90'] %>
 
+            <div class="control-group string optional variant_is_material">
+                <%= f.label :is_material %>
+                <%= f.check_box :is_material %>
+            </div
+
             <% Globalize.with_locale(@locale.slug) do %>
                 <%= f.input :material_name %>
             <% end %>

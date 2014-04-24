@@ -248,6 +248,7 @@ ru:
         picture: Картинка
         material: Материал
         material_name: Тип материала
+        is_material: Отображать образец материала?
 
       post_block/picture:
         picture: Картинка
