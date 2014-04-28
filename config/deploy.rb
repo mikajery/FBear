@@ -49,6 +49,7 @@ after 'deploy:start', 'deploy:unlock'
 before 'deploy:assets:precompile' do
   run "rm -f #{release_path}/config/database.yml"
   run "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  run "ln -s #{shared_path}/uploads #{release_path}/public/uploads"
 end
 
 #task :copy_database_config, roles => :app do - was before me
