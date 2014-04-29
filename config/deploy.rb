@@ -46,7 +46,7 @@ before 'deploy:stop', 'deploy:lock'
 after 'deploy:start', 'deploy:unlock'
 
 
-before 'deploy:assets:precompile' do
+before 'deploy:finalize_update' do
   run "rm -f #{release_path}/config/database.yml"
   run "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   run "ln -s #{shared_path}/uploads #{release_path}/public/uploads"
