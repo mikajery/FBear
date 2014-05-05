@@ -126,6 +126,8 @@ class Admin::VariantsController < Admin::BaseController
       property_types = {}
       params[:variant][:property_types].permit!.each{|k, p| property_types[k] = p[:property_id]}
 
+      params.require(:variant).permit(:is_material)
+
       params = permit_params
       params[:property_types] = property_types
 
