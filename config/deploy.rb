@@ -41,14 +41,20 @@ require 'bundler/capistrano'
 #require "thinking_sphinx/deploy/capistrano"
 #require "whenever/capistrano"
 
-before 'deploy:finalize_update', :copy_database_config#, :copy_email_config
+#before 'deploy:finalize_update', :copy_database_config - I made my own #, :copy_email_config - was before me
 before 'deploy:stop', 'deploy:lock'
 after 'deploy:start', 'deploy:unlock'
 
-task :copy_database_config, roles => :app do
-  db_config = "#{shared_path}/database.yml"
-  run "cp #{db_config} #{release_path}/config/database.yml"
+
+before 'deploy:assets:precompile' do
+  run "rm -f #{release_path}/config/database.yml"
+  run "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
 end
+
+#task :copy_database_config, roles => :app do - was before me
+#  db_config = "#{shared_path}/database.yml"
+#  run "cp #{db_config} #{release_path}/config/database.yml"
+#end
 
 #task :copy_email_config, roles => :app do
 #  mail_config = "#{shared_path}/email.yml"
