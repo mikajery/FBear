@@ -32,12 +32,20 @@
 		background-position: -24px 0;
 	}
 
+	&.facebook-url {
+		display: inline-block;
+	}
+
 	&.pinterest {
 		background-position: -48px 0;
 	}
 
 	&.instagram {
 		background-position: -72px 0;
+	}
+
+	&.instagram-url {
+		display: inline-block;
 	}
 }
 
