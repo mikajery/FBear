@@ -38,6 +38,16 @@ class Admin::AcquiringController < Admin::BaseController
   end
 
   def result
+    @logger = Logger.new("#{Rails.root}/log/#{Date.today.to_s}_acquire.log")
+    @logger.formatter = proc do |severity, datetime, progname, msg|
+      "#{datetime}: #{msg}\n"
+    end
+
+    @logger.info "!!!!!!"
+    @logger.info request
+    @logger.info "!!!!!!"
+
+
     abort params.inspect
   end
 
