@@ -45,6 +45,10 @@ class Admin::AcquiringController < Admin::BaseController
 
     @logger.info "!!!!!!"
     @logger.info request
+    @logger.info "------"
+    @logger.info params.inspect
+    @logger.info "------"
+    @logger.info params.to_yaml
     @logger.info "!!!!!!"
 
 
