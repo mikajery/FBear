@@ -55,8 +55,6 @@ class Admin::AcquiringController < Admin::BaseController
     end
 
     @logger.info "!!!!!!"
-    @logger.info request
-    @logger.info "------"
     @logger.info good_params
     @logger.info "!!!!!!"
 
