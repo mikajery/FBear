@@ -47,15 +47,14 @@ class Admin::AcquiringController < Admin::BaseController
       "#{datetime}: #{msg}\n"
     end
 
-    hash = params.inspect
     good_params = Hash.new
-    hash.each_key do |k|
+    params.each_key do |k|
       good_key = k.rstrip || k
-      good_params["#{good_key}"] = hash[k].gsub("\n", "")
+      good_params["#{good_key}"] = params[k].gsub("\n", "")
     end
 
     @logger.info "!!!!!!"
-    @logger.info good_params
+    @logger.info good_params.to_s
     @logger.info "!!!!!!"
 
 
