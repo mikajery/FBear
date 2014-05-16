@@ -37,7 +37,27 @@ class Admin::AcquiringController < Admin::BaseController
 
   end
 
+  def rstrip_or_self!(str)
+    str.rstrip! || str
+  end
+
   def result
+    @logger = Logger.new("#{Rails.root}/log/#{Date.today.to_s}_acquire.log")
+    @logger.formatter = proc do |severity, datetime, progname, msg|
+      "#{datetime}: #{msg}\n"
+    end
+
+    good_params = Hash.new
+    params.each_key do |k|
+      good_key = k.rstrip || k
+      good_params["#{good_key}"] = params[k].gsub("\n", "")
+    end
+
+    @logger.info "!!!!!!"
+    @logger.info good_params.to_s
+    @logger.info "!!!!!!"
+
+
     abort params.inspect
   end
 

@@ -21,6 +21,8 @@ class AcquireApi
     @params[:ORDER] = '1000025'
     @params[:AMOUNT] = '30.10'
     @params[:P_SIGN] = create_mac
+    @params[:RRN] = '413400853734'
+    @params[:INT_REF] = 'D11582DD2A765EE4'
   end
 
   def create_mac
