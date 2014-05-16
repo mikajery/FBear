@@ -11,14 +11,13 @@ class OrderMailer < ActionMailer::Base
     @order = order
     @current_page = {name: "Письмо клиенту"}
     mail(to: order.email, subject: T('Заказ на сайте www.lllooch.ru', order.language))
-    mail(to: 'order@lllooch.ru', subject: T('Заказ на сайте www.lllooch.ru', order.language))
   end
 
   # письмо в ллл о том, что кто-то сделал заказ на сайте
   def notice order
     @order = order
     @current_page = {name: "Письмо о новом заказе"}
-    #mail(to: 'order@lllooch.ru', subject: "Поступил заказ!")
+    mail(to: 'order@lllooch.ru', subject: "Поступил заказ!")
   end
 
 end
