@@ -53,9 +53,15 @@ class Admin::AcquiringController < Admin::BaseController
       good_params["#{good_key}"] = params[k].gsub("\n", "")
     end
 
-    @logger.info "!!!!!!"
-    @logger.info good_params.to_s
-    @logger.info "!!!!!!"
+    Rails.logger.info "PYANGYONG_GATES!!!!!!"
+    Rails.logger.info good_params.to_s
+    Rails.logger.info "=--=====----=-==-"
+    Rails.logger.info good_params["EMAIL"].to_s
+    Rails.logger.info "!!!!!!"
+
+    @cart = Order.find_by_id(good_params["ORDER"].to_i)
+
+    OrderMailer.order(@cart).deliver
 
 
     abort params.inspect

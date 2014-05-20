@@ -26,11 +26,12 @@ class AcquireApi
   end
 
   def create_mac
-    @cypher = %w(NONCE).map{|k| str = @params[k.to_sym]; [str.to_s.mb_chars.length, str].join}.join
-    #@cypher = %w(NONCE AMOUNT ORDER TIMESTAMP TRTYPE TERMINAL).map{|k| str = @params[k.to_sym]; [str.to_s.mb_chars.length, str].join}.join
+    #@cypher = %w(NONCE).map{|k| str = @params[k.to_sym]; [str.to_s.mb_chars.length, str].join}.join
+    @cypher = %w(NONCE AMOUNT ORDER TIMESTAMP TRTYPE TERMINAL).map{|k| str = @params[k.to_sym]; [str.to_s.mb_chars.length, str].join}.join
     #@cypher = Base64.strict_encode64(@cypher)
 
     key = '0732D0F58CFDDFCA492DE86A872D033E'
+    key = key.scan(/../).map(&:hex).map(&:chr).join
     OpenSSL::HMAC.hexdigest('sha1', key, @cypher)
   end
 
