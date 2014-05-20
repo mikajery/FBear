@@ -7,6 +7,7 @@
   <thead>
   <tr>
     <th width="25%">Клиент</th>
+    <th width="20%">Контакты</th>
     <th>Товары</th>
     <th width="10%">Сумма</th>
     <th width="60px"></th>
@@ -19,6 +20,14 @@
           <%= order.client.full_name if order.client.present? %>
           <%= content_tag :div do %>
             <%= order.order_status.name if order.order_status.present? %>
+          <% end %>
+        </td>
+
+        <td>
+          <% if order.client.present? %>
+            <%= order.client.phone %>
+            <br />
+            <%= order.client.email %>
           <% end %>
         </td>
 
