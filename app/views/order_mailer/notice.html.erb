@@ -190,6 +190,12 @@
                             <u>Адрес доставки:</u><br>
                             <strong><%= @order.full_address %></strong>
                             <br>
+                            <u>Способ оплаты:</u><br>
+                            <strong><%= @order.payment_type.name %></strong>
+                            <br>
+                            <u>Пожеланиея:</u><br>
+                            <strong><%= @order.comment %></strong>
+                            <br>
                             Доставка может быть осущестлена в течение 1 дня после подтверждения заказа.<br>
                             Наши менеджеры свяжутся с Вами по телефону
                             <strong><a href="tel:<%= @order.phone %>" value="<%= @order.phone %>" target="_blank"><%= @order.phone %></a></strong>.

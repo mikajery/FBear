@@ -135,8 +135,8 @@ class Order < ActiveRecord::Base
     address = []
 
     address << self.street if street.present?
-    address << self.street_number if street_number.present?
-    address << self.site if site.present?
+    address << "д. " + self.street_number if street_number.present?
+    address << "кв. " + self.site if site.present?
 
     address.join ', '
   end
