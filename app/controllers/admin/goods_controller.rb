@@ -114,7 +114,9 @@ class Admin::GoodsController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def good_params
-      permit_params
+      params_fix_shadow = permit_params
+      params_fix_shadow[:no_shadow] = 1
+      params_fix_shadow
     end
 
     def order_params
