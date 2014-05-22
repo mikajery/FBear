@@ -7,15 +7,17 @@ class OrderMailer < ActionMailer::Base
   default from: "order@lllooch.ru"
 
   # письмо клиенту
-  def order order
+  def order order, credit_card_params = nil
     @order = order
+    @credit_card_params = credit_card_params
     @current_page = {name: "Письмо клиенту"}
     mail(to: order.email, subject: T('Заказ на сайте www.lllooch.ru', order.language))
   end
 
   # письмо в ллл о том, что кто-то сделал заказ на сайте
-  def notice order
+  def notice order, credit_card_params = nil
     @order = order
+    @credit_card_params = credit_card_params
     @current_page = {name: "Письмо о новом заказе"}
     mail(to: 'order@lllooch.ru', subject: "Поступил заказ!")
   end

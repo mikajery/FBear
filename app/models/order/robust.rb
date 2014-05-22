@@ -14,8 +14,8 @@ class Order::Robust < Order
         DESC: '',
         ORDER: id,
         EMAIL: email,
-        RRN: '',
-        INT_REF: ''
+        #RRN: '',
+        #INT_REF: ''
     }
 
     AcquireApi.new(params)

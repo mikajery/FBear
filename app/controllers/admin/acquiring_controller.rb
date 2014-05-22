@@ -61,7 +61,7 @@ class Admin::AcquiringController < Admin::BaseController
 
     @cart = Order.find_by_id(good_params["ORDER"].to_i)
 
-    OrderMailer.order(@cart).deliver
+    OrderMailer.order(@cart, good_params).deliver
 
 
     abort params.inspect
