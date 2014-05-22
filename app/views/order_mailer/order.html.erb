@@ -144,26 +144,133 @@
                           <td align="right"><%= number_to_currency(@order.full_price, precision: 0, unit: T("руб.")) %></td>
                         </tr>
 
-                        
+
                         <br>
                         <br>
 
-                        <% if @credit_card_params %>
+                        <% unless @credit_card_params.nil? %>
+                          
                           <tr>
-                            <td>MERCH_NAME (ИМЯ ТОРГОВЦА)</td>
-                            <td>= &nbsp;</td>
-                            <td align="right">lllooch</td>
+                            <td>Данные о торговой точке:</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
                           </tr>
 
                           <tr>
-                            <td>MERCH_URL (URL ТОРГОВЦА)</td>
+                            <td>Имя торговца</td>
                             <td>= &nbsp;</td>
-                            <td align="right">www.lllooch.ru</td>
+                            <td align="right">@credit_card_params["MERCH_NAME"]</td>
                           </tr>
 
+                          <tr>
+                            <td>URL торговца</td>
+                            <td>= &nbsp;</td>
+                            <td align="right">@credit_card_params["MERCH_URL"]</td>
+                          </tr>
+
+                          <tr>
+                            <td>Терминал</td>
+                            <td>= &nbsp;</td>
+                            <td align="right">@credit_card_params["TERMINAL"]</td>
+                          </tr>
+
+                          <br>
+
+                          <tr>
+                            <td>Данные о заказе:</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                          </tr>
+                          
+                          <tr>
+                            <td>Номер заказа</td>
+                            <td>= &nbsp;</td>
+                            <td align="right">@credit_card_params["ORDER"]</td>
+                          </tr>
+
+                          <tr>
+                            <td>Описание</td>
+                            <td>= &nbsp;</td>
+                            <td align="right">@credit_card_params["DESC"]</td>
+                          </tr>
+
+                          <tr>
+                            <td>Дата операции</td>
+                            <td>= &nbsp;</td>
+                            <td align="right">@credit_card_params["TIMESTAMP"]</td>
+                          </tr>
+
+                          <tr>
+                            <td>Сумма</td>
+                            <td>= &nbsp;</td>
+                            <td align="right">@credit_card_params["AMOUNT"]</td>
+                          </tr>
+
+                          <tr>
+                            <td>Валюта</td>
+                            <td>= &nbsp;</td>
+                            <td align="right">@credit_card_params["CURRENCY"]</td>
+                          </tr>
+
+                          <tr>
+                            <td>Тип операции</td>
+                            <td>= &nbsp;</td>
+                            <td align="right">@credit_card_params["TRTYPE"]</td>
+                          </tr>
+         
+                          <br>
+
+                          <tr>
+                            <td>Данные плательщика:</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                          </tr>
+
+                          <tr>
+                            <td>Имя держателя</td>
+                            <td>= &nbsp;</td>
+                            <td align="right">@credit_card_params["NAME"]</td>
+                          </tr>
+
+                          <tr>
+                            <td>E-mail</td>
+                            <td>= &nbsp;</td>
+                            <td align="right">@credit_card_params["EMAIL"]</td>
+                          </tr>
+
+                          <tr>
+                            <td>Карта</td>
+                            <td>= &nbsp;</td>
+                            <td align="right">@credit_card_params["CARD"]</td>
+                          </tr>
+
+                          <br>
+
+                          <tr>
+                            <td>Результат операции:</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                          </tr>
+
+                          <tr>
+                            <td>Результат</td>
+                            <td>= &nbsp;</td>
+                            <td align="right">@credit_card_params["RC"]</td>
+                          </tr>
+                          
+                          <tr>
+                            <td>Ссылка на операцию</td>
+                            <td>= &nbsp;</td>
+                            <td align="right">@credit_card_params["RRN"]</td>
+                          </tr>
+                          
+                          <tr>
+                            <td>Код авторизации</td>
+                            <td>= &nbsp;</td>
+                            <td align="right">@credit_card_params["AUTH_CODE"]</td>
+                          </tr>
+            
                         <% end %>
-
-
 
                         </tbody>
                       </table>
