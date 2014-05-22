@@ -28,7 +28,7 @@
             <%= f.input :no_shadow %>
             <%= f.input :on_main %>
             <%= f.input :is_preorder_only %>
-            <%= f.input :bg, collection: {'темный' => 'dark', 'светлый' => 'light'}, include_blank: false %>
+            <%= f.input :bg, collection: {'белый' => 'dark', 'чёрный' => 'light'}, include_blank: false %>
 
             <%= f.association :good_category, input_html: {class: 'span6'} %>
             <%= f.association :designer, input_html: {class: 'span6'} %>

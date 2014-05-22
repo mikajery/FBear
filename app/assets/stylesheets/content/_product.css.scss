@@ -253,7 +253,7 @@
       & > .controls {
         display: none;
         overflow: hidden;
-        & > .shadow {
+        & > .description_shade {
           position: absolute;
           z-index: 2;
           box-shadow: 0 0 20px #000;
